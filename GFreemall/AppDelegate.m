@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,8 +16,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window.backgroundColor=[TheParentClass colorWithHexString:@"#f2f3f7"];
+
+    
     //
-    // Override point for customization after application launch.
+    // Override point for customization   dsfeffsff66666 after application launch.
     return YES;
 }
 
