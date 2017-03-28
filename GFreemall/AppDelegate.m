@@ -17,9 +17,31 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window.backgroundColor=[TheParentClass colorWithHexString:@"#f2f3f7"];
+  
+    if (![[NSUserDefaults standardUserDefaults]objectForKey:@"appLanguage"]) {
+        
+        NSArray *languages = [NSLocale preferredLanguages];
+        
+        NSString *language = [languages objectAtIndex:0];
+        NSLog(@"语言-----%@",language);
+        
+        if ([language rangeOfString:@"zh-Hans"].location !=NSNotFound) {//开头匹配
+            //简体中文
+            [[NSUserDefaults standardUserDefaults] setObject:@"zh-Hans" forKey:@"appLanguage"];
+            
+        }else if ([language rangeOfString:@"zh-Hant"].location !=NSNotFound) {//开头匹配
+            //繁体中文
+            [[NSUserDefaults standardUserDefaults] setObject:@"zh-Hant" forKey:@"appLanguage"];
+            
+        }else{
+            // if([language rangeOfString:@"en"].location !=NSNotFound)
+            //英文
+            [[NSUserDefaults standardUserDefaults] setObject:@"en" forKey:@"appLanguage"];
+            
+        }
+        
+    }
 
-    
-    //
     // Override point for customization   dsfeffsff66666 after application launch.
     return YES;
 }

@@ -21,7 +21,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self dataCrollers];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ToWwitchBetweenLanguagesClick) name:@"ToWwitchBetweenLanguages" object:nil];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)ToWwitchBetweenLanguagesClick{
+    //接收通知切换语言
+    [SVProgressHUD showWithStatus:Localized(@"loading")];
+    [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self dataCrollers];
 }
 -(void)dataCrollers{
     self.ParentClass=[[TheParentClass alloc]init];

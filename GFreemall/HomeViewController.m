@@ -5,11 +5,13 @@
 //  Created by 韩少林 on 2017/3/27.
 //  Copyright © 2017年 MrHan. All rights reserved.
 //
+#define AppLanguage @"appLanguage"
+
 
 #import "HomeViewController.h"
 #import "HomeCell.h"
 #import "NULLCell.h"
-@interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
     UIButton *BarButtonOne;//导航条按钮1
     UIButton *BarButtonTwo;//导航条按钮2
@@ -21,13 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    autoSize
     [self SetTheNavigationBar];//设置导航条
     _tableView=[[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     
     [self.view addSubview:_tableView];
-    
+
+    [SVProgressHUD dismiss];
     // Do any additional setup after loading the view.
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -63,8 +67,11 @@ autoSize
 }
 -(void)SetTheNavigationBar{
     autoSize
-    //左按钮项
-    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithTitle:@"语言" style:UIBarButtonItemStylePlain target:self action:@selector(onLeftButtonClick)];
+    
+
+    
+    
+    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithTitle:Localized(@"language") style:UIBarButtonItemStylePlain target:self action:@selector(onLeftButtonClick)];
     self.navigationItem.leftBarButtonItem=leftItem;
     [self.navigationItem.leftBarButtonItem setTintColor:[TheParentClass colorWithHexString:@"#ffffff"]];
     [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:30*autoSizeScaleX],NSFontAttributeName, nil] forState:UIControlStateNormal];
@@ -98,10 +105,52 @@ autoSize
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
 
 }
-//点击导航条左按钮执行该方法
+//点击导航条左按钮执行该方法(选择语言)
 -(void)onLeftButtonClick{
-
-
+    NSString *language=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"appLanguage"]];
+    
+    UIAlertController *aler=[UIAlertController alertControllerWithTitle:Localized(@"prompt") message:Localized(@"choose") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action=[UIAlertAction actionWithTitle:Localized(@"cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        
+    }];
+    [aler addAction:action];
+    //2.
+    UIAlertAction *languageOne=[UIAlertAction actionWithTitle:@"简体中文" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+       
+        if (![language isEqualToString:@"zh-Hans"]) {//目前不是简体中文需要切换
+            //简体中文
+            [[NSUserDefaults standardUserDefaults] setObject:@"zh-Hans" forKey:@"appLanguage"];
+            //发通知切换语言
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"ToWwitchBetweenLanguages" object:nil];
+        }
+    }];
+    [aler addAction:languageOne];
+    UIAlertAction *languageTwo=[UIAlertAction actionWithTitle:@"繁體中文" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (![language isEqualToString:@"zh-Hant"]) {//目前不是繁体中文需要切换
+            //繁体中文
+            [[NSUserDefaults standardUserDefaults] setObject:@"zh-Hant" forKey:@"appLanguage"];
+            //发通知切换语言
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"ToWwitchBetweenLanguages" object:nil];
+        }
+        
+    }];
+    [aler addAction:languageTwo];
+    UIAlertAction *languageThree=[UIAlertAction actionWithTitle:@"English" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (![language isEqualToString:@"en"]) {//目前不是英文需要切换
+            //英文
+            [[NSUserDefaults standardUserDefaults] setObject:@"en" forKey:@"appLanguage"];
+            //发通知切换语言
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"ToWwitchBetweenLanguages" object:nil];
+        }
+        
+    }];
+    [aler addAction:languageThree];
+    //最后一步
+    [self presentViewController:aler animated:YES completion:nil];
+    
+    
+    
 }
 //点击右边导航条按钮执行该方法
 -(void)onBarButtonClick:(UIButton *)btn{

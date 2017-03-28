@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  GFreemall
+
+  Created by 韩少林 on 2017/3/28.
+  Copyright © 2017年 MrHan. All rights reserved.
+*/
+"language"="English";//语言
+"prompt"="Warm prompt";//提示
+"choose"="Please select a";//请选择
+"cancel"="cancel";//取消
+"loading"="loading";//加载
