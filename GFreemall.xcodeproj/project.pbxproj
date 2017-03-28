@@ -55,6 +55,8 @@
 		38BD10FB1E8A377000028255 /* search_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 38BD10CC1E8A377000028255 /* search_bg.png */; };
 		38BD10FC1E8A377000028255 /* search_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38BD10CD1E8A377000028255 /* search_bg@2x.png */; };
 		38BD10FD1E8A377000028255 /* search_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38BD10CE1E8A377000028255 /* search_bg@3x.png */; };
+		38BD11001E8A42B900028255 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38BD10FF1E8A42B900028255 /* HomeCell.m */; };
+		38BD11031E8A46EF00028255 /* NULLCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38BD11021E8A46EF00028255 /* NULLCell.m */; };
 		38C9DC8B1E88BF5F00F231B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C9DC8A1E88BF5F00F231B0 /* main.m */; };
 		38C9DC8E1E88BF5F00F231B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C9DC8D1E88BF5F00F231B0 /* AppDelegate.m */; };
 		38C9DC911E88BF5F00F231B0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C9DC901E88BF5F00F231B0 /* ViewController.m */; };
@@ -140,6 +142,10 @@
 		38BD10CC1E8A377000028255 /* search_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search_bg.png; path = "imgs/首页/search_bg.png"; sourceTree = "<group>"; };
 		38BD10CD1E8A377000028255 /* search_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search_bg@2x.png"; path = "imgs/首页/search_bg@2x.png"; sourceTree = "<group>"; };
 		38BD10CE1E8A377000028255 /* search_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search_bg@3x.png"; path = "imgs/首页/search_bg@3x.png"; sourceTree = "<group>"; };
+		38BD10FE1E8A42B900028255 /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
+		38BD10FF1E8A42B900028255 /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
+		38BD11011E8A46EF00028255 /* NULLCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NULLCell.h; sourceTree = "<group>"; };
+		38BD11021E8A46EF00028255 /* NULLCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NULLCell.m; sourceTree = "<group>"; };
 		38C9DC861E88BF5F00F231B0 /* GFreemall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GFreemall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38C9DC8A1E88BF5F00F231B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		38C9DC8C1E88BF5F00F231B0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -261,6 +267,13 @@
 			name = "首页imgs";
 			sourceTree = "<group>";
 		};
+		38BD11041E8A4F5100028255 /* 国际化 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "国际化";
+			sourceTree = "<group>";
+		};
 		38C9DC7D1E88BF5F00F231B0 = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +314,7 @@
 				38C9DCCF1E8901E100F231B0 /* 购物车 */,
 				38C9DCD31E89020300F231B0 /* 个人 */,
 				38BD103E1E8A124000028255 /* images */,
+				38BD11041E8A4F5100028255 /* 国际化 */,
 				38C9DC921E88BF5F00F231B0 /* Main.storyboard */,
 				38C9DC951E88BF5F00F231B0 /* Assets.xcassets */,
 				38C9DC971E88BF5F00F231B0 /* LaunchScreen.storyboard */,
@@ -341,6 +355,10 @@
 			children = (
 				38C9DCC41E89012A00F231B0 /* HomeViewController.h */,
 				38C9DCC51E89012A00F231B0 /* HomeViewController.m */,
+				38BD10FE1E8A42B900028255 /* HomeCell.h */,
+				38BD10FF1E8A42B900028255 /* HomeCell.m */,
+				38BD11011E8A46EF00028255 /* NULLCell.h */,
+				38BD11021E8A46EF00028255 /* NULLCell.m */,
 			);
 			name = "首页";
 			sourceTree = "<group>";
@@ -629,8 +647,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38BD11031E8A46EF00028255 /* NULLCell.m in Sources */,
 				38C9DCCA1E89018400F231B0 /* ClassificationViewController.m in Sources */,
 				38C9DCBF1E89006000F231B0 /* SingletonClass.m in Sources */,
+				38BD11001E8A42B900028255 /* HomeCell.m in Sources */,
 				38C9DC911E88BF5F00F231B0 /* ViewController.m in Sources */,
 				38C9DCD21E8901FD00F231B0 /* ShoppingCartViewController.m in Sources */,
 				38C9DCD61E89021600F231B0 /* MyViewController.m in Sources */,

@@ -7,7 +7,8 @@
 //
 
 #import "HomeViewController.h"
-
+#import "HomeCell.h"
+#import "NULLCell.h"
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIButton *BarButtonOne;//导航条按钮1
@@ -31,6 +32,11 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section==0) {
+        return 2;
+    }else if (section>2){
+        return 5;
+    }
     return 1;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -39,11 +45,21 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+autoSize
+
+    return 94*autoSizeScaleY;
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    if (indexPath.section==0&&indexPath.row==0) {
+        HomeCell *cell=[HomeCell new];
+        return cell;
+    }
+    NULLCell *cell=[NULLCell new];
     
 
-    return nil;
+    return cell;
 }
 -(void)SetTheNavigationBar{
     autoSize
