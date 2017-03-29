@@ -20,18 +20,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self dataCrollers];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ToWwitchBetweenLanguagesClick) name:@"ToWwitchBetweenLanguages" object:nil];
+    
+    [self dataCrollers];
+
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TheLanguageWwitchBox) name:@"TheLanguageWwitchBox" object:nil];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
--(void)ToWwitchBetweenLanguagesClick{
-    //接收通知切换语言
-    [SVProgressHUD showWithStatus:Localized(@"loading")];
-    [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [self dataCrollers];
-}
 -(void)dataCrollers{
     self.ParentClass=[[TheParentClass alloc]init];
     
@@ -59,7 +55,7 @@
 colorWithStr
 //创建底部按钮
 -(void)createButton{
-   
+    NSArray *nameArray=@[@"Home",@"classification",@"GFM",@"shoppingCart",@"My"];
     autoSize
     _bgrangdView=[[UIView alloc]init];
     _bgrangdView.backgroundColor=[self colorWithHexString:@"#f3f5f7"];
@@ -68,8 +64,8 @@ colorWithStr
     _imgsArray=@[@"icon_home",@"icon_classify",@"icon_gfm",@"icon_cart",@"icon_mine"];
     _selsctedBtnImages=@[@"icon_home_s",@"icon_classify_s",@"icon_gfm_s",@"icon_cart_s",@"icon_mine_s"];
     for (int i=0; i<5; i++) {
-        float x=55+(60+85)*(i%5);
-        
+        float x=52+(48+102)*(i%5);
+        //图标
         UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
         [btn setBackgroundImage:[UIImage imageNamed:_imgsArray[i]] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:_selsctedBtnImages[i]] forState:UIControlStateSelected];
@@ -81,20 +77,38 @@ colorWithStr
         btn.tag=i+1;
         [btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [_bgrangdView addSubview:btn];
-        btn.sd_layout.bottomSpaceToView(_bgrangdView, 0).leftSpaceToView(_bgrangdView, x*autoSizeScaleX).widthIs(60*autoSizeScaleX).heightIs(98*autoSizeScaleY);
+        btn.sd_layout.topSpaceToView(_bgrangdView, 15*autoSizeScaleY).leftSpaceToView(_bgrangdView, x*autoSizeScaleX).widthIs(48*autoSizeScaleX).heightIs(42*autoSizeScaleY);
+        //底部按钮名称
+        UILabel *lbl=[[UILabel alloc]init];
+        lbl.text=Localized(nameArray[i]);
+        lbl.textAlignment=NSTextAlignmentCenter;
+        lbl.textColor=[TheParentClass colorWithHexString:@"#292929"];
+        lbl.font=[UIFont systemFontOfSize:20*autoSizeScaleX];
+        [_bgrangdView addSubview:lbl];
+        float with=self.view.frame.size.width/5;
+        lbl.sd_layout.leftSpaceToView(_bgrangdView, with*i).topSpaceToView(btn, 12*autoSizeScaleX).widthIs(with).bottomSpaceToView(_bgrangdView, 2);
+        //最上面的btn
+        UIButton *buton=[UIButton buttonWithType:UIButtonTypeCustom];
+        [buton addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        buton.frame=CGRectMake(with*i, 0, with, _bgrangdView.size.height);
+        buton.tag=i+10;
+        [_bgrangdView addSubview:buton];
+        
+        
     }
 }
 //点击底部按钮触发方法
 -(void)onButtonClick:(UIButton *)btn{
-    if (btn.tag==_index+1) {
+    if (btn.tag==_index+10) {
         return;
     }else{
-        self.index=btn.tag-1;
+        self.index=btn.tag-10;
         for (int i=1; i<6; i++) {
             UIButton *button=(UIButton *)[_bgrangdView viewWithTag:i];
             button.selected=NO;
         }
-        btn.selected=YES;
+        UIButton *selectdBtn=(UIButton *)[_bgrangdView viewWithTag:btn.tag-9];
+        selectdBtn.selected=YES;
     }
 }
 //set方法
@@ -121,6 +135,61 @@ colorWithStr
     }
     return self;
     
+}
+
+-(void)TheLanguageWwitchBox{
+    NSString *language=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"appLanguage"]];
+    
+    UIAlertController *aler=[UIAlertController alertControllerWithTitle:Localized(@"prompt") message:Localized(@"choose") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action=[UIAlertAction actionWithTitle:Localized(@"cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        
+    }];
+    [aler addAction:action];
+    //2.
+    UIAlertAction *languageOne=[UIAlertAction actionWithTitle:@"简体中文" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        if (![language isEqualToString:@"zh-Hans"]) {//目前不是简体中文需要切换
+            //简体中文
+            [[NSUserDefaults standardUserDefaults] setObject:@"zh-Hans" forKey:@"appLanguage"];
+            //切换语言
+            [self ToWwitchBetweenLanguagesClick];
+        }
+    }];
+    [aler addAction:languageOne];
+    UIAlertAction *languageTwo=[UIAlertAction actionWithTitle:@"繁體中文" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (![language isEqualToString:@"zh-Hant"]) {//目前不是繁体中文需要切换
+            //繁体中文
+            [[NSUserDefaults standardUserDefaults] setObject:@"zh-Hant" forKey:@"appLanguage"];
+            //切换语言
+            [self ToWwitchBetweenLanguagesClick];
+        }
+        
+    }];
+    [aler addAction:languageTwo];
+    UIAlertAction *languageThree=[UIAlertAction actionWithTitle:@"English" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (![language isEqualToString:@"en"]) {//目前不是英文需要切换
+            //英文
+            [[NSUserDefaults standardUserDefaults] setObject:@"en" forKey:@"appLanguage"];
+            //切换语言
+            [self ToWwitchBetweenLanguagesClick];
+        }
+        
+    }];
+    [aler addAction:languageThree];
+    //最后一步
+    [self presentViewController:aler animated:YES completion:nil];
+}
+-(void)ToWwitchBetweenLanguagesClick{
+    //接收通知切换语言
+    [SVProgressHUD showWithStatus:Localized(@"loading")];
+    
+    [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];//删除所有子视图,
+    [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
+    
+}
+-(void)delayMethod{
+[self dataCrollers];//重新创建
 }
 //颜色值
 +(UIColor *)colorWithHexString:(NSString *)color{

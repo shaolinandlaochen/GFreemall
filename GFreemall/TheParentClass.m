@@ -43,6 +43,9 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
     [[NSScanner scannerWithString:bString] scanHexInt:&b];
     return [UIColor colorWithRed:((float) r / 255.0f) green:((float) g / 255.0f) blue:((float) b / 255.0f) alpha:1.0f];
 }
++(void)languaggeSwitch{
+ [[NSNotificationCenter defaultCenter]postNotificationName:@"TheLanguageWwitchBox" object:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

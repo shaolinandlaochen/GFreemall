@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface TheParentClass : UIViewController
 
+
+
+@interface TheParentClass : UIViewController
+@property (nonatomic,assign)id delegate;
 //获取颜色值公用方法
 +(UIColor *)colorWithHexString:(NSString *)color;
+//切换语言
++(void)languaggeSwitch;
 
 
 
