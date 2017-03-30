@@ -22,6 +22,7 @@
 #import "UIImageView+WebCache.h"//第三方三级缓存(图片以及按钮)
 #import <UIButton+WebCache.h>//按钮图片
 #import "NULLCell.h"//一个空的cell
+#import "MyInformationView.h"//个人界面我的信息
 
 
 

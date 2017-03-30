@@ -73,6 +73,8 @@
 		3836550A1E8CA41F0034C332 /* pic_portrait@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 383654D41E8CA41F0034C332 /* pic_portrait@3x.png */; };
 		3836550D1E8CA4E90034C332 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3836550C1E8CA4E90034C332 /* ListCell.m */; };
 		383655101E8CA5190034C332 /* BrandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3836550F1E8CA5190034C332 /* BrandCell.m */; };
+		383655131E8CA5CA0034C332 /* MyInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 383655121E8CA5CA0034C332 /* MyInformationView.m */; };
+		383655161E8CDCD50034C332 /* MyMessageCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 383655151E8CDCD50034C332 /* MyMessageCells.m */; };
 		38BD10CF1E8A377000028255 /* icon_cart_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38BD10A01E8A377000028255 /* icon_cart_s@2x.png */; };
 		38BD10D01E8A377000028255 /* icon_cart_s@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38BD10A11E8A377000028255 /* icon_cart_s@3x.png */; };
 		38BD10D11E8A377000028255 /* icon_cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 38BD10A21E8A377000028255 /* icon_cart.png */; };
@@ -237,6 +239,10 @@
 		3836550C1E8CA4E90034C332 /* ListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		3836550E1E8CA5190034C332 /* BrandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandCell.h; sourceTree = "<group>"; };
 		3836550F1E8CA5190034C332 /* BrandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandCell.m; sourceTree = "<group>"; };
+		383655111E8CA5CA0034C332 /* MyInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInformationView.h; sourceTree = "<group>"; };
+		383655121E8CA5CA0034C332 /* MyInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInformationView.m; sourceTree = "<group>"; };
+		383655141E8CDCD50034C332 /* MyMessageCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMessageCells.h; sourceTree = "<group>"; };
+		383655151E8CDCD50034C332 /* MyMessageCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMessageCells.m; sourceTree = "<group>"; };
 		38B64C741E89392C0085A09B /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		38BD10A01E8A377000028255 /* icon_cart_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_cart_s@2x.png"; path = "imgs/首页/icon_cart_s@2x.png"; sourceTree = "<group>"; };
 		38BD10A11E8A377000028255 /* icon_cart_s@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_cart_s@3x.png"; path = "imgs/首页/icon_cart_s@3x.png"; sourceTree = "<group>"; };
@@ -642,6 +648,10 @@
 				38C9DCD51E89021600F231B0 /* MyViewController.m */,
 				3836542E1E8CA2E10034C332 /* MyAllCell.h */,
 				3836542F1E8CA2E10034C332 /* MyAllCell.m */,
+				383655111E8CA5CA0034C332 /* MyInformationView.h */,
+				383655121E8CA5CA0034C332 /* MyInformationView.m */,
+				383655141E8CDCD50034C332 /* MyMessageCells.h */,
+				383655151E8CDCD50034C332 /* MyMessageCells.m */,
 			);
 			name = "个人";
 			sourceTree = "<group>";
@@ -963,8 +973,10 @@
 				38C9DC911E88BF5F00F231B0 /* ViewController.m in Sources */,
 				38C9DCD21E8901FD00F231B0 /* ShoppingCartViewController.m in Sources */,
 				38C9DCD61E89021600F231B0 /* MyViewController.m in Sources */,
+				383655161E8CDCD50034C332 /* MyMessageCells.m in Sources */,
 				38C9DC8E1E88BF5F00F231B0 /* AppDelegate.m in Sources */,
 				38C9DC8B1E88BF5F00F231B0 /* main.m in Sources */,
+				383655131E8CA5CA0034C332 /* MyInformationView.m in Sources */,
 				383655101E8CA5190034C332 /* BrandCell.m in Sources */,
 				3818ADBF1E8BB23200CA2FB6 /* SearchListingsCollectionViewCell.m in Sources */,
 				3818ADB61E8B5EDC00CA2FB6 /* ImageCell.m in Sources */,

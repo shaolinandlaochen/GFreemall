@@ -16,7 +16,11 @@
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        
+        autoSize
+        _myView=[[MyInformationView alloc]init];
+        _myView.backgroundColor=[UIColor whiteColor];
+        [self.contentView addSubview:_myView];
+        _myView.sd_layout.leftSpaceToView(self.contentView, 0).topSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0);
     }
     return self;
 }

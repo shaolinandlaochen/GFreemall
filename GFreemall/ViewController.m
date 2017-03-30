@@ -61,6 +61,11 @@ colorWithStr
     _bgrangdView.backgroundColor=[self colorWithHexString:@"#f3f5f7"];
     [self.view addSubview:_bgrangdView];
     _bgrangdView.sd_layout.leftSpaceToView(self.view, 0).widthIs(self.view.frame.size.width).heightIs(98*autoSizeScaleY).bottomSpaceToView(self.view, 0);
+    //线
+    UILabel *line=[[UILabel alloc]init];
+    line.backgroundColor=[TheParentClass colorWithHexString:@"#b2b2b2"];
+    [_bgrangdView addSubview:line];
+    line.sd_layout.leftSpaceToView(_bgrangdView, 0).topSpaceToView(_bgrangdView, 0).rightSpaceToView(_bgrangdView, 0).heightIs(0.6);
     _imgsArray=@[@"icon_home",@"icon_classify",@"icon_gfm",@"icon_cart",@"icon_mine"];
     _selsctedBtnImages=@[@"icon_home_s",@"icon_classify_s",@"icon_gfm_s",@"icon_cart_s",@"icon_mine_s"];
     for (int i=0; i<5; i++) {

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MyAllCell : UITableViewCell
-
+@property(nonatomic,strong)MyInformationView *myView;
 @end
