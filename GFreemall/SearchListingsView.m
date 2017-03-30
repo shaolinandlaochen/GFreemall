@@ -19,7 +19,7 @@
         UILabel *line=[[UILabel alloc]init];
         line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
         [self addSubview:line];
-        line.sd_layout.leftSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 52*autoSizeScaleY).widthIs(178*autoSizeScaleX).heightIs(1);
+        line.sd_layout.leftSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 15*autoSizeScaleY).widthIs(178*autoSizeScaleX).heightIs(1);
         
         UILabel *lineTwo=[[UILabel alloc]init];
         lineTwo.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
@@ -31,7 +31,7 @@
         _name.textColor=[TheParentClass colorWithHexString:@"#999999"];
         _name.textAlignment=NSTextAlignmentCenter;
         [self addSubview:_name];
-        _name.sd_layout.leftSpaceToView(line, 0).topSpaceToView(self, 32*autoSizeScaleY).rightSpaceToView(lineTwo, 0).heightIs(40*autoSizeScaleY);
+        _name.sd_layout.leftSpaceToView(line, 0).topSpaceToView(self, 0).rightSpaceToView(lineTwo, 0).heightIs(30*autoSizeScaleY);
         
     }
     return self;

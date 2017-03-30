@@ -10,6 +10,7 @@
 #import "ListCell.h"
 #import "SearchListingsCollectionViewCell.h"
 #import "SearchListingsView.h"
+#import "BrandCell.h"
 
 @interface ClassificationViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 {
@@ -17,6 +18,7 @@
     UIButton *BarButton;
     UITableView *_tableView;
     UICollectionView *_CollectionView;
+    UICollectionViewFlowLayout *flowLayout;
 }
 @end
 
@@ -38,21 +40,21 @@
     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
     
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.itemSize = CGSizeMake(140*autoSizeScaleX, 198*autoSizeScaleY);
     flowLayout.minimumInteritemSpacing = 0;
     flowLayout.minimumLineSpacing = 40*autoSizeScaleY;
     ////上,左,下 右
     flowLayout.sectionInset = UIEdgeInsetsMake(30*autoSizeScaleX, 48*autoSizeScaleY, 30*autoSizeScaleX, 48*autoSizeScaleY);
     
-    _CollectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(187*autoSizeScaleX, heightone, self.view.frame.size.width-yu, _tableView.frame.size.height) collectionViewLayout:flowLayout];
+    _CollectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(187*autoSizeScaleX, heightone+(42*autoSizeScaleY), self.view.frame.size.width-yu, _tableView.frame.size.height-(42*autoSizeScaleY)) collectionViewLayout:flowLayout];
     _CollectionView.backgroundColor=[TheParentClass colorWithHexString:@"eeeeee"];
     _CollectionView.delegate=self;
     _CollectionView.dataSource=self;
-    [_CollectionView registerClass:[SearchListingsCollectionViewCell class] forCellWithReuseIdentifier:@"123"];
+    [_CollectionView registerClass:[SearchListingsCollectionViewCell class] forCellWithReuseIdentifier:@"123"];    [_CollectionView registerClass:[BrandCell class] forCellWithReuseIdentifier:@"321"];
     [_CollectionView registerClass:[SearchListingsView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"cellHeader"];
     [self.view addSubview:_CollectionView];
-    
+    _CollectionView.backgroundColor=[UIColor whiteColor];
     
     [self AddTheSearch];
   
@@ -79,7 +81,7 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     autoSize
     float yu=187*autoSizeScaleX;
-    CGSize size={self.view.frame.size.width-yu,104*autoSizeScaleY};
+    CGSize size={self.view.frame.size.width-yu,30*autoSizeScaleY};
     return size;
 }
 
@@ -98,10 +100,19 @@
 
 {
     autoSize
-    SearchListingsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"123" forIndexPath:indexPath];
-    [cell.image sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490792732858&di=1ae36d9523c6d1685e5239f70c610a00&imgtype=0&src=http%3A%2F%2Fv1.qzone.cc%2Fpic%2F201702%2F13%2F12%2F41%2F58a139072f951654.jpg%2521600x600.jpg"] placeholderImage:[UIImage imageNamed:@""]];
-    cell.name.text=@"商品名称";
-    return cell;
+    if (indexPath.section==0) {
+        BrandCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"321" forIndexPath:indexPath];
+        [cell.image sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490792732858&di=1ae36d9523c6d1685e5239f70c610a00&imgtype=0&src=http%3A%2F%2Fv1.qzone.cc%2Fpic%2F201702%2F13%2F12%2F41%2F58a139072f951654.jpg%2521600x600.jpg"] placeholderImage:[UIImage imageNamed:@""]];
+        cell.name.text=@"商品名称";
+        return cell;
+    }else{
+        SearchListingsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"123" forIndexPath:indexPath];
+        [cell.image sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490792732858&di=1ae36d9523c6d1685e5239f70c610a00&imgtype=0&src=http%3A%2F%2Fv1.qzone.cc%2Fpic%2F201702%2F13%2F12%2F41%2F58a139072f951654.jpg%2521600x600.jpg"] placeholderImage:[UIImage imageNamed:@""]];
+        cell.name.text=@"商品名称";
+        return cell;
+    }
+   
+    return nil;
 }
 //点击cell 执行该方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -111,18 +122,25 @@
 {
     autoSize
     CGSize size;
-    
-    //不是抢购商品
-    size =CGSizeMake(126*autoSizeScaleX, 165*autoSizeScaleX);
+    if (indexPath.section==0) {//品牌
+        ////上,左,下 右
+    flowLayout.sectionInset = UIEdgeInsetsMake(45*autoSizeScaleX, 36*autoSizeScaleY, 59*autoSizeScaleX, 36*autoSizeScaleY);
+        flowLayout.minimumLineSpacing = 54*autoSizeScaleY;
+        size=CGSizeMake(150*autoSizeScaleX, 152*autoSizeScaleY);
+    }else{
+    flowLayout.sectionInset = UIEdgeInsetsMake(66*autoSizeScaleX, 48*autoSizeScaleY, 59*autoSizeScaleX, 48*autoSizeScaleY);
+        flowLayout.minimumLineSpacing = 40*autoSizeScaleY;
+      size =CGSizeMake(126*autoSizeScaleX, 165*autoSizeScaleX);
+    }
+  
     return size;
 }
 
 
 
-
-
-
 //以下是表
+
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0;
 }
@@ -138,13 +156,15 @@ autoSize
     return 10;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row<10) {
+       
         ListCell *cell=[ListCell new];
         cell.lbl.text=@"男装";
+      
         return cell;
     }
     
