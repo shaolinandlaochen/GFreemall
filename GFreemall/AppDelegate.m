@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window.backgroundColor=[TheParentClass colorWithHexString:@"#f2f3f7"];
-  
+
     if (![[NSUserDefaults standardUserDefaults]objectForKey:@"appLanguage"]) {
         
         NSArray *languages = [NSLocale preferredLanguages];

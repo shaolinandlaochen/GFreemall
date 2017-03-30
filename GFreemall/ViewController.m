@@ -17,7 +17,11 @@
 @end
 
 @implementation ViewController
-
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    //设置状态栏字体颜色
+    return UIStatusBarStyleLightContent;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -91,7 +95,8 @@ colorWithStr
         lbl.font=[UIFont systemFontOfSize:20*autoSizeScaleX];
         [_bgrangdView addSubview:lbl];
         float with=self.view.frame.size.width/5;
-        lbl.sd_layout.leftSpaceToView(_bgrangdView, with*i).topSpaceToView(btn, 12*autoSizeScaleX).widthIs(with).bottomSpaceToView(_bgrangdView, 2);
+        float xxx=2+(148+2)*(i%5);
+        lbl.sd_layout.leftSpaceToView(_bgrangdView, xxx*autoSizeScaleX).topSpaceToView(btn, 12*autoSizeScaleX).widthIs(148*autoSizeScaleX).bottomSpaceToView(_bgrangdView, 2);
         //最上面的btn
         UIButton *buton=[UIButton buttonWithType:UIButtonTypeCustom];
         [buton addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];

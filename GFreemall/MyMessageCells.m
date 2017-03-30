@@ -29,7 +29,7 @@
         UIImageView *img=[[UIImageView alloc]init];
         img.image=[UIImage imageNamed:@"icon_right"];
         [self.contentView addSubview:img];
-        img.sd_layout.rightSpaceToView(self.contentView, 8*autoSizeScaleX).topSpaceToView(self.contentView, 23*autoSizeScaleY).widthIs(44*autoSizeScaleX);
+        img.sd_layout.rightSpaceToView(self.contentView, 8*autoSizeScaleX).topSpaceToView(self.contentView, 23*autoSizeScaleY).widthIs(44*autoSizeScaleX).heightIs(44*autoSizeScaleY);
         
     }
     return self;

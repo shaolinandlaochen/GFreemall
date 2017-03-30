@@ -26,15 +26,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     //取消自动布局
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self SetTheNavigationBar];
- 
+    NSLog(@"```````````%f",self.view.frame.size.height);
     autoSize
-    float heightone=220*autoSizeScaleY;
-    float height=94*autoSizeScaleY;
+    CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
+    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
+    float height=94*autoSizeScaleY;//搜索框高度
     float yu=187*autoSizeScaleX;
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, heightone, 187*autoSizeScaleX, self.view.frame.size.height-heightone-height) style:UITableViewStylePlain];
+    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, navheight+rectStatus.size.height+height, 187*autoSizeScaleX, self.view.frame.size.height-(340*autoSizeScaleY)) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _tableView.separatorColor=[UIColor clearColor];
@@ -47,7 +49,7 @@
     ////上,左,下 右
     flowLayout.sectionInset = UIEdgeInsetsMake(30*autoSizeScaleX, 48*autoSizeScaleY, 30*autoSizeScaleX, 48*autoSizeScaleY);
     
-    _CollectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(187*autoSizeScaleX, heightone+(42*autoSizeScaleY), self.view.frame.size.width-yu, _tableView.frame.size.height-(42*autoSizeScaleY)) collectionViewLayout:flowLayout];
+    _CollectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(187*autoSizeScaleX, navheight+rectStatus.size.height+height, self.view.frame.size.width-yu, _tableView.frame.size.height) collectionViewLayout:flowLayout];
     _CollectionView.backgroundColor=[TheParentClass colorWithHexString:@"eeeeee"];
     _CollectionView.delegate=self;
     _CollectionView.dataSource=self;
@@ -102,12 +104,12 @@
     autoSize
     if (indexPath.section==0) {
         BrandCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"321" forIndexPath:indexPath];
-        [cell.image sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490792732858&di=1ae36d9523c6d1685e5239f70c610a00&imgtype=0&src=http%3A%2F%2Fv1.qzone.cc%2Fpic%2F201702%2F13%2F12%2F41%2F58a139072f951654.jpg%2521600x600.jpg"] placeholderImage:[UIImage imageNamed:@""]];
-        cell.name.text=@"商品名称";
+        [cell.image sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490897254604&di=00be89d88fda665ad4cc8e2ae15ca1d7&imgtype=0&src=http%3A%2F%2Fpic1.cxtuku.com%2F00%2F01%2F82%2Fb8226fb6afa9.jpg"] placeholderImage:[UIImage imageNamed:@""]];
+        cell.name.text=@"品牌位置";
         return cell;
     }else{
         SearchListingsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"123" forIndexPath:indexPath];
-        [cell.image sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490792732858&di=1ae36d9523c6d1685e5239f70c610a00&imgtype=0&src=http%3A%2F%2Fv1.qzone.cc%2Fpic%2F201702%2F13%2F12%2F41%2F58a139072f951654.jpg%2521600x600.jpg"] placeholderImage:[UIImage imageNamed:@""]];
+        [cell.image sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490897310699&di=71a71beb74fbae5a8048e3683bd5f9db&imgtype=0&src=http%3A%2F%2Fpic65.nipic.com%2Ffile%2F20150421%2F20559754_131621220000_2.jpg"] placeholderImage:[UIImage imageNamed:@""]];
         cell.name.text=@"商品名称";
         return cell;
     }
@@ -226,14 +228,14 @@ autoSize
 }
 -(void)AddTheSearch{
     autoSize
-    UIView *view=[[UIView alloc]initWithFrame:frame(0, 125, 750, 120)];
-    view.backgroundColor=[UIColor whiteColor];
-    //[self.view addSubview:view];
+    CGFloat navheight = self.navigationController.navigationBar.frame.size.height;
+    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];
+
     UIButton *img=[UIButton buttonWithType:UIButtonTypeCustom];
     [img setBackgroundImage:[UIImage imageNamed:@"search_bg"] forState:UIControlStateNormal];
     [img addTarget:self action:@selector(onSearchClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:img];
-    img.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(self.view, 160*autoSizeScaleY).rightSpaceToView(self.view, 25*autoSizeScaleX).heightIs(70*autoSizeScaleY);
+    img.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(self.view, (12*autoSizeScaleY)+navheight+rectStatus.size.height).rightSpaceToView(self.view, 25*autoSizeScaleX).heightIs(70*autoSizeScaleY);
     UIImageView *imgSearch=[[UIImageView alloc]init];
     imgSearch.image=[UIImage imageNamed:@"icon_search"];
     [img addSubview:imgSearch];
