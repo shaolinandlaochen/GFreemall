@@ -12,4 +12,7 @@
 @property(nonatomic,assign)NSInteger index;
 @property(nonatomic,copy)NSString *string;
 @property(nonatomic,strong)NSDictionary *MyDic;
+@property(nonatomic,assign)NSInteger row;
+@property(nonatomic,assign)NSInteger section;
+@property(nonatomic,assign)BOOL why;
 @end
