@@ -99,6 +99,9 @@
 		3836554B1E8CE6670034C332 /* wuhuo_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 383655301E8CE6670034C332 /* wuhuo_bg.png */; };
 		3836554C1E8CE6670034C332 /* wuhuo_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 383655311E8CE6670034C332 /* wuhuo_bg@2x.png */; };
 		3836554D1E8CE6670034C332 /* wuhuo_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 383655321E8CE6670034C332 /* wuhuo_bg@3x.png */; };
+		383655501E8CEF2B0034C332 /* ShoppingCartProductsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3836554F1E8CEF2B0034C332 /* ShoppingCartProductsCell.m */; };
+		383655531E8CFC390034C332 /* MyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 383655521E8CFC390034C332 /* MyImageView.m */; };
+		383655561E8D06470034C332 /* ShoppingCarViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 383655551E8D06470034C332 /* ShoppingCarViews.m */; };
 		38BD10CF1E8A377000028255 /* icon_cart_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38BD10A01E8A377000028255 /* icon_cart_s@2x.png */; };
 		38BD10D01E8A377000028255 /* icon_cart_s@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38BD10A11E8A377000028255 /* icon_cart_s@3x.png */; };
 		38BD10D11E8A377000028255 /* icon_cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 38BD10A21E8A377000028255 /* icon_cart.png */; };
@@ -291,6 +294,12 @@
 		383655301E8CE6670034C332 /* wuhuo_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wuhuo_bg.png; path = "imgs/购物车/归档/wuhuo_bg.png"; sourceTree = "<group>"; };
 		383655311E8CE6670034C332 /* wuhuo_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wuhuo_bg@2x.png"; path = "imgs/购物车/归档/wuhuo_bg@2x.png"; sourceTree = "<group>"; };
 		383655321E8CE6670034C332 /* wuhuo_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wuhuo_bg@3x.png"; path = "imgs/购物车/归档/wuhuo_bg@3x.png"; sourceTree = "<group>"; };
+		3836554E1E8CEF2B0034C332 /* ShoppingCartProductsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartProductsCell.h; sourceTree = "<group>"; };
+		3836554F1E8CEF2B0034C332 /* ShoppingCartProductsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartProductsCell.m; sourceTree = "<group>"; };
+		383655511E8CFC390034C332 /* MyImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImageView.h; sourceTree = "<group>"; };
+		383655521E8CFC390034C332 /* MyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImageView.m; sourceTree = "<group>"; };
+		383655541E8D06470034C332 /* ShoppingCarViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCarViews.h; sourceTree = "<group>"; };
+		383655551E8D06470034C332 /* ShoppingCarViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCarViews.m; sourceTree = "<group>"; };
 		38B64C741E89392C0085A09B /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		38BD10A01E8A377000028255 /* icon_cart_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_cart_s@2x.png"; path = "imgs/首页/icon_cart_s@2x.png"; sourceTree = "<group>"; };
 		38BD10A11E8A377000028255 /* icon_cart_s@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_cart_s@3x.png"; path = "imgs/首页/icon_cart_s@3x.png"; sourceTree = "<group>"; };
@@ -419,6 +428,8 @@
 				3818ADAC1E8B406700CA2FB6 /* MyButton.m */,
 				3818ADAE1E8B4C4300CA2FB6 /* MyView.h */,
 				3818ADAF1E8B4C4300CA2FB6 /* MyView.m */,
+				383655511E8CFC390034C332 /* MyImageView.h */,
+				383655521E8CFC390034C332 /* MyImageView.m */,
 			);
 			name = "自定义属性";
 			sourceTree = "<group>";
@@ -717,6 +728,10 @@
 			children = (
 				38C9DCD01E8901FD00F231B0 /* ShoppingCartViewController.h */,
 				38C9DCD11E8901FD00F231B0 /* ShoppingCartViewController.m */,
+				3836554E1E8CEF2B0034C332 /* ShoppingCartProductsCell.h */,
+				3836554F1E8CEF2B0034C332 /* ShoppingCartProductsCell.m */,
+				383655541E8D06470034C332 /* ShoppingCarViews.h */,
+				383655551E8D06470034C332 /* ShoppingCarViews.m */,
 			);
 			name = "购物车";
 			sourceTree = "<group>";
@@ -823,6 +838,7 @@
 				TargetAttributes = {
 					38C9DC851E88BF5F00F231B0 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = MXJG8DG39S;
 						ProvisioningStyle = Automatic;
 					};
 					38C9DC9E1E88BF5F00F231B0 = {
@@ -1071,6 +1087,7 @@
 				38BD11031E8A46EF00028255 /* NULLCell.m in Sources */,
 				3818ADB31E8B4EE200CA2FB6 /* ThreePictureCell.m in Sources */,
 				38C9DCCA1E89018400F231B0 /* ClassificationViewController.m in Sources */,
+				383655561E8D06470034C332 /* ShoppingCarViews.m in Sources */,
 				38C9DCBF1E89006000F231B0 /* SingletonClass.m in Sources */,
 				3836550D1E8CA4E90034C332 /* ListCell.m in Sources */,
 				38BD11001E8A42B900028255 /* HomeCell.m in Sources */,
@@ -1079,11 +1096,13 @@
 				38C9DCD61E89021600F231B0 /* MyViewController.m in Sources */,
 				383655161E8CDCD50034C332 /* MyMessageCells.m in Sources */,
 				38C9DC8E1E88BF5F00F231B0 /* AppDelegate.m in Sources */,
+				383655501E8CEF2B0034C332 /* ShoppingCartProductsCell.m in Sources */,
 				38C9DC8B1E88BF5F00F231B0 /* main.m in Sources */,
 				383655131E8CA5CA0034C332 /* MyInformationView.m in Sources */,
 				383655101E8CA5190034C332 /* BrandCell.m in Sources */,
 				3818ADBF1E8BB23200CA2FB6 /* SearchListingsCollectionViewCell.m in Sources */,
 				3818ADB61E8B5EDC00CA2FB6 /* ImageCell.m in Sources */,
+				383655531E8CFC390034C332 /* MyImageView.m in Sources */,
 				3818ADAD1E8B406700CA2FB6 /* MyButton.m in Sources */,
 				38C9DCC21E89009F00F231B0 /* TheParentClass.m in Sources */,
 				38C9DCC61E89012A00F231B0 /* HomeViewController.m in Sources */,
@@ -1264,12 +1283,15 @@
 			baseConfigurationReference = 3CAC99031124F58E22E45701 /* Pods-GFreemall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = MXJG8DG39S;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GFreemall/PrefixHeader.pch";
 				INFOPLIST_FILE = GFreemall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ANewStartIsMrHan.GFreemall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1278,12 +1300,15 @@
 			baseConfigurationReference = 2975E64A1C59A326D2785033 /* Pods-GFreemall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = MXJG8DG39S;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GFreemall/PrefixHeader.pch";
 				INFOPLIST_FILE = GFreemall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ANewStartIsMrHan.GFreemall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

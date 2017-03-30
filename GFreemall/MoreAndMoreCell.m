@@ -23,7 +23,6 @@
             UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
             [btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             btn.tag=i+1;
-            btn.backgroundColor=[UIColor redColor];
             [self.contentView addSubview:btn];
             [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490782465230&di=46c86f2fae3decbb9fc5951dbc9b81a6&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%253D580%2Fsign%3D5ba27fbe0ef431adbcd243317b36ac0f%2F4b6374cb0a46f21f571cc47ff4246b600c33ae18.jpg"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
             btn.sd_layout.leftSpaceToView(self.contentView, x*autoSizeScaleX).topSpaceToView(self.contentView, 0).widthIs(250*autoSizeScaleX).heightIs(250*autoSizeScaleY);

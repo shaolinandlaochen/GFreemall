@@ -22,7 +22,7 @@
     autoSize
     self.navigationController.navigationBarHidden=YES;
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
-    _tableView=[[UITableView alloc]initWithFrame:frame(0, -40, 750, 1500) style:UITableViewStylePlain];
+    _tableView=[[UITableView alloc]initWithFrame:frame(0, -50, 750, 1500) style:UITableViewStylePlain];
     _tableView.dataSource=self;
     _tableView.delegate=self;
     _tableView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];

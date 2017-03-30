@@ -23,6 +23,8 @@
 #import <UIButton+WebCache.h>//按钮图片
 #import "NULLCell.h"//一个空的cell
 #import "MyInformationView.h"//个人界面我的信息
+#import "MyImageView.h"//自定义图片
+#import "ShoppingCarViews.h"//购物车结算附属View
 
 
 

@@ -226,14 +226,14 @@ autoSize
 }
 -(void)AddTheSearch{
     autoSize
-    UIView *view=[[UIView alloc]initWithFrame:frame(0, 115, 750, 120)];
+    UIView *view=[[UIView alloc]initWithFrame:frame(0, 125, 750, 120)];
     view.backgroundColor=[UIColor whiteColor];
     //[self.view addSubview:view];
     UIButton *img=[UIButton buttonWithType:UIButtonTypeCustom];
     [img setBackgroundImage:[UIImage imageNamed:@"search_bg"] forState:UIControlStateNormal];
     [img addTarget:self action:@selector(onSearchClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:img];
-    img.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(self.view, 140*autoSizeScaleY).rightSpaceToView(self.view, 25*autoSizeScaleX).heightIs(70*autoSizeScaleY);
+    img.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(self.view, 160*autoSizeScaleY).rightSpaceToView(self.view, 25*autoSizeScaleX).heightIs(70*autoSizeScaleY);
     UIImageView *imgSearch=[[UIImageView alloc]init];
     imgSearch.image=[UIImage imageNamed:@"icon_search"];
     [img addSubview:imgSearch];

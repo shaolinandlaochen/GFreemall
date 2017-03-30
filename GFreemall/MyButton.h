@@ -15,4 +15,5 @@
 @property(nonatomic,assign)NSInteger row;
 @property(nonatomic,assign)NSInteger section;
 @property(nonatomic,assign)BOOL why;
+@property(nonatomic,assign)NSIndexPath *indexPath;
 @end

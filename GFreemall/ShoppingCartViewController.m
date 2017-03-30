@@ -7,6 +7,7 @@
 //
 
 #import "ShoppingCartViewController.h"
+#import "ShoppingCartProductsCell.h"
 
 @interface ShoppingCartViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -14,6 +15,7 @@
     MyButton *BarButton;
     UILabel *number;//未读消息
     MyButton *editorBtn;
+    ShoppingCarViews *view;//合计等等
 }
 
 @end
@@ -30,14 +32,66 @@
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-height) style:UITableViewStylePlain];
     _tableView.dataSource=self;
     _tableView.delegate=self;
-    //[self.view addSubview:_tableView];
+    [self.view addSubview:_tableView];
     
     // Do any additional setup after loading the view.
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    autoSize
+    return 260*autoSizeScaleY;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    autoSize
+    return 99*autoSizeScaleY;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    view=[[ShoppingCarViews alloc]init];
+    view.picle.text=@"合计:¥9999";
+    return view;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return nil;
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 10;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==0) {
+        ShoppingCartProductsCell *cell=[ShoppingCartProductsCell new];
+        cell.selectedBtn.indexPath=indexPath;
+        [cell.selectedBtn addTarget:self action:@selector(TheSelectedClick:) forControlEvents:UIControlEventTouchUpInside];
+        cell.addBtn.indexPath=indexPath;
+        [cell.addBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
+        cell.deleteBtn.indexPath=indexPath;
+        [cell.deleteBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.icon sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490872623835&di=d3dacb515f3909f186bffe0461180fbd&imgtype=0&src=http%3A%2F%2Fpic38.nipic.com%2F20140222%2F11624852_222803434301_2.jpg"] placeholderImage:[UIImage imageNamed:@""]];
+        cell.name.text=@"我是商品名称大苹果我是商品名称大苹名称大苹果";
+        cell.describe.text=@"颜色:410-蓝色 尺码:34";
+        cell.price.text=@"¥99999";
+        cell.bjImage.image=[UIImage imageNamed:@"edict"];
+        cell.number.text=@"90";
+        
+        return cell;
+    }
+    NULLCell *celll=[NULLCell new];
+    return celll;
+}
+
 -(void)rightBaBarbtn{
     autoSize
     self.title=Localized(@"购物车");
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#292929"]}];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
     
     //右按钮项
     UIView *view=[[UIView alloc]initWithFrame:frame(0, 0, 200, 80)];
@@ -67,14 +121,29 @@
     [editorBtn setTitle:Localized(@"编辑") forState:UIControlStateNormal];
     [editorBtn setTitleColor:[TheParentClass colorWithHexString:@"#eeeeee"] forState:UIControlStateNormal];
     editorBtn.titleLabel.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
+    [editorBtn addTarget:self action:@selector(onEditorBBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:editorBtn];
-    editorBtn.sd_layout.rightSpaceToView(BarButton, 42*autoSizeScaleX).topEqualToView(BarButton).widthIs(80*autoSizeScaleY).heightEqualToWidth(BarButton);
+    editorBtn.sd_layout.rightSpaceToView(BarButton, 42*autoSizeScaleX).topSpaceToView(view, 20*autoSizeScaleY).widthIs(80*autoSizeScaleY).heightIs(40*autoSizeScaleY);
     
     //右按钮
     UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:view];
     self.navigationItem.rightBarButtonItem=item;
 }
+//选择或者取消
+-(void)TheSelectedClick:(MyButton *)btn{
+
+}
+//点击加件数量
+-(void)ChangeTTheNumber:(MyButton *)btn{
+
+    NSLog(@"你点击了第%ld区第%ld行  ----%d",btn.indexPath.section,btn.indexPath.row,btn.why);
+}
+//消息
 -(void)onBarButtonClick:(MyButton *)btn{
+
+}
+//编辑
+-(void)onEditorBBtnClick:(MyButton *)btn{
 
 }
 - (void)didReceiveMemoryWarning {
