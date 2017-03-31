@@ -20,12 +20,12 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     autoSize
     if ([super initWithFrame:frame]) {
-        UILabel *lbl=[[UILabel alloc]init];
-        lbl.text=Localized(@"新款上市");
-        lbl.font=[UIFont systemFontOfSize:30*autoSizeScaleX];
-        lbl.textColor=[TheParentClass colorWithHexString:@"#292929"];
-        [self addSubview:lbl];
-        lbl.sd_layout.leftSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 25*autoSizeScaleY).bottomSpaceToView(self, 25*autoSizeScaleY).rightSpaceToView(self, 25*autoSizeScaleX);
+        self.backgroundColor=[UIColor whiteColor];
+        _lbl=[[UILabel alloc]init];
+        _lbl.font=[UIFont systemFontOfSize:30*autoSizeScaleX];
+        _lbl.textColor=[TheParentClass colorWithHexString:@"#292929"];
+        [self addSubview:_lbl];
+        _lbl.sd_layout.leftSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 25*autoSizeScaleY).bottomSpaceToView(self, 25*autoSizeScaleY).rightSpaceToView(self, 25*autoSizeScaleX);
         
         
     }

@@ -58,7 +58,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==0&&indexPath.row==0) {
         SearchViewController *search=[[SearchViewController alloc]init];
-        search.where=@"首页";
+        search.where=@"搜索";
         [self.navigationController pushViewController:search animated:YES];
     }
 }
@@ -91,9 +91,11 @@ autoSize
 -(nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section==1) {
         MyView *view=[[MyView alloc]init];
+        view.lbl.text=Localized(@"新款上市");
         return view;
     }else if (section==2){
         MyView *view=[[MyView alloc]init];
+        view.lbl.text=Localized(@"新款上市啦啦");
         return view;
     }
     return nil;
@@ -194,7 +196,9 @@ autoSize
 }
 //点击第一区三个按钮执行该方法
 -(void)onSectionOneMyButtonClick:(MyButton *)btn{
-
+    SearchViewController *search=[[SearchViewController alloc]init];
+    search.where=@"商品";
+    [self.navigationController pushViewController:search animated:YES];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

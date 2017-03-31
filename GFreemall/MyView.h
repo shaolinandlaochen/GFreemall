@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MyView : UIView
-
+@property(nonatomic,strong)UILabel *lbl;
 @end

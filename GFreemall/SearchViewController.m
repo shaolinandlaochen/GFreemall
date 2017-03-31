@@ -7,11 +7,15 @@
 //
 
 #import "SearchViewController.h"
+#import "SearchForGoodsCell.h"
 
-@interface SearchViewController ()<UITextFieldDelegate>
+@interface SearchViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     UIImageView *imgbg;//搜索框背景
     UITextField *searchField;//搜索框
+    UILabel *lineTwo;//搜索框下面第二条线
+    UITableView *_tableView;//商品列表
+    
 }
 @end
 
@@ -21,11 +25,81 @@
     [super viewDidLoad];
     autoSize
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
     leftCancel
     [self SetTheNavigationBar];
     [self AddTheSearch];//添加搜索框
+    [self ThUserNavigationBar];//添加筛选条件
+    _tableView=[[UITableView alloc]init];
+    _tableView.backgroundColor=[UIColor whiteColor];
+    _tableView.delegate=self;
+    _tableView.dataSource=self;
+    _tableView.separatorColor=[UIColor clearColor];
+    [self.view addSubview:_tableView];
+//    [self EmptyTheShoppingCart];//没有搜索到相关商品
+    _tableView.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(lineTwo, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0);
+    
     // Do any additional setup after loading the view.
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    autoSize
+    return 182*autoSizeScaleY;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    autoSize
+    return 88*autoSizeScaleY;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    MyView *view=[[MyView alloc]init];
+    view.lbl.text=Localized(@"为您搜索到'苹果'商品");
+    
+    return view;
+    return nil;
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 10;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==0) {
+        SearchForGoodsCell *cell=[SearchForGoodsCell new];
+        return cell;
+    }
+    NULLCell *celll=[NULLCell new];
+    return celll;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
+
+//没有搜索到商品
+-(void)EmptyTheShoppingCart{
+    autoSize
+    UIImageView *img=[[UIImageView alloc]init];
+    img.image=[UIImage imageNamed:@"pic_cart"];
+    [self.view addSubview:img];
+    img.sd_layout.leftSpaceToView(self.view, 196*autoSizeScaleX).topSpaceToView(self.view, 597*autoSizeScaleY).widthIs(358*autoSizeScaleX).heightIs(139*autoSizeScaleY);
+    UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:Localized(@"没有搜索到相关商品") forState:UIControlStateNormal];
+    [btn setTitleColor:[TheParentClass colorWithHexString:@"#999999"] forState:UIControlStateNormal];
+    btn.titleLabel.font=[UIFont systemFontOfSize:28*autoSizeScaleX];
+    [self.view addSubview:btn];
+    btn.sd_layout.rightSpaceToView(self.view, 0).topSpaceToView(img, 40*autoSizeScaleY).widthIs(self.view.frame.size.width).heightIs(62*autoSizeScaleY);
+    
+}
+
+
+
+
+
+
 -(void)onCanceClick{
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -33,6 +107,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 //添加搜索框
 -(void)AddTheSearch{
     autoSize
@@ -54,8 +129,13 @@
     searchField.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
     searchField.delegate=self;
     searchField.keyboardType=UIKeyboardTypeDefault;
-    searchField.borderStyle = UIKeyboardTypeEmailAddress;
-    searchField.returnKeyType=UIReturnKeyGo;
+    searchField.borderStyle = UIKeyboardTypeDefault;
+    searchField.returnKeyType=UIReturnKeyDone;
+    searchField.clearButtonMode = UITextFieldViewModeAlways;//右侧添加叉号
+    searchField.adjustsFontSizeToFitWidth = YES;//文本自适应
+    if ([self.where isEqualToString:@"搜索"]) {
+        [searchField becomeFirstResponder];//立即进入编辑状态
+    }
     searchField.placeholder=Localized(@"搜索您想找的商品");
     [self.view addSubview:searchField];
     searchField.sd_layout.leftSpaceToView(imgSearch, 55*autoSizeScaleX).topSpaceToView(self.view, (22*autoSizeScaleY)+navheight+rectStatus.size.height).heightIs(50*autoSizeScaleY).widthIs(600*autoSizeScaleX);
@@ -86,9 +166,110 @@
     self.navigationItem.rightBarButtonItem=item;
     
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+
+}
+//进入购物车
+-(void)onshoppingCraClick{
+
+}
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    NSLog(@"结束编辑");
+    return YES;
+}
+//点击return执行
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    NSLog(@"结束编辑*--*");
+    [textField endEditing:YES];
+    return YES;
+}
+//用户导航条,价格,综合,评级
+-(void)ThUserNavigationBar{
+    autoSize
+    UILabel *lineOne=[[UILabel alloc]init];//搜索狂下面第一条线
+    lineOne.backgroundColor=[TheParentClass colorWithHexString:@"#b2b2b2"];
+    [self.view addSubview:lineOne];
+    lineOne.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(imgbg, 12*autoSizeScaleY).rightSpaceToView(self.view, 0).heightIs(0.7);
+    
+    lineTwo=[[UILabel alloc]init];//搜索狂下面第一条线
+    lineTwo.backgroundColor=[TheParentClass colorWithHexString:@"#b2b2b2"];
+    [self.view addSubview:lineTwo];
+    lineTwo.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(lineOne, 90*autoSizeScaleY).rightSpaceToView(self.view, 0).heightIs(0.7);
+    
+    
+    
+    NSArray *titleArray=@[@"综合",@"销量",@"价格",@"评分",@"新品"];
+    for (int i=0; i<5; i++) {
+        MyButton *btn=[[MyButton alloc]init];
+        [btn setTitle:Localized(titleArray[i]) forState:UIControlStateNormal];
+        if (i==0) {
+             [btn setTitleColor:[TheParentClass colorWithHexString:@"de0024"] forState:UIControlStateNormal];
+        }else{
+            [btn setTitleColor:[TheParentClass colorWithHexString:@"#292929"] forState:UIControlStateNormal];
+
+        }
+        btn.selected=NO;
+        btn.titleLabel.font=[UIFont systemFontOfSize:28*autoSizeScaleX];
+        btn.tag=1000+i;
+        [btn addTarget:self action:@selector(onScreeningClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:btn];
+        float xx=self.view.frame.size.width/5;
+        btn.sd_layout.leftSpaceToView(self.view, xx*i).topSpaceToView(lineOne, 20*autoSizeScaleY).widthIs(xx).heightIs(50*autoSizeScaleY);
+        
+    }
     
 }
--(void)onshoppingCraClick{
+//点击筛选按钮执行该方法
+-(void)onScreeningClick:(MyButton *)btn{
+    autoSize
+    for (int i=0; i<5; i++) {
+        MyButton *button=(MyButton *)[self.view viewWithTag:i+1000];
+        [button setTitleColor:[TheParentClass colorWithHexString:@"#292929"] forState:UIControlStateNormal];
+    }
+     [btn setTitleColor:[TheParentClass colorWithHexString:@"de0024"] forState:UIControlStateNormal];
+     [[self.view viewWithTag:2017]removeFromSuperview];
+    switch (btn.tag) {
+        case 1000://综合
+        {
+            
+        }
+            break;
+        case 1001://销量
+        {
+            
+        }
+            break;
+        case 1002://价格
+        {
+            MyButton *button=(MyButton *)[self.view viewWithTag:1002];
+            UIImageView *img=[[UIImageView alloc]init];
+            if (button.selected==YES) {
+                img.image=[UIImage imageNamed:@"triangle_down_red"];
+                button.selected=NO;
+            }else{
+                button.selected=YES;
+                img.image=[UIImage imageNamed:@"triangle_up_red-"];
+            }
+            
+            img.tag=2017;
+            [self.view addSubview:img];
+            img.sd_layout.leftSpaceToView(self.view,420*autoSizeScaleX).bottomSpaceToView(lineTwo, 40*autoSizeScaleY).widthIs(14*autoSizeScaleX).heightIs(9*autoSizeScaleY);
+        }
+            break;
+        case 1003://评分
+        {
+            
+        }
+            break;
+        case 1004://新品
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+
 
 }
 -(void)viewWillAppear:(BOOL)animated{

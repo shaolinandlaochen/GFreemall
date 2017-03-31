@@ -26,6 +26,7 @@
 #import "MyImageView.h"//自定义图片
 #import "ShoppingCarViews.h"//购物车结算附属View
 #import "SearchViewController.h"//搜索界面
+#import "MyView.h"//自定义view
 
 
 

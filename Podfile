@@ -8,4 +8,5 @@ pod 'SVProgressHUD', '~> 2.0.3'
 pod 'MBProgressHUD', '~> 1.0.0'
 pod 'MJRefresh', '~> 3.1.12'
 pod 'SDAutoLayout', '~> 2.1.7'
+pod 'IQKeyboardManager', '~> 4.0.6'
 end
