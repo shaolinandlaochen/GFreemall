@@ -16,6 +16,7 @@
     UILabel *number;//未读消息
     MyButton *editorBtn;
     ShoppingCarViews *view;//合计等等
+    BOOL _isState;
 }
 
 @end
@@ -27,12 +28,15 @@
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     [self rightBaBarbtn];
+    _isState=YES;//表示默认是非编辑状态
     autoSize
     float height=98*autoSizeScaleY;
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-height) style:UITableViewStylePlain];
     _tableView.dataSource=self;
     _tableView.delegate=self;
     [self.view addSubview:_tableView];
+    
+   // [self EmptyTheShoppingCart];//购物车是空的
     
     // Do any additional setup after loading the view.
 }
@@ -51,6 +55,9 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     view=[[ShoppingCarViews alloc]init];
     view.picle.text=@"合计:¥9999";
+    view.state=_isState;
+    [view.PaymentAndDeleteBtn addTarget:self action:@selector(PaymentAndDeleteClick:) forControlEvents:UIControlEventTouchUpInside];
+    [view.selectedBtn addTarget:self action:@selector(FutureGenerations:) forControlEvents:UIControlEventTouchUpInside];
     return view;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -94,13 +101,13 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
     
     //右按钮项
-    UIView *view=[[UIView alloc]initWithFrame:frame(0, 0, 200, 80)];
-    view.backgroundColor=[UIColor clearColor];
+    UIView *views=[[UIView alloc]initWithFrame:frame(0, 0, 200, 80)];
+    views.backgroundColor=[UIColor clearColor];
     BarButton=[[MyButton alloc]init];
     [BarButton setBackgroundImage:[UIImage imageNamed:@"icon_news"] forState:UIControlStateNormal];
     BarButton.frame=frame(150, 20, 50, 50);
     [BarButton addTarget:self action:@selector(onBarButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:BarButton];
+    [views addSubview:BarButton];
     
     number=[[UILabel alloc]init];
     number.text=@"99";
@@ -115,18 +122,19 @@
     number.textAlignment=NSTextAlignmentCenter;
     number.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
     number.font=[UIFont systemFontOfSize:20*autoSizeScaleY];
-    [view addSubview:number];
+    [views addSubview:number];
     
     editorBtn=[[MyButton alloc]init];
+    editorBtn.why=YES;
     [editorBtn setTitle:Localized(@"编辑") forState:UIControlStateNormal];
     [editorBtn setTitleColor:[TheParentClass colorWithHexString:@"#eeeeee"] forState:UIControlStateNormal];
     editorBtn.titleLabel.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
     [editorBtn addTarget:self action:@selector(onEditorBBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:editorBtn];
-    editorBtn.sd_layout.rightSpaceToView(BarButton, 42*autoSizeScaleX).topSpaceToView(view, 20*autoSizeScaleY).widthIs(80*autoSizeScaleY).heightIs(40*autoSizeScaleY);
+    [views addSubview:editorBtn];
+    editorBtn.sd_layout.rightSpaceToView(BarButton, 42*autoSizeScaleX).topSpaceToView(views, 20*autoSizeScaleY).widthIs(80*autoSizeScaleY).heightIs(40*autoSizeScaleY);
     
     //右按钮
-    UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:view];
+    UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:views];
     self.navigationItem.rightBarButtonItem=item;
 }
 //选择或者取消
@@ -144,6 +152,50 @@
 }
 //编辑
 -(void)onEditorBBtnClick:(MyButton *)btn{
+   
+    if (_isState) {
+        [editorBtn setTitle:Localized(@"完成") forState:UIControlStateNormal];
+        _isState=NO;
+    }else{
+        [editorBtn setTitle:Localized(@"编辑") forState:UIControlStateNormal];
+        _isState=YES;
+    }
+     [_tableView reloadData];
+}
+//全选
+-(void)FutureGenerations:(MyButton *)btn{
+
+}
+//点击支付或者删除
+-(void)PaymentAndDeleteClick:(MyButton *)btn{
+    if (btn.why) {
+        NSLog(@"支付");
+    }else{
+        NSLog(@"删除");
+    }
+}
+-(void)EmptyTheShoppingCart{
+    autoSize
+    UIImageView *img=[[UIImageView alloc]init];
+    img.image=[UIImage imageNamed:@"pic_cart"];
+    [self.view addSubview:img];
+    img.sd_layout.leftSpaceToView(self.view, 196*autoSizeScaleX).topSpaceToView(self.view, 597*autoSizeScaleY).widthIs(358*autoSizeScaleX).heightIs(139*autoSizeScaleY);
+    UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:Localized(@"去逛逛") forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(onGoGoClik:) forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitleColor:[TheParentClass colorWithHexString:@"#999999"] forState:UIControlStateNormal];
+    btn.titleLabel.font=[UIFont systemFontOfSize:28*autoSizeScaleX];
+    [btn.layer setBorderColor:[TheParentClass colorWithHexString:@"#999999"].CGColor];
+    [btn.layer setBorderWidth:1];
+    [btn.layer setMasksToBounds:YES];
+    btn.layer.cornerRadius = 4*autoSizeScaleX;
+    btn.layer.masksToBounds = 4*autoSizeScaleX;
+    [self.view addSubview:btn];
+    btn.sd_layout.rightSpaceToView(self.view, 282*autoSizeScaleX).topSpaceToView(img, 40*autoSizeScaleY).widthIs(186*autoSizeScaleX).heightIs(62*autoSizeScaleY);
+    
+}
+//用户点击去逛逛
+-(void)onGoGoClik:(UIButton *)btn{
 
 }
 - (void)didReceiveMemoryWarning {

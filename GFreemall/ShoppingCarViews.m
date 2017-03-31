@@ -45,7 +45,8 @@
         _picle.sd_layout.leftSpaceToView(lbl,25*autoSizeScaleX).topEqualToView(lbl).bottomEqualToView(lbl).widthIs(300*autoSizeScaleX);
         
         _PaymentAndDeleteBtn=[[MyButton alloc]init];
-        _PaymentAndDeleteBtn.backgroundColor=[UIColor blackColor];
+        _PaymentAndDeleteBtn.why=YES;
+        _PaymentAndDeleteBtn.backgroundColor=[[UIColor blackColor]colorWithAlphaComponent:0.6];
         [_PaymentAndDeleteBtn setTitle:Localized(@"去支付") forState:UIControlStateNormal];
         [_PaymentAndDeleteBtn setTitleColor:[TheParentClass colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
         _PaymentAndDeleteBtn.titleLabel.font=[UIFont systemFontOfSize:34*autoSizeScaleY];
@@ -58,8 +59,26 @@
     return self;
 }
 -(void)setState:(BOOL)state{
-
-
+autoSize
+    _PaymentAndDeleteBtn.why=state;
+    if (state) {
+        _PaymentAndDeleteBtn.backgroundColor=[[UIColor blackColor]colorWithAlphaComponent:0.6];
+        [_PaymentAndDeleteBtn setTitle:Localized(@"去支付") forState:UIControlStateNormal];
+        [_PaymentAndDeleteBtn setTitleColor:[TheParentClass colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
+        _PaymentAndDeleteBtn.titleLabel.font=[UIFont systemFontOfSize:34*autoSizeScaleY];
+    }else{
+        [_PaymentAndDeleteBtn setTitle:Localized(@"删除") forState:UIControlStateNormal];
+        _PaymentAndDeleteBtn.backgroundColor=[UIColor whiteColor];
+        [_PaymentAndDeleteBtn setTitleColor:[TheParentClass colorWithHexString:@"#292929"] forState:UIControlStateNormal];
+        _PaymentAndDeleteBtn.titleLabel.font=[UIFont systemFontOfSize:29*autoSizeScaleX];
+        [_PaymentAndDeleteBtn.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
+        [_PaymentAndDeleteBtn.layer setBorderWidth:1];
+        [_PaymentAndDeleteBtn.layer setMasksToBounds:YES];
+        _PaymentAndDeleteBtn.layer.cornerRadius = 6*autoSizeScaleX;
+        _PaymentAndDeleteBtn.layer.masksToBounds = 6*autoSizeScaleX;
+        _PaymentAndDeleteBtn.sd_layout.rightSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 19*autoSizeScaleY).bottomSpaceToView(self, 19*autoSizeScaleY).widthIs(142*autoSizeScaleX);
+        
+    }
 
 }
 @end

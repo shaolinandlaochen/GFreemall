@@ -19,6 +19,7 @@
     UITableView *_tableView;
     UICollectionView *_CollectionView;
     UICollectionViewFlowLayout *flowLayout;
+    UIView *lines;
 }
 @end
 
@@ -29,8 +30,8 @@
 
     //取消自动布局
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self SetTheNavigationBar];
-    NSLog(@"```````````%f",self.view.frame.size.height);
+    [self SetTheNavigationBar];//创建导航条
+    [self AddTheSearch];//创建搜索框
     autoSize
     CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
     CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
@@ -39,8 +40,10 @@
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, navheight+rectStatus.size.height+height, 187*autoSizeScaleX, self.view.frame.size.height-(340*autoSizeScaleY)) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.showsVerticalScrollIndicator = NO;//去掉右侧滚动条
     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
+    _tableView.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(self.view, navheight+rectStatus.size.height+height).bottomSpaceToView(lines, 0).widthIs(187*autoSizeScaleX);
     
     flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.itemSize = CGSizeMake(140*autoSizeScaleX, 198*autoSizeScaleY);
@@ -56,9 +59,10 @@
     [_CollectionView registerClass:[SearchListingsCollectionViewCell class] forCellWithReuseIdentifier:@"123"];    [_CollectionView registerClass:[BrandCell class] forCellWithReuseIdentifier:@"321"];
     [_CollectionView registerClass:[SearchListingsView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"cellHeader"];
     [self.view addSubview:_CollectionView];
+    _CollectionView.sd_layout.leftSpaceToView(_tableView, 0).topEqualToView(_tableView).rightSpaceToView(self.view, 0).bottomEqualToView(_tableView);
     _CollectionView.backgroundColor=[UIColor whiteColor];
     
-    [self AddTheSearch];
+    
   
     // Do any additional setup after loading the view.
 }
@@ -214,6 +218,10 @@ autoSize
     self.navigationItem.rightBarButtonItem=item;
     
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    
+    lines=[[UIView alloc]init];
+    [self.view addSubview:lines];
+    lines.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 98*autoSizeScaleY).heightIs(0.1);
     
 }
 //点击导航条左按钮执行该方法(选择语言)
