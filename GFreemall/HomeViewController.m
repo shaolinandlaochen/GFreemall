@@ -56,6 +56,11 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section==0&&indexPath.row==0) {
+        SearchViewController *search=[[SearchViewController alloc]init];
+        search.where=@"首页";
+        [self.navigationController pushViewController:search animated:YES];
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 autoSize
@@ -190,6 +195,10 @@ autoSize
 //点击第一区三个按钮执行该方法
 -(void)onSectionOneMyButtonClick:(MyButton *)btn{
 
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [TheParentClass ButtonAtTheBottomOfThesize:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

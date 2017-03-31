@@ -7,7 +7,7 @@
 //
 
 #import "TheParentClass.h"
-
+#import "ViewController.h"
 @interface TheParentClass ()
 
 @end
@@ -45,6 +45,13 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
 }
 +(void)languaggeSwitch{
  [[NSNotificationCenter defaultCenter]postNotificationName:@"TheLanguageWwitchBox" object:nil];
+}
++(void)ButtonAtTheBottomOfThesize:(BOOL)size{
+    if (size) {
+         [[NSNotificationCenter defaultCenter]postNotificationName:@"big" object:nil];
+    }else{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"small" object:nil];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

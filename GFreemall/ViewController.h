@@ -14,5 +14,8 @@
 
 //获取颜色值公用方法
 +(UIColor *)colorWithHexString:(NSString *)color;
+
+
+
 @end
 

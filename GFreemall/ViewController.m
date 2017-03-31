@@ -24,15 +24,19 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
     [self dataCrollers];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TheLanguageWwitchBox) name:@"TheLanguageWwitchBox" object:nil];//切换语言
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(big) name:@"big" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(small) name:@"small" object:nil];
 
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TheLanguageWwitchBox) name:@"TheLanguageWwitchBox" object:nil];
+    
+   
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 -(void)dataCrollers{
+
     self.ParentClass=[[TheParentClass alloc]init];
     
     HomeViewController *home=[[HomeViewController alloc]init];
@@ -62,9 +66,12 @@ colorWithStr
     NSArray *nameArray=@[@"Home",@"classification",@"GFM",@"shoppingCart",@"My"];
     autoSize
     _bgrangdView=[[UIView alloc]init];
+    _bgrangdView.tag=1994;
     _bgrangdView.backgroundColor=[self colorWithHexString:@"#f3f5f7"];
     [self.view addSubview:_bgrangdView];
-    _bgrangdView.sd_layout.leftSpaceToView(self.view, 0).widthIs(self.view.frame.size.width).heightIs(98*autoSizeScaleY).bottomSpaceToView(self.view, 0);
+    //_bgrangdView.sd_layout.leftSpaceToView(self.view, 0).widthIs(self.view.frame.size.width).heightIs(98*autoSizeScaleY).bottomSpaceToView(self.view, 0);
+    float height=98*autoSizeScaleY;
+    _bgrangdView.frame=CGRectMake(0, self.view.frame.size.height-height, self.view.frame.size.width, height);
     //线
     UILabel *line=[[UILabel alloc]init];
     line.backgroundColor=[TheParentClass colorWithHexString:@"#b2b2b2"];
@@ -78,7 +85,7 @@ colorWithStr
         UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
         [btn setBackgroundImage:[UIImage imageNamed:_imgsArray[i]] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:_selsctedBtnImages[i]] forState:UIControlStateSelected];
-        if (i==0) {
+        if (i==_index) {
             btn.selected=YES;
         }else{
             btn.selected=NO;
@@ -200,6 +207,14 @@ colorWithStr
 }
 -(void)delayMethod{
 [self dataCrollers];//重新创建
+    
+}
+-(void)big{
+    [[self.view viewWithTag:1994]removeFromSuperview];
+    [self createButton];
+}
+-(void)small{
+    [[self.view viewWithTag:1994]removeFromSuperview];
 }
 //颜色值
 +(UIColor *)colorWithHexString:(NSString *)color{

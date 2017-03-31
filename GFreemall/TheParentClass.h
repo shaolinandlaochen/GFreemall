@@ -16,6 +16,8 @@
 +(UIColor *)colorWithHexString:(NSString *)color;
 //切换语言
 +(void)languaggeSwitch;
+//改变坐标
++(void)ButtonAtTheBottomOfThesize:(BOOL)size;
 
 
 

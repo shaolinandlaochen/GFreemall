@@ -25,6 +25,8 @@
 #import "MyInformationView.h"//个人界面我的信息
 #import "MyImageView.h"//自定义图片
 #import "ShoppingCarViews.h"//购物车结算附属View
+#import "SearchViewController.h"//搜索界面
+
 
 
 
@@ -68,6 +70,11 @@ autoSizeScaleY = SCREENHEIGHT/1334;\
 
 //国际化
 #define Localized(key)  [[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"appLanguage"]] ofType:@"lproj"]] localizedStringForKey:(key) value:@"" table:nil]
+
+//宏定义self在book块调用
+#define WS(weakSelf) __weak __typeof(&*self)weakSelf = self;
+//返回按钮
+#define leftCancel UIButton *Village=[UIButton buttonWithType:UIButtonTypeSystem];[Village setBackgroundImage:[UIImage imageNamed:@"icon_back"] forState:UIControlStateNormal];Village.frame=frame(-5, 10, 44, 44);[Village addTarget:self action:@selector(onCanceClick) forControlEvents:UIControlEventTouchUpInside];UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:Village];self.navigationItem.leftBarButtonItem=leftItem;
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
