@@ -192,7 +192,8 @@ autoSize
 }
 //点击滚动视图执行该方法
 -(void)onScrollButtonCkick:(MyButton *)btn{
-    
+    GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+    [self.navigationController pushViewController:goodsDetails animated:YES];
 }
 //点击第一区三个按钮执行该方法
 -(void)onSectionOneMyButtonClick:(MyButton *)btn{

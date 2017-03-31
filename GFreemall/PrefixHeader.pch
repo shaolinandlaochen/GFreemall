@@ -27,6 +27,7 @@
 #import "ShoppingCarViews.h"//购物车结算附属View
 #import "SearchViewController.h"//搜索界面
 #import "MyView.h"//自定义view
+#import "GoodsDetailsViewController.h"//商品详情
 
 
 
@@ -76,6 +77,8 @@ autoSizeScaleY = SCREENHEIGHT/1334;\
 #define WS(weakSelf) __weak __typeof(&*self)weakSelf = self;
 //返回按钮
 #define leftCancel UIButton *Village=[UIButton buttonWithType:UIButtonTypeSystem];[Village setBackgroundImage:[UIImage imageNamed:@"icon_back"] forState:UIControlStateNormal];Village.frame=frame(-5, 10, 44, 44);[Village addTarget:self action:@selector(onCanceClick) forControlEvents:UIControlEventTouchUpInside];UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:Village];self.navigationItem.leftBarButtonItem=leftItem;
+//返回方法宏定义
+#define cancelClick -(void)onCanceClick{[self.navigationController popViewControllerAnimated:YES];}
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
