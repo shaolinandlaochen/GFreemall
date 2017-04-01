@@ -18,6 +18,8 @@
 +(void)languaggeSwitch;
 //改变坐标
 +(void)ButtonAtTheBottomOfThesize:(BOOL)size;
+//文本自适应返回size
++(CGSize)StringHeight:(NSString *)stringStr Lblfont:(float)font heightOfTheMinus:(float)height;
 
 
 

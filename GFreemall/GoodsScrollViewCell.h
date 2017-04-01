@@ -18,7 +18,5 @@
 @interface GoodsScrollViewCell : UITableViewCell<SDCycleScrollViewDelegate>
 @property(nonatomic,assign)id delegate;
 @property(nonatomic,strong)SDCycleScrollView* scroll;
-@property(nonatomic,strong)UILabel *title;
-@property(nonatomic,strong)UILabel *string;
-@property(nonatomic,strong)UILabel *picrice;
+
 @end

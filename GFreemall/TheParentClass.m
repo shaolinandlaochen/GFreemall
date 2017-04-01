@@ -53,6 +53,12 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
     [[NSNotificationCenter defaultCenter]postNotificationName:@"small" object:nil];
     }
 }
+//文本自适应返回size
++(CGSize)StringHeight:(NSString *)stringStr Lblfont:(float)font heightOfTheMinus:(float)height{
+
+     CGSize lblSize = [stringStr boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - height, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil].size;
+    return lblSize;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

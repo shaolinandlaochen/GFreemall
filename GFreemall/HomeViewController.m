@@ -16,7 +16,7 @@
 #import "ThreePictureCell.h"
 #import "ImageCell.h"
 #import "MoreAndMoreCell.h"
-@interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
+@interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,HomeScrollViewDelegate>
 {
     UIButton *BarButton;//导航条按钮1
     UITableView *_tableView;
@@ -107,7 +107,7 @@ autoSize
         return cell;
     }else if (indexPath.section==0&&indexPath.row==1){
         ScrollViewCell *cell=[ScrollViewCell new];
-        [cell.MyBtn addTarget:self action:@selector(onScrollButtonCkick:) forControlEvents:UIControlEventTouchUpInside];
+        cell.delegate=self;
         cell.Array=@[@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490760588936&di=9cca48297ec4287d0156df10b575178d&imgtype=0&src=http%3A%2F%2Fimg.tuku.cn%2Ffile_big%2F201502%2Fd130653bfb884152b8a5ba9e846362d1.jpg",@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490760588936&di=9e037dbdca9c38c8de8142b07acfda55&imgtype=0&src=http%3A%2F%2Fsoft.luobou.com%2Fbizhi%2Ffengjing%2F1473141512150.jpg"];
         return cell;
     }else if (indexPath.section==1) {
@@ -191,7 +191,7 @@ autoSize
 
 }
 //点击滚动视图执行该方法
--(void)onScrollButtonCkick:(MyButton *)btn{
+-(void)HomeScroll:(NSInteger)index{
     GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
     [self.navigationController pushViewController:goodsDetails animated:YES];
 }

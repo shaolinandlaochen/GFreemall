@@ -20,24 +20,20 @@
 
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         autoSize
-        scroll=[SDCycleScrollView cycleScrollViewWithFrame:frame(0, 0, 750, 234) delegate:self placeholderImage:[UIImage imageNamed:@"750-750"]];
+        scroll=[SDCycleScrollView cycleScrollViewWithFrame:frame(0, 0, 750, 234) delegate:self placeholderImage:[UIImage imageNamed:@""]];
         scroll.autoScroll=YES;
         scroll.autoScrollTimeInterval =5;
         [self.contentView addSubview:scroll];
-        _MyBtn=[[MyButton alloc]init];
-        _MyBtn.frame=frame(0, 0, 750, 234);
-        [self.contentView addSubview:_MyBtn];
+        scroll.sd_layout.leftSpaceToView(self.contentView, 0).topSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0);
+
     }
     return self;
 }
-/** 图片滚动回调 */
-- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didScrollToIndex:(NSInteger)index{
-    NSString *str=[NSString stringWithFormat:@"%ld",index];
-    _MyBtn.string=str;
-}
+
 /** 点击图片回调  顶部滚动视图 */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-    //NSString *str=[NSString stringWithFormat:@"%ld",index];
+ 
+    [_delegate HomeScroll:index];
 }
 -(void)setArray:(NSArray *)Array{
     scroll.imageURLStringsGroup=Array;

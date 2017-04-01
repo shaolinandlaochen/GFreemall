@@ -72,4 +72,21 @@
     
    
 }
+-(void)setScrollPage:(NSInteger)ScrollPage{
+    autoSize
+    for (int i=0; i<3; i++) {
+        MyButton *button=(MyButton *)[self viewWithTag:i+1];
+        button.titleLabel.font=[UIFont systemFontOfSize:30*autoSizeScaleX];
+        
+        UILabel *lbl=(UILabel *)[self viewWithTag:i+5];
+        if (ScrollPage==i) {
+            lbl.backgroundColor=[UIColor redColor];
+            button.titleLabel.font=[UIFont systemFontOfSize:34*autoSizeScaleX];
+        }else{
+            lbl.backgroundColor=[UIColor clearColor];
+        }
+    }
+   
+
+}
 @end

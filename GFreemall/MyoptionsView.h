@@ -17,5 +17,6 @@
 @end
 @interface MyoptionsView : UIView
 @property (nonatomic, assign) id  delegate;
+@property(nonatomic,assign)NSInteger ScrollPage;
 
 @end

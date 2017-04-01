@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol HomeScrollViewDelegate <NSObject>
 
+@required//限定实现这个协议,就必须实现这个协议方法
+
+-(void)HomeScroll:(NSInteger)index;
+@end
 @interface ScrollViewCell : UITableViewCell<SDCycleScrollViewDelegate>
+@property(nonatomic,assign)id delegate;
 @property(nonatomic,strong)NSDictionary *Dic;
 @property(nonatomic,strong)NSArray *Array;
-@property(nonatomic,strong)MyButton *MyBtn;
 @end
