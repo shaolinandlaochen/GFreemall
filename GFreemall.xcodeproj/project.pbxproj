@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		01E7FF9319AECBA3198CF8D6 /* libPods-GFreemall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C3C8AC7E101E843F9AACA7E /* libPods-GFreemall.a */; };
+		38032F471E90CD39005F4981 /* AttributeSkuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38032F461E90CD39005F4981 /* AttributeSkuCell.m */; };
+		38032F4A1E90CD90005F4981 /* SKUCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38032F491E90CD90005F4981 /* SKUCollectionReusableView.m */; };
+		38032F4E1E90D8AA005F4981 /* icon_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 38032F4B1E90D8AA005F4981 /* icon_close.png */; };
+		38032F4F1E90D8AA005F4981 /* icon_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38032F4C1E90D8AA005F4981 /* icon_close@2x.png */; };
+		38032F501E90D8AA005F4981 /* icon_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38032F4D1E90D8AA005F4981 /* icon_close@3x.png */; };
 		3818ADA91E8B3FC100CA2FB6 /* ScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3818ADA81E8B3FC100CA2FB6 /* ScrollViewCell.m */; };
 		3818ADAD1E8B406700CA2FB6 /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3818ADAC1E8B406700CA2FB6 /* MyButton.m */; };
 		3818ADB01E8B4C4300CA2FB6 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3818ADAF1E8B4C4300CA2FB6 /* MyView.m */; };
@@ -281,6 +286,13 @@
 /* Begin PBXFileReference section */
 		0C3C8AC7E101E843F9AACA7E /* libPods-GFreemall.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GFreemall.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2975E64A1C59A326D2785033 /* Pods-GFreemall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFreemall.release.xcconfig"; path = "Pods/Target Support Files/Pods-GFreemall/Pods-GFreemall.release.xcconfig"; sourceTree = "<group>"; };
+		38032F451E90CD39005F4981 /* AttributeSkuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeSkuCell.h; sourceTree = "<group>"; };
+		38032F461E90CD39005F4981 /* AttributeSkuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeSkuCell.m; sourceTree = "<group>"; };
+		38032F481E90CD90005F4981 /* SKUCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKUCollectionReusableView.h; sourceTree = "<group>"; };
+		38032F491E90CD90005F4981 /* SKUCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKUCollectionReusableView.m; sourceTree = "<group>"; };
+		38032F4B1E90D8AA005F4981 /* icon_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_close.png; path = "imgs/商品详情切图/icon_close.png"; sourceTree = "<group>"; };
+		38032F4C1E90D8AA005F4981 /* icon_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_close@2x.png"; path = "imgs/商品详情切图/icon_close@2x.png"; sourceTree = "<group>"; };
+		38032F4D1E90D8AA005F4981 /* icon_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_close@3x.png"; path = "imgs/商品详情切图/icon_close@3x.png"; sourceTree = "<group>"; };
 		3818ADA71E8B3FC100CA2FB6 /* ScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewCell.h; sourceTree = "<group>"; };
 		3818ADA81E8B3FC100CA2FB6 /* ScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewCell.m; sourceTree = "<group>"; };
 		3818ADAB1E8B406700CA2FB6 /* MyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
@@ -766,6 +778,9 @@
 		383655801E8E07360034C332 /* 商品详情切图 */ = {
 			isa = PBXGroup;
 			children = (
+				38032F4B1E90D8AA005F4981 /* icon_close.png */,
+				38032F4C1E90D8AA005F4981 /* icon_close@2x.png */,
+				38032F4D1E90D8AA005F4981 /* icon_close@3x.png */,
 				383655811E8E078A0034C332 /* icon_back.png */,
 				383655821E8E078A0034C332 /* icon_back@2x.png */,
 				383655831E8E078A0034C332 /* icon_back@3x.png */,
@@ -861,6 +876,10 @@
 				38536CFB1E8F9ABD003E9015 /* MyScreeningView.m */,
 				38E9E3BC1E909948001EFBAD /* AttributeSelectionViewController.h */,
 				38E9E3BD1E909948001EFBAD /* AttributeSelectionViewController.m */,
+				38032F451E90CD39005F4981 /* AttributeSkuCell.h */,
+				38032F461E90CD39005F4981 /* AttributeSkuCell.m */,
+				38032F481E90CD90005F4981 /* SKUCollectionReusableView.h */,
+				38032F491E90CD90005F4981 /* SKUCollectionReusableView.m */,
 			);
 			name = "商品详情界面";
 			sourceTree = "<group>";
@@ -1264,6 +1283,7 @@
 				38536CF51E8F93FB003E9015 /* icon_register1@2x.png in Resources */,
 				383655741E8DEF370034C332 /* triangle_down_red@2x.png in Resources */,
 				383654D71E8CA41F0034C332 /* bg@3x.png in Resources */,
+				38032F4E1E90D8AA005F4981 /* icon_close.png in Resources */,
 				383654F11E8CA41F0034C332 /* icon_right@2x.png in Resources */,
 				383654D61E8CA41F0034C332 /* bg@2x.png in Resources */,
 				38BD10E91E8A377000028255 /* icon_mine.png in Resources */,
@@ -1322,6 +1342,7 @@
 				383655401E8CE6670034C332 /* icon_circle@2x.png in Resources */,
 				383654EF1E8CA41F0034C332 /* icon_pay@3x.png in Resources */,
 				383654D91E8CA41F0034C332 /* icon_address@2x.png in Resources */,
+				38032F4F1E90D8AA005F4981 /* icon_close@2x.png in Resources */,
 				38536CED1E8F93FB003E9015 /* icon_copper1@3x.png in Resources */,
 				383654F81E8CA41F0034C332 /* icon_wallete@3x.png in Resources */,
 				383655A91E8E078A0034C332 /* icon_back@2x.png in Resources */,
@@ -1339,6 +1360,7 @@
 				38BD10FB1E8A377000028255 /* search_bg.png in Resources */,
 				38BD10D21E8A377000028255 /* icon_cart@2x.png in Resources */,
 				383654FB1E8CA41F0034C332 /* member_copper@3x.png in Resources */,
+				38032F501E90D8AA005F4981 /* icon_close@3x.png in Resources */,
 				38BD10F51E8A377000028255 /* lunbo_red.png in Resources */,
 				38BD123A1E8A6F4300028255 /* Localizable.strings in Resources */,
 				383654DC1E8CA41F0034C332 /* icon_collect@2x.png in Resources */,
@@ -1501,12 +1523,14 @@
 				38536CD21E8F8ADC003E9015 /* GoodsDetailsHTMLContextViewController.m in Sources */,
 				3818ADC21E8BB27D00CA2FB6 /* SearchListingsView.m in Sources */,
 				383654301E8CA2E10034C332 /* MyAllCell.m in Sources */,
+				38032F471E90CD39005F4981 /* AttributeSkuCell.m in Sources */,
 				38BD11031E8A46EF00028255 /* NULLCell.m in Sources */,
 				38536CCC1E8F7232003E9015 /* purchaseOfGoods.m in Sources */,
 				3818ADB31E8B4EE200CA2FB6 /* ThreePictureCell.m in Sources */,
 				383655D51E8E3E7F0034C332 /* GoodsDetailsViewController.m in Sources */,
 				3836557F1E8DEFB10034C332 /* SearchViewController.m in Sources */,
 				38536CC61E8F51A1003E9015 /* AllEvaluationView.m in Sources */,
+				38032F4A1E90CD90005F4981 /* SKUCollectionReusableView.m in Sources */,
 				383655DB1E8E52440034C332 /* GoodsScrollViewCell.m in Sources */,
 				38536CB71E8F34A8003E9015 /* ProductDetailsDescriptionCell.m in Sources */,
 				38C9DCCA1E89018400F231B0 /* ClassificationViewController.m in Sources */,

@@ -19,7 +19,8 @@
 #import "purchaseOfGoods.h"
 #import "GoodsDetailsHTMLContextViewController.h"
 #import "EvaluationViewController.h"
-@interface GoodsDetailsViewController ()<ProductScreeningDelegate,UITableViewDelegate,UITableViewDataSource,GoodsScrollViewDelegate,HTMLContextDelegate,UIScrollViewDelegate>
+#import "AttributeSelectionViewController.h"
+@interface GoodsDetailsViewController ()<ProductScreeningDelegate,UITableViewDelegate,UITableViewDataSource,GoodsScrollViewDelegate,HTMLContextDelegate,UIScrollViewDelegate,ShutDownDelegate>
 {
     MyoptionsView *optionsView;
     UITableView *_tableView;
@@ -27,6 +28,7 @@
     purchaseOfGoods *goods;
     UIScrollView *_scrollView;
     NSInteger _page;
+    AttributeSelectionViewController *attributeSku;
 }
 @end
 
@@ -114,6 +116,9 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section==1) {
+        [self BuildTheSkuSet];
+    }
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {
@@ -259,6 +264,7 @@ cancelClick
     [_scrollView addSubview:evaluation.view];
     evaluation.view.sd_layout.leftSpaceToView(_tableView, self.view.frame.size.width).topSpaceToView(_scrollView, 0).bottomSpaceToView(_scrollView, 0).widthIs(self.view.frame.size.width);
     [self addChildViewController:evaluation];
+    
 
 }
 //结束滚动时执行该方法
@@ -278,6 +284,27 @@ cancelClick
         
     }
   
+}
+
+//构建sku'集view
+-(void)BuildTheSkuSet{
+    attributeSku=[[AttributeSelectionViewController alloc]init];
+    attributeSku.deleghate=self;
+    attributeSku.view.tag=478;
+    [self.view addSubview:attributeSku.view];
+     attributeSku.view.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0);
+    [self addChildViewController:attributeSku];
+   
+    
+}
+//关闭按钮代理方法
+-(void)hutDownGo{
+    NSLog(@"111111");
+    [UIView animateWithDuration:0.5 animations:^{
+       //attributeSku.view.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(self.view, 1000).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0);
+        [[self.view viewWithTag:478]removeFromSuperview];
+    }];
+
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol ShutDownDelegate <NSObject>
 
+@required//限定实现这个协议,就必须实现这个协议方法
+
+-(void)hutDownGo;
+@end
 @interface AttributeSelectionViewController : UIViewController
-
+@property(nonatomic,assign)id deleghate;
 @end
