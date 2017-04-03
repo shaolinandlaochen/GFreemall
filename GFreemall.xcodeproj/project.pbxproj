@@ -275,6 +275,10 @@
 		38C1A8FB1E922A1D00A26DCF /* payment_wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = 38C1A8E01E922A1D00A26DCF /* payment_wallet.png */; };
 		38C1A8FC1E922A1D00A26DCF /* payment_wallet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38C1A8E11E922A1D00A26DCF /* payment_wallet@2x.png */; };
 		38C1A8FD1E922A1D00A26DCF /* payment_wallet@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38C1A8E21E922A1D00A26DCF /* payment_wallet@3x.png */; };
+		38C1A9001E922FCB00A26DCF /* newShippingAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C1A8FF1E922FCB00A26DCF /* newShippingAddress.m */; };
+		38C1A9031E92314A00A26DCF /* NewAddInputBoxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C1A9021E92314A00A26DCF /* NewAddInputBoxCell.m */; };
+		38C1A9061E92390E00A26DCF /* GigAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C1A9051E92390E00A26DCF /* GigAddressTableViewCell.m */; };
+		38C1A9091E92393800A26DCF /* NiCaiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C1A9081E92393800A26DCF /* NiCaiCell.m */; };
 		38C9DC8B1E88BF5F00F231B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C9DC8A1E88BF5F00F231B0 /* main.m */; };
 		38C9DC8E1E88BF5F00F231B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C9DC8D1E88BF5F00F231B0 /* AppDelegate.m */; };
 		38C9DC911E88BF5F00F231B0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C9DC901E88BF5F00F231B0 /* ViewController.m */; };
@@ -630,6 +634,14 @@
 		38C1A8E01E922A1D00A26DCF /* payment_wallet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = payment_wallet.png; path = "imgs/结算/payment_wallet.png"; sourceTree = "<group>"; };
 		38C1A8E11E922A1D00A26DCF /* payment_wallet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "payment_wallet@2x.png"; path = "imgs/结算/payment_wallet@2x.png"; sourceTree = "<group>"; };
 		38C1A8E21E922A1D00A26DCF /* payment_wallet@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "payment_wallet@3x.png"; path = "imgs/结算/payment_wallet@3x.png"; sourceTree = "<group>"; };
+		38C1A8FE1E922FCB00A26DCF /* newShippingAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newShippingAddress.h; sourceTree = "<group>"; };
+		38C1A8FF1E922FCB00A26DCF /* newShippingAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newShippingAddress.m; sourceTree = "<group>"; };
+		38C1A9011E92314A00A26DCF /* NewAddInputBoxCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAddInputBoxCell.h; sourceTree = "<group>"; };
+		38C1A9021E92314A00A26DCF /* NewAddInputBoxCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAddInputBoxCell.m; sourceTree = "<group>"; };
+		38C1A9041E92390E00A26DCF /* GigAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GigAddressTableViewCell.h; sourceTree = "<group>"; };
+		38C1A9051E92390E00A26DCF /* GigAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GigAddressTableViewCell.m; sourceTree = "<group>"; };
+		38C1A9071E92393800A26DCF /* NiCaiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NiCaiCell.h; sourceTree = "<group>"; };
+		38C1A9081E92393800A26DCF /* NiCaiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NiCaiCell.m; sourceTree = "<group>"; };
 		38C9DC861E88BF5F00F231B0 /* GFreemall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GFreemall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38C9DC8A1E88BF5F00F231B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		38C9DC8C1E88BF5F00F231B0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1026,6 +1038,14 @@
 				38C1A8BF1E91F14400A26DCF /* MyShippingAddress.m */,
 				38C1A8C11E92208D00A26DCF /* InputBoxCell.h */,
 				38C1A8C21E92208D00A26DCF /* InputBoxCell.m */,
+				38C1A8FE1E922FCB00A26DCF /* newShippingAddress.h */,
+				38C1A8FF1E922FCB00A26DCF /* newShippingAddress.m */,
+				38C1A9011E92314A00A26DCF /* NewAddInputBoxCell.h */,
+				38C1A9021E92314A00A26DCF /* NewAddInputBoxCell.m */,
+				38C1A9041E92390E00A26DCF /* GigAddressTableViewCell.h */,
+				38C1A9051E92390E00A26DCF /* GigAddressTableViewCell.m */,
+				38C1A9071E92393800A26DCF /* NiCaiCell.h */,
+				38C1A9081E92393800A26DCF /* NiCaiCell.m */,
 			);
 			name = "收货地址";
 			sourceTree = "<group>";
@@ -1664,13 +1684,16 @@
 				38536CC31E8F4C7F003E9015 /* UserCommentsCell.m in Sources */,
 				383655561E8D06470034C332 /* ShoppingCarViews.m in Sources */,
 				38C9DCBF1E89006000F231B0 /* SingletonClass.m in Sources */,
+				38C1A9091E92393800A26DCF /* NiCaiCell.m in Sources */,
 				38C1A8C01E91F14400A26DCF /* MyShippingAddress.m in Sources */,
 				38C1A8C31E92208D00A26DCF /* InputBoxCell.m in Sources */,
 				3836550D1E8CA4E90034C332 /* ListCell.m in Sources */,
+				38C1A9031E92314A00A26DCF /* NewAddInputBoxCell.m in Sources */,
 				38BD11001E8A42B900028255 /* HomeCell.m in Sources */,
 				38C9DC911E88BF5F00F231B0 /* ViewController.m in Sources */,
 				38536CFC1E8F9ABD003E9015 /* MyScreeningView.m in Sources */,
 				38C9DCD21E8901FD00F231B0 /* ShoppingCartViewController.m in Sources */,
+				38C1A9001E922FCB00A26DCF /* newShippingAddress.m in Sources */,
 				38536CBD1E8F3D0A003E9015 /* SKUCell.m in Sources */,
 				383655D11E8E35130034C332 /* SearchForGoodsCell.m in Sources */,
 				38C9DCD61E89021600F231B0 /* MyViewController.m in Sources */,
@@ -1697,6 +1720,7 @@
 				38E9E3BE1E909948001EFBAD /* AttributeSelectionViewController.m in Sources */,
 				38536CC91E8F5624003E9015 /* HTMLContextCell.m in Sources */,
 				3818ADB91E8B61B000CA2FB6 /* MoreAndMoreCell.m in Sources */,
+				38C1A9061E92390E00A26DCF /* GigAddressTableViewCell.m in Sources */,
 				38C1A8C61E92213A00A26DCF /* MyTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

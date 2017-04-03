@@ -130,7 +130,7 @@
     searchField.delegate=self;
     searchField.keyboardType=UIKeyboardTypeDefault;
     searchField.borderStyle = UIKeyboardTypeDefault;
-    searchField.returnKeyType=UIReturnKeyDone;
+    searchField.returnKeyType=UIReturnKeySearch;
     searchField.clearButtonMode = UITextFieldViewModeAlways;//右侧添加叉号
     searchField.adjustsFontSizeToFitWidth = YES;//文本自适应
     if ([self.where isEqualToString:@"搜索"]) {

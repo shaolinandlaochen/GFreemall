@@ -8,9 +8,11 @@
 
 #import "MyShippingAddress.h"
 #import "InputBoxCell.h"
+#import "newShippingAddress.h"
 @interface MyShippingAddress ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
+    MyButton *addRess;
 }
 
 
@@ -30,6 +32,23 @@
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
+    
+    
+    addRess=[[MyButton alloc]init];
+    addRess.backgroundColor=[UIColor blackColor];
+    [addRess setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [addRess setTitle:@"+新建地址" forState:UIControlStateNormal];
+    //圆角
+    addRess.layer.cornerRadius = 6*autoSizeScaleX;
+    addRess.layer.masksToBounds = 6*autoSizeScaleX;
+    [addRess addTarget:self action:@selector(onAddressClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addRess];
+    addRess.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).rightSpaceToView(self.view, 25*autoSizeScaleX).bottomSpaceToView(self.view, 20*autoSizeScaleY).heightIs(96*autoSizeScaleY);
+    
+    
+    CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
+    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
+    
     _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.dataSource=self;
     _tableView.delegate=self;
@@ -37,6 +56,7 @@
     _tableView.separatorColor=[UIColor clearColor];
     _tableView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     [self.view addSubview:_tableView];
+    _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(addRess, 20*autoSizeScaleY).topSpaceToView(self.view, navheight+rectStatus.size.height);
     
     
     // Do any additional setup after loading the view.
@@ -87,7 +107,8 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    newShippingAddress *new=[[newShippingAddress alloc]init];
+    [self.navigationController pushViewController:new animated:YES];
 }
 
 
@@ -97,6 +118,11 @@
 //点击编辑进入该方法
 -(void)onEidClick:(MyButton *)btn{
 
+}
+//添加地址
+-(void)onAddressClick{
+    newShippingAddress *new=[[newShippingAddress alloc]init];
+    [self.navigationController pushViewController:new animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
