@@ -9,6 +9,7 @@
 #import "MyViewController.h"
 #import "MyAllCell.h"
 #import "MyMessageCells.h"
+#import "MyShippingAddress.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -116,6 +117,10 @@ autoSize
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section==2&&indexPath.row==3) {
+        MyShippingAddress *Address=[[MyShippingAddress alloc]init];
+        [self.navigationController pushViewController:Address animated:YES];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -152,6 +157,11 @@ autoSize
         default:
             break;
     }
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [TheParentClass ButtonAtTheBottomOfThesize:YES];
+     self.navigationController.navigationBarHidden=YES;
 }
 /*
 #pragma mark - Navigation

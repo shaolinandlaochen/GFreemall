@@ -28,6 +28,7 @@
 #import "SearchViewController.h"//搜索界面
 #import "MyView.h"//自定义view
 #import "GoodsDetailsViewController.h"//商品详情
+#import "MyTextField.h"//自定义输入框
 
 
 
