@@ -75,6 +75,8 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+    [self.navigationController pushViewController:goodsDetails animated:YES];
 }
 
 

@@ -123,6 +123,9 @@
 //点击cell 执行该方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    SearchViewController *search=[[SearchViewController alloc]init];
+    search.where=@"商品";
+    [self.navigationController pushViewController:search animated:YES];
 }
 -(CGSize)collectionView:(nonnull UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
@@ -259,7 +262,13 @@ autoSize
 }
 //用户点击搜索栏执行该方法
 -(void)onSearchClick{
+    SearchViewController *search=[[SearchViewController alloc]init];
+    [self.navigationController pushViewController:search animated:YES];
 
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [TheParentClass ButtonAtTheBottomOfThesize:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

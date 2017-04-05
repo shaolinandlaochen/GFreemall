@@ -10,6 +10,7 @@
 #import "MyAllCell.h"
 #import "MyMessageCells.h"
 #import "MyShippingAddress.h"
+#import "MyOrderViewController.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -128,7 +129,8 @@ autoSize
 }
 //查看全部订单
 -(void)onOrderClick{
-    NSLog(@"1111");
+    MyOrderViewController *order=[[MyOrderViewController alloc]init];
+    [self.navigationController pushViewController:order animated:YES];
 }
 //代付款待收货待评价等等
 -(void)myOrderAll:(MyButton *)btn{
@@ -157,6 +159,7 @@ autoSize
         default:
             break;
     }
+    [self onOrderClick];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
