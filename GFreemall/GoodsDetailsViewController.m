@@ -20,6 +20,7 @@
 #import "GoodsDetailsHTMLContextViewController.h"
 #import "EvaluationViewController.h"
 #import "AttributeSelectionViewController.h"
+#import "OrderInformationViewController.h"
 @interface GoodsDetailsViewController ()<ProductScreeningDelegate,UITableViewDelegate,UITableViewDataSource,GoodsScrollViewDelegate,HTMLContextDelegate,UIScrollViewDelegate,ShutDownDelegate>
 {
     MyoptionsView *optionsView;
@@ -227,9 +228,16 @@ cancelClick
 -(void)PurchaseOfGoodsView{
     autoSize
     goods=[[purchaseOfGoods alloc]init];
+    [goods.buy addTarget:self action:@selector(onBuyClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goods];
     goods.sd_layout.leftSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).heightIs(96*autoSizeScaleY);
+
     
+}
+//立即购买
+-(void)onBuyClick{
+      OrderInformationViewController *OrderInformation=[[OrderInformationViewController alloc]init];
+      [self.navigationController pushViewController:OrderInformation animated:YES];
 }
 //构建视图
 -(void)BuildView{

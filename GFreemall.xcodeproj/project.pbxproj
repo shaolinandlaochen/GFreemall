@@ -176,6 +176,22 @@
 		383A43EE1E949BEA002CBDA0 /* OrderViewS.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A43ED1E949BEA002CBDA0 /* OrderViewS.m */; };
 		383A43F11E94BA02002CBDA0 /* OrderInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A43F01E94BA02002CBDA0 /* OrderInformationViewController.m */; };
 		383A43F41E94BD2C002CBDA0 /* OrderAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A43F31E94BD2C002CBDA0 /* OrderAddressCell.m */; };
+		383A43F71E94CF2A002CBDA0 /* OrdersForGoodsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A43F61E94CF2A002CBDA0 /* OrdersForGoodsListCell.m */; };
+		383A43FA1E94D331002CBDA0 /* OrderLogisticsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A43F91E94D331002CBDA0 /* OrderLogisticsCell.m */; };
+		383A43FD1E94D50D002CBDA0 /* OrderMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A43FC1E94D50D002CBDA0 /* OrderMoneyCell.m */; };
+		383A44001E94DCD7002CBDA0 /* CommodityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A43FF1E94DCD7002CBDA0 /* CommodityListViewController.m */; };
+		383A44031E94DE91002CBDA0 /* InventoryListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A44021E94DE91002CBDA0 /* InventoryListCell.m */; };
+		383A44071E94E2DB002CBDA0 /* BillingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A44061E94E2DB002CBDA0 /* BillingInfo.m */; };
+		383A440A1E94E410002CBDA0 /* ClearingInformationDisplayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A44091E94E410002CBDA0 /* ClearingInformationDisplayCell.m */; };
+		383A440D1E94E479002CBDA0 /* BillingInfoNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A440C1E94E479002CBDA0 /* BillingInfoNumberCell.m */; };
+		383A44111E94EC90002CBDA0 /* icon_gfm22.png in Resources */ = {isa = PBXBuildFile; fileRef = 383A440E1E94EC90002CBDA0 /* icon_gfm22.png */; };
+		383A44121E94EC90002CBDA0 /* icon_gfm22@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 383A440F1E94EC90002CBDA0 /* icon_gfm22@2x.png */; };
+		383A44131E94EC90002CBDA0 /* icon_gfm22@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 383A44101E94EC90002CBDA0 /* icon_gfm22@3x.png */; };
+		383A44161E94F23A002CBDA0 /* paymentInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A44151E94F23A002CBDA0 /* paymentInformationView.m */; };
+		383A44191E9510AE002CBDA0 /* AmountToShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A44181E9510AE002CBDA0 /* AmountToShowCell.m */; };
+		383A441C1E9512BC002CBDA0 /* PaymentToShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A441B1E9512BC002CBDA0 /* PaymentToShowCell.m */; };
+		383A441F1E951778002CBDA0 /* PayThePasswordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A441E1E951778002CBDA0 /* PayThePasswordCell.m */; };
+		383A44221E9519CE002CBDA0 /* WalletBalanceTop_upCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 383A44211E9519CE002CBDA0 /* WalletBalanceTop_upCell.m */; };
 		38536CB71E8F34A8003E9015 /* ProductDetailsDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38536CB61E8F34A8003E9015 /* ProductDetailsDescriptionCell.m */; };
 		38536CBA1E8F3741003E9015 /* CostCalculationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38536CB91E8F3741003E9015 /* CostCalculationCell.m */; };
 		38536CBD1E8F3D0A003E9015 /* SKUCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38536CBC1E8F3D0A003E9015 /* SKUCell.m */; };
@@ -522,6 +538,35 @@
 		383A43F01E94BA02002CBDA0 /* OrderInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInformationViewController.m; sourceTree = "<group>"; };
 		383A43F21E94BD2C002CBDA0 /* OrderAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAddressCell.h; sourceTree = "<group>"; };
 		383A43F31E94BD2C002CBDA0 /* OrderAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAddressCell.m; sourceTree = "<group>"; };
+		383A43F51E94CF2A002CBDA0 /* OrdersForGoodsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersForGoodsListCell.h; sourceTree = "<group>"; };
+		383A43F61E94CF2A002CBDA0 /* OrdersForGoodsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersForGoodsListCell.m; sourceTree = "<group>"; };
+		383A43F81E94D331002CBDA0 /* OrderLogisticsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderLogisticsCell.h; sourceTree = "<group>"; };
+		383A43F91E94D331002CBDA0 /* OrderLogisticsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderLogisticsCell.m; sourceTree = "<group>"; };
+		383A43FB1E94D50D002CBDA0 /* OrderMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderMoneyCell.h; sourceTree = "<group>"; };
+		383A43FC1E94D50D002CBDA0 /* OrderMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderMoneyCell.m; sourceTree = "<group>"; };
+		383A43FE1E94DCD7002CBDA0 /* CommodityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommodityListViewController.h; sourceTree = "<group>"; };
+		383A43FF1E94DCD7002CBDA0 /* CommodityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommodityListViewController.m; sourceTree = "<group>"; };
+		383A44011E94DE91002CBDA0 /* InventoryListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryListCell.h; sourceTree = "<group>"; };
+		383A44021E94DE91002CBDA0 /* InventoryListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryListCell.m; sourceTree = "<group>"; };
+		383A44051E94E2DB002CBDA0 /* BillingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillingInfo.h; sourceTree = "<group>"; };
+		383A44061E94E2DB002CBDA0 /* BillingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillingInfo.m; sourceTree = "<group>"; };
+		383A44081E94E410002CBDA0 /* ClearingInformationDisplayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClearingInformationDisplayCell.h; sourceTree = "<group>"; };
+		383A44091E94E410002CBDA0 /* ClearingInformationDisplayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClearingInformationDisplayCell.m; sourceTree = "<group>"; };
+		383A440B1E94E479002CBDA0 /* BillingInfoNumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillingInfoNumberCell.h; sourceTree = "<group>"; };
+		383A440C1E94E479002CBDA0 /* BillingInfoNumberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BillingInfoNumberCell.m; sourceTree = "<group>"; };
+		383A440E1E94EC90002CBDA0 /* icon_gfm22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_gfm22.png; path = "imgs/结算/icon_gfm22.png"; sourceTree = "<group>"; };
+		383A440F1E94EC90002CBDA0 /* icon_gfm22@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_gfm22@2x.png"; path = "imgs/结算/icon_gfm22@2x.png"; sourceTree = "<group>"; };
+		383A44101E94EC90002CBDA0 /* icon_gfm22@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_gfm22@3x.png"; path = "imgs/结算/icon_gfm22@3x.png"; sourceTree = "<group>"; };
+		383A44141E94F23A002CBDA0 /* paymentInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = paymentInformationView.h; sourceTree = "<group>"; };
+		383A44151E94F23A002CBDA0 /* paymentInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = paymentInformationView.m; sourceTree = "<group>"; };
+		383A44171E9510AE002CBDA0 /* AmountToShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmountToShowCell.h; sourceTree = "<group>"; };
+		383A44181E9510AE002CBDA0 /* AmountToShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmountToShowCell.m; sourceTree = "<group>"; };
+		383A441A1E9512BC002CBDA0 /* PaymentToShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentToShowCell.h; sourceTree = "<group>"; };
+		383A441B1E9512BC002CBDA0 /* PaymentToShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentToShowCell.m; sourceTree = "<group>"; };
+		383A441D1E951778002CBDA0 /* PayThePasswordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayThePasswordCell.h; sourceTree = "<group>"; };
+		383A441E1E951778002CBDA0 /* PayThePasswordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayThePasswordCell.m; sourceTree = "<group>"; };
+		383A44201E9519CE002CBDA0 /* WalletBalanceTop_upCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletBalanceTop_upCell.h; sourceTree = "<group>"; };
+		383A44211E9519CE002CBDA0 /* WalletBalanceTop_upCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletBalanceTop_upCell.m; sourceTree = "<group>"; };
 		38536CB51E8F34A8003E9015 /* ProductDetailsDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailsDescriptionCell.h; sourceTree = "<group>"; };
 		38536CB61E8F34A8003E9015 /* ProductDetailsDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailsDescriptionCell.m; sourceTree = "<group>"; };
 		38536CB81E8F3741003E9015 /* CostCalculationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostCalculationCell.h; sourceTree = "<group>"; };
@@ -993,8 +1038,41 @@
 				383A43F01E94BA02002CBDA0 /* OrderInformationViewController.m */,
 				383A43F21E94BD2C002CBDA0 /* OrderAddressCell.h */,
 				383A43F31E94BD2C002CBDA0 /* OrderAddressCell.m */,
+				383A43F51E94CF2A002CBDA0 /* OrdersForGoodsListCell.h */,
+				383A43F61E94CF2A002CBDA0 /* OrdersForGoodsListCell.m */,
+				383A43F81E94D331002CBDA0 /* OrderLogisticsCell.h */,
+				383A43F91E94D331002CBDA0 /* OrderLogisticsCell.m */,
+				383A43FB1E94D50D002CBDA0 /* OrderMoneyCell.h */,
+				383A43FC1E94D50D002CBDA0 /* OrderMoneyCell.m */,
+				383A43FE1E94DCD7002CBDA0 /* CommodityListViewController.h */,
+				383A43FF1E94DCD7002CBDA0 /* CommodityListViewController.m */,
+				383A44011E94DE91002CBDA0 /* InventoryListCell.h */,
+				383A44021E94DE91002CBDA0 /* InventoryListCell.m */,
 			);
 			name = "订单";
+			sourceTree = "<group>";
+		};
+		383A44041E94E2B4002CBDA0 /* 结算 */ = {
+			isa = PBXGroup;
+			children = (
+				383A44051E94E2DB002CBDA0 /* BillingInfo.h */,
+				383A44061E94E2DB002CBDA0 /* BillingInfo.m */,
+				383A44081E94E410002CBDA0 /* ClearingInformationDisplayCell.h */,
+				383A44091E94E410002CBDA0 /* ClearingInformationDisplayCell.m */,
+				383A440B1E94E479002CBDA0 /* BillingInfoNumberCell.h */,
+				383A440C1E94E479002CBDA0 /* BillingInfoNumberCell.m */,
+				383A44141E94F23A002CBDA0 /* paymentInformationView.h */,
+				383A44151E94F23A002CBDA0 /* paymentInformationView.m */,
+				383A44171E9510AE002CBDA0 /* AmountToShowCell.h */,
+				383A44181E9510AE002CBDA0 /* AmountToShowCell.m */,
+				383A441A1E9512BC002CBDA0 /* PaymentToShowCell.h */,
+				383A441B1E9512BC002CBDA0 /* PaymentToShowCell.m */,
+				383A441D1E951778002CBDA0 /* PayThePasswordCell.h */,
+				383A441E1E951778002CBDA0 /* PayThePasswordCell.m */,
+				383A44201E9519CE002CBDA0 /* WalletBalanceTop_upCell.h */,
+				383A44211E9519CE002CBDA0 /* WalletBalanceTop_upCell.m */,
+			);
+			name = "结算";
 			sourceTree = "<group>";
 		};
 		38BD103E1E8A124000028255 /* images */ = {
@@ -1095,6 +1173,9 @@
 		38C1A8C71E922A0B00A26DCF /* 结算 */ = {
 			isa = PBXGroup;
 			children = (
+				383A440E1E94EC90002CBDA0 /* icon_gfm22.png */,
+				383A440F1E94EC90002CBDA0 /* icon_gfm22@2x.png */,
+				383A44101E94EC90002CBDA0 /* icon_gfm22@3x.png */,
 				38C1A8C81E922A1D00A26DCF /* icon_address1.png */,
 				38C1A8C91E922A1D00A26DCF /* icon_address1@2x.png */,
 				38C1A8CA1E922A1D00A26DCF /* icon_address1@3x.png */,
@@ -1157,6 +1238,7 @@
 				38C9DCBE1E89006000F231B0 /* SingletonClass.m */,
 				38C9DCC01E89009F00F231B0 /* TheParentClass.h */,
 				38C9DCC11E89009F00F231B0 /* TheParentClass.m */,
+				383A44041E94E2B4002CBDA0 /* 结算 */,
 				383A43DF1E9478A9002CBDA0 /* 订单 */,
 				38C1A8BD1E91F12100A26DCF /* 收货地址 */,
 				3818ADAA1E8B403A00CA2FB6 /* 自定义属性 */,
@@ -1429,6 +1511,7 @@
 				38BD10DB1E8A377000028255 /* icon_gfm_s@2x.png in Resources */,
 				383655C11E8E078A0034C332 /* icon_right-@2x.png in Resources */,
 				383655761E8DEF370034C332 /* triangle_up_black.png in Resources */,
+				383A44121E94EC90002CBDA0 /* icon_gfm22@2x.png in Resources */,
 				38536CF61E8F93FB003E9015 /* icon_register1@3x.png in Resources */,
 				383655C51E8E078A0034C332 /* icon_service@3x.png in Resources */,
 				383655071E8CA41F0034C332 /* member_silver@3x.png in Resources */,
@@ -1455,6 +1538,7 @@
 				38C1A8FC1E922A1D00A26DCF /* payment_wallet@2x.png in Resources */,
 				38536CF51E8F93FB003E9015 /* icon_register1@2x.png in Resources */,
 				383655741E8DEF370034C332 /* triangle_down_red@2x.png in Resources */,
+				383A44111E94EC90002CBDA0 /* icon_gfm22.png in Resources */,
 				383654D71E8CA41F0034C332 /* bg@3x.png in Resources */,
 				38032F4E1E90D8AA005F4981 /* icon_close.png in Resources */,
 				383654F11E8CA41F0034C332 /* icon_right@2x.png in Resources */,
@@ -1555,6 +1639,7 @@
 				383655781E8DEF370034C332 /* triangle_up_black@3x.png in Resources */,
 				383655021E8CA41F0034C332 /* member_register.png in Resources */,
 				3836554D1E8CE6670034C332 /* wuhuo_bg@3x.png in Resources */,
+				383A44131E94EC90002CBDA0 /* icon_gfm22@3x.png in Resources */,
 				383655081E8CA41F0034C332 /* pic_portrait.png in Resources */,
 				38536CF21E8F93FB003E9015 /* icon_gold1@2x.png in Resources */,
 				38C1A8FB1E922A1D00A26DCF /* payment_wallet.png in Resources */,
@@ -1709,10 +1794,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				383A44031E94DE91002CBDA0 /* InventoryListCell.m in Sources */,
+				383A44191E9510AE002CBDA0 /* AmountToShowCell.m in Sources */,
+				383A43FA1E94D331002CBDA0 /* OrderLogisticsCell.m in Sources */,
+				383A44161E94F23A002CBDA0 /* paymentInformationView.m in Sources */,
 				38536CC01E8F45B1003E9015 /* EvaluationOfTheHeadView.m in Sources */,
 				38536CD21E8F8ADC003E9015 /* GoodsDetailsHTMLContextViewController.m in Sources */,
+				383A44221E9519CE002CBDA0 /* WalletBalanceTop_upCell.m in Sources */,
 				3818ADC21E8BB27D00CA2FB6 /* SearchListingsView.m in Sources */,
 				383654301E8CA2E10034C332 /* MyAllCell.m in Sources */,
+				383A440A1E94E410002CBDA0 /* ClearingInformationDisplayCell.m in Sources */,
 				38032F471E90CD39005F4981 /* AttributeSkuCell.m in Sources */,
 				38BD11031E8A46EF00028255 /* NULLCell.m in Sources */,
 				383A43E21E9478CC002CBDA0 /* MyOrderViewController.m in Sources */,
@@ -1721,10 +1812,12 @@
 				3818ADB31E8B4EE200CA2FB6 /* ThreePictureCell.m in Sources */,
 				383655D51E8E3E7F0034C332 /* GoodsDetailsViewController.m in Sources */,
 				3836557F1E8DEFB10034C332 /* SearchViewController.m in Sources */,
+				383A43FD1E94D50D002CBDA0 /* OrderMoneyCell.m in Sources */,
 				38536CC61E8F51A1003E9015 /* AllEvaluationView.m in Sources */,
 				38032F4A1E90CD90005F4981 /* SKUCollectionReusableView.m in Sources */,
 				383655DB1E8E52440034C332 /* GoodsScrollViewCell.m in Sources */,
 				38536CB71E8F34A8003E9015 /* ProductDetailsDescriptionCell.m in Sources */,
+				383A44001E94DCD7002CBDA0 /* CommodityListViewController.m in Sources */,
 				38C9DCCA1E89018400F231B0 /* ClassificationViewController.m in Sources */,
 				383A43E81E94811C002CBDA0 /* OrderNumberView.m in Sources */,
 				38536CC31E8F4C7F003E9015 /* UserCommentsCell.m in Sources */,
@@ -1733,6 +1826,7 @@
 				38C1A9091E92393800A26DCF /* NiCaiCell.m in Sources */,
 				38C1A8C01E91F14400A26DCF /* MyShippingAddress.m in Sources */,
 				38C1A8C31E92208D00A26DCF /* InputBoxCell.m in Sources */,
+				383A441F1E951778002CBDA0 /* PayThePasswordCell.m in Sources */,
 				3836550D1E8CA4E90034C332 /* ListCell.m in Sources */,
 				38C1A9031E92314A00A26DCF /* NewAddInputBoxCell.m in Sources */,
 				383A43F11E94BA02002CBDA0 /* OrderInformationViewController.m in Sources */,
@@ -1742,6 +1836,7 @@
 				38C9DCD21E8901FD00F231B0 /* ShoppingCartViewController.m in Sources */,
 				38C1A9001E922FCB00A26DCF /* newShippingAddress.m in Sources */,
 				38536CBD1E8F3D0A003E9015 /* SKUCell.m in Sources */,
+				383A43F71E94CF2A002CBDA0 /* OrdersForGoodsListCell.m in Sources */,
 				383655D11E8E35130034C332 /* SearchForGoodsCell.m in Sources */,
 				38C9DCD61E89021600F231B0 /* MyViewController.m in Sources */,
 				383655161E8CDCD50034C332 /* MyMessageCells.m in Sources */,
@@ -1750,11 +1845,14 @@
 				38536CDB1E8F90CE003E9015 /* DistrictHeadView.m in Sources */,
 				383655501E8CEF2B0034C332 /* ShoppingCartProductsCell.m in Sources */,
 				38C9DC8B1E88BF5F00F231B0 /* main.m in Sources */,
+				383A44071E94E2DB002CBDA0 /* BillingInfo.m in Sources */,
 				383655131E8CA5CA0034C332 /* MyInformationView.m in Sources */,
 				38536CD51E8F8BBE003E9015 /* EvaluationViewController.m in Sources */,
+				383A441C1E9512BC002CBDA0 /* PaymentToShowCell.m in Sources */,
 				383655101E8CA5190034C332 /* BrandCell.m in Sources */,
 				3818ADBF1E8BB23200CA2FB6 /* SearchListingsCollectionViewCell.m in Sources */,
 				3818ADB61E8B5EDC00CA2FB6 /* ImageCell.m in Sources */,
+				383A440D1E94E479002CBDA0 /* BillingInfoNumberCell.m in Sources */,
 				383655D81E8E42530034C332 /* MyoptionsView.m in Sources */,
 				383655531E8CFC390034C332 /* MyImageView.m in Sources */,
 				3818ADAD1E8B406700CA2FB6 /* MyButton.m in Sources */,

@@ -82,7 +82,16 @@ autoSizeScaleY = SCREENHEIGHT/1334;\
 #define cancelClick -(void)onCanceClick{[self.navigationController popViewControllerAnimated:YES];}
 
 
-
+/*
+ @protocol ProductScreeningDelegate <NSObject>
+ 
+ @required//限定实现这个协议,就必须实现这个协议方法
+ 
+ -(void)ProductScreening:(MyButton *)btn;
+ 
+ 
+ @end
+ */
 
 
 // Include any system framework and library headers here that should be included in all compilation units.

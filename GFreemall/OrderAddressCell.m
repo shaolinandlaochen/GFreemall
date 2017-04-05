@@ -28,20 +28,31 @@
         _name.sd_layout.leftSpaceToView(self.contentView, 60*autoSizeScaleX).topSpaceToView(self.contentView, 30*autoSizeScaleY).widthIs(size.width).heightIs(size.height);
         
         _defaultStr=[[UILabel alloc]init];
+        _defaultStr.text=@"默认";
+        _defaultStr.backgroundColor=[UIColor redColor];
         _defaultStr.textColor=[TheParentClass colorWithHexString:@"ffffff"];
         _defaultStr.font=[UIFont systemFontOfSize:24*autoSizeScaleY];
         _defaultStr.textAlignment=NSTextAlignmentCenter;
-        _defaultStr.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
         [self.contentView addSubview:_defaultStr];
         _defaultStr.sd_layout.leftSpaceToView(_name, 44*autoSizeScaleX).topSpaceToView(self.contentView, 35*autoSizeScaleY).widthIs(76*autoSizeScaleX).heightIs(30*autoSizeScaleY);
         
         
         UIImageView *img=[[UIImageView alloc]init];
-        img.image=[UIImage imageNamed:@""];
+        img.image=[UIImage imageNamed:@"icon_address1"];
         [self.contentView addSubview:img];
-        img.sd_layout.leftSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(_name, 25*autoSizeScaleY).widthIs(26*autoSizeScaleX).widthIs(32*autoSizeScaleY);
+        img.sd_layout.leftSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(_name, 25*autoSizeScaleY).widthIs(26*autoSizeScaleX).heightIs(32*autoSizeScaleY);
         
+        _context=[[UILabel alloc]init];
+        _context.textColor=[TheParentClass colorWithHexString:@"#292929"];
+        _context.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
+        _context.text=@"司法改革第三方个电饭锅电饭锅发鬼地方个";
+        [self.contentView addSubview:_context];
+        _context.sd_layout.leftSpaceToView(img, 10*autoSizeScaleX).topEqualToView(img).rightSpaceToView(self.contentView, 25*autoSizeScaleX).heightIs(32*autoSizeScaleY);
         
+        UIImageView *go=[[UIImageView alloc]init];
+        go.image=[UIImage imageNamed:@"icon_right"];
+        [self.contentView addSubview:go];
+        go.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 52*autoSizeScaleY).widthIs(44*autoSizeScaleX).heightIs(44*autoSizeScaleY);
         
     }
     return self;

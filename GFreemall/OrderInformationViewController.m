@@ -8,9 +8,17 @@
 
 #import "OrderInformationViewController.h"
 #import "OrderAddressCell.h"
+#import "OrdersForGoodsListCell.h"
+#import "OrderLogisticsCell.h"
+#import "OrderMoneyCell.h"
+#import "MyShippingAddress.h"
+#import "CommodityListViewController.h"
+#import "BillingInfo.h"
 @interface OrderInformationViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
+    MyButton *_Button;
+    UILabel *_money;
 }
 
 @end
@@ -30,10 +38,14 @@
 }
 //构建视图
 -(void)CreatView{
+    autoSize
     _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     [self.view addSubview:_tableView];
+    _tableView.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 100*autoSizeScaleY);
+    [self creatsettlementvIEW];
 
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -85,6 +97,21 @@
     if (indexPath.section==0) {
         OrderAddressCell *cell=[ OrderAddressCell new];
         return cell;
+    }else if (indexPath.section==1){
+        if (indexPath.row==0) {
+            OrdersForGoodsListCell *cell=[OrdersForGoodsListCell new];
+            return cell;
+        }else if (indexPath.row==1){
+            OrderLogisticsCell *cell=[OrderLogisticsCell new];
+             cell.userInteractionEnabled = NO;
+            return cell;
+        }
+    
+    }else if (indexPath.section==2){
+        OrderMoneyCell *cell=[OrderMoneyCell new];
+         cell.userInteractionEnabled = NO;
+        
+        return cell;
     }
     
     
@@ -93,6 +120,50 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section==0) {
+        MyShippingAddress *shppingAddress=[[MyShippingAddress alloc]init];
+        [self.navigationController pushViewController:shppingAddress animated:YES];
+    }else if (indexPath.section==1){
+        if (indexPath.row==0) {
+            CommodityListViewController *commodity=[[CommodityListViewController alloc]init];
+            [self.navigationController pushViewController:commodity animated:YES];
+        }
+    }
+    
+}
+//创建支付按钮
+-(void)creatsettlementvIEW{
+autoSize
+    
+    
+    UIView *view=[[UIView alloc]init];
+    view.backgroundColor=[UIColor whiteColor];
+    [self.view addSubview:view];
+    view.sd_layout.leftSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).heightIs(100*autoSizeScaleY);
+    
+    _Button =[[MyButton alloc]init];
+    [_Button setTitle:Localized(@"提交订单") forState:UIControlStateNormal];
+    [_Button addTarget:self action:@selector(onSubmitOrdersClick) forControlEvents:UIControlEventTouchUpInside];
+    [_Button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _Button.titleLabel.font=[UIFont systemFontOfSize:36*autoSizeScaleY];
+    _Button.backgroundColor=[[UIColor blackColor]colorWithAlphaComponent:0.8];
+    [self.view addSubview:_Button];
+    _Button.sd_layout.rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0).widthIs(240*autoSizeScaleX).heightIs(100*autoSizeScaleY);
+    
+    _money=[[UILabel alloc]init];
+    _money.textColor=[TheParentClass colorWithHexString:@"#292929"];
+    _money.font=[UIFont systemFontOfSize:34*autoSizeScaleY];
+    _money.textAlignment=NSTextAlignmentRight;
+    [self.view addSubview:_money];
+    _money.sd_layout.rightSpaceToView(_Button, 22*autoSizeScaleX).bottomSpaceToView(self.view, 0).leftSpaceToView(self.view, 25*autoSizeScaleX).heightIs(100*autoSizeScaleY);
+    _money.text=@"支付金额:¥9999999";
+    
+
+}
+//提交订单
+-(void)onSubmitOrdersClick{
+    BillingInfo *Billing=[[BillingInfo alloc]init];
+    [self.navigationController pushViewController:Billing animated:YES];
 }
 -(void)onCanceClick{
     [self.navigationController popViewControllerAnimated:YES];
