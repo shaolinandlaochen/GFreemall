@@ -11,4 +11,5 @@
 @interface MyTextField : UITextField
 @property(nonatomic,assign)NSIndexPath *indexPath;
 @property(nonatomic,copy)NSString *string;
+
 @end

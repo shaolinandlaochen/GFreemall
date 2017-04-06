@@ -13,6 +13,7 @@
 #import "MyOrderViewController.h"
 #import "MyNewsViewController.h"
 #import "MyCollectionViewController.h"
+#import "MyBasicInformationViewController.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -131,6 +132,10 @@ autoSize
     
         MyCollectionViewController *MyCollection=[[MyCollectionViewController alloc]init];
         [self.navigationController pushViewController:MyCollection animated:YES];
+    }else if (indexPath.section==2&&indexPath.row==0){
+        MyBasicInformationViewController *MyBasicInformation=[[MyBasicInformationViewController alloc]init];
+        [self.navigationController pushViewController:MyBasicInformation animated:YES];
+    
     }
 }
 - (void)didReceiveMemoryWarning {
