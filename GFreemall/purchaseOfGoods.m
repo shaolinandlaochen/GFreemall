@@ -22,7 +22,7 @@
         self.backgroundColor=[UIColor whiteColor];
         autoSize
         NSArray *nameArray=@[@"客服",@"收藏",@"购物车"];
-        NSArray *imgArray=@[@"icon_service",@"icon_collect",@"icon_cart_gray"];
+        NSArray *imgArray=@[@"icon_service",@"icon_collect1",@"icon_cart_gray"];
         for (int i=0; i<3; i++) {
             UILabel *lbl=[[UILabel alloc]init];
             lbl.textColor=[TheParentClass colorWithHexString:@"#999999"];

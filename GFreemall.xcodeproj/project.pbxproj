@@ -203,9 +203,9 @@
 		383655AB1E8E078A0034C332 /* icon_cart_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 383655841E8E078A0034C332 /* icon_cart_gray.png */; };
 		383655AC1E8E078A0034C332 /* icon_cart_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 383655851E8E078A0034C332 /* icon_cart_gray@2x.png */; };
 		383655AD1E8E078A0034C332 /* icon_cart_gray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 383655861E8E078A0034C332 /* icon_cart_gray@3x.png */; };
-		383655AE1E8E078A0034C332 /* icon_collect.png in Resources */ = {isa = PBXBuildFile; fileRef = 383655871E8E078A0034C332 /* icon_collect.png */; };
-		383655AF1E8E078A0034C332 /* icon_collect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 383655881E8E078A0034C332 /* icon_collect@2x.png */; };
-		383655B01E8E078A0034C332 /* icon_collect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 383655891E8E078A0034C332 /* icon_collect@3x.png */; };
+		383655AE1E8E078A0034C332 /* icon_collect1.png in Resources */ = {isa = PBXBuildFile; fileRef = 383655871E8E078A0034C332 /* icon_collect1.png */; };
+		383655AF1E8E078A0034C332 /* icon_collect1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 383655881E8E078A0034C332 /* icon_collect1@2x.png */; };
+		383655B01E8E078A0034C332 /* icon_collect1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 383655891E8E078A0034C332 /* icon_collect1@3x.png */; };
 		383655B11E8E078A0034C332 /* icon_copper.png in Resources */ = {isa = PBXBuildFile; fileRef = 3836558A1E8E078A0034C332 /* icon_copper.png */; };
 		383655B21E8E078A0034C332 /* icon_copper@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3836558B1E8E078A0034C332 /* icon_copper@2x.png */; };
 		383655B31E8E078A0034C332 /* icon_copper@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3836558C1E8E078A0034C332 /* icon_copper@3x.png */; };
@@ -651,9 +651,9 @@
 		383655841E8E078A0034C332 /* icon_cart_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_cart_gray.png; path = "imgs/商品详情切图/icon_cart_gray.png"; sourceTree = "<group>"; };
 		383655851E8E078A0034C332 /* icon_cart_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_cart_gray@2x.png"; path = "imgs/商品详情切图/icon_cart_gray@2x.png"; sourceTree = "<group>"; };
 		383655861E8E078A0034C332 /* icon_cart_gray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_cart_gray@3x.png"; path = "imgs/商品详情切图/icon_cart_gray@3x.png"; sourceTree = "<group>"; };
-		383655871E8E078A0034C332 /* icon_collect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_collect.png; path = "imgs/商品详情切图/icon_collect.png"; sourceTree = "<group>"; };
-		383655881E8E078A0034C332 /* icon_collect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_collect@2x.png"; path = "imgs/商品详情切图/icon_collect@2x.png"; sourceTree = "<group>"; };
-		383655891E8E078A0034C332 /* icon_collect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_collect@3x.png"; path = "imgs/商品详情切图/icon_collect@3x.png"; sourceTree = "<group>"; };
+		383655871E8E078A0034C332 /* icon_collect1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_collect1.png; path = "imgs/商品详情切图/icon_collect1.png"; sourceTree = "<group>"; };
+		383655881E8E078A0034C332 /* icon_collect1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_collect1@2x.png"; path = "imgs/商品详情切图/icon_collect1@2x.png"; sourceTree = "<group>"; };
+		383655891E8E078A0034C332 /* icon_collect1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_collect1@3x.png"; path = "imgs/商品详情切图/icon_collect1@3x.png"; sourceTree = "<group>"; };
 		3836558A1E8E078A0034C332 /* icon_copper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_copper.png; path = "imgs/商品详情切图/icon_copper.png"; sourceTree = "<group>"; };
 		3836558B1E8E078A0034C332 /* icon_copper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_copper@2x.png"; path = "imgs/商品详情切图/icon_copper@2x.png"; sourceTree = "<group>"; };
 		3836558C1E8E078A0034C332 /* icon_copper@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_copper@3x.png"; path = "imgs/商品详情切图/icon_copper@3x.png"; sourceTree = "<group>"; };
@@ -1250,9 +1250,9 @@
 				383655841E8E078A0034C332 /* icon_cart_gray.png */,
 				383655851E8E078A0034C332 /* icon_cart_gray@2x.png */,
 				383655861E8E078A0034C332 /* icon_cart_gray@3x.png */,
-				383655871E8E078A0034C332 /* icon_collect.png */,
-				383655881E8E078A0034C332 /* icon_collect@2x.png */,
-				383655891E8E078A0034C332 /* icon_collect@3x.png */,
+				383655871E8E078A0034C332 /* icon_collect1.png */,
+				383655881E8E078A0034C332 /* icon_collect1@2x.png */,
+				383655891E8E078A0034C332 /* icon_collect1@3x.png */,
 				3836558A1E8E078A0034C332 /* icon_copper.png */,
 				3836558B1E8E078A0034C332 /* icon_copper@2x.png */,
 				3836558C1E8E078A0034C332 /* icon_copper@3x.png */,
@@ -2005,7 +2005,7 @@
 				38C1A8FB1E922A1D00A26DCF /* payment_wallet.png in Resources */,
 				38BD10FA1E8A377000028255 /* lunbo_white@3x.png in Resources */,
 				383654E51E8CA41F0034C332 /* icon_goods@2x.png in Resources */,
-				383655B01E8E078A0034C332 /* icon_collect@3x.png in Resources */,
+				383655B01E8E078A0034C332 /* icon_collect1@3x.png in Resources */,
 				38536CF11E8F93FB003E9015 /* icon_gold1.png in Resources */,
 				383654FF1E8CA41F0034C332 /* member_gold.png in Resources */,
 				383655031E8CA41F0034C332 /* member_register@2x.png in Resources */,
@@ -2046,7 +2046,7 @@
 				383654EA1E8CA41F0034C332 /* icon_mews.png in Resources */,
 				3836553F1E8CE6670034C332 /* icon_circle.png in Resources */,
 				383654E11E8CA41F0034C332 /* icon_complete.png in Resources */,
-				383655AF1E8E078A0034C332 /* icon_collect@2x.png in Resources */,
+				383655AF1E8E078A0034C332 /* icon_collect1@2x.png in Resources */,
 				383654F51E8CA41F0034C332 /* icon_setting@3x.png in Resources */,
 				383655451E8CE6670034C332 /* icon_selected.png in Resources */,
 				383655B81E8E078A0034C332 /* icon_empty@2x.png in Resources */,
@@ -2056,7 +2056,7 @@
 				3836553C1E8CE6670034C332 /* edict.png in Resources */,
 				38BD10CF1E8A377000028255 /* icon_cart_s@2x.png in Resources */,
 				383654ED1E8CA41F0034C332 /* icon_pay.png in Resources */,
-				383655AE1E8E078A0034C332 /* icon_collect.png in Resources */,
+				383655AE1E8E078A0034C332 /* icon_collect1.png in Resources */,
 				383655721E8DEF370034C332 /* triangle_down_black@3x.png in Resources */,
 				38BD10DE1E8A377000028255 /* icon_gfm@2x.png in Resources */,
 				383655AD1E8E078A0034C332 /* icon_cart_gray@3x.png in Resources */,
