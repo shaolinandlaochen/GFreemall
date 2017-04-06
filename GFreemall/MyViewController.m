@@ -11,6 +11,8 @@
 #import "MyMessageCells.h"
 #import "MyShippingAddress.h"
 #import "MyOrderViewController.h"
+#import "MyNewsViewController.h"
+#import "MyCollectionViewController.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -121,6 +123,14 @@ autoSize
     if (indexPath.section==2&&indexPath.row==3) {
         MyShippingAddress *Address=[[MyShippingAddress alloc]init];
         [self.navigationController pushViewController:Address animated:YES];
+    }else if (indexPath.section==1){//消息
+        MyNewsViewController *myNews=[[MyNewsViewController alloc]init];
+        [self.navigationController pushViewController:myNews animated:YES];
+    
+    }else if (indexPath.section==2&&indexPath.row==2){//收藏
+    
+        MyCollectionViewController *MyCollection=[[MyCollectionViewController alloc]init];
+        [self.navigationController pushViewController:MyCollection animated:YES];
     }
 }
 - (void)didReceiveMemoryWarning {
