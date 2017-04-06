@@ -82,6 +82,8 @@ autoSizeScaleY = SCREENHEIGHT/1334;\
 #define cancelClick -(void)onCanceClick{[self.navigationController popViewControllerAnimated:YES];}
 
 
+
+
 /*
  @protocol ProductScreeningDelegate <NSObject>
  
@@ -91,6 +93,19 @@ autoSizeScaleY = SCREENHEIGHT/1334;\
  
  
  @end
+ 
+ 
+ 
+ [_img.layer setBorderColor:[TheParentClass colorWithHexString:@"#d7d7d7"].CGColor];
+ [_img.layer setBorderWidth:1];
+ [_img.layer setMasksToBounds:YES];
+ _img.layer.cornerRadius = 6*autoSizeScaleX;
+ _img.layer.masksToBounds = 6*autoSizeScaleX;
+ 
+ 
+ 
+ CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
+ CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
  */
 
 

@@ -39,6 +39,9 @@
 		382E02C71E95E77F00DEF382 /* icon_success.png in Resources */ = {isa = PBXBuildFile; fileRef = 382E02BB1E95E77F00DEF382 /* icon_success.png */; };
 		382E02C81E95E77F00DEF382 /* icon_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 382E02BC1E95E77F00DEF382 /* icon_success@2x.png */; };
 		382E02C91E95E77F00DEF382 /* icon_success@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 382E02BD1E95E77F00DEF382 /* icon_success@3x.png */; };
+		382E02CC1E95E89900DEF382 /* StayEvaluationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 382E02CB1E95E89900DEF382 /* StayEvaluationListCell.m */; };
+		382E02CF1E95E90400DEF382 /* ReceivingASuccessfulShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 382E02CE1E95E90400DEF382 /* ReceivingASuccessfulShow.m */; };
+		382E02D21E95EFC100DEF382 /* EvaluationOfTheViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382E02D11E95EFC100DEF382 /* EvaluationOfTheViewViewController.m */; };
 		383654301E8CA2E10034C332 /* MyAllCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3836542F1E8CA2E10034C332 /* MyAllCell.m */; };
 		383654D51E8CA41F0034C332 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3836549F1E8CA41F0034C332 /* bg.png */; };
 		383654D61E8CA41F0034C332 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 383654A01E8CA41F0034C332 /* bg@2x.png */; };
@@ -405,6 +408,12 @@
 		382E02BB1E95E77F00DEF382 /* icon_success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_success.png; path = "imgs/订单/icon_success.png"; sourceTree = "<group>"; };
 		382E02BC1E95E77F00DEF382 /* icon_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_success@2x.png"; path = "imgs/订单/icon_success@2x.png"; sourceTree = "<group>"; };
 		382E02BD1E95E77F00DEF382 /* icon_success@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_success@3x.png"; path = "imgs/订单/icon_success@3x.png"; sourceTree = "<group>"; };
+		382E02CA1E95E89900DEF382 /* StayEvaluationListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StayEvaluationListCell.h; sourceTree = "<group>"; };
+		382E02CB1E95E89900DEF382 /* StayEvaluationListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StayEvaluationListCell.m; sourceTree = "<group>"; };
+		382E02CD1E95E90400DEF382 /* ReceivingASuccessfulShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceivingASuccessfulShow.h; sourceTree = "<group>"; };
+		382E02CE1E95E90400DEF382 /* ReceivingASuccessfulShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceivingASuccessfulShow.m; sourceTree = "<group>"; };
+		382E02D01E95EFC100DEF382 /* EvaluationOfTheViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationOfTheViewViewController.h; sourceTree = "<group>"; };
+		382E02D11E95EFC100DEF382 /* EvaluationOfTheViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluationOfTheViewViewController.m; sourceTree = "<group>"; };
 		3836542E1E8CA2E10034C332 /* MyAllCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAllCell.h; sourceTree = "<group>"; };
 		3836542F1E8CA2E10034C332 /* MyAllCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAllCell.m; sourceTree = "<group>"; };
 		3836549F1E8CA41F0034C332 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = "imgs/个人/归档/bg.png"; sourceTree = "<group>"; };
@@ -848,6 +857,12 @@
 			children = (
 				382E02AE1E95E26200DEF382 /* ConfirmTheGoodsViewController.h */,
 				382E02AF1E95E26200DEF382 /* ConfirmTheGoodsViewController.m */,
+				382E02CA1E95E89900DEF382 /* StayEvaluationListCell.h */,
+				382E02CB1E95E89900DEF382 /* StayEvaluationListCell.m */,
+				382E02CD1E95E90400DEF382 /* ReceivingASuccessfulShow.h */,
+				382E02CE1E95E90400DEF382 /* ReceivingASuccessfulShow.m */,
+				382E02D01E95EFC100DEF382 /* EvaluationOfTheViewViewController.h */,
+				382E02D11E95EFC100DEF382 /* EvaluationOfTheViewViewController.m */,
 			);
 			name = "收货和评价";
 			sourceTree = "<group>";
@@ -1939,6 +1954,7 @@
 				38536CFC1E8F9ABD003E9015 /* MyScreeningView.m in Sources */,
 				38C9DCD21E8901FD00F231B0 /* ShoppingCartViewController.m in Sources */,
 				38C1A9001E922FCB00A26DCF /* newShippingAddress.m in Sources */,
+				382E02CF1E95E90400DEF382 /* ReceivingASuccessfulShow.m in Sources */,
 				38536CBD1E8F3D0A003E9015 /* SKUCell.m in Sources */,
 				382E02AC1E95DC4100DEF382 /* InternalOrderButtonCell.m in Sources */,
 				383A43F71E94CF2A002CBDA0 /* OrdersForGoodsListCell.m in Sources */,
@@ -1955,6 +1971,7 @@
 				383655131E8CA5CA0034C332 /* MyInformationView.m in Sources */,
 				38536CD51E8F8BBE003E9015 /* EvaluationViewController.m in Sources */,
 				383A441C1E9512BC002CBDA0 /* PaymentToShowCell.m in Sources */,
+				382E02CC1E95E89900DEF382 /* StayEvaluationListCell.m in Sources */,
 				383655101E8CA5190034C332 /* BrandCell.m in Sources */,
 				3818ADBF1E8BB23200CA2FB6 /* SearchListingsCollectionViewCell.m in Sources */,
 				382E02A61E95D1ED00DEF382 /* OrderAmountDetailCell.m in Sources */,
@@ -1975,6 +1992,7 @@
 				38E9E3BE1E909948001EFBAD /* AttributeSelectionViewController.m in Sources */,
 				38536CC91E8F5624003E9015 /* HTMLContextCell.m in Sources */,
 				383A43E51E94803D002CBDA0 /* OrderCell.m in Sources */,
+				382E02D21E95EFC100DEF382 /* EvaluationOfTheViewViewController.m in Sources */,
 				3818ADB91E8B61B000CA2FB6 /* MoreAndMoreCell.m in Sources */,
 				38C1A9061E92390E00A26DCF /* GigAddressTableViewCell.m in Sources */,
 				38C1A8C61E92213A00A26DCF /* MyTextField.m in Sources */,
