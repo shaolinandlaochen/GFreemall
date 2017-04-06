@@ -63,6 +63,10 @@
 		382E030D1E965A2900DEF382 /* logobj.png in Resources */ = {isa = PBXBuildFile; fileRef = 382E030A1E965A2900DEF382 /* logobj.png */; };
 		382E030E1E965A2900DEF382 /* logobj@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 382E030B1E965A2900DEF382 /* logobj@2x.png */; };
 		382E030F1E965A2900DEF382 /* logobj@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 382E030C1E965A2900DEF382 /* logobj@3x.png */; };
+		382E03131E965D2D00DEF382 /* icon_calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 382E03101E965D2D00DEF382 /* icon_calendar.png */; };
+		382E03141E965D2D00DEF382 /* icon_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 382E03111E965D2D00DEF382 /* icon_calendar@2x.png */; };
+		382E03151E965D2D00DEF382 /* icon_calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 382E03121E965D2D00DEF382 /* icon_calendar@3x.png */; };
+		382E03181E965FC700DEF382 /* RetrievePasswordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 382E03171E965FC700DEF382 /* RetrievePasswordCell.m */; };
 		383654301E8CA2E10034C332 /* MyAllCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3836542F1E8CA2E10034C332 /* MyAllCell.m */; };
 		383654D51E8CA41F0034C332 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3836549F1E8CA41F0034C332 /* bg.png */; };
 		383654D61E8CA41F0034C332 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 383654A01E8CA41F0034C332 /* bg@2x.png */; };
@@ -471,6 +475,11 @@
 		382E030A1E965A2900DEF382 /* logobj.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logobj.png; path = "imgs/个人/归档/logobj.png"; sourceTree = "<group>"; };
 		382E030B1E965A2900DEF382 /* logobj@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logobj@2x.png"; path = "imgs/个人/归档/logobj@2x.png"; sourceTree = "<group>"; };
 		382E030C1E965A2900DEF382 /* logobj@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logobj@3x.png"; path = "imgs/个人/归档/logobj@3x.png"; sourceTree = "<group>"; };
+		382E03101E965D2D00DEF382 /* icon_calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_calendar.png; path = "imgs/个人/归档/icon_calendar.png"; sourceTree = "<group>"; };
+		382E03111E965D2D00DEF382 /* icon_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_calendar@2x.png"; path = "imgs/个人/归档/icon_calendar@2x.png"; sourceTree = "<group>"; };
+		382E03121E965D2D00DEF382 /* icon_calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_calendar@3x.png"; path = "imgs/个人/归档/icon_calendar@3x.png"; sourceTree = "<group>"; };
+		382E03161E965FC700DEF382 /* RetrievePasswordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetrievePasswordCell.h; sourceTree = "<group>"; };
+		382E03171E965FC700DEF382 /* RetrievePasswordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrievePasswordCell.m; sourceTree = "<group>"; };
 		3836542E1E8CA2E10034C332 /* MyAllCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAllCell.h; sourceTree = "<group>"; };
 		3836542F1E8CA2E10034C332 /* MyAllCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAllCell.m; sourceTree = "<group>"; };
 		3836549F1E8CA41F0034C332 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = "imgs/个人/归档/bg.png"; sourceTree = "<group>"; };
@@ -1004,6 +1013,9 @@
 		3836549E1E8CA3E00034C332 /* 个人 */ = {
 			isa = PBXGroup;
 			children = (
+				382E03101E965D2D00DEF382 /* icon_calendar.png */,
+				382E03111E965D2D00DEF382 /* icon_calendar@2x.png */,
+				382E03121E965D2D00DEF382 /* icon_calendar@3x.png */,
 				382E030A1E965A2900DEF382 /* logobj.png */,
 				382E030B1E965A2900DEF382 /* logobj@2x.png */,
 				382E030C1E965A2900DEF382 /* logobj@3x.png */,
@@ -1294,6 +1306,8 @@
 				383A441E1E951778002CBDA0 /* PayThePasswordCell.m */,
 				383A44201E9519CE002CBDA0 /* WalletBalanceTop_upCell.h */,
 				383A44211E9519CE002CBDA0 /* WalletBalanceTop_upCell.m */,
+				382E03161E965FC700DEF382 /* RetrievePasswordCell.h */,
+				382E03171E965FC700DEF382 /* RetrievePasswordCell.m */,
 			);
 			name = "结算";
 			sourceTree = "<group>";
@@ -1824,6 +1838,7 @@
 				382E02C71E95E77F00DEF382 /* icon_success.png in Resources */,
 				38BD10DA1E8A377000028255 /* icon_gfm_s.png in Resources */,
 				3836554A1E8CE6670034C332 /* pic_cart@3x.png in Resources */,
+				382E03151E965D2D00DEF382 /* icon_calendar@3x.png in Resources */,
 				383654F31E8CA41F0034C332 /* icon_setting.png in Resources */,
 				38BD10E11E8A377000028255 /* icon_home_s@2x.png in Resources */,
 				383655791E8DEF370034C332 /* triangle_up_red-.png in Resources */,
@@ -1947,6 +1962,7 @@
 				3836556B1E8DEF370034C332 /* icon_cart_white@2x.png in Resources */,
 				383655C71E8E078A0034C332 /* icon_share@2x.png in Resources */,
 				383654DD1E8CA41F0034C332 /* icon_collect@3x.png in Resources */,
+				382E03141E965D2D00DEF382 /* icon_calendar@2x.png in Resources */,
 				383655411E8CE6670034C332 /* icon_circle@3x.png in Resources */,
 				383654DB1E8CA41F0034C332 /* icon_collect.png in Resources */,
 				383655C81E8E078A0034C332 /* icon_share@3x.png in Resources */,
@@ -1961,6 +1977,7 @@
 				38BD10EA1E8A377000028255 /* icon_mine@2x.png in Resources */,
 				383655CB1E8E078A0034C332 /* icon_silver@3x.png in Resources */,
 				38BD10FC1E8A377000028255 /* search_bg@2x.png in Resources */,
+				382E03131E965D2D00DEF382 /* icon_calendar.png in Resources */,
 				38BD10DF1E8A377000028255 /* icon_gfm@3x.png in Resources */,
 				383654F61E8CA41F0034C332 /* icon_wallete.png in Resources */,
 				383654EC1E8CA41F0034C332 /* icon_mews@3x.png in Resources */,
@@ -2128,6 +2145,7 @@
 				38C9DCC21E89009F00F231B0 /* TheParentClass.m in Sources */,
 				38C9DCC61E89012A00F231B0 /* HomeViewController.m in Sources */,
 				38C9DCCE1E8901C300F231B0 /* GFMViewController.m in Sources */,
+				382E03181E965FC700DEF382 /* RetrievePasswordCell.m in Sources */,
 				382E03091E96590600DEF382 /* AboutViewController.m in Sources */,
 				382E02A31E95CC8A00DEF382 /* ShippingInformationTableViewCell.m in Sources */,
 				383A43F41E94BD2C002CBDA0 /* OrderAddressCell.m in Sources */,

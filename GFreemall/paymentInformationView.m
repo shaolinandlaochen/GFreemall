@@ -11,6 +11,7 @@
 #import "PaymentToShowCell.h"
 #import "PayThePasswordCell.h"
 #import "WalletBalanceTop_upCell.h"
+#import "RetrievePasswordCell.h"
 @interface paymentInformationView ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -87,6 +88,7 @@
     return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
     return 0;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -121,11 +123,11 @@
     return nil;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    
+   
     return nil;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {
@@ -185,6 +187,11 @@
     }else if (indexPath.section==2){
         PayThePasswordCell *cell=[PayThePasswordCell new];
         return cell;
+    }else if (indexPath.section==3){
+        RetrievePasswordCell *cell=[RetrievePasswordCell new];
+        [cell.btn addTarget:self action:@selector(RetrievPassword) forControlEvents:UIControlEventTouchUpInside];
+
+        return cell;
     }
     
     
@@ -213,6 +220,10 @@
 //充值
 -(void)oTop_UpClick{
     [_delegate oTop_UpGo];
+}
+//忘记密码
+-(void)RetrievPassword{
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
