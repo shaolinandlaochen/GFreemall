@@ -20,7 +20,8 @@
 +(void)ButtonAtTheBottomOfThesize:(BOOL)size;
 //文本自适应返回size
 +(CGSize)StringHeight:(NSString *)stringStr Lblfont:(float)font heightOfTheMinus:(float)height;
-
+//登录
++(void)theLogin;
 
 
 

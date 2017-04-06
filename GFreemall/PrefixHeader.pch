@@ -29,13 +29,14 @@
 #import "MyView.h"//自定义view
 #import "GoodsDetailsViewController.h"//商品详情
 #import "MyTextField.h"//自定义输入框
+#import "TheLoginViewController.h"//登录界面
 
 
 
 
 
 
-
+#define TheLogin
 
 //根据屏幕算出比例
 #define WIDTH [UIScreen mainScreen].bounds.size.width

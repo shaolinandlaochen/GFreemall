@@ -29,7 +29,8 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TheLanguageWwitchBox) name:@"TheLanguageWwitchBox" object:nil];//切换语言
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(big) name:@"big" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(small) name:@"small" object:nil];
-
+//监听登录通知
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TheLongin) name:@"MonitorTheLoginNotifications" object:nil];
     
    
     // Do any additional setup after loading the view, typically from a nib.
@@ -239,6 +240,13 @@ colorWithStr
     [[NSScanner scannerWithString:gString] scanHexInt:&g];
     [[NSScanner scannerWithString:bString] scanHexInt:&b];
     return [UIColor colorWithRed:((float) r / 255.0f) green:((float) g / 255.0f) blue:((float) b / 255.0f) alpha:1.0f];
+}
+-(void)TheLongin{
+
+    TheLoginViewController *login=[[TheLoginViewController alloc]init];
+    UINavigationController *navLoGin=[[UINavigationController alloc]initWithRootViewController:login];
+    [self presentViewController:navLoGin animated:YES completion:nil];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
