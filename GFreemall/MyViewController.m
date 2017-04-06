@@ -14,6 +14,7 @@
 #import "MyNewsViewController.h"
 #import "MyCollectionViewController.h"
 #import "MyBasicInformationViewController.h"
+#import "SetUpViewController.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -136,6 +137,9 @@ autoSize
         MyBasicInformationViewController *MyBasicInformation=[[MyBasicInformationViewController alloc]init];
         [self.navigationController pushViewController:MyBasicInformation animated:YES];
     
+    }else if (indexPath.section==3){
+        SetUpViewController *SetUp=[[SetUpViewController alloc]init];;
+        [self.navigationController pushViewController:SetUp animated:YES];
     }
 }
 - (void)didReceiveMemoryWarning {
