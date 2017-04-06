@@ -28,8 +28,7 @@
         _name.sd_layout.leftSpaceToView(self.contentView, 60*autoSizeScaleX).topSpaceToView(self.contentView, 30*autoSizeScaleY).widthIs(size.width).heightIs(size.height);
         
         _defaultStr=[[UILabel alloc]init];
-        _defaultStr.text=@"默认";
-        _defaultStr.backgroundColor=[UIColor redColor];
+       
         _defaultStr.textColor=[TheParentClass colorWithHexString:@"ffffff"];
         _defaultStr.font=[UIFont systemFontOfSize:24*autoSizeScaleY];
         _defaultStr.textAlignment=NSTextAlignmentCenter;
@@ -49,10 +48,9 @@
         [self.contentView addSubview:_context];
         _context.sd_layout.leftSpaceToView(img, 10*autoSizeScaleX).topEqualToView(img).rightSpaceToView(self.contentView, 25*autoSizeScaleX).heightIs(32*autoSizeScaleY);
         
-        UIImageView *go=[[UIImageView alloc]init];
-        go.image=[UIImage imageNamed:@"icon_right"];
-        [self.contentView addSubview:go];
-        go.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 52*autoSizeScaleY).widthIs(44*autoSizeScaleX).heightIs(44*autoSizeScaleY);
+        _go=[[UIImageView alloc]init];
+        [self.contentView addSubview:_go];
+        _go.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 52*autoSizeScaleY).widthIs(44*autoSizeScaleX).heightIs(44*autoSizeScaleY);
         
     }
     return self;

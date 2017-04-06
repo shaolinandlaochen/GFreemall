@@ -53,6 +53,7 @@
 -(void)setStrOne:(NSString *)strOne{
     autoSize
     [_btnOne setTitle:strOne forState:UIControlStateNormal];
+    _btnOne.string=strOne;
      [_btnOne.layer setBorderColor:[TheParentClass colorWithHexString:@"#de0024"].CGColor];
     _btnOne.sd_layout.rightSpaceToView(self, 25*autoSizeScaleY).topSpaceToView(self, 14*autoSizeScaleY).bottomSpaceToView(_line, 14*autoSizeScaleY).widthIs(150*autoSizeScaleX);
     [_btnOne setTitleColor:[TheParentClass colorWithHexString:@"de0024"] forState:UIControlStateNormal];
@@ -61,6 +62,7 @@
 -(void)setStrTwo:(NSString *)strTwo{
 
     autoSize
+    _BtnTwo.string=strTwo;
     [_BtnTwo setTitle:strTwo forState:UIControlStateNormal];
     [_BtnTwo.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
     _BtnTwo.sd_layout.rightSpaceToView(_btnOne, 20*autoSizeScaleY).topSpaceToView(self, 14*autoSizeScaleY).bottomSpaceToView(_line, 14*autoSizeScaleY).widthIs(150*autoSizeScaleX);

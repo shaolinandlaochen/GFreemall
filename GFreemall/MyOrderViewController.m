@@ -12,6 +12,7 @@
 #import "OrderButtonView.h"
 #import "OrderViewS.h"
 #import "OrderInformationViewController.h"
+#import "MyOrderDetails.h"
 @interface MyOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -39,16 +40,6 @@
     [self cartOrderView];
     
     
-    
-    _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
-    _tableView.delegate=self;
-    _tableView.dataSource=self;
-   // _tableView.separatorColor=[UIColor clearColor];
-    [self.view addSubview:_tableView];
-    _tableView.sd_layout.leftEqualToView(_OrderView).topSpaceToView(_OrderView, 0).rightEqualToView(_OrderView).bottomSpaceToView(self.view, 0);
-    
-    
-    
     // Do any additional setup after loading the view.
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -72,7 +63,7 @@
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     OrderButtonView *view=[[OrderButtonView alloc]init];
-    view.strOne=@"待付款";
+    view.strOne=@"去支付";
     view.strTwo=@"取消";
     return view;
 }
@@ -91,6 +82,15 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    MyOrderDetails *MyOrder=[[MyOrderDetails alloc]init];
+    if (indexPath.section==0) {
+        MyOrder.state=@"待付款";
+    }else if (indexPath.section==1){
+    MyOrder.state=@"待收货";
+    }else{
+        MyOrder.state=@"待评价";
+    }
+    [self.navigationController pushViewController:MyOrder animated:YES];
 
 }
 -(void)onCanceClick{
@@ -103,6 +103,13 @@ autoSize
     _OrderView=[[OrderViewS alloc]init];
     [self.view addSubview:_OrderView];
     _OrderView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(self.view, navheight+rectStatus.size.height).heightIs(78*autoSizeScaleY);
+    
+    _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
+    _tableView.delegate=self;
+    _tableView.dataSource=self;
+    // _tableView.separatorColor=[UIColor clearColor];
+    [self.view addSubview:_tableView];
+    _tableView.sd_layout.leftEqualToView(_OrderView).topSpaceToView(_OrderView, 0).rightEqualToView(_OrderView).bottomSpaceToView(self.view, 0);
 
 }
 - (void)didReceiveMemoryWarning {

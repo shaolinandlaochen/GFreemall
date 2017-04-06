@@ -153,9 +153,11 @@
     if (indexPath.section==0) {
         if (indexPath.row==0) {
             AmountToShowCell *cell=[AmountToShowCell new];
+            cell.userInteractionEnabled = NO;
             return cell;
         }else if (indexPath.row==1){
             PaymentToShowCell *cell=[PaymentToShowCell new];
+            cell.userInteractionEnabled = NO;
             cell.name.text=self.were;
             cell.context.text=Localized(@"支付方式");
             return cell;

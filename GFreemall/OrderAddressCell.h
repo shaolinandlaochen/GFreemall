@@ -13,4 +13,5 @@
 @property(nonatomic,strong)UILabel *number;
 @property(nonatomic,strong)UILabel  *defaultStr;
 @property(nonatomic,strong)UILabel *context;
+@property(nonatomic,strong)UIImageView *go;
 @end
