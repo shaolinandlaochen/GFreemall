@@ -30,6 +30,7 @@
         line.sd_layout.leftSpaceToView(self, 0).topSpaceToView(self, 0).rightSpaceToView(self, 0).heightIs(0.6);
         _selectedBtn=[[MyButton alloc]init];
         [_selectedBtn setImage:[UIImage imageNamed:@"icon_circle"] forState:UIControlStateNormal];
+        [_selectedBtn setImage:[UIImage imageNamed:@"icon_selected"] forState:UIControlStateSelected];
         [self addSubview:_selectedBtn];
         _selectedBtn.sd_layout.leftSpaceToView(self, 10*autoSizeScaleX).topSpaceToView(self, 20*autoSizeScaleY).widthIs(60*autoSizeScaleX).heightIs(60*autoSizeScaleY);
         UILabel *lbl=[[UILabel alloc]init];

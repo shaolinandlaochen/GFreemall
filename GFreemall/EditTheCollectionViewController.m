@@ -55,6 +55,7 @@ cancelClick
     _selecateButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [_selecateButton addTarget:self action:@selector(onFutureGenerationsClick:) forControlEvents:UIControlEventTouchUpInside];
     [_selecateButton setImage:[UIImage imageNamed:@"icon_circle"] forState:UIControlStateNormal];
+     [_selecateButton setImage:[UIImage imageNamed:@"icon_selected"] forState:UIControlStateSelected];
     [self.view addSubview:_selecateButton];
     _selecateButton.sd_layout.leftSpaceToView(self.view, 10*autoSizeScaleX).bottomSpaceToView(self.view, 20*autoSizeScaleY).widthIs(60*-autoSizeScaleX).heightIs(60*autoSizeScaleY);
     
@@ -131,10 +132,11 @@ cancelClick
 }
 //选中
 -(void)onSlelctedBtnClick:(MyButton *)btn{
-
+btn.selected=!btn.selected;
 }
 //全选
 -(void)onFutureGenerationsClick:(UIButton *)btn{
+    btn.selected=!btn.selected;
 
 }
 //删除

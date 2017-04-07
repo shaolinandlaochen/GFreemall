@@ -88,10 +88,13 @@
       
         if (indexPath.row==0) {
             cell.string=Localized(@"收货人:");
+            cell.placeholder=Localized(@"请在此处填写收货人");
         }else if (indexPath.row==1){
             cell.string=Localized(@"联系方式:");
+            cell.placeholder=Localized(@"请在此处填写收货人手机号码");
         }else if (indexPath.row==3){
             cell.string=Localized(@"详细地址:");
+            cell.placeholder=Localized(@"请在此处填写详细地址");
         }
           return cell;
     }else if (indexPath.row==2){

@@ -26,6 +26,7 @@
         //选中按钮
         _selectedBtn=[[MyButton alloc]init];
         [_selectedBtn setImage:[UIImage imageNamed:@"icon_circle"] forState:UIControlStateNormal];
+        [_selectedBtn setImage:[UIImage imageNamed:@"icon_selected"] forState:UIControlStateSelected];
         [self.contentView addSubview:_selectedBtn];
         _selectedBtn.sd_layout.leftSpaceToView(self.contentView, 10*autoSizeScaleX).topSpaceToView(self.contentView, 60*autoSizeScaleY).widthIs(60*autoSizeScaleX).heightIs(60*autoSizeScaleY);
         

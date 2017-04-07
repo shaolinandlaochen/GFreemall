@@ -51,7 +51,9 @@
     
     _context.sd_layout.leftSpaceToView(_name, 25*autoSizeScaleX).topEqualToView(_name).bottomEqualToView(_name).rightSpaceToView(self.contentView, 25*autoSizeScaleX);
 }
-
+-(void)setPlaceholder:(NSString *)placeholder{
+    _context.placeholder=placeholder;
+}
 
 - (void)textFieldDidEndEditing:(MyTextField *)textField{
     NSLog(@"ASDASDADASDASDSA");

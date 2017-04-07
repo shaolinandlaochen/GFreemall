@@ -95,11 +95,12 @@
     
 
     InputBoxCell *cell=[InputBoxCell new];
+    [cell.btn addTarget:self action:@selector(onEidClick:) forControlEvents:UIControlEventTouchUpInside];
+    cell.btn.indexPath=indexPath;
     if (indexPath.row==0) {
         cell.icon.text=@"默认";
         cell.icon.backgroundColor=[UIColor redColor];
-        [cell.btn addTarget:self action:@selector(onEidClick:) forControlEvents:UIControlEventTouchUpInside];
-        cell.btn.indexPath=indexPath;
+       
     }
     cell.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     return cell;
@@ -117,6 +118,9 @@
 }
 //点击编辑进入该方法
 -(void)onEidClick:(MyButton *)btn{
+    NSLog(@"ssssss");
+    newShippingAddress *new=[[newShippingAddress alloc]init];
+    [self.navigationController pushViewController:new animated:YES];
 
 }
 //添加地址

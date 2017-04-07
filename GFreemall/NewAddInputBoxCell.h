@@ -12,4 +12,5 @@
 @property(nonatomic,strong)UILabel *name;
 @property(nonatomic,strong)MyTextField *context;
 @property(nonatomic,copy)NSString *string;
+@property(nonatomic,copy)NSString *placeholder;
 @end

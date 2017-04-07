@@ -139,6 +139,7 @@
 }
 //选择或者取消
 -(void)TheSelectedClick:(MyButton *)btn{
+    btn.selected=!btn.selected;
 
 }
 //点击加件数量
@@ -164,6 +165,7 @@
 }
 //全选
 -(void)FutureGenerations:(MyButton *)btn{
+    btn.selected=!btn.selected;
 
 }
 //点击支付或者删除
