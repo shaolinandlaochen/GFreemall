@@ -9,6 +9,7 @@
 #import "ReplaceAPhoneNumberViewController.h"
 #import "BaseInputBoxCell.h"
 #import "MailNextViewController.h"
+#import "SetThPasswordAgainViewController.h"
 @interface ReplaceAPhoneNumberViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 {
@@ -19,7 +20,10 @@
 @end
 
 @implementation ReplaceAPhoneNumberViewController
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden=NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     autoSize
@@ -73,7 +77,7 @@ cancelClick
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if ([self.were isEqualToString:@"更换手机号"]) {
         return 2;
-    }else if ([self.were isEqualToString:@"绑定手机号"]||[self.were isEqualToString:@"更换邮箱"]||[self.were isEqualToString:@"实名认证"]||[self.were isEqualToString:@"用户名设置"]){
+    }else if ([self.were isEqualToString:@"绑定手机号"]||[self.were isEqualToString:@"更换邮箱"]||[self.were isEqualToString:@"实名认证"]||[self.were isEqualToString:@"用户名设置"]||[self.were isEqualToString:@"交易密码设置"]||[self.were isEqualToString:@"忘记密码"]){
         return 1;
     }
     return 1;
@@ -95,8 +99,10 @@ cancelClick
             _button.sd_layout.leftSpaceToView(view, 25*autoSizeScaleX).rightSpaceToView(view, 25*autoSizeScaleX).topSpaceToView(view, 20*autoSizeScaleY).bottomSpaceToView(view, 20*autoSizeScaleY);
             if ([self.were isEqualToString:@"绑定手机号"]||[self.were isEqualToString:@"实名认证"]||[self.were isEqualToString:@"用户名设置"]) {
                 [_button setTitle:Localized(@"确定") forState:UIControlStateNormal];
-            }else if ([self.were isEqualToString:@"更换邮箱"]||[self.were isEqualToString:@"邮箱绑定"]){
+            }else if ([self.were isEqualToString:@"更换邮箱"]||[self.were isEqualToString:@"邮箱绑定"]||[self.were isEqualToString:@"忘记密码"]){
              [_button setTitle:Localized(@"下一步") forState:UIControlStateNormal];
+            }else if ([self.were isEqualToString:@"交易密码设置"]){
+             [_button setTitle:Localized(@"提交登录") forState:UIControlStateNormal];
             }
             
             
@@ -119,7 +125,7 @@ cancelClick
     return view;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if ([self.were isEqualToString:@"更换手机号"]||[self.were isEqualToString:@"绑定手机号"]||[self.were isEqualToString:@"更换邮箱"]||[self.were isEqualToString:@"实名认证"]) {
+    if ([self.were isEqualToString:@"更换手机号"]||[self.were isEqualToString:@"绑定手机号"]||[self.were isEqualToString:@"更换邮箱"]||[self.were isEqualToString:@"实名认证"]||[self.were isEqualToString:@"交易密码设置"]||[self.were isEqualToString:@"忘记密码"]) {
         return 2;
     }
     return 1;
@@ -200,6 +206,25 @@ cancelClick
         cell.tf.placeholder=Localized(@"请输入您要设置的用户名");
     }else if ([self.were isEqualToString:@"邮箱绑定"]){
         cell.tf.placeholder=Localized(@"请输入邮箱账号");
+    }else if ([self.were isEqualToString:@"交易密码设置"]){
+        if (indexPath.row==0) {
+            cell.tf.placeholder=Localized(@"请输入您的账户交易密码");
+        }else if (indexPath.row==1){
+        cell.tf.placeholder=Localized(@"请再次输入您的账户交易密码");
+        }
+    
+    }else if ([self.were isEqualToString:@"忘记密码"]){
+        if (indexPath.row==0) {
+            cell.tf.placeholder=Localized(@"请输入手机号");
+            [cell.btn.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
+            [cell.btn setTitle:@"获取验证码" forState:UIControlStateNormal];
+            [cell.btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            
+        }else if (indexPath.row==1){
+            cell.tf.placeholder=Localized(@"请输入手机验证码");
+            
+            
+        }
     }
     return cell;
 }
@@ -218,6 +243,9 @@ cancelClick
     if ([self.were isEqualToString:@"邮箱绑定"]) {
         MailNextViewController *mailNext=[[MailNextViewController alloc]init];
         [self.navigationController pushViewController:mailNext animated:YES];
+    }else if ([self.were isEqualToString:@"忘记密码"]){
+        SetThPasswordAgainViewController *setTThePasWord=[[SetThPasswordAgainViewController alloc]init];
+        [self.navigationController pushViewController:setTThePasWord animated:YES];
     }
 
 }

@@ -1,32 +1,28 @@
 //
-//  MyBasicInformationViewController.m
+//  SetThPasswordAgainViewController.m
 //  GFreemall
 //
-//  Created by 韩少林 on 2017/4/6.
+//  Created by 韩少林 on 2017/4/7.
 //  Copyright © 2017年 MrHan. All rights reserved.
 //
 
-#import "MyBasicInformationViewController.h"
-#import "basicInformationCell.h"
-#import "ReplaceAPhoneNumberViewController.h"
-@interface MyBasicInformationViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "SetThPasswordAgainViewController.h"
+#import "BaseInputBoxCell.h"
+@interface SetThPasswordAgainViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 {
     UITableView *_tableView;
+    UIButton *_button;
 }
 
 @end
 
-@implementation MyBasicInformationViewController
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [TheParentClass ButtonAtTheBottomOfThesize:NO];
-    self.navigationController.navigationBarHidden=NO;
-}
+@implementation SetThPasswordAgainViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     autoSize
-    self.title=Localized(@"基本信息");
+    self.title=Localized(@"忘记密码");
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
@@ -42,14 +38,17 @@ cancelClick
     _tableView.dataSource=self;
     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
-
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     autoSize
-    return 90*autoSizeScaleY;
+    return 96*autoSizeScaleY;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0;
+    autoSize
+
+    
+    return 136*autoSizeScaleY;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     autoSize
@@ -60,57 +59,58 @@ cancelClick
     return nil;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+ 
     return 1;
 }
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *view=[[UIView alloc]init];
+    view.backgroundColor=[UIColor whiteColor];
+    autoSize
+        _button=[UIButton buttonWithType:UIButtonTypeCustom];
+        [_button setTitleColor:[TheParentClass colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
+        _button.titleLabel.font=[UIFont systemFontOfSize:36*autoSizeScaleY];
+        _button.backgroundColor=[UIColor blackColor];
+        [_button addTarget:self action:@selector(onGoClick:) forControlEvents:UIControlEventTouchUpInside];
+        _button.layer.cornerRadius = 6*autoSizeScaleX;
+        _button.layer.masksToBounds = 6*autoSizeScaleX;
+        [view addSubview:_button];
+        _button.sd_layout.leftSpaceToView(view, 25*autoSizeScaleX).rightSpaceToView(view, 25*autoSizeScaleX).topSpaceToView(view, 20*autoSizeScaleY).bottomSpaceToView(view, 20*autoSizeScaleY);
+        [_button setTitle:Localized(@"确定") forState:UIControlStateNormal];
+    return view;
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+   
+    return 2;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section==0) {
-        basicInformationCell *cell=[basicInformationCell new];
-        if (indexPath.row==0) {
-            cell.name.text=Localized(@"账户ID");
-            cell.userInteractionEnabled = NO;
-            cell.string.text=@"56464646";
+    BaseInputBoxCell *cell=[BaseInputBoxCell new];
+    [cell.btn.layer setBorderColor:[UIColor clearColor].CGColor];
+    cell.btn.indexPath=indexPath;
+    cell.tf.indexPath=indexPath;
+           if (indexPath.row==0) {
+            cell.tf.placeholder=Localized(@"请输入密码");
+            
         }else if (indexPath.row==1){
-            cell.name.text=Localized(@"账户手机");
-            cell.string.text=@"137******89";
-        }else if (indexPath.row==2){
-            cell.name.text=Localized(@"用户名");
-            cell.string.text=@"未设置";
-            cell.imgName=@"icon_right";
-        }else if (indexPath.row==3){
-            cell.name.text=Localized(@"实名认证");
-            cell.string.text=@"未认证";
-            cell.imgName=@"icon_right";
-            
-        }else if (indexPath.row==4){
-            cell.name.text=Localized(@"账户邮箱");
-            cell.string.text=@"未设置";
-            cell.imgName=@"icon_right";
-            
+            cell.tf.placeholder=Localized(@"请再次输入密码");
         }
-        return cell;
-    }
-    NULLCell *celll=[NULLCell new];
-    return celll;
+    
+    return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ReplaceAPhoneNumberViewController *ReplaceAPhoneNumber=[[ReplaceAPhoneNumberViewController alloc]init];
     
-    if (indexPath.row==1) {//更换手机号
-     ReplaceAPhoneNumber.were=@"更换手机号";
-    }else if (indexPath.row==2){
-     ReplaceAPhoneNumber.were=@"用户名设置";
-    }else if (indexPath.row==3){
-        ReplaceAPhoneNumber.were=@"实名认证";
-    }else if (indexPath.row==4){
-        ReplaceAPhoneNumber.were=@"邮箱绑定";
-    }
-    [self.navigationController pushViewController:ReplaceAPhoneNumber animated:YES];
     
 }
+//点击获取验证码
+-(void)onButtonClick:(MyButton *)btnn{
+    
+}
+//确定或者下一步
+-(void)onGoClick:(UIButton *)btn{
+
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

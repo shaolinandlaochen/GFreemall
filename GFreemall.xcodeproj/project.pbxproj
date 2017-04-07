@@ -389,6 +389,9 @@
 		38C9DCD21E8901FD00F231B0 /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C9DCD11E8901FD00F231B0 /* ShoppingCartViewController.m */; };
 		38C9DCD61E89021600F231B0 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C9DCD51E89021600F231B0 /* MyViewController.m */; };
 		38E9E3BE1E909948001EFBAD /* AttributeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E9E3BD1E909948001EFBAD /* AttributeSelectionViewController.m */; };
+		38EE5F301E972DC800A7DE52 /* RegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F2F1E972DC800A7DE52 /* RegisteredViewController.m */; };
+		38EE5F331E973DE400A7DE52 /* SetThPasswordAgainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F321E973DE400A7DE52 /* SetThPasswordAgainViewController.m */; };
+		38EE5F361E9740D300A7DE52 /* UserRegistrationAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F351E9740D300A7DE52 /* UserRegistrationAgreementViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -908,6 +911,12 @@
 		38C9DCD51E89021600F231B0 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		38E9E3BC1E909948001EFBAD /* AttributeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeSelectionViewController.h; sourceTree = "<group>"; };
 		38E9E3BD1E909948001EFBAD /* AttributeSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeSelectionViewController.m; sourceTree = "<group>"; };
+		38EE5F2E1E972DC800A7DE52 /* RegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisteredViewController.h; sourceTree = "<group>"; };
+		38EE5F2F1E972DC800A7DE52 /* RegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisteredViewController.m; sourceTree = "<group>"; };
+		38EE5F311E973DE400A7DE52 /* SetThPasswordAgainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetThPasswordAgainViewController.h; sourceTree = "<group>"; };
+		38EE5F321E973DE400A7DE52 /* SetThPasswordAgainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetThPasswordAgainViewController.m; sourceTree = "<group>"; };
+		38EE5F341E9740D300A7DE52 /* UserRegistrationAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegistrationAgreementViewController.h; sourceTree = "<group>"; };
+		38EE5F351E9740D300A7DE52 /* UserRegistrationAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRegistrationAgreementViewController.m; sourceTree = "<group>"; };
 		3CAC99031124F58E22E45701 /* Pods-GFreemall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFreemall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GFreemall/Pods-GFreemall.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1097,6 +1106,12 @@
 			children = (
 				382E034B1E96630500DEF382 /* TheLoginViewController.h */,
 				382E034C1E96630500DEF382 /* TheLoginViewController.m */,
+				38EE5F2E1E972DC800A7DE52 /* RegisteredViewController.h */,
+				38EE5F2F1E972DC800A7DE52 /* RegisteredViewController.m */,
+				38EE5F311E973DE400A7DE52 /* SetThPasswordAgainViewController.h */,
+				38EE5F321E973DE400A7DE52 /* SetThPasswordAgainViewController.m */,
+				38EE5F341E9740D300A7DE52 /* UserRegistrationAgreementViewController.h */,
+				38EE5F351E9740D300A7DE52 /* UserRegistrationAgreementViewController.m */,
 			);
 			name = "登录注册";
 			sourceTree = "<group>";
@@ -2267,7 +2282,9 @@
 				382E03091E96590600DEF382 /* AboutViewController.m in Sources */,
 				382E02A31E95CC8A00DEF382 /* ShippingInformationTableViewCell.m in Sources */,
 				383A43F41E94BD2C002CBDA0 /* OrderAddressCell.m in Sources */,
+				38EE5F331E973DE400A7DE52 /* SetThPasswordAgainViewController.m in Sources */,
 				3818ADA91E8B3FC100CA2FB6 /* ScrollViewCell.m in Sources */,
+				38EE5F361E9740D300A7DE52 /* UserRegistrationAgreementViewController.m in Sources */,
 				38536CD81E8F9003003E9015 /* TheEvaluationListCell.m in Sources */,
 				3818ADB01E8B4C4300CA2FB6 /* MyView.m in Sources */,
 				38536CBA1E8F3741003E9015 /* CostCalculationCell.m in Sources */,
@@ -2275,6 +2292,7 @@
 				38536CC91E8F5624003E9015 /* HTMLContextCell.m in Sources */,
 				383A43E51E94803D002CBDA0 /* OrderCell.m in Sources */,
 				382E02D21E95EFC100DEF382 /* EvaluationOfTheViewViewController.m in Sources */,
+				38EE5F301E972DC800A7DE52 /* RegisteredViewController.m in Sources */,
 				3818ADB91E8B61B000CA2FB6 /* MoreAndMoreCell.m in Sources */,
 				38C1A9061E92390E00A26DCF /* GigAddressTableViewCell.m in Sources */,
 				38C1A8C61E92213A00A26DCF /* MyTextField.m in Sources */,
