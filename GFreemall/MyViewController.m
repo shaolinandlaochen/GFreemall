@@ -15,6 +15,7 @@
 #import "MyCollectionViewController.h"
 #import "MyBasicInformationViewController.h"
 #import "SetUpViewController.h"
+#import "OnlineWalletViewController.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -141,6 +142,9 @@ autoSize
     }else if (indexPath.section==3){
         SetUpViewController *SetUp=[[SetUpViewController alloc]init];;
         [self.navigationController pushViewController:SetUp animated:YES];
+    }else if (indexPath.section==2&&indexPath.row==1){//钱包管理
+        OnlineWalletViewController *online=[[OnlineWalletViewController alloc]init];
+        [self.navigationController pushViewController:online animated:YES];
     }
 }
 - (void)didReceiveMemoryWarning {

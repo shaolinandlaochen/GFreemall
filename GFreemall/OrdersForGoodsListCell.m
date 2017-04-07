@@ -21,7 +21,6 @@
         
         for (int i=0; i<3; i++) {
             UIImageView *img=[[UIImageView alloc]init];
-            img.backgroundColor=[UIColor redColor];
             [img sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491387076615&di=3c952fb8accc913738a0bcbe36b418cb&imgtype=0&src=http%3A%2F%2Fpic40.nipic.com%2F20140412%2F9885883_212844866000_2.jpg"] placeholderImage:[UIImage imageNamed:@""]];
             [self.contentView addSubview:img];
             float x=25+(124+20)*(i%3);
