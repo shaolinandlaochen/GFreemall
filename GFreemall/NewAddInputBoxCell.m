@@ -47,7 +47,7 @@
     autoSize
     _name.text=string;
     CGSize size=[TheParentClass StringHeight:string Lblfont:30*autoSizeScaleY heightOfTheMinus:0];
-    _name.sd_layout.leftSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).widthIs(size.width);
+    _name.sd_layout.leftSpaceToView(self.contentView, 30*autoSizeScaleX).topSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).widthIs(size.width);
     
     _context.sd_layout.leftSpaceToView(_name, 25*autoSizeScaleX).topEqualToView(_name).bottomEqualToView(_name).rightSpaceToView(self.contentView, 25*autoSizeScaleX);
 }
