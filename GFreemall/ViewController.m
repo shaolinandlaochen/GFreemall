@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "babbarButton.h"
 @interface ViewController ()
 {
     NSArray *_imgsArray;//底部按钮未选中状态下背景图片名称
@@ -46,8 +46,8 @@
     ClassificationViewController *class=[[ClassificationViewController alloc]init];
     UINavigationController *classNav=[[UINavigationController alloc]initWithRootViewController:class];
     
-    GFMViewController *GFM=[[GFMViewController alloc]init];
-    UINavigationController *GFMNav=[[UINavigationController alloc]initWithRootViewController:GFM];
+    //GFMViewController *GFM=[[GFMViewController alloc]init];
+   // UINavigationController *GFMNav=[[UINavigationController alloc]initWithRootViewController:GFM];
     
     ShoppingCartViewController *shoping=[[ShoppingCartViewController alloc]init];
     UINavigationController *shopingNav=[[UINavigationController alloc]initWithRootViewController:shoping];
@@ -56,7 +56,7 @@
     UINavigationController *myNav=[[UINavigationController alloc]initWithRootViewController:my];
     
     
-    self.array=@[homeNav,classNav,GFMNav,shopingNav,myNav];
+    self.array=@[homeNav,classNav,shopingNav,myNav];
     self.index=0;
     [self createButton];
 
@@ -64,13 +64,12 @@
 colorWithStr
 //创建底部按钮
 -(void)createButton{
-    NSArray *nameArray=@[@"Home",@"classification",@"GFM",@"shoppingCart",@"My"];
+    NSArray *nameArray=@[@"Home",@"classification",@"shoppingCart",@"My"];
     autoSize
     _bgrangdView=[[UIView alloc]init];
     _bgrangdView.tag=1994;
     _bgrangdView.backgroundColor=[self colorWithHexString:@"#f3f5f7"];
     [self.view addSubview:_bgrangdView];
-    //_bgrangdView.sd_layout.leftSpaceToView(self.view, 0).widthIs(self.view.frame.size.width).heightIs(98*autoSizeScaleY).bottomSpaceToView(self.view, 0);
     float height=98*autoSizeScaleY;
     _bgrangdView.frame=CGRectMake(0, self.view.frame.size.height-height, self.view.frame.size.width, height);
     //线
@@ -78,55 +77,46 @@ colorWithStr
     line.backgroundColor=[TheParentClass colorWithHexString:@"#b2b2b2"];
     [_bgrangdView addSubview:line];
     line.sd_layout.leftSpaceToView(_bgrangdView, 0).topSpaceToView(_bgrangdView, 0).rightSpaceToView(_bgrangdView, 0).heightIs(0.6);
-    _imgsArray=@[@"icon_home",@"icon_classify",@"icon_gfm",@"icon_cart",@"icon_mine"];
-    _selsctedBtnImages=@[@"icon_home_s",@"icon_classify_s",@"icon_gfm_s",@"icon_cart_s",@"icon_mine_s"];
-    for (int i=0; i<5; i++) {
-        float x=52+(48+102)*(i%5);
+    _imgsArray=@[@"icon_home",@"icon_classify",@"icon_cart",@"icon_mine"];
+    _selsctedBtnImages=@[@"icon_home_s",@"icon_classify_s",@"icon_cart_s",@"icon_mine_s"];
+    for (int i=0; i<4; i++) {
+        float x=self.view.frame.size.width/4;
         //图标
-        UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setBackgroundImage:[UIImage imageNamed:_imgsArray[i]] forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:_selsctedBtnImages[i]] forState:UIControlStateSelected];
+        babbarButton *btn=[babbarButton buttonWithType:UIButtonTypeCustom];
+        [btn setImage:[UIImage imageNamed:_imgsArray[i]] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:_selsctedBtnImages[i]] forState:UIControlStateSelected];
+        [btn setTitle:Localized(nameArray[i]) forState:UIControlStateNormal];
+        [btn setTitleColor:[TheParentClass colorWithHexString:@"#292929"] forState:UIControlStateNormal];
+        btn.titleLabel.font=[UIFont systemFontOfSize:20*autoSizeScaleY];
         if (i==_index) {
             btn.selected=YES;
         }else{
             btn.selected=NO;
         }
         btn.tag=i+1;
+        btn.titleLabel.textAlignment=NSTextAlignmentCenter;
         [btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [_bgrangdView addSubview:btn];
-        btn.sd_layout.topSpaceToView(_bgrangdView, 15*autoSizeScaleY).leftSpaceToView(_bgrangdView, x*autoSizeScaleX).widthIs(48*autoSizeScaleX).heightIs(42*autoSizeScaleY);
-        //底部按钮名称
-        UILabel *lbl=[[UILabel alloc]init];
-        lbl.text=Localized(nameArray[i]);
-        lbl.textAlignment=NSTextAlignmentCenter;
-        lbl.textColor=[TheParentClass colorWithHexString:@"#292929"];
-        lbl.font=[UIFont systemFontOfSize:20*autoSizeScaleX];
-        [_bgrangdView addSubview:lbl];
-        float with=self.view.frame.size.width/5;
-        float xxx=2+(148+2)*(i%5);
-        lbl.sd_layout.leftSpaceToView(_bgrangdView, xxx*autoSizeScaleX).topSpaceToView(btn, 12*autoSizeScaleX).widthIs(148*autoSizeScaleX).bottomSpaceToView(_bgrangdView, 2);
-        //最上面的btn
-        UIButton *buton=[UIButton buttonWithType:UIButtonTypeCustom];
-        [buton addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        buton.frame=CGRectMake(with*i, 0, with, _bgrangdView.size.height);
-        buton.tag=i+10;
-        [_bgrangdView addSubview:buton];
+        btn.sd_layout.topSpaceToView(_bgrangdView, 1).leftSpaceToView(_bgrangdView, x*i).widthIs(x).heightIs(96*autoSizeScaleY);
+
         
         
     }
 }
 //点击底部按钮触发方法
 -(void)onButtonClick:(UIButton *)btn{
-    if (btn.tag==_index+10) {
+    if (btn.tag==_index+1) {
         return;
     }else{
-        self.index=btn.tag-10;
-        for (int i=1; i<6; i++) {
+        self.index=btn.tag-1;
+        for (int i=1; i<5; i++) {
             UIButton *button=(UIButton *)[_bgrangdView viewWithTag:i];
             button.selected=NO;
+            if (i==btn.tag) {
+                  button.selected=YES;
+            }
         }
-        UIButton *selectdBtn=(UIButton *)[_bgrangdView viewWithTag:btn.tag-9];
-        selectdBtn.selected=YES;
+      
     }
 }
 //set方法
@@ -148,7 +138,7 @@ colorWithStr
     
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _index=-10;
+        _index=-1;
         
     }
     return self;

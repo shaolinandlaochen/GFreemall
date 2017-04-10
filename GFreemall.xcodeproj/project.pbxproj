@@ -395,6 +395,7 @@
 		38DB9E771E9B1B5200E4BECA /* pic_shoucang.png in Resources */ = {isa = PBXBuildFile; fileRef = 38DB9E741E9B1B5200E4BECA /* pic_shoucang.png */; };
 		38DB9E781E9B1B5200E4BECA /* pic_shoucang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38DB9E751E9B1B5200E4BECA /* pic_shoucang@2x.png */; };
 		38DB9E791E9B1B5200E4BECA /* pic_shoucang@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38DB9E761E9B1B5200E4BECA /* pic_shoucang@3x.png */; };
+		38DB9E7C1E9B314500E4BECA /* babbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 38DB9E7B1E9B314500E4BECA /* babbarButton.m */; };
 		38E9E3BE1E909948001EFBAD /* AttributeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E9E3BD1E909948001EFBAD /* AttributeSelectionViewController.m */; };
 		38EE5F301E972DC800A7DE52 /* RegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F2F1E972DC800A7DE52 /* RegisteredViewController.m */; };
 		38EE5F331E973DE400A7DE52 /* SetThPasswordAgainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F321E973DE400A7DE52 /* SetThPasswordAgainViewController.m */; };
@@ -934,6 +935,8 @@
 		38DB9E741E9B1B5200E4BECA /* pic_shoucang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pic_shoucang.png; path = "imgs/个人/归档/pic_shoucang.png"; sourceTree = "<group>"; };
 		38DB9E751E9B1B5200E4BECA /* pic_shoucang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pic_shoucang@2x.png"; path = "imgs/个人/归档/pic_shoucang@2x.png"; sourceTree = "<group>"; };
 		38DB9E761E9B1B5200E4BECA /* pic_shoucang@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pic_shoucang@3x.png"; path = "imgs/个人/归档/pic_shoucang@3x.png"; sourceTree = "<group>"; };
+		38DB9E7A1E9B314500E4BECA /* babbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = babbarButton.h; sourceTree = "<group>"; };
+		38DB9E7B1E9B314500E4BECA /* babbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = babbarButton.m; sourceTree = "<group>"; };
 		38E9E3BC1E909948001EFBAD /* AttributeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeSelectionViewController.h; sourceTree = "<group>"; };
 		38E9E3BD1E909948001EFBAD /* AttributeSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeSelectionViewController.m; sourceTree = "<group>"; };
 		38EE5F2E1E972DC800A7DE52 /* RegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisteredViewController.h; sourceTree = "<group>"; };
@@ -1002,6 +1005,8 @@
 				383655521E8CFC390034C332 /* MyImageView.m */,
 				38C1A8C41E92213A00A26DCF /* MyTextField.h */,
 				38C1A8C51E92213A00A26DCF /* MyTextField.m */,
+				38DB9E7A1E9B314500E4BECA /* babbarButton.h */,
+				38DB9E7B1E9B314500E4BECA /* babbarButton.m */,
 			);
 			name = "自定义属性";
 			sourceTree = "<group>";
@@ -2321,6 +2326,7 @@
 				38C1A9091E92393800A26DCF /* NiCaiCell.m in Sources */,
 				38EE5F4C1E9769D800A7DE52 /* MonthView.m in Sources */,
 				38C1A8C01E91F14400A26DCF /* MyShippingAddress.m in Sources */,
+				38DB9E7C1E9B314500E4BECA /* babbarButton.m in Sources */,
 				38C1A8C31E92208D00A26DCF /* InputBoxCell.m in Sources */,
 				383A441F1E951778002CBDA0 /* PayThePasswordCell.m in Sources */,
 				3836550D1E8CA4E90034C332 /* ListCell.m in Sources */,
