@@ -43,7 +43,7 @@
     CGFloat titleY = contentRect.size.height *0.50;
     CGFloat titleW = contentRect.size.width;
     CGFloat titleH = contentRect.size.height - titleY;
-    return CGRectMake(titleX, titleY+(8*autoSizeScaleY), titleW, titleH);
+    return CGRectMake(titleX+1, titleY+(8*autoSizeScaleY), titleW, titleH);
 }
 
 -(CGRect)imageRectForContentRect:(CGRect)contentRect{

@@ -98,8 +98,6 @@ colorWithStr
         [btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [_bgrangdView addSubview:btn];
         btn.sd_layout.topSpaceToView(_bgrangdView, 1).leftSpaceToView(_bgrangdView, x*i).widthIs(x).heightIs(96*autoSizeScaleY);
-
-        
         
     }
 }
