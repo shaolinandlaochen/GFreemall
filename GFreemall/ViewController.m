@@ -102,13 +102,13 @@ colorWithStr
     }
 }
 //点击底部按钮触发方法
--(void)onButtonClick:(UIButton *)btn{
+-(void)onButtonClick:(babbarButton *)btn{
     if (btn.tag==_index+1) {
         return;
     }else{
         self.index=btn.tag-1;
         for (int i=1; i<5; i++) {
-            UIButton *button=(UIButton *)[_bgrangdView viewWithTag:i];
+            babbarButton *button=(babbarButton *)[_bgrangdView viewWithTag:i];
             button.selected=NO;
             if (i==btn.tag) {
                   button.selected=YES;
