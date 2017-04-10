@@ -32,6 +32,7 @@
     _tableView=[[UITableView alloc]initWithFrame:frame(0, -50, 750, 1500) style:UITableViewStylePlain];
     _tableView.dataSource=self;
     _tableView.delegate=self;
+    _tableView.scrollEnabled=NO;
     _tableView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     [self.view addSubview:_tableView];
     // Do any additional setup after loading the view.

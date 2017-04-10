@@ -42,6 +42,7 @@ cancelClick
     _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.scrollEnabled=NO;
     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
     
