@@ -11,7 +11,7 @@
 #import "SearchListingsCollectionViewCell.h"
 #import "SearchListingsView.h"
 #import "BrandCell.h"
-
+#import "MyNewsViewController.h"
 @interface ClassificationViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 {
     UILabel *number;
@@ -234,7 +234,8 @@ autoSize
 }
 //点击右边导航条按钮执行该方法
 -(void)onBarButtonClick:(UIButton *)btn{
-    
+    MyNewsViewController *news=[[MyNewsViewController alloc]init];
+    [self.navigationController pushViewController:news animated:YES];
     
 }
 -(void)AddTheSearch{

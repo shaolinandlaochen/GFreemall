@@ -31,9 +31,10 @@
             MyButton *btn=[[MyButton alloc]init];
             [btn setTitle:Localized(nameArray[i]) forState:UIControlStateNormal];
             [btn setTitleColor:[TheParentClass colorWithHexString:@"#292929"] forState:UIControlStateNormal];
+             [btn setTitleColor:[TheParentClass colorWithHexString:@"#de0024"] forState:UIControlStateSelected];
             btn.titleLabel.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
             if (i==0) {
-                [btn setTitleColor:[TheParentClass colorWithHexString:@"#de0024"] forState:UIControlStateNormal];
+                btn.selected=YES;
             }
             btn.tag=i+1;
             [btn addTarget:self action:@selector(onButtonCLick:) forControlEvents:UIControlEventTouchUpInside];
@@ -61,6 +62,17 @@
 
 }
 -(void)onButtonCLick:(MyButton *)btn{
+    for (int i=0; i<4; i++) {
+        MyButton *buttong=(MyButton *)[self viewWithTag:i+1];
+        buttong.selected=NO;
+        UILabel *line=(UILabel *)[self viewWithTag:i+10];
+        line.backgroundColor=[UIColor clearColor];
+        
+    }
+    btn.selected=YES;
+    UILabel *lines=(UILabel *)[self viewWithTag:btn.tag+9];
+    lines.backgroundColor=[UIColor redColor];
+    
 
 
 }

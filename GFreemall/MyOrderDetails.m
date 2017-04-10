@@ -17,6 +17,7 @@
 #import "InternalOrderButtonCell.h"
 #import "ConfirmTheGoodsViewController.h"
 #import "BillingInfo.h"
+#import "ViewTheOrderDetailsButtonsView.h"
 @interface MyOrderDetails ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *_tableView;
@@ -54,15 +55,16 @@
         if (indexPath.row==0) {
             return 150*autoSizeScaleY;
         }else if (indexPath.row==1){
-            return 118*autoSizeScaleY;
+            return 148*autoSizeScaleY;
         }
-    }else if (indexPath.section==4){
-        return 107*autoSizeScaleY;
     }
     return 0*autoSizeScaleY;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     autoSize
+    if (section==3) {
+        return 107*autoSizeScaleY;
+    }
     return 20*autoSizeScaleY;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -85,11 +87,30 @@
     return nil;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-
+    if (section==3) {
+        OrderButtonView *view=[[OrderButtonView alloc]init];
+        if ([self.state isEqualToString:@"待收货"]) {
+            view.strOne=@"确认收货";
+            [view.btnOne addTarget:self action:@selector(onButtonOneCLIck:) forControlEvents:UIControlEventTouchUpInside];
+            
+        }else if ([self.state isEqualToString:@"待评价"]){
+            
+            view.strOne=@"去评价";
+            [view.btnOne addTarget:self action:@selector(onButtonOneCLIck:) forControlEvents:UIControlEventTouchUpInside];
+            
+        }else if ([self.state isEqualToString:@"待付款"]){
+            view.strOne=@"去支付";
+            [view.btnOne addTarget:self action:@selector(onButtonOneCLIck:) forControlEvents:UIControlEventTouchUpInside];
+            view.strTwo=@"取消";
+            [view.BtnTwo addTarget:self action:@selector(onButtonOneCLIck:) forControlEvents:UIControlEventTouchUpInside];
+            
+        }
+        return view;
+    }
     return nil;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return 4;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {
@@ -146,27 +167,6 @@
             cell.userInteractionEnabled=NO;
             return cell;
         }
-    }else if (indexPath.section==4){
-        InternalOrderButtonCell *cell=[InternalOrderButtonCell new];
-        if ([self.state isEqualToString:@"待收货"]) {
-            cell.OrderView.strOne=@"确认收货";
-            [cell.OrderView.btnOne addTarget:self action:@selector(onButtonOneCLIck:) forControlEvents:UIControlEventTouchUpInside];
-
-        }else if ([self.state isEqualToString:@"待评价"]){
-        
-            cell.OrderView.strOne=@"去评价";
-            [cell.OrderView.btnOne addTarget:self action:@selector(onButtonOneCLIck:) forControlEvents:UIControlEventTouchUpInside];
-
-        }else if ([self.state isEqualToString:@"待付款"]){
-            cell.OrderView.strOne=@"去支付";
-            [cell.OrderView.btnOne addTarget:self action:@selector(onButtonOneCLIck:) forControlEvents:UIControlEventTouchUpInside];
-            cell.OrderView.strTwo=@"取消";
-            [cell.OrderView.BtnTwo addTarget:self action:@selector(onButtonOneCLIck:) forControlEvents:UIControlEventTouchUpInside];
-            
-        }
-        
-        
-        return cell;
     }
     
     NULLCell *cell=[NULLCell new];

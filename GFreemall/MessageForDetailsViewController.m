@@ -31,10 +31,11 @@ cancelClick
     CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
     CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
     UILabel *title=[[UILabel alloc]init];
+    title.textAlignment=NSTextAlignmentCenter;
     title.textColor=[TheParentClass colorWithHexString:@"#292929"];
     title.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
     title.numberOfLines=0;
-    title.text=@"打狗棍多功能的观点粉身碎骨的方式跟第三方开个会";
+    title.text=@"打狗棍多功能的观点粉身碎三方开个会";
     [self.view addSubview:title];
     title.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(self.view, navheight+rectStatus.size.height+(80*autoSizeScaleY)).rightSpaceToView(self.view, 25*autoSizeScaleX).autoHeightRatio(0);
     

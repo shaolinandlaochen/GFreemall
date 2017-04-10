@@ -110,7 +110,24 @@ autoSize
     // _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
     _tableView.sd_layout.leftEqualToView(_OrderView).topSpaceToView(_OrderView, 0).rightEqualToView(_OrderView).bottomSpaceToView(self.view, 0);
+    //[self BuildNoOrderView];//没有订单
 
+}
+-(void)BuildNoOrderView{
+    autoSize
+    UIImageView *img=[[UIImageView alloc]init];
+    img.image=[UIImage imageNamed:@"无订单"];
+    [self.view addSubview:img];
+    img.sd_layout.leftSpaceToView(self.view, 195*autoSizeScaleX).rightSpaceToView(self.view, 195*autoSizeScaleX).topSpaceToView(self.view, 300*autoSizeScaleY).heightIs(141*autoSizeScaleY);
+    UILabel *lbl=[[UILabel alloc]init];
+    lbl.text=Localized(@"您还没有相关订单");
+    lbl.textColor=[TheParentClass colorWithHexString:@"#999999"];
+    lbl.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
+    lbl.textAlignment=NSTextAlignmentCenter;
+    [self.view addSubview:lbl];
+    lbl.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(img, 10).heightIs(35*autoSizeScaleY);
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

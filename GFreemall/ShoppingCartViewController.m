@@ -8,7 +8,7 @@
 
 #import "ShoppingCartViewController.h"
 #import "ShoppingCartProductsCell.h"
-
+#import "MyNewsViewController.h"
 @interface ShoppingCartViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -149,6 +149,8 @@
 }
 //消息
 -(void)onBarButtonClick:(MyButton *)btn{
+    MyNewsViewController *news=[[MyNewsViewController alloc]init];
+    [self.navigationController pushViewController:news animated:YES];
 
 }
 //编辑

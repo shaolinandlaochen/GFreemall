@@ -164,8 +164,8 @@
     [view addSubview:BarButton];
     
     //右按钮
-    UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:view];
-    self.navigationItem.rightBarButtonItem=item;
+ //   UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:view];
+   // self.navigationItem.rightBarButtonItem=item;
     
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
 

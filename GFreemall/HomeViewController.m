@@ -16,6 +16,7 @@
 #import "ThreePictureCell.h"
 #import "ImageCell.h"
 #import "MoreAndMoreCell.h"
+#import "MyNewsViewController.h"
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,HomeScrollViewDelegate>
 {
     UIButton *BarButton;//导航条按钮1
@@ -187,7 +188,8 @@ autoSize
 }
 //点击右边导航条按钮执行该方法
 -(void)onBarButtonClick:(UIButton *)btn{
-   
+    MyNewsViewController *news=[[MyNewsViewController alloc]init];
+    [self.navigationController pushViewController:news animated:YES];
 
 }
 //点击滚动视图执行该方法

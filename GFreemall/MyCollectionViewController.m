@@ -32,6 +32,7 @@
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
     [self CreatView];
+   // [self BuildNoCollectioneView];//没有收藏
     // Do any additional setup after loading the view.
 }
 cancelClick
@@ -86,6 +87,22 @@ cancelClick
     EditTheCollectionViewController *EditTheCollection=[[EditTheCollectionViewController alloc]init];
     [self.navigationController pushViewController:EditTheCollection animated:YES];
 
+}
+-(void)BuildNoCollectioneView{
+    autoSize
+    UIImageView *img=[[UIImageView alloc]init];
+    img.image=[UIImage imageNamed:@"pic_shoucang"];
+    [self.view addSubview:img];
+    img.sd_layout.leftSpaceToView(self.view, 195*autoSizeScaleX).rightSpaceToView(self.view, 195*autoSizeScaleX).topSpaceToView(self.view, 300*autoSizeScaleY).heightIs(141*autoSizeScaleY);
+    UILabel *lbl=[[UILabel alloc]init];
+    lbl.text=Localized(@"您还没有任何收藏呢");
+    lbl.textColor=[TheParentClass colorWithHexString:@"#999999"];
+    lbl.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
+    lbl.textAlignment=NSTextAlignmentCenter;
+    [self.view addSubview:lbl];
+    lbl.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(img, 10).heightIs(35*autoSizeScaleY);
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

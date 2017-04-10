@@ -43,7 +43,10 @@
         [self.contentView addSubview:_time];
         _time.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(_money, 14*autoSizeScaleY).widthIs(400).heightIs(30*autoSizeScaleY);
         
-        
+        UILabel *_line=[[UILabel alloc]init];
+        _line.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+        [self addSubview:_line];
+        _line.sd_layout.leftSpaceToView(self, 0).bottomSpaceToView(self, 0).rightSpaceToView(self, 0).heightIs(20*autoSizeScaleY);
         
     }
     
