@@ -52,6 +52,11 @@
         [self.contentView addSubview:_go];
         _go.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 52*autoSizeScaleY).widthIs(44*autoSizeScaleX).heightIs(44*autoSizeScaleY);
         
+        _img_line=[[UIImageView alloc]init];
+        [self.contentView addSubview:_img_line];
+        _img_line.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).heightIs(2);
+        
+        
     }
     return self;
 

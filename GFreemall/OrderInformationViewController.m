@@ -99,6 +99,7 @@
         cell.defaultStr.text=@"默认";
         cell.go.image=[UIImage imageNamed:@"icon_right"];
         cell.defaultStr.backgroundColor=[UIColor redColor];
+        cell.img_line.image=[UIImage imageNamed:@"jiesuan_line"];
         return cell;
     }else if (indexPath.section==1){
         if (indexPath.row==0) {
