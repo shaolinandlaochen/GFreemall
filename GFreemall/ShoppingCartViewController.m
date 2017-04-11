@@ -34,6 +34,7 @@
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-height) style:UITableViewStylePlain];
     _tableView.dataSource=self;
     _tableView.delegate=self;
+    _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
     
    // [self EmptyTheShoppingCart];//购物车是空的

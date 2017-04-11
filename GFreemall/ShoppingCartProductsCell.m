@@ -77,6 +77,10 @@
         [self.contentView addSubview:_deleteBtn];
         _deleteBtn.sd_layout.leftEqualToView(_bjImage).topEqualToView(_bjImage).bottomEqualToView(_bjImage).widthIs(_bjImage.frame.size.width/2);
         
+        UIView *line=[[UIView alloc]init];
+        line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
+        [self.contentView addSubview:line];
+        line.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).heightIs(1);
         
         
         
