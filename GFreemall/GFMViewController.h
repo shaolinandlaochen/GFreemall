@@ -7,6 +7,7 @@
 //
 
 #import "TheParentClass.h"
+
 @interface GFMViewController : TheParentClass
 @property(nonatomic,assign)NSInteger index;
 @end

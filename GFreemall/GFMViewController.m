@@ -11,7 +11,7 @@
 #import "Recommended.h"
 #import "LineUp.h"
 #import "babbarButton.h"
-@interface GFMViewController ()
+@interface GFMViewController ()<TheModalDelegate,LineTheModalDelegate,RecommendedTheModalDelegate>
 {
     UIView *colorsView;
     CAGradientLayer *gradientLayer;
@@ -26,64 +26,28 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden=YES;
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     GFMS *gfm=[[GFMS alloc]init];
+    gfm.delegate=self;
     UINavigationController *navGFM=[[UINavigationController alloc]initWithRootViewController:gfm];
     LineUp *line=[[LineUp alloc]init];
+    line.delegate=self;
     UINavigationController *navLine=[[UINavigationController alloc]initWithRootViewController:line];
     
     Recommended *recom=[[Recommended alloc]init];
+    recom.delegate=self;
     UINavigationController *navReome=[[UINavigationController alloc]initWithRootViewController:recom];
     navArray=@[navGFM,navLine,navReome];
     
-    
-    [self CreateTheTopNavigationBar];
     [self CreatThreeButtonsAtTheBottom];
     
     // Do any additional setup after loading the view.
 }
--(void)CreateTheTopNavigationBar{
-    autoSize
-    
-    colorsView=[[UIView alloc]init];
-    colorsView.frame=CGRectMake(0, 0, self.view.frame.size.width, 127*autoSizeScaleY);
-    [self.view addSubview:colorsView];
-    
-    gradientLayer = [CAGradientLayer layer];
-    gradientLayer.colors = @[(__bridge id)[TheParentClass colorWithHexString:@"#f19d40"].CGColor, (__bridge id)[TheParentClass colorWithHexString:@"#e61f5b"].CGColor];
-    gradientLayer.locations = @[@0.1,@1.0];
-    gradientLayer.startPoint = CGPointMake(0, 0);
-    gradientLayer.endPoint = CGPointMake(1.0, 0);
-    gradientLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, 127*autoSizeScaleY);
-    [colorsView.layer addSublayer:gradientLayer];
-    
-    
-    UIButton *cancelBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    [cancelBtn setImage:[UIImage imageNamed:@"icon_back"] forState:UIControlStateNormal];
-    [cancelBtn addTarget:self action:@selector(onCanceClick) forControlEvents:UIControlEventTouchUpInside];
-    [colorsView addSubview:cancelBtn];
-    cancelBtn.sd_layout.leftSpaceToView(colorsView, 10*autoSizeScaleX).bottomSpaceToView(colorsView, 10*autoSizeScaleY).widthIs(68*autoSizeScaleX).heightIs(68*autoSizeScaleY);
-    
-    //forwarding
-    forwardingBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    [forwardingBtn setImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
-    [forwardingBtn addTarget:self action:@selector(onforwardingBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [colorsView addSubview:forwardingBtn];
-    forwardingBtn.sd_layout.rightSpaceToView(colorsView, 10*autoSizeScaleX).bottomSpaceToView(colorsView, 10*autoSizeScaleY).widthIs(68*autoSizeScaleX).heightIs(68*autoSizeScaleY);
-    
-    
-    title=[[UILabel alloc]init];
-    title.textColor=[TheParentClass colorWithHexString:@"#ffffff"];
-    title.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
-    title.textAlignment=NSTextAlignmentCenter;
-    [colorsView addSubview:title];
-    title.sd_layout.leftSpaceToView(colorsView, 200*autoSizeScaleX).rightSpaceToView(colorsView, 200*autoSizeScaleX).bottomSpaceToView(colorsView, 25*autoSizeScaleY).heightIs(40*autoSizeScaleY);
-    
-    
-}
+
 -(void)onCanceClick{
 [self dismissViewControllerAnimated:YES completion:^{
     
@@ -98,8 +62,11 @@ autoSize
     
     ThreeButtonsAtTheBottom=[[UIView alloc]init];
     ThreeButtonsAtTheBottom.backgroundColor=[UIColor whiteColor];
+    float y=self.view.frame.size.height-(98*autoSizeScaleY);
+    ThreeButtonsAtTheBottom.frame=CGRectMake(0, y, self.view.frame.size.width, 98*autoSizeScaleY);
     [self.view addSubview:ThreeButtonsAtTheBottom];
-    ThreeButtonsAtTheBottom.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0).heightIs(98*autoSizeScaleY);
+    
+   
     NSArray *_imgsArray=@[@"home1234",@"icon_paidui",@"icon_tuijian"];
     NSArray *_selsctedBtnImages=@[@"home5678",@"icon_paidui_s",@"icon_tuijian_s"];
     NSArray *nameArray=@[@"GFM",@"排队",@"推荐"];
@@ -154,8 +121,6 @@ autoSize
     }
 }
 -(void)setIndex:(NSInteger)index{
-    NSLog(@"111111");
-    
     
     if (_index==index) {
         // return;
@@ -169,7 +134,33 @@ autoSize
     [self.view sendSubviewToBack:viewcontroller.view];
     _index=index;
 }
-
+//控制是否出模态
+-(void)TheModal{
+    [self onCanceClick];
+}
+-(void)LineTheModal{
+[self onCanceClick];
+}
+-(void)RecommendedTheModalDelegateTheModal{
+[self onCanceClick];
+}
+//控制底部坐标大小
+-(void)ButtonsAtTheBottom:(BOOL)smallAndBig{
+    
+    [self SmallAndBigs:smallAndBig];
+    
+}
+-(void)SmallAndBigs:(BOOL)why{
+    autoSize
+    [UIView animateWithDuration:0.3 animations:^{
+        if (why==YES) {
+            float y=self.view.frame.size.height-(98*autoSizeScaleY);
+            ThreeButtonsAtTheBottom.frame=CGRectMake(0, y, self.view.frame.size.width, 98*autoSizeScaleY);
+        }else{
+            ThreeButtonsAtTheBottom.frame=CGRectMake(0, 1000, self.view.frame.size.width, 98*autoSizeScaleY);
+        }
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

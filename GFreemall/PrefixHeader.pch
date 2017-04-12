@@ -107,6 +107,10 @@ autoSizeScaleY = SCREENHEIGHT/1334;\
  
  CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
  CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
+ 
+ 
+ 
+  _bgImage.userInteractionEnabled = YES;
  */
 
 

@@ -8,6 +8,7 @@
 
 #import "GFMS.h"
 #import "GFMCell.h"
+#import "GFMRollOut.h"
 @interface GFMS ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -18,14 +19,64 @@
 @implementation GFMS
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden=NO;
+     [_delegate ButtonsAtTheBottom:YES];
+    self.navigationController.navigationBarHidden=YES;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
 
     [self CreatView];
+    [self CreateTheTopNavigationBar];
     // Do any additional setup after loading the view.
+}
+-(void)CreateTheTopNavigationBar{
+    autoSize
+    
+  UIView * colorsView=[[UIView alloc]init];
+    colorsView.frame=CGRectMake(0, 0, self.view.frame.size.width, 127*autoSizeScaleY);
+    [self.view addSubview:colorsView];
+    
+   CAGradientLayer* gradientLayer = [CAGradientLayer layer];
+    gradientLayer.colors = @[(__bridge id)[TheParentClass colorWithHexString:@"#f19d40"].CGColor, (__bridge id)[TheParentClass colorWithHexString:@"#e61f5b"].CGColor];
+    gradientLayer.locations = @[@0.1,@1.0];
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(1.0, 0);
+    gradientLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, 127*autoSizeScaleY);
+    [colorsView.layer addSublayer:gradientLayer];
+    
+    
+    UIButton *cancelBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelBtn setImage:[UIImage imageNamed:@"icon_back"] forState:UIControlStateNormal];
+    [cancelBtn addTarget:self action:@selector(onCanceClick) forControlEvents:UIControlEventTouchUpInside];
+    [colorsView addSubview:cancelBtn];
+    cancelBtn.sd_layout.leftSpaceToView(colorsView, 10*autoSizeScaleX).bottomSpaceToView(colorsView, 10*autoSizeScaleY).widthIs(68*autoSizeScaleX).heightIs(68*autoSizeScaleY);
+    
+    //forwarding
+    UIButton * forwardingBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    [forwardingBtn setImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
+    [forwardingBtn addTarget:self action:@selector(onforwardingBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [colorsView addSubview:forwardingBtn];
+    forwardingBtn.sd_layout.rightSpaceToView(colorsView, 10*autoSizeScaleX).bottomSpaceToView(colorsView, 10*autoSizeScaleY).widthIs(68*autoSizeScaleX).heightIs(68*autoSizeScaleY);
+    
+    
+  UILabel *  title=[[UILabel alloc]init];
+    title.textColor=[TheParentClass colorWithHexString:@"#ffffff"];
+    title.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
+    title.textAlignment=NSTextAlignmentCenter;
+    [colorsView addSubview:title];
+    title.sd_layout.leftSpaceToView(colorsView, 200*autoSizeScaleX).rightSpaceToView(colorsView, 200*autoSizeScaleX).bottomSpaceToView(colorsView, 25*autoSizeScaleY).heightIs(40*autoSizeScaleY);
+    
+    
+}
+//返回
+-(void)onCanceClick{
+    [_delegate TheModal];
+    
+}
+//转发
+-(void)onforwardingBtnClick{
+    
 }
 -(void)CreatView{
     autoSize
@@ -35,7 +86,9 @@
     _tableView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
-    _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(self.view, 0).bottomSpaceToView(self.view, 98*autoSizeScaleY);
+    CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
+   // CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
+    _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(self.view, navheight).bottomSpaceToView(self.view, 98*autoSizeScaleY);
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -92,10 +145,14 @@
     NSLog(@"查看明细");
 
 }
+//转出
 -(void)onRollOutClick:(MyButton *)btn{
-
+    [_delegate ButtonsAtTheBottom:NO];
+    GFMRollOut *RollOut=[[GFMRollOut alloc]init];
+    [self.navigationController pushViewController:RollOut animated:YES];
 
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -468,6 +468,8 @@
 		38EE5F521E97825100A7DE52 /* TimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F511E97825100A7DE52 /* TimeViewController.m */; };
 		38EE5F551E978C5E00A7DE52 /* PaymentStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F541E978C5E00A7DE52 /* PaymentStatusViewController.m */; };
 		9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB861E9CD13A009DCE8F /* GFMCell.m */; };
+		9DB2CB8A1E9DC073009DCE8F /* RecommendedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB891E9DC073009DCE8F /* RecommendedCell.m */; };
+		9DB2CB8D1E9DCE1E009DCE8F /* GFMRollOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB8C1E9DCE1E009DCE8F /* GFMRollOut.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1086,6 +1088,10 @@
 		3CAC99031124F58E22E45701 /* Pods-GFreemall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFreemall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GFreemall/Pods-GFreemall.debug.xcconfig"; sourceTree = "<group>"; };
 		9DB2CB851E9CD13A009DCE8F /* GFMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFMCell.h; sourceTree = "<group>"; };
 		9DB2CB861E9CD13A009DCE8F /* GFMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFMCell.m; sourceTree = "<group>"; };
+		9DB2CB881E9DC073009DCE8F /* RecommendedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendedCell.h; sourceTree = "<group>"; };
+		9DB2CB891E9DC073009DCE8F /* RecommendedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendedCell.m; sourceTree = "<group>"; };
+		9DB2CB8B1E9DCE1E009DCE8F /* GFMRollOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFMRollOut.h; sourceTree = "<group>"; };
+		9DB2CB8C1E9DCE1E009DCE8F /* GFMRollOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFMRollOut.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1869,6 +1875,10 @@
 				38DB9EC31E9B6CDF00E4BECA /* LineUp.m */,
 				38DB9EC51E9B6CF700E4BECA /* Recommended.h */,
 				38DB9EC61E9B6CF700E4BECA /* Recommended.m */,
+				9DB2CB881E9DC073009DCE8F /* RecommendedCell.h */,
+				9DB2CB891E9DC073009DCE8F /* RecommendedCell.m */,
+				9DB2CB8B1E9DCE1E009DCE8F /* GFMRollOut.h */,
+				9DB2CB8C1E9DCE1E009DCE8F /* GFMRollOut.m */,
 			);
 			name = GFM;
 			sourceTree = "<group>";
@@ -2527,6 +2537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DB2CB8D1E9DCE1E009DCE8F /* GFMRollOut.m in Sources */,
 				383A44031E94DE91002CBDA0 /* InventoryListCell.m in Sources */,
 				38EE5F491E97698800A7DE52 /* walletDetailsCell.m in Sources */,
 				383A44191E9510AE002CBDA0 /* AmountToShowCell.m in Sources */,
@@ -2638,6 +2649,7 @@
 				38536CD81E8F9003003E9015 /* TheEvaluationListCell.m in Sources */,
 				38DB9EC11E9B6CBB00E4BECA /* GFMS.m in Sources */,
 				3818ADB01E8B4C4300CA2FB6 /* MyView.m in Sources */,
+				9DB2CB8A1E9DC073009DCE8F /* RecommendedCell.m in Sources */,
 				38EE5F4F1E97753200A7DE52 /* PrepaidPhoneRecordsTableViewCell.m in Sources */,
 				38536CBA1E8F3741003E9015 /* CostCalculationCell.m in Sources */,
 				38E9E3BE1E909948001EFBAD /* AttributeSelectionViewController.m in Sources */,

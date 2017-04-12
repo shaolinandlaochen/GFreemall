@@ -7,7 +7,7 @@
 //
 
 #import "Recommended.h"
-
+#import "RecommendedCell.h"
 @interface Recommended ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -19,14 +19,62 @@
 @implementation Recommended
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden=NO;
+    self.navigationController.navigationBarHidden=YES;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     
     [self CreatView];
+    [self CreateTheTopNavigationBar];
     // Do any additional setup after loading the view.
+}
+-(void)CreateTheTopNavigationBar{
+    autoSize
+    
+    UIView * colorsView=[[UIView alloc]init];
+    colorsView.frame=CGRectMake(0, 0, self.view.frame.size.width, 127*autoSizeScaleY);
+    [self.view addSubview:colorsView];
+    
+    CAGradientLayer* gradientLayer = [CAGradientLayer layer];
+    gradientLayer.colors = @[(__bridge id)[TheParentClass colorWithHexString:@"#f19d40"].CGColor, (__bridge id)[TheParentClass colorWithHexString:@"#e61f5b"].CGColor];
+    gradientLayer.locations = @[@0.1,@1.0];
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(1.0, 0);
+    gradientLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, 127*autoSizeScaleY);
+    [colorsView.layer addSublayer:gradientLayer];
+    
+    
+    UIButton *cancelBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelBtn setImage:[UIImage imageNamed:@"icon_back"] forState:UIControlStateNormal];
+    [cancelBtn addTarget:self action:@selector(onCanceClick) forControlEvents:UIControlEventTouchUpInside];
+    [colorsView addSubview:cancelBtn];
+    cancelBtn.sd_layout.leftSpaceToView(colorsView, 10*autoSizeScaleX).bottomSpaceToView(colorsView, 10*autoSizeScaleY).widthIs(68*autoSizeScaleX).heightIs(68*autoSizeScaleY);
+    
+    //forwarding
+    UIButton * forwardingBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    [forwardingBtn setImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
+    [forwardingBtn addTarget:self action:@selector(onforwardingBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [colorsView addSubview:forwardingBtn];
+    forwardingBtn.sd_layout.rightSpaceToView(colorsView, 10*autoSizeScaleX).bottomSpaceToView(colorsView, 10*autoSizeScaleY).widthIs(68*autoSizeScaleX).heightIs(68*autoSizeScaleY);
+    
+    
+    UILabel *  title=[[UILabel alloc]init];
+    title.textColor=[TheParentClass colorWithHexString:@"#ffffff"];
+    title.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
+    title.textAlignment=NSTextAlignmentCenter;
+    [colorsView addSubview:title];
+    title.sd_layout.leftSpaceToView(colorsView, 200*autoSizeScaleX).rightSpaceToView(colorsView, 200*autoSizeScaleX).bottomSpaceToView(colorsView, 25*autoSizeScaleY).heightIs(40*autoSizeScaleY);
+    
+    
+}
+//返回
+-(void)onCanceClick{
+    [_delegate RecommendedTheModalDelegateTheModal];
+}
+//转发
+-(void)onforwardingBtnClick{
+    
 }
 -(void)CreatView{
     autoSize
@@ -36,12 +84,13 @@
     _tableView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
-    _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(self.view, 0).bottomSpaceToView(self.view, 98*autoSizeScaleY);
+     CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
+    _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(self.view, navheight).bottomSpaceToView(self.view, 98*autoSizeScaleY);
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     autoSize
-    return 360*autoSizeScaleY;
+    return 264*autoSizeScaleY;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     autoSize
@@ -69,8 +118,11 @@
     return 10;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NULLCell *cell=[NULLCell new];
+    RecommendedCell *cell=[RecommendedCell new];
+    cell.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    cell.bjImagge.image=[UIImage imageNamed:@""];
+    cell.strings.text=@"第一轮A层";
+    cell.timeStr.text=Localized(@"加入时间: 2016-12-02 12:08:42");
     return cell;
     
 }
