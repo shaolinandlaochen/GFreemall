@@ -8,7 +8,11 @@
 
 #import "Recommended.h"
 
-@interface Recommended ()
+@interface Recommended ()<UITableViewDelegate,UITableViewDataSource>
+{
+    UITableView *_tableView;
+}
+
 
 @end
 
@@ -19,8 +23,61 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.view.backgroundColor=[UIColor grayColor];
+    self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    
+    [self CreatView];
     // Do any additional setup after loading the view.
+}
+-(void)CreatView{
+    autoSize
+    _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
+    _tableView.delegate=self;
+    _tableView.dataSource=self;
+    _tableView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    _tableView.separatorColor=[UIColor clearColor];
+    [self.view addSubview:_tableView];
+    _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(self.view, 0).bottomSpaceToView(self.view, 98*autoSizeScaleY);
+    
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    autoSize
+    return 360*autoSizeScaleY;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    autoSize
+    
+    return 0*autoSizeScaleY;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    autoSize
+    return 0;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    return nil;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    return nil;
+    
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 10;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NULLCell *cell=[NULLCell new];
+    return cell;
+    
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

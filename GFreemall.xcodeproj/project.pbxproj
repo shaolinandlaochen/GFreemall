@@ -467,6 +467,7 @@
 		38EE5F4F1E97753200A7DE52 /* PrepaidPhoneRecordsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F4E1E97753200A7DE52 /* PrepaidPhoneRecordsTableViewCell.m */; };
 		38EE5F521E97825100A7DE52 /* TimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F511E97825100A7DE52 /* TimeViewController.m */; };
 		38EE5F551E978C5E00A7DE52 /* PaymentStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F541E978C5E00A7DE52 /* PaymentStatusViewController.m */; };
+		9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB861E9CD13A009DCE8F /* GFMCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1083,6 +1084,8 @@
 		38EE5F531E978C5E00A7DE52 /* PaymentStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentStatusViewController.h; sourceTree = "<group>"; };
 		38EE5F541E978C5E00A7DE52 /* PaymentStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentStatusViewController.m; sourceTree = "<group>"; };
 		3CAC99031124F58E22E45701 /* Pods-GFreemall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFreemall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GFreemall/Pods-GFreemall.debug.xcconfig"; sourceTree = "<group>"; };
+		9DB2CB851E9CD13A009DCE8F /* GFMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFMCell.h; sourceTree = "<group>"; };
+		9DB2CB861E9CD13A009DCE8F /* GFMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFMCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1860,6 +1863,8 @@
 				38C9DCCD1E8901C300F231B0 /* GFMViewController.m */,
 				38DB9EBF1E9B6CBB00E4BECA /* GFMS.h */,
 				38DB9EC01E9B6CBB00E4BECA /* GFMS.m */,
+				9DB2CB851E9CD13A009DCE8F /* GFMCell.h */,
+				9DB2CB861E9CD13A009DCE8F /* GFMCell.m */,
 				38DB9EC21E9B6CDF00E4BECA /* LineUp.h */,
 				38DB9EC31E9B6CDF00E4BECA /* LineUp.m */,
 				38DB9EC51E9B6CF700E4BECA /* Recommended.h */,
@@ -2612,6 +2617,7 @@
 				3818ADBF1E8BB23200CA2FB6 /* SearchListingsCollectionViewCell.m in Sources */,
 				382E02A61E95D1ED00DEF382 /* OrderAmountDetailCell.m in Sources */,
 				3818ADB61E8B5EDC00CA2FB6 /* ImageCell.m in Sources */,
+				9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */,
 				383A440D1E94E479002CBDA0 /* BillingInfoNumberCell.m in Sources */,
 				383655D81E8E42530034C332 /* MyoptionsView.m in Sources */,
 				382E02D91E96095700DEF382 /* MyNewsCell.m in Sources */,
