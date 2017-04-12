@@ -12,6 +12,7 @@
 #import "PrepaidPhoneRecordsTableViewCell.h"//充值记录
 #import "TimeViewController.h"
 #import "PaymentStatusViewController.h"
+#import "TransferRecordCell.h"//转出记录
 @interface WalletDetailsViewController ()<UITableViewDataSource,UITableViewDelegate,ToChooseTimeIsDelegate,PaymentStatusDelegate>
 
 {
@@ -23,7 +24,10 @@
 @end
 
 @implementation WalletDetailsViewController
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden=NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -92,6 +96,8 @@ autoSize
     autoSize
     if ([self.were isEqualToString:@"钱包明细"]) {
         return 414*autoSizeScaleY;
+    }else if ([self.were isEqualToString:@"转出记录"]){
+        return 386*autoSizeScaleY;
     }
     return 332*autoSizeScaleY;
 }
@@ -142,6 +148,19 @@ autoSize
         cell.time.text=Localized(@"2017-12-12 12:00:12");
         cell.orderNumber.text=Localized(@"65465464646");
         return cell;
+    
+    }else if ([self.were isEqualToString:@"转出记录"]){
+        TransferRecordCell *cell=[TransferRecordCell new];
+        cell.userInteractionEnabled = NO;
+        cell.numberName.text=Localized(@"印人民");
+        cell.money.text=@"¥99999";
+        cell.state.text=Localized(@"待支付");
+        cell.time.text=Localized(@"2017-12-12 12:00:12");
+        cell.orderNumber.text=Localized(@"65465464646");
+        
+        
+        return cell;
+        
     
     }
         

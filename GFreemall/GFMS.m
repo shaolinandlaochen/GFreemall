@@ -9,6 +9,7 @@
 #import "GFMS.h"
 #import "GFMCell.h"
 #import "GFMRollOut.h"
+#import "WalletDetailsViewController.h"//钱包明细
 @interface GFMS ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -137,12 +138,19 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    [_delegate ButtonsAtTheBottom:NO];
+    WalletDetailsViewController *WalletDetails=[[WalletDetailsViewController alloc]init];
+    WalletDetails.were=@"钱包明细";
+    [self.navigationController pushViewController:WalletDetails animated:YES];
     
 }
 //查看明细
 -(void)onCheckTheDetailBtnClick:(MyButton *)btn{
     NSLog(@"查看明细");
+    [_delegate ButtonsAtTheBottom:NO];
+    WalletDetailsViewController *WalletDetails=[[WalletDetailsViewController alloc]init];
+    WalletDetails.were=@"钱包明细";
+    [self.navigationController pushViewController:WalletDetails animated:YES];
 
 }
 //转出

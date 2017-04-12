@@ -470,6 +470,10 @@
 		9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB861E9CD13A009DCE8F /* GFMCell.m */; };
 		9DB2CB8A1E9DC073009DCE8F /* RecommendedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB891E9DC073009DCE8F /* RecommendedCell.m */; };
 		9DB2CB8D1E9DCE1E009DCE8F /* GFMRollOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB8C1E9DCE1E009DCE8F /* GFMRollOut.m */; };
+		9DB2CB901E9E1362009DCE8F /* TransferRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB8F1E9E1362009DCE8F /* TransferRecordCell.m */; };
+		9DB2CB931E9E1466009DCE8F /* RollOutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB921E9E1466009DCE8F /* RollOutTableViewCell.m */; };
+		9DB2CB961E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB951E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.m */; };
+		9DB2CB991E9E264E009DCE8F /* MyButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB981E9E264E009DCE8F /* MyButtonCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1092,6 +1096,14 @@
 		9DB2CB891E9DC073009DCE8F /* RecommendedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendedCell.m; sourceTree = "<group>"; };
 		9DB2CB8B1E9DCE1E009DCE8F /* GFMRollOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFMRollOut.h; sourceTree = "<group>"; };
 		9DB2CB8C1E9DCE1E009DCE8F /* GFMRollOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFMRollOut.m; sourceTree = "<group>"; };
+		9DB2CB8E1E9E1362009DCE8F /* TransferRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferRecordCell.h; sourceTree = "<group>"; };
+		9DB2CB8F1E9E1362009DCE8F /* TransferRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferRecordCell.m; sourceTree = "<group>"; };
+		9DB2CB911E9E1466009DCE8F /* RollOutTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollOutTableViewCell.h; sourceTree = "<group>"; };
+		9DB2CB921E9E1466009DCE8F /* RollOutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RollOutTableViewCell.m; sourceTree = "<group>"; };
+		9DB2CB941E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFMConvertibleOutOfBalanceCell.h; sourceTree = "<group>"; };
+		9DB2CB951E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFMConvertibleOutOfBalanceCell.m; sourceTree = "<group>"; };
+		9DB2CB971E9E264E009DCE8F /* MyButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyButtonCell.h; sourceTree = "<group>"; };
+		9DB2CB981E9E264E009DCE8F /* MyButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyButtonCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1879,6 +1891,14 @@
 				9DB2CB891E9DC073009DCE8F /* RecommendedCell.m */,
 				9DB2CB8B1E9DCE1E009DCE8F /* GFMRollOut.h */,
 				9DB2CB8C1E9DCE1E009DCE8F /* GFMRollOut.m */,
+				9DB2CB8E1E9E1362009DCE8F /* TransferRecordCell.h */,
+				9DB2CB8F1E9E1362009DCE8F /* TransferRecordCell.m */,
+				9DB2CB911E9E1466009DCE8F /* RollOutTableViewCell.h */,
+				9DB2CB921E9E1466009DCE8F /* RollOutTableViewCell.m */,
+				9DB2CB941E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.h */,
+				9DB2CB951E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.m */,
+				9DB2CB971E9E264E009DCE8F /* MyButtonCell.h */,
+				9DB2CB981E9E264E009DCE8F /* MyButtonCell.m */,
 			);
 			name = GFM;
 			sourceTree = "<group>";
@@ -2608,6 +2628,7 @@
 				382E02ED1E961B0A00DEF382 /* basicInformationCell.m in Sources */,
 				383A43F71E94CF2A002CBDA0 /* OrdersForGoodsListCell.m in Sources */,
 				383655D11E8E35130034C332 /* SearchForGoodsCell.m in Sources */,
+				9DB2CB901E9E1362009DCE8F /* TransferRecordCell.m in Sources */,
 				38C9DCD61E89021600F231B0 /* MyViewController.m in Sources */,
 				382E02E61E96111A00DEF382 /* EditTheCollectionCell.m in Sources */,
 				383655161E8CDCD50034C332 /* MyMessageCells.m in Sources */,
@@ -2626,6 +2647,7 @@
 				382E02CC1E95E89900DEF382 /* StayEvaluationListCell.m in Sources */,
 				383655101E8CA5190034C332 /* BrandCell.m in Sources */,
 				3818ADBF1E8BB23200CA2FB6 /* SearchListingsCollectionViewCell.m in Sources */,
+				9DB2CB961E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.m in Sources */,
 				382E02A61E95D1ED00DEF382 /* OrderAmountDetailCell.m in Sources */,
 				3818ADB61E8B5EDC00CA2FB6 /* ImageCell.m in Sources */,
 				9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */,
@@ -2642,6 +2664,7 @@
 				382E03091E96590600DEF382 /* AboutViewController.m in Sources */,
 				38EE5F401E975EFF00A7DE52 /* PasswordManagement.m in Sources */,
 				382E02A31E95CC8A00DEF382 /* ShippingInformationTableViewCell.m in Sources */,
+				9DB2CB991E9E264E009DCE8F /* MyButtonCell.m in Sources */,
 				383A43F41E94BD2C002CBDA0 /* OrderAddressCell.m in Sources */,
 				38EE5F331E973DE400A7DE52 /* SetThPasswordAgainViewController.m in Sources */,
 				3818ADA91E8B3FC100CA2FB6 /* ScrollViewCell.m in Sources */,
@@ -2653,6 +2676,7 @@
 				38EE5F4F1E97753200A7DE52 /* PrepaidPhoneRecordsTableViewCell.m in Sources */,
 				38536CBA1E8F3741003E9015 /* CostCalculationCell.m in Sources */,
 				38E9E3BE1E909948001EFBAD /* AttributeSelectionViewController.m in Sources */,
+				9DB2CB931E9E1466009DCE8F /* RollOutTableViewCell.m in Sources */,
 				38536CC91E8F5624003E9015 /* HTMLContextCell.m in Sources */,
 				383A43E51E94803D002CBDA0 /* OrderCell.m in Sources */,
 				382E02D21E95EFC100DEF382 /* EvaluationOfTheViewViewController.m in Sources */,
