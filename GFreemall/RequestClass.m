@@ -22,12 +22,20 @@
 //测试
 +(void)test:(NSDictionary *)dic block:(void(^)(NSString *string))block{
     
+    
+    
    NSString *str= [TheParentClass TheKeyValueSequence:dic];
    NSString *MD5Str=[TheParentClass MD5ForLower32Bate:str];
     
     block(MD5Str);
 
 }
-
+/*
+ //时间戳
+ NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+ NSTimeInterval a=[dat timeIntervalSince1970]*1000;
+ NSString *timeString = [NSString stringWithFormat:@"%f", a];
+ NSLog(@"%@",timeString);
+ */
 
 @end
