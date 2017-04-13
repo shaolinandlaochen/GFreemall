@@ -16,7 +16,39 @@
 }
 //get请求
 +(void)getUrl:(NSString *)urlStr Dic:(NSDictionary *)dic block:(void(^)(NSDictionary *dic))block{
-
+    ////"http://192.168.88.7:8080/shop_app/login?&password=111111&timestamp=1492078968134&username=ming111"
+    
+    
+  
+    
+   NSString *string= [TheParentClass TheKeyValueSequence:dic];
+    NSString *sign=[TheParentClass MD5ForLower32Bate:string];
+    NSString *RequestUrlString=[NSString stringWithFormat:@"%@%@?&%@&sign=%@",RequestUrl,urlStr,string,sign];
+    
+    
+    
+    
+    
+    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy defaultPolicy];
+    securityPolicy.allowInvalidCertificates = YES;
+    securityPolicy.validatesDomainName = NO;
+    manager.securityPolicy = securityPolicy;
+    manager.responseSerializer =[AFHTTPResponseSerializer serializer];
+    
+    NSLog(@"请求URL==%@",RequestUrlString);
+    NSURLSessionDataTask *task=[manager GET:RequestUrlString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"%@",dic);
+        NSLog(@"get请求msg==%@",[dic objectForKey:@"msg"]);
+  
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"****get请求%@",error);
+    }];
+    [task resume];
 
 }
 //测试

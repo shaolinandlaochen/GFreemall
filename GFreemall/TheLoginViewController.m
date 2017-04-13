@@ -93,6 +93,7 @@ autoSize
     
     _phoneNumber=[[UITextField alloc]init];
     _phoneNumber.delegate=self;
+    _phoneNumber.keyboardType=UIKeyboardTypeNamePhonePad;
     _phoneNumber.placeholder=Localized(@"请输入手机号");
     _phoneNumber.textColor=[TheParentClass colorWithHexString:@"#292929"];
     _phoneNumber.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
@@ -128,6 +129,7 @@ autoSize
     
     _pswAndCode=[[UITextField alloc]init];
     _pswAndCode.delegate=self;
+    _pswAndCode.keyboardType=UIKeyboardTypeURL;
     _pswAndCode.secureTextEntry=YES;
     _pswAndCode.placeholder=Localized(@"请输入密码");
     _pswAndCode.textColor=[TheParentClass colorWithHexString:@"#292929"];
@@ -230,6 +232,26 @@ autoSize
 }
 //登录
 -(void)onTheLognClick{
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    //时间戳
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval a=[dat timeIntervalSince1970]*1000;
+    NSString *timeString = [NSString stringWithFormat:@"%f", a];
+    [dic setObject:@([timeString intValue]) forKey:@"timestamp"];
+    [dic setObject:_phoneNumber.text forKey:@"username"];
+    [dic setObject:_pswAndCode.text forKey:@"password"];
+    [dic setObject:@"1*SHOP*" forKey:@"type"];
+    
+    [RequestClass getUrl:@"login" Dic:dic block:^(NSDictionary *dic) {
+        
+    }];
+    
+    
+    
+    
+    
+    
 [self dismissViewControllerAnimated:YES completion:^{
     
 }];
