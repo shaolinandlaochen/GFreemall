@@ -11,8 +11,9 @@
 
 @required//限定实现这个协议,就必须实现这个协议方法
 
--(void)LineTheModal;
--(void)LineButtonsAtTheBottom:(BOOL)smallAndBig;
+-(void)LineTheModal;//判断是否出模态
+
+-(void)LineButtonsAtTheBottom:(BOOL)smallAndBig;//控制底部tabbar大小
 
 
 @end

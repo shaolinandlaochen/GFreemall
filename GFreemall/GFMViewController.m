@@ -144,11 +144,16 @@ autoSize
 -(void)RecommendedTheModalDelegateTheModal{
 [self onCanceClick];
 }
+-(void)RecommendedTheModalDelegateButtonsAtTheBottom:(BOOL)smallAndBig{
+ [self SmallAndBigs:smallAndBig];
+}
 //控制底部坐标大小
 -(void)ButtonsAtTheBottom:(BOOL)smallAndBig{
-    
-    [self SmallAndBigs:smallAndBig];
-    
+ [self SmallAndBigs:smallAndBig];
+}
+//控制底部坐标大小
+-(void)LineButtonsAtTheBottom:(BOOL)smallAndBig{//控制底部tabbar大小
+ [self SmallAndBigs:smallAndBig];
 }
 -(void)SmallAndBigs:(BOOL)why{
     autoSize

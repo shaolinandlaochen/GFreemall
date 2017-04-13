@@ -138,10 +138,6 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [_delegate ButtonsAtTheBottom:NO];
-    WalletDetailsViewController *WalletDetails=[[WalletDetailsViewController alloc]init];
-    WalletDetails.were=@"钱包明细";
-    [self.navigationController pushViewController:WalletDetails animated:YES];
     
 }
 //查看明细

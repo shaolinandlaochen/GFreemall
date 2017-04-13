@@ -20,6 +20,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden=YES;
+    [_delegate RecommendedTheModalDelegateButtonsAtTheBottom:YES];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

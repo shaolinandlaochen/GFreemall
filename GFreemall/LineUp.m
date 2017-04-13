@@ -9,6 +9,7 @@
 #import "LineUp.h"
 #import "AttributeSkuCell.h"
 #import "SKUCollectionReusableView.h"
+#import "FrontPageViewLayer.h"
 @interface LineUp ()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
 
@@ -24,6 +25,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden=YES;
+    [_delegate LineButtonsAtTheBottom:YES];
 }
 -(void)CreateTheTopNavigationBar{
     autoSize
@@ -180,6 +182,12 @@
     MyindexPath=btn.row;
     [_CollectionView reloadData];
     NSLog(@"%ld",MyindexPath);
+    [_delegate LineButtonsAtTheBottom:NO];
+    FrontPageViewLayer *FrontPage=[[FrontPageViewLayer alloc]init];
+    [self.navigationController pushViewController:FrontPage animated:YES];
+    
+    
+  
 
 }
 - (void)didReceiveMemoryWarning {

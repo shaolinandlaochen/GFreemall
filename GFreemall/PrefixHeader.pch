@@ -35,7 +35,8 @@
 
 
 
-
+//入口
+#define RequestUrl @"http://192.168.88.7:8080/app_shop"
 
 #define TheLogin
 
@@ -82,6 +83,26 @@ autoSizeScaleY = SCREENHEIGHT/1334;\
 #define leftCancel UIButton *Village=[UIButton buttonWithType:UIButtonTypeSystem];[Village setBackgroundImage:[UIImage imageNamed:@"icon_back"] forState:UIControlStateNormal];Village.frame=frame(-5, 10, 44, 44);[Village addTarget:self action:@selector(onCanceClick) forControlEvents:UIControlEventTouchUpInside];UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:Village];self.navigationItem.leftBarButtonItem=leftItem;
 //返回方法宏定义
 #define cancelClick -(void)onCanceClick{[self.navigationController popViewControllerAnimated:YES];}
+//返回指定索引控制器
+#define ReturnAControllerSpecifiedIndex(intex)  [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:intex] animated:YES];
+//返回指定控制器
+#define ReturnToSpecifyTheController(MyViewController)  for (UIViewController *controller in self.navigationController.viewControllers) {if ([controller isKindOfClass:[MyViewController class]]) {[self.navigationController popToViewController:controller animated:YES];}}
+
+
+
+
+/*
+ // 返回到指定索引的视图
+ 
+ [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
+ 
+ //返回你想到的类
+ for (UIViewController *controller in self.navigationController.viewControllers) {
+ if ([controller isKindOfClass:[你要跳转到的Controller class]]) {
+ [self.navigationController popToViewController:controller animated:YES];
+ }
+ }
+ */
 
 
 

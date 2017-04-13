@@ -1,5 +1,5 @@
 //
-//  FrontPageViewLayer.h
+//  DrawACircle.h
 //  GFreemall
 //
 //  Created by 123 on 2017/4/13.
@@ -8,5 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FrontPageViewLayer : UIViewController
+@interface DrawACircle : UIView
+@property(nonatomic,strong)CAShapeLayer *shapeLayer;
 @end

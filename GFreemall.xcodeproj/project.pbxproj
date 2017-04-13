@@ -476,6 +476,8 @@
 		9DB2CB991E9E264E009DCE8F /* MyButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB981E9E264E009DCE8F /* MyButtonCell.m */; };
 		9DB2CBA01E9F18F7009DCE8F /* FrontPageViewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB9F1E9F18F7009DCE8F /* FrontPageViewLayer.m */; };
 		9DB2CBA41E9F1FCE009DCE8F /* RequestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CBA31E9F1FCE009DCE8F /* RequestClass.m */; };
+		9DC006161E9F52BA001CB6D4 /* ViewLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC006151E9F52BA001CB6D4 /* ViewLayerView.m */; };
+		9DC006191E9F6506001CB6D4 /* DrawACircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC006181E9F6506001CB6D4 /* DrawACircle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1110,6 +1112,10 @@
 		9DB2CB9F1E9F18F7009DCE8F /* FrontPageViewLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontPageViewLayer.m; sourceTree = "<group>"; };
 		9DB2CBA21E9F1FCE009DCE8F /* RequestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestClass.h; sourceTree = "<group>"; };
 		9DB2CBA31E9F1FCE009DCE8F /* RequestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestClass.m; sourceTree = "<group>"; };
+		9DC006141E9F52BA001CB6D4 /* ViewLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewLayerView.h; sourceTree = "<group>"; };
+		9DC006151E9F52BA001CB6D4 /* ViewLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewLayerView.m; sourceTree = "<group>"; };
+		9DC006171E9F6506001CB6D4 /* DrawACircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawACircle.h; sourceTree = "<group>"; };
+		9DC006181E9F6506001CB6D4 /* DrawACircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawACircle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2041,6 +2047,10 @@
 			children = (
 				9DB2CB9E1E9F18F7009DCE8F /* FrontPageViewLayer.h */,
 				9DB2CB9F1E9F18F7009DCE8F /* FrontPageViewLayer.m */,
+				9DC006141E9F52BA001CB6D4 /* ViewLayerView.h */,
+				9DC006151E9F52BA001CB6D4 /* ViewLayerView.m */,
+				9DC006171E9F6506001CB6D4 /* DrawACircle.h */,
+				9DC006181E9F6506001CB6D4 /* DrawACircle.m */,
 			);
 			name = "查看成层";
 			sourceTree = "<group>";
@@ -2649,6 +2659,7 @@
 				38EE5F461E97687800A7DE52 /* WalletDetailsViewController.m in Sources */,
 				38536CBD1E8F3D0A003E9015 /* SKUCell.m in Sources */,
 				382E03001E96451600DEF382 /* SetUpViewController.m in Sources */,
+				9DC006191E9F6506001CB6D4 /* DrawACircle.m in Sources */,
 				382E02AC1E95DC4100DEF382 /* InternalOrderButtonCell.m in Sources */,
 				382E02F61E9634D400DEF382 /* MailNextViewController.m in Sources */,
 				382E02ED1E961B0A00DEF382 /* basicInformationCell.m in Sources */,
@@ -2680,6 +2691,7 @@
 				9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */,
 				383A440D1E94E479002CBDA0 /* BillingInfoNumberCell.m in Sources */,
 				383655D81E8E42530034C332 /* MyoptionsView.m in Sources */,
+				9DC006161E9F52BA001CB6D4 /* ViewLayerView.m in Sources */,
 				382E02D91E96095700DEF382 /* MyNewsCell.m in Sources */,
 				383655531E8CFC390034C332 /* MyImageView.m in Sources */,
 				3818ADAD1E8B406700CA2FB6 /* MyButton.m in Sources */,
