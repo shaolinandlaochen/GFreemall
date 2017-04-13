@@ -474,6 +474,8 @@
 		9DB2CB931E9E1466009DCE8F /* RollOutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB921E9E1466009DCE8F /* RollOutTableViewCell.m */; };
 		9DB2CB961E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB951E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.m */; };
 		9DB2CB991E9E264E009DCE8F /* MyButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB981E9E264E009DCE8F /* MyButtonCell.m */; };
+		9DB2CBA01E9F18F7009DCE8F /* FrontPageViewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB9F1E9F18F7009DCE8F /* FrontPageViewLayer.m */; };
+		9DB2CBA41E9F1FCE009DCE8F /* RequestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CBA31E9F1FCE009DCE8F /* RequestClass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1104,6 +1106,10 @@
 		9DB2CB951E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFMConvertibleOutOfBalanceCell.m; sourceTree = "<group>"; };
 		9DB2CB971E9E264E009DCE8F /* MyButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyButtonCell.h; sourceTree = "<group>"; };
 		9DB2CB981E9E264E009DCE8F /* MyButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyButtonCell.m; sourceTree = "<group>"; };
+		9DB2CB9E1E9F18F7009DCE8F /* FrontPageViewLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontPageViewLayer.h; sourceTree = "<group>"; };
+		9DB2CB9F1E9F18F7009DCE8F /* FrontPageViewLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontPageViewLayer.m; sourceTree = "<group>"; };
+		9DB2CBA21E9F1FCE009DCE8F /* RequestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestClass.h; sourceTree = "<group>"; };
+		9DB2CBA31E9F1FCE009DCE8F /* RequestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1780,6 +1786,7 @@
 				38C9DCBE1E89006000F231B0 /* SingletonClass.m */,
 				38C9DCC01E89009F00F231B0 /* TheParentClass.h */,
 				38C9DCC11E89009F00F231B0 /* TheParentClass.m */,
+				9DB2CBA11E9F1F9A009DCE8F /* 请求 */,
 				38EE5F371E97573100A7DE52 /* 钱包管理 */,
 				382E034A1E9662E300DEF382 /* 登录注册 */,
 				382E02FD1E9644F500DEF382 /* 设置 */,
@@ -1899,6 +1906,7 @@
 				9DB2CB951E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.m */,
 				9DB2CB971E9E264E009DCE8F /* MyButtonCell.h */,
 				9DB2CB981E9E264E009DCE8F /* MyButtonCell.m */,
+				9DB2CB9D1E9F18D5009DCE8F /* 查看成层 */,
 			);
 			name = GFM;
 			sourceTree = "<group>";
@@ -2026,6 +2034,24 @@
 				2975E64A1C59A326D2785033 /* Pods-GFreemall.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9DB2CB9D1E9F18D5009DCE8F /* 查看成层 */ = {
+			isa = PBXGroup;
+			children = (
+				9DB2CB9E1E9F18F7009DCE8F /* FrontPageViewLayer.h */,
+				9DB2CB9F1E9F18F7009DCE8F /* FrontPageViewLayer.m */,
+			);
+			name = "查看成层";
+			sourceTree = "<group>";
+		};
+		9DB2CBA11E9F1F9A009DCE8F /* 请求 */ = {
+			isa = PBXGroup;
+			children = (
+				9DB2CBA21E9F1FCE009DCE8F /* RequestClass.h */,
+				9DB2CBA31E9F1FCE009DCE8F /* RequestClass.m */,
+			);
+			name = "请求";
 			sourceTree = "<group>";
 		};
 		D62E94C45652529740C71570 /* Frameworks */ = {
@@ -2634,6 +2660,7 @@
 				383655161E8CDCD50034C332 /* MyMessageCells.m in Sources */,
 				38EE5F3A1E9757DA00A7DE52 /* OnlineWalletViewController.m in Sources */,
 				383A43EE1E949BEA002CBDA0 /* OrderViewS.m in Sources */,
+				9DB2CBA01E9F18F7009DCE8F /* FrontPageViewLayer.m in Sources */,
 				38C9DC8E1E88BF5F00F231B0 /* AppDelegate.m in Sources */,
 				38536CDB1E8F90CE003E9015 /* DistrictHeadView.m in Sources */,
 				383655501E8CEF2B0034C332 /* ShoppingCartProductsCell.m in Sources */,
@@ -2663,6 +2690,7 @@
 				382E03181E965FC700DEF382 /* RetrievePasswordCell.m in Sources */,
 				382E03091E96590600DEF382 /* AboutViewController.m in Sources */,
 				38EE5F401E975EFF00A7DE52 /* PasswordManagement.m in Sources */,
+				9DB2CBA41E9F1FCE009DCE8F /* RequestClass.m in Sources */,
 				382E02A31E95CC8A00DEF382 /* ShippingInformationTableViewCell.m in Sources */,
 				9DB2CB991E9E264E009DCE8F /* MyButtonCell.m in Sources */,
 				383A43F41E94BD2C002CBDA0 /* OrderAddressCell.m in Sources */,

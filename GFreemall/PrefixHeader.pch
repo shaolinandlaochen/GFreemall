@@ -30,6 +30,7 @@
 #import "GoodsDetailsViewController.h"//商品详情
 #import "MyTextField.h"//自定义输入框
 #import "TheLoginViewController.h"//登录界面
+#import "RequestClass.h"//请求类
 
 
 
