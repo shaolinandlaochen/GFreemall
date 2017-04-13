@@ -22,7 +22,16 @@
 +(CGSize)StringHeight:(NSString *)stringStr Lblfont:(float)font heightOfTheMinus:(float)height;
 //登录
 +(void)theLogin;
-
+#pragma mark - 32位 小写
++(NSString *)MD5ForLower32Bate:(NSString *)str;
+#pragma mark - 32位 大写
++(NSString *)MD5ForUpper32Bate:(NSString *)str;
+#pragma mark - 16位 大写
++(NSString *)MD5ForUpper16Bate:(NSString *)str;
+#pragma mark - 16位 小写
++(NSString *)MD5ForLower16Bate:(NSString *)str;
+#pragma mark - 键值对排序
++(NSString *)TheKeyValueSequence:(NSDictionary *)dic;
 
 
 

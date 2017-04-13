@@ -8,6 +8,7 @@
 
 #import "TheParentClass.h"
 #import "ViewController.h"
+#import <CommonCrypto/CommonCrypto.h>
 @interface TheParentClass ()
 
 @end
@@ -59,12 +60,101 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
      CGSize lblSize = [stringStr boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - height, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil].size;
     return lblSize;
 }
-//登录
+
 //登录
 +(void)theLogin{
     [[NSNotificationCenter defaultCenter]postNotificationName:@"MonitorTheLoginNotifications" object:nil];
 
 }
+
+//下面是MD5加密
+
+#pragma mark - 32位 小写
++(NSString *)MD5ForLower32Bate:(NSString *)str{
+    
+    //要进行UTF8的转码
+    const char* input = [str UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(input, (CC_LONG)strlen(input), result);
+    
+    NSMutableString *digest = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for (NSInteger i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [digest appendFormat:@"%02x", result[i]];
+    }
+    
+    return digest;
+}
+
+#pragma mark - 32位 大写
++(NSString *)MD5ForUpper32Bate:(NSString *)str{
+    
+    //要进行UTF8的转码
+    const char* input = [str UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(input, (CC_LONG)strlen(input), result);
+    
+    NSMutableString *digest = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for (NSInteger i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [digest appendFormat:@"%02X", result[i]];
+    }
+    
+    return digest;
+}
+
+#pragma mark - 16位 大写
++(NSString *)MD5ForUpper16Bate:(NSString *)str{
+    
+    NSString *md5Str = [self MD5ForUpper32Bate:str];
+    
+    NSString  *string;
+    for (int i=0; i<24; i++) {
+        string=[md5Str substringWithRange:NSMakeRange(8, 16)];
+    }
+    return string;
+}
+
+
+#pragma mark - 16位 小写
++(NSString *)MD5ForLower16Bate:(NSString *)str{
+    
+    NSString *md5Str = [self MD5ForLower32Bate:str];
+    
+    NSString  *string;
+    for (int i=0; i<24; i++) {
+        string=[md5Str substringWithRange:NSMakeRange(8, 16)];
+    }
+    return string;
+}
+
+
+#pragma mark - 键值对排序
++(NSString *)TheKeyValueSequence:(NSDictionary *)dic{
+
+    NSArray *keysArray = [dic allKeys];//获取所有键存到数组
+    NSArray *sortedArray = [keysArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2){
+        return [obj1 compare:obj2 options:NSNumericSearch];
+    }];//由于allKeys返回的是无序数组，这里我们要排列它们的顺序
+    NSMutableArray *keysNameArray=[NSMutableArray arrayWithCapacity:0];
+    for (NSString *key in sortedArray) {
+        // NSString *value = [dic objectForKey: key];
+        // NSLog(@"排列的值:%@",value);
+        [keysNameArray addObject:key];
+    }
+    
+    NSString *url;
+    for (int i=0; i<keysNameArray.count; i++) {
+        NSString *keys=keysNameArray[i];
+        
+        if (i==0) {
+            url=[NSString stringWithFormat:@"%@=%@",keys,[dic objectForKey:keys]];
+        }else{
+            url=[NSString stringWithFormat:@"%@&%@=%@",url,keys,[dic objectForKey:keys]];
+        }
+    }
+
+    return url;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -17,6 +17,7 @@
 #import "ImageCell.h"
 #import "MoreAndMoreCell.h"
 #import "MyNewsViewController.h"
+#import "GFMViewController.h"
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,HomeScrollViewDelegate>
 {
     UIButton *BarButton;//导航条按钮1
@@ -39,6 +40,9 @@
     [self.view addSubview:_tableView];
 
     [SVProgressHUD dismiss];
+    
+    
+    
     // Do any additional setup after loading the view.
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -188,8 +192,13 @@ autoSize
 }
 //点击右边导航条按钮执行该方法
 -(void)onBarButtonClick:(UIButton *)btn{
-    MyNewsViewController *news=[[MyNewsViewController alloc]init];
-    [self.navigationController pushViewController:news animated:YES];
+//    MyNewsViewController *news=[[MyNewsViewController alloc]init];
+//    [self.navigationController pushViewController:news animated:YES];
+    GFMViewController *gfm=[[GFMViewController alloc]init];
+    UINavigationController *navGFM=[[UINavigationController alloc]initWithRootViewController:gfm];
+    [self presentViewController:navGFM animated:YES completion:^{
+        
+    }];
 
 }
 //点击滚动视图执行该方法

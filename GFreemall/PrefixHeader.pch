@@ -30,6 +30,7 @@
 #import "GoodsDetailsViewController.h"//商品详情
 #import "MyTextField.h"//自定义输入框
 #import "TheLoginViewController.h"//登录界面
+#import "RequestClass.h"//请求类
 
 
 
@@ -107,6 +108,10 @@ autoSizeScaleY = SCREENHEIGHT/1334;\
  
  CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
  CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
+ 
+ 
+ 
+  _bgImage.userInteractionEnabled = YES;
  */
 
 
