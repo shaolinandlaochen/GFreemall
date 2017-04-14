@@ -482,6 +482,8 @@
 		9D2937621EA0AA0E00A86E10 /* ForCategoricalDataBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D29375D1EA0AA0E00A86E10 /* ForCategoricalDataBaseClass.m */; };
 		9D2937631EA0AA0E00A86E10 /* ForCategoricalDataListCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D29375F1EA0AA0E00A86E10 /* ForCategoricalDataListCategory.m */; };
 		9D2937641EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937611EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.m */; };
+		9D2937681EA0CDF400A86E10 /* NSObject+DeleteArrOrDeleteDicBothNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937671EA0CDF400A86E10 /* NSObject+DeleteArrOrDeleteDicBothNull.m */; };
+		9D29376C1EA0D38E00A86E10 /* CollectionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D29376B1EA0D38E00A86E10 /* CollectionRequest.m */; };
 		9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB861E9CD13A009DCE8F /* GFMCell.m */; };
 		9DB2CB8A1E9DC073009DCE8F /* RecommendedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB891E9DC073009DCE8F /* RecommendedCell.m */; };
 		9DB2CB8D1E9DCE1E009DCE8F /* GFMRollOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB8C1E9DCE1E009DCE8F /* GFMRollOut.m */; };
@@ -1136,6 +1138,10 @@
 		9D29375F1EA0AA0E00A86E10 /* ForCategoricalDataListCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForCategoricalDataListCategory.m; sourceTree = "<group>"; };
 		9D2937601EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForCategoricalDataSecondNav.h; sourceTree = "<group>"; };
 		9D2937611EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForCategoricalDataSecondNav.m; sourceTree = "<group>"; };
+		9D2937661EA0CDF400A86E10 /* NSObject+DeleteArrOrDeleteDicBothNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DeleteArrOrDeleteDicBothNull.h"; sourceTree = "<group>"; };
+		9D2937671EA0CDF400A86E10 /* NSObject+DeleteArrOrDeleteDicBothNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DeleteArrOrDeleteDicBothNull.m"; sourceTree = "<group>"; };
+		9D29376A1EA0D38E00A86E10 /* CollectionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionRequest.h; sourceTree = "<group>"; };
+		9D29376B1EA0D38E00A86E10 /* CollectionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionRequest.m; sourceTree = "<group>"; };
 		9DB2CB851E9CD13A009DCE8F /* GFMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFMCell.h; sourceTree = "<group>"; };
 		9DB2CB861E9CD13A009DCE8F /* GFMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFMCell.m; sourceTree = "<group>"; };
 		9DB2CB881E9DC073009DCE8F /* RecommendedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendedCell.h; sourceTree = "<group>"; };
@@ -1278,6 +1284,7 @@
 				382E02E21E96107000DEF382 /* EditTheCollectionViewController.m */,
 				382E02E41E96111A00DEF382 /* EditTheCollectionCell.h */,
 				382E02E51E96111A00DEF382 /* EditTheCollectionCell.m */,
+				9D2937691EA0D36F00A86E10 /* 请求类 */,
 			);
 			name = "收藏";
 			sourceTree = "<group>";
@@ -1841,6 +1848,7 @@
 				38C9DCC01E89009F00F231B0 /* TheParentClass.h */,
 				38C9DCC11E89009F00F231B0 /* TheParentClass.m */,
 				9D29373F1EA09B5700A86E10 /* DataModels.h */,
+				9D2937651EA0CDD400A86E10 /* 空数据过滤 */,
 				9D2937441EA09F2600A86E10 /* 提示框 */,
 				9DB2CBA11E9F1F9A009DCE8F /* 请求 */,
 				38EE5F371E97573100A7DE52 /* 钱包管理 */,
@@ -2189,6 +2197,24 @@
 				9D2937611EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.m */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		9D2937651EA0CDD400A86E10 /* 空数据过滤 */ = {
+			isa = PBXGroup;
+			children = (
+				9D2937661EA0CDF400A86E10 /* NSObject+DeleteArrOrDeleteDicBothNull.h */,
+				9D2937671EA0CDF400A86E10 /* NSObject+DeleteArrOrDeleteDicBothNull.m */,
+			);
+			name = "空数据过滤";
+			sourceTree = "<group>";
+		};
+		9D2937691EA0D36F00A86E10 /* 请求类 */ = {
+			isa = PBXGroup;
+			children = (
+				9D29376A1EA0D38E00A86E10 /* CollectionRequest.h */,
+				9D29376B1EA0D38E00A86E10 /* CollectionRequest.m */,
+			);
+			name = "请求类";
 			sourceTree = "<group>";
 		};
 		9DB2CB9D1E9F18D5009DCE8F /* 查看成层 */ = {
@@ -2760,6 +2786,7 @@
 				382E02DC1E960C2100DEF382 /* MessageForDetailsViewController.m in Sources */,
 				3818ADC21E8BB27D00CA2FB6 /* SearchListingsView.m in Sources */,
 				38DB9EC41E9B6CDF00E4BECA /* LineUp.m in Sources */,
+				9D2937681EA0CDF400A86E10 /* NSObject+DeleteArrOrDeleteDicBothNull.m in Sources */,
 				382E02B01E95E26200DEF382 /* ConfirmTheGoodsViewController.m in Sources */,
 				382E02EA1E961A3100DEF382 /* MyBasicInformationViewController.m in Sources */,
 				383654301E8CA2E10034C332 /* MyAllCell.m in Sources */,
@@ -2796,6 +2823,7 @@
 				38C1A8C01E91F14400A26DCF /* MyShippingAddress.m in Sources */,
 				38DB9E7C1E9B314500E4BECA /* babbarButton.m in Sources */,
 				38C1A8C31E92208D00A26DCF /* InputBoxCell.m in Sources */,
+				9D29376C1EA0D38E00A86E10 /* CollectionRequest.m in Sources */,
 				383A441F1E951778002CBDA0 /* PayThePasswordCell.m in Sources */,
 				3836550D1E8CA4E90034C332 /* ListCell.m in Sources */,
 				382E02E01E960E5300DEF382 /* MyCollectionViewController.m in Sources */,

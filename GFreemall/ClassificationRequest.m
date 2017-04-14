@@ -17,7 +17,7 @@
     }
     NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
     [RequestClass getUrl:@"querycategory" Dic:data block:^(NSDictionary *dic) {
-        NSLog(@"分类获取数据----%@",dic);
+        //NSLog(@"分类获取数据----%@",dic);
         NSLog(@"get意分类获取数据---msg==%@",[dic objectForKey:@"msg"]);
         block(dic);
         

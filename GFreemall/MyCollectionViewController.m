@@ -9,6 +9,7 @@
 #import "MyCollectionViewController.h"
 #import "SearchForGoodsCell.h"
 #import "EditTheCollectionViewController.h"
+#import "CollectionRequest.h"
 @interface MyCollectionViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 {
@@ -33,7 +34,17 @@
     leftCancel
     [self CreatView];
    // [self BuildNoCollectioneView];//没有收藏
+    
+    
+    [self AccessToDataCollectionList];
+    
     // Do any additional setup after loading the view.
+}
+-(void)AccessToDataCollectionList{
+    [CollectionRequest ToObtainAListCollectionblock:^(NSDictionary *dic) {
+        
+    }];
+
 }
 cancelClick
 -(void)CreatView{

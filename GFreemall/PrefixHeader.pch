@@ -38,6 +38,7 @@
 
 #import "DataModels.h"//model模型类
 #import "FTIndicator.h"//提示框
+#import "NSObject+DeleteArrOrDeleteDicBothNull.h"
 
 
 

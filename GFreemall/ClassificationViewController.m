@@ -69,16 +69,22 @@
     [self ToGetTheData];//获取数据
     // Do any additional setup after loading the view.
 }
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
 -(void)ToGetTheData{
+    [SVProgressHUD showWithStatus:Localized(@"正在加载")];
     [ClassificationRequest ForCategoricalData:^(NSDictionary *dicData) {
-        self.dataDics=dicData;
+        self.dataDics=[self deleteEmpty:dicData];
         ForCategoricalDataBaseClass *class=[[ForCategoricalDataBaseClass alloc]initWithDictionary:dicData];
         if ([class.code isEqualToString:@"4"]) {
-            
+            [_tableView reloadData];
+            [_CollectionView reloadData];
         }else{
             [FTIndicator showErrorWithMessage:class.msg];
         }
+        [SVProgressHUD dismiss];
     }];
     
 
@@ -93,7 +99,7 @@
     SearchListingsView *view =  [collectionView dequeueReusableSupplementaryViewOfKind :kind withReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
-    view.name.text=@"我是标题";
+   // view.name.text=@"我是标题";
     }
     return view;
 }
@@ -102,7 +108,7 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     autoSize
     float yu=187*autoSizeScaleX;
-    CGSize size={self.view.frame.size.width-yu,30*autoSizeScaleY};
+    CGSize size={self.view.frame.size.width-yu,0*autoSizeScaleY};
     return size;
 }
 
@@ -114,7 +120,10 @@
 //每区返回的行数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return 25;
+    NSArray *listCategory=[self.dataDics objectForKey:@"listCategory"];
+    NSDictionary *dic=listCategory[defaultIdx];
+    NSArray *second_nav=[dic objectForKey:@"second_nav"];
+    return second_nav.count;
 }
 //构建单元格
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -124,7 +133,11 @@
 //        BrandCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"321" forIndexPath:indexPath];
 
         SearchListingsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"123" forIndexPath:indexPath];
-        cell.name.text=@"名称";
+        NSArray *listCategory=[self.dataDics objectForKey:@"listCategory"];
+        NSDictionary *dic=listCategory[defaultIdx];
+        NSArray *second_nav=[dic objectForKey:@"second_nav"];
+        NSDictionary *smallDic=second_nav[indexPath.row];
+        cell.name.text=[NSString stringWithFormat:@"%@",[smallDic objectForKey:@"category_name"]];
         return cell;
    
 }
@@ -140,7 +153,7 @@
     autoSize
     CGSize size;
 
-      size =CGSizeMake(130*autoSizeScaleX, 126*autoSizeScaleX);
+      size =CGSizeMake(144*autoSizeScaleX, 140*autoSizeScaleX);
   
     return size;
 }
@@ -162,7 +175,10 @@ autoSize
 
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    
+    ForCategoricalDataBaseClass *classs=[[ForCategoricalDataBaseClass alloc]initWithDictionary:self.dataDics];
+    return classs.listCategory.count;
+    
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -173,9 +189,13 @@ autoSize
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
    
-       
-        ListCell *cell=[ListCell new];
-        cell.lbl.text=@"男装";
+    ListCell *cell=[ListCell new];
+    
+    NSArray *listCategory=[self.dataDics objectForKey:@"listCategory"];
+    
+    cell.lbl.text=[NSString stringWithFormat:@"%@",[listCategory[indexPath.row] objectForKey:@"category_name"]];
+
+    
         if (indexPath.row==defaultIdx) {
             cell.backgroundColor=[UIColor whiteColor];
         }else{
