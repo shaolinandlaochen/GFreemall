@@ -32,13 +32,15 @@
 #import "TheLoginViewController.h"//登录界面
 #import "RequestClass.h"//请求类
 
-//第三方请求
-//第三方请求类
-#import "AFNetworking.h"
-//请求
-#import "AFHTTPSessionManager.h"
-//af封装的一些关于ui方面的请求操作
-#import "UIKit+AFNetworking.h"
+#import "AFNetworking.h"//第三方请求类
+#import "AFHTTPSessionManager.h"//请求
+#import "UIKit+AFNetworking.h"//af封装的一些关于ui方面的请求操作
+
+#import "DataModels.h"//model模型类
+
+
+
+
 
 
 

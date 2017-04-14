@@ -41,15 +41,10 @@
 }
 //get请求
 +(void)getUrl:(NSString *)urlStr Dic:(NSDictionary *)dic block:(void(^)(NSDictionary *dic))block{
-    ////"http://192.168.88.7:8080/shop_app/login?&password=111111&timestamp=1492078968134&username=ming111"
     
     
-  
-    
-    NSString *string= [TheParentClass TheKeyValueSequence:dic];//请求数据排序
-    NSString *RequestUrlString=[NSString stringWithFormat:@"%@%@?&%@*SHOP*",RequestUrl,urlStr,string];//将签名和请求数据以及端口号拼接亲来形成get请求
-    
-    
+    NSString *string= [TheParentClass SimpleSorting:dic];//请求数据排序
+    NSString *RequestUrlString=[NSString stringWithFormat:@"%@%@?&%@",RequestUrl,urlStr,string];//将签名和请求数据以及端口号拼接亲来形成get请求
     AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
     AFSecurityPolicy *securityPolicy = [AFSecurityPolicy defaultPolicy];
     securityPolicy.allowInvalidCertificates = YES;

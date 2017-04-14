@@ -20,7 +20,7 @@
     
     // Do any additional setup after loading the view.
 }
-//颜色值
+#pragma mark -颜色值
 +(UIColor *)colorWithHexString:(NSString *)color{
 
 NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
@@ -54,14 +54,14 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
     [[NSNotificationCenter defaultCenter]postNotificationName:@"small" object:nil];
     }
 }
-//文本自适应返回size
+#pragma mark -文本自适应返回size
 +(CGSize)StringHeight:(NSString *)stringStr Lblfont:(float)font heightOfTheMinus:(float)height{
 
      CGSize lblSize = [stringStr boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - height, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil].size;
     return lblSize;
 }
 
-//登录
+#pragma mark -登录
 +(void)theLogin{
     [[NSNotificationCenter defaultCenter]postNotificationName:@"MonitorTheLoginNotifications" object:nil];
 
@@ -127,7 +127,7 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
 }
 
 
-#pragma mark - 键值对排序
+#pragma mark - 签名键值对排序
 +(NSString *)TheKeyValueSequence:(NSDictionary *)dic{
 
     NSArray *keysArray = [dic allKeys];//获取所有键存到数组
@@ -151,10 +151,12 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
             url=[NSString stringWithFormat:@"%@&%@=%@",url,keys,[dic objectForKey:keys]];
         }
     }
-
-    return url;
+    
+    NSString *stringSurl=[NSString stringWithFormat:@"%@*SHOP*",url];
+    NSLog(@"拼接好的字符串%@",stringSurl);
+    return stringSurl;
 }
-//获取时间戳
+#pragma mark - //获取时间戳
 +(NSInteger)timeStamp{
     //时间戳
     NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
@@ -163,7 +165,7 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
 
     return [timeString integerValue];
 }
-////传入字典添加数据返回完整的数据
+#pragma mark - 传入字典添加数据返回完整的数据
 +(NSDictionary *)ReceiveTheOriginalData:(NSDictionary *)dic{
 
    NSArray *keysArray = [dic allKeys];
@@ -181,11 +183,46 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
     return dataDic;//返回添加完毕数据也签名完毕的数据
     
 }
+#pragma mark 单纯的排序
++(NSString *)SimpleSorting:(NSDictionary *)dataDic{
+    
+    NSArray *keysArray = [dataDic allKeys];//获取所有键存到数组
+    NSArray *sortedArray = [keysArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2){
+        return [obj1 compare:obj2 options:NSNumericSearch];
+    }];//由于allKeys返回的是无序数组，这里我们要排列它们的顺序
+    NSMutableArray *keysNameArray=[NSMutableArray arrayWithCapacity:0];
+    for (NSString *key in sortedArray) {
+        // NSString *value = [dic objectForKey: key];
+        // NSLog(@"排列的值:%@",value);
+        [keysNameArray addObject:key];
+    }
+    
+    NSString *url;
+    for (int i=0; i<keysNameArray.count; i++) {
+        NSString *keys=keysNameArray[i];
+        
+        if (i==0) {
+            url=[NSString stringWithFormat:@"%@=%@",keys,[dataDic objectForKey:keys]];
+        }else{
+            url=[NSString stringWithFormat:@"%@&%@=%@",url,keys,[dataDic objectForKey:keys]];
+        }
+    }
+    
+
+    return url;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+//需要重新登录
++(void)YouNeedToLogIn{
 
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"" forKey:@"token"];
+    //同步数据
+    [defaults synchronize];
+}
 /*
 #pragma mark - Navigation
 

@@ -30,12 +30,16 @@
 +(NSString *)MD5ForUpper16Bate:(NSString *)str;
 #pragma mark - 16位 小写
 +(NSString *)MD5ForLower16Bate:(NSString *)str;
-#pragma mark - 键值对排序
+#pragma mark - 签名键值对排序
 +(NSString *)TheKeyValueSequence:(NSDictionary *)dic;
+#pragma mark - 单纯的排序
++(NSString *)SimpleSorting:(NSDictionary *)dataDic;
 //获取时间戳
 +(NSInteger)timeStamp;
 ////传入字典添加数据返回完整的数据
 +(NSDictionary *)ReceiveTheOriginalData:(NSDictionary *)dic;
+//需要重新登录
++(void)YouNeedToLogIn;
 
 
 

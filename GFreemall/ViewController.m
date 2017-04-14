@@ -24,6 +24,15 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([[NSUserDefaults standardUserDefaults]valueForKey:@"token"]==nil) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:@"" forKey:@"token"];
+        //同步数据
+        [defaults synchronize];
+    }
+    
+    
+    
     [self dataCrollers];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TheLanguageWwitchBox) name:@"TheLanguageWwitchBox" object:nil];//切换语言
@@ -31,6 +40,8 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(small) name:@"small" object:nil];
 //监听登录通知
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TheLongin) name:@"MonitorTheLoginNotifications" object:nil];
+    
+  
     
    
     // Do any additional setup after loading the view, typically from a nib.

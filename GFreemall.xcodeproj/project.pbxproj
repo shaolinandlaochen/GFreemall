@@ -472,6 +472,7 @@
 		9D29373C1EA07BE400A86E10 /* fenlei_kk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2937391EA07BE400A86E10 /* fenlei_kk.png */; };
 		9D29373D1EA07BE400A86E10 /* fenlei_kk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D29373A1EA07BE400A86E10 /* fenlei_kk@2x.png */; };
 		9D29373E1EA07BE400A86E10 /* fenlei_kk@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D29373B1EA07BE400A86E10 /* fenlei_kk@3x.png */; };
+		9D2937431EA09B7000A86E10 /* LoginBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937421EA09B7000A86E10 /* LoginBaseClass.m */; };
 		9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB861E9CD13A009DCE8F /* GFMCell.m */; };
 		9DB2CB8A1E9DC073009DCE8F /* RecommendedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB891E9DC073009DCE8F /* RecommendedCell.m */; };
 		9DB2CB8D1E9DCE1E009DCE8F /* GFMRollOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB8C1E9DCE1E009DCE8F /* GFMRollOut.m */; };
@@ -1106,6 +1107,9 @@
 		9D2937391EA07BE400A86E10 /* fenlei_kk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fenlei_kk.png; path = "imgs/首页/fenlei_kk.png"; sourceTree = "<group>"; };
 		9D29373A1EA07BE400A86E10 /* fenlei_kk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fenlei_kk@2x.png"; path = "imgs/首页/fenlei_kk@2x.png"; sourceTree = "<group>"; };
 		9D29373B1EA07BE400A86E10 /* fenlei_kk@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fenlei_kk@3x.png"; path = "imgs/首页/fenlei_kk@3x.png"; sourceTree = "<group>"; };
+		9D29373F1EA09B5700A86E10 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
+		9D2937411EA09B7000A86E10 /* LoginBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginBaseClass.h; sourceTree = "<group>"; };
+		9D2937421EA09B7000A86E10 /* LoginBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginBaseClass.m; sourceTree = "<group>"; };
 		9DB2CB851E9CD13A009DCE8F /* GFMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFMCell.h; sourceTree = "<group>"; };
 		9DB2CB861E9CD13A009DCE8F /* GFMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFMCell.m; sourceTree = "<group>"; };
 		9DB2CB881E9DC073009DCE8F /* RecommendedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendedCell.h; sourceTree = "<group>"; };
@@ -1327,6 +1331,7 @@
 				38EE5F321E973DE400A7DE52 /* SetThPasswordAgainViewController.m */,
 				38EE5F341E9740D300A7DE52 /* UserRegistrationAgreementViewController.h */,
 				38EE5F351E9740D300A7DE52 /* UserRegistrationAgreementViewController.m */,
+				9D2937401EA09B6400A86E10 /* model */,
 				9D2937311EA067E700A86E10 /* 请求 */,
 			);
 			name = "登录注册";
@@ -1809,6 +1814,7 @@
 				38C9DCBE1E89006000F231B0 /* SingletonClass.m */,
 				38C9DCC01E89009F00F231B0 /* TheParentClass.h */,
 				38C9DCC11E89009F00F231B0 /* TheParentClass.m */,
+				9D29373F1EA09B5700A86E10 /* DataModels.h */,
 				9DB2CBA11E9F1F9A009DCE8F /* 请求 */,
 				38EE5F371E97573100A7DE52 /* 钱包管理 */,
 				382E034A1E9662E300DEF382 /* 登录注册 */,
@@ -2075,6 +2081,15 @@
 				9D2937371EA075CD00A86E10 /* setUpRequest.m */,
 			);
 			name = "请求";
+			sourceTree = "<group>";
+		};
+		9D2937401EA09B6400A86E10 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				9D2937411EA09B7000A86E10 /* LoginBaseClass.h */,
+				9D2937421EA09B7000A86E10 /* LoginBaseClass.m */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 		9DB2CB9D1E9F18D5009DCE8F /* 查看成层 */ = {
@@ -2738,6 +2753,7 @@
 				38C9DCC21E89009F00F231B0 /* TheParentClass.m in Sources */,
 				9D2937341EA067FE00A86E10 /* LoginRequuestClass.m in Sources */,
 				38C9DCC61E89012A00F231B0 /* HomeViewController.m in Sources */,
+				9D2937431EA09B7000A86E10 /* LoginBaseClass.m in Sources */,
 				38C9DCCE1E8901C300F231B0 /* GFMViewController.m in Sources */,
 				382E03181E965FC700DEF382 /* RetrievePasswordCell.m in Sources */,
 				382E03091E96590600DEF382 /* AboutViewController.m in Sources */,

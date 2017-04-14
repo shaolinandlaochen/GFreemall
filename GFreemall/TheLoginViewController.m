@@ -235,7 +235,12 @@ autoSize
 -(void)onTheLognClick{
     
    [LoginRequuestClass LoginUsername:_phoneNumber.text password:_pswAndCode.text block:^(NSDictionary *dic) {
-      
+       LoginBaseClass *login=[[LoginBaseClass alloc]initWithDictionary:dic];
+       NSLog(@"%@",login.msg);
+       if ([login.code isEqualToString:@"1"]) {//登录成功
+           
+           
+       }
    }];
     
     
