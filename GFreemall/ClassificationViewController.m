@@ -12,6 +12,7 @@
 #import "SearchListingsView.h"
 #import "BrandCell.h"
 #import "MyNewsViewController.h"
+#import "ClassificationRequest.h"
 @interface ClassificationViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 {
     UILabel *number;
@@ -20,6 +21,7 @@
     UICollectionView *_CollectionView;
     UICollectionViewFlowLayout *flowLayout;
     UIView *lines;
+    NSInteger defaultIdx;
 }
 @end
 
@@ -32,6 +34,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self SetTheNavigationBar];//创建导航条
     [self AddTheSearch];//创建搜索框
+    defaultIdx=0;
     autoSize
     CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
     CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
@@ -63,11 +66,23 @@
     _CollectionView.backgroundColor=[UIColor whiteColor];
     
     
-  
+    [self ToGetTheData];//获取数据
     // Do any additional setup after loading the view.
 }
 
+-(void)ToGetTheData{
+    [ClassificationRequest ForCategoricalData:^(NSDictionary *dicData) {
+        self.dataDics=dicData;
+        ForCategoricalDataBaseClass *class=[[ForCategoricalDataBaseClass alloc]initWithDictionary:dicData];
+        if ([class.code isEqualToString:@"4"]) {
+            
+        }else{
+            [FTIndicator showErrorWithMessage:class.msg];
+        }
+    }];
+    
 
+}
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     
     NSString *reuseIdentifier;
@@ -151,19 +166,25 @@ autoSize
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    defaultIdx=indexPath.row;
+    [_tableView reloadData];
+    [_CollectionView reloadData];
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row<10) {
+   
        
         ListCell *cell=[ListCell new];
         cell.lbl.text=@"男装";
+        if (indexPath.row==defaultIdx) {
+            cell.backgroundColor=[UIColor whiteColor];
+        }else{
+            cell.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+        }
       
         return cell;
-    }
     
-    NULLCell *celll=[NULLCell new];
-    return celll;
+
 }
 
 -(void)SetTheNavigationBar{

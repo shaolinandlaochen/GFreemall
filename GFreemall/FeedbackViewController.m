@@ -72,12 +72,19 @@
 }
 //提交
 -(void)onButtonClick{
-    
-    NSLog(@"意见反馈开始发起请求");
-    
- [setUpRequest feedback:_tf.text block:^(NSDictionary *dicDatas) {
-     
- }];
+    if ([tokenString length]<1) {
+         [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+    }else{
+        NSLog(@"意见反馈开始发起请求");
+        
+        [setUpRequest feedback:_tf.text block:^(NSDictionary *dicDatas) {
+            LoginBaseClass *lgClass=[[LoginBaseClass alloc]initWithDictionary:dicDatas];
+            
+            [FTIndicator showSuccessWithMessage:lgClass.msg];
+            
+        }];
+    }
+
     
 
 }

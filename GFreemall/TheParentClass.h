@@ -12,6 +12,7 @@
 
 @interface TheParentClass : UIViewController
 @property (nonatomic,assign)id delegate;
+@property(nonatomic,copy)NSString *token;
 //获取颜色值公用方法
 +(UIColor *)colorWithHexString:(NSString *)color;
 //切换语言
@@ -39,7 +40,7 @@
 ////传入字典添加数据返回完整的数据
 +(NSDictionary *)ReceiveTheOriginalData:(NSDictionary *)dic;
 //需要重新登录
-+(void)YouNeedToLogIn;
++(void)YouNeedToLogIn:(NSString *)message;
 
 
 

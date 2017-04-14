@@ -17,7 +17,7 @@
     [dic setObject:password forKey:@"password"];
     NSDictionary *dataDic=[TheParentClass ReceiveTheOriginalData:dic];//去添加时间戳等数据然后返回签名后的数据
     [RequestClass getUrl:@"login" Dic:dataDic block:^(NSDictionary *dic) {
-
+        NSLog(@"登录结果%@",dic);
         block(dic);
         
     }];

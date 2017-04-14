@@ -473,6 +473,15 @@
 		9D29373D1EA07BE400A86E10 /* fenlei_kk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D29373A1EA07BE400A86E10 /* fenlei_kk@2x.png */; };
 		9D29373E1EA07BE400A86E10 /* fenlei_kk@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D29373B1EA07BE400A86E10 /* fenlei_kk@3x.png */; };
 		9D2937431EA09B7000A86E10 /* LoginBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937421EA09B7000A86E10 /* LoginBaseClass.m */; };
+		9D2937521EA09F3B00A86E10 /* FTIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937471EA09F3B00A86E10 /* FTIndicator.m */; };
+		9D2937531EA09F3B00A86E10 /* FTNotificationIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D29374A1EA09F3B00A86E10 /* FTNotificationIndicator.m */; };
+		9D2937541EA09F3B00A86E10 /* FTProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D29374D1EA09F3B00A86E10 /* FTProgressIndicator.m */; };
+		9D2937551EA09F3B00A86E10 /* ImageAsserts.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9D29374E1EA09F3B00A86E10 /* ImageAsserts.bundle */; };
+		9D2937561EA09F3B00A86E10 /* FTToastIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937511EA09F3B00A86E10 /* FTToastIndicator.m */; };
+		9D29375B1EA0A87500A86E10 /* ClassificationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D29375A1EA0A87500A86E10 /* ClassificationRequest.m */; };
+		9D2937621EA0AA0E00A86E10 /* ForCategoricalDataBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D29375D1EA0AA0E00A86E10 /* ForCategoricalDataBaseClass.m */; };
+		9D2937631EA0AA0E00A86E10 /* ForCategoricalDataListCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D29375F1EA0AA0E00A86E10 /* ForCategoricalDataListCategory.m */; };
+		9D2937641EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937611EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.m */; };
 		9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB861E9CD13A009DCE8F /* GFMCell.m */; };
 		9DB2CB8A1E9DC073009DCE8F /* RecommendedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB891E9DC073009DCE8F /* RecommendedCell.m */; };
 		9DB2CB8D1E9DCE1E009DCE8F /* GFMRollOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB8C1E9DCE1E009DCE8F /* GFMRollOut.m */; };
@@ -1110,6 +1119,23 @@
 		9D29373F1EA09B5700A86E10 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
 		9D2937411EA09B7000A86E10 /* LoginBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginBaseClass.h; sourceTree = "<group>"; };
 		9D2937421EA09B7000A86E10 /* LoginBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginBaseClass.m; sourceTree = "<group>"; };
+		9D2937461EA09F3B00A86E10 /* FTIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTIndicator.h; sourceTree = "<group>"; };
+		9D2937471EA09F3B00A86E10 /* FTIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTIndicator.m; sourceTree = "<group>"; };
+		9D2937491EA09F3B00A86E10 /* FTNotificationIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTNotificationIndicator.h; sourceTree = "<group>"; };
+		9D29374A1EA09F3B00A86E10 /* FTNotificationIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTNotificationIndicator.m; sourceTree = "<group>"; };
+		9D29374C1EA09F3B00A86E10 /* FTProgressIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTProgressIndicator.h; sourceTree = "<group>"; };
+		9D29374D1EA09F3B00A86E10 /* FTProgressIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTProgressIndicator.m; sourceTree = "<group>"; };
+		9D29374E1EA09F3B00A86E10 /* ImageAsserts.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ImageAsserts.bundle; sourceTree = "<group>"; };
+		9D2937501EA09F3B00A86E10 /* FTToastIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTToastIndicator.h; sourceTree = "<group>"; };
+		9D2937511EA09F3B00A86E10 /* FTToastIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTToastIndicator.m; sourceTree = "<group>"; };
+		9D2937591EA0A87500A86E10 /* ClassificationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassificationRequest.h; sourceTree = "<group>"; };
+		9D29375A1EA0A87500A86E10 /* ClassificationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationRequest.m; sourceTree = "<group>"; };
+		9D29375C1EA0AA0E00A86E10 /* ForCategoricalDataBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForCategoricalDataBaseClass.h; sourceTree = "<group>"; };
+		9D29375D1EA0AA0E00A86E10 /* ForCategoricalDataBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForCategoricalDataBaseClass.m; sourceTree = "<group>"; };
+		9D29375E1EA0AA0E00A86E10 /* ForCategoricalDataListCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForCategoricalDataListCategory.h; sourceTree = "<group>"; };
+		9D29375F1EA0AA0E00A86E10 /* ForCategoricalDataListCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForCategoricalDataListCategory.m; sourceTree = "<group>"; };
+		9D2937601EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForCategoricalDataSecondNav.h; sourceTree = "<group>"; };
+		9D2937611EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForCategoricalDataSecondNav.m; sourceTree = "<group>"; };
 		9DB2CB851E9CD13A009DCE8F /* GFMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFMCell.h; sourceTree = "<group>"; };
 		9DB2CB861E9CD13A009DCE8F /* GFMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFMCell.m; sourceTree = "<group>"; };
 		9DB2CB881E9DC073009DCE8F /* RecommendedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendedCell.h; sourceTree = "<group>"; };
@@ -1815,6 +1841,7 @@
 				38C9DCC01E89009F00F231B0 /* TheParentClass.h */,
 				38C9DCC11E89009F00F231B0 /* TheParentClass.m */,
 				9D29373F1EA09B5700A86E10 /* DataModels.h */,
+				9D2937441EA09F2600A86E10 /* 提示框 */,
 				9DB2CBA11E9F1F9A009DCE8F /* 请求 */,
 				38EE5F371E97573100A7DE52 /* 钱包管理 */,
 				382E034A1E9662E300DEF382 /* 登录注册 */,
@@ -1906,6 +1933,8 @@
 				3818ADC11E8BB27D00CA2FB6 /* SearchListingsView.m */,
 				3836550B1E8CA4E90034C332 /* ListCell.h */,
 				3836550C1E8CA4E90034C332 /* ListCell.m */,
+				9D2937581EA0A84F00A86E10 /* model */,
+				9D2937571EA0A84800A86E10 /* 请求 */,
 			);
 			name = "分类";
 			sourceTree = "<group>";
@@ -2088,6 +2117,76 @@
 			children = (
 				9D2937411EA09B7000A86E10 /* LoginBaseClass.h */,
 				9D2937421EA09B7000A86E10 /* LoginBaseClass.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		9D2937441EA09F2600A86E10 /* 提示框 */ = {
+			isa = PBXGroup;
+			children = (
+				9D2937451EA09F3B00A86E10 /* FTIndicator */,
+			);
+			name = "提示框";
+			sourceTree = "<group>";
+		};
+		9D2937451EA09F3B00A86E10 /* FTIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				9D2937461EA09F3B00A86E10 /* FTIndicator.h */,
+				9D2937471EA09F3B00A86E10 /* FTIndicator.m */,
+				9D2937481EA09F3B00A86E10 /* FTNotificationIndicator */,
+				9D29374B1EA09F3B00A86E10 /* FTProgressIndicator */,
+				9D29374F1EA09F3B00A86E10 /* FTToastIndicator */,
+			);
+			path = FTIndicator;
+			sourceTree = "<group>";
+		};
+		9D2937481EA09F3B00A86E10 /* FTNotificationIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				9D2937491EA09F3B00A86E10 /* FTNotificationIndicator.h */,
+				9D29374A1EA09F3B00A86E10 /* FTNotificationIndicator.m */,
+			);
+			path = FTNotificationIndicator;
+			sourceTree = "<group>";
+		};
+		9D29374B1EA09F3B00A86E10 /* FTProgressIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				9D29374C1EA09F3B00A86E10 /* FTProgressIndicator.h */,
+				9D29374D1EA09F3B00A86E10 /* FTProgressIndicator.m */,
+				9D29374E1EA09F3B00A86E10 /* ImageAsserts.bundle */,
+			);
+			path = FTProgressIndicator;
+			sourceTree = "<group>";
+		};
+		9D29374F1EA09F3B00A86E10 /* FTToastIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				9D2937501EA09F3B00A86E10 /* FTToastIndicator.h */,
+				9D2937511EA09F3B00A86E10 /* FTToastIndicator.m */,
+			);
+			path = FTToastIndicator;
+			sourceTree = "<group>";
+		};
+		9D2937571EA0A84800A86E10 /* 请求 */ = {
+			isa = PBXGroup;
+			children = (
+				9D2937591EA0A87500A86E10 /* ClassificationRequest.h */,
+				9D29375A1EA0A87500A86E10 /* ClassificationRequest.m */,
+			);
+			name = "请求";
+			sourceTree = "<group>";
+		};
+		9D2937581EA0A84F00A86E10 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				9D29375C1EA0AA0E00A86E10 /* ForCategoricalDataBaseClass.h */,
+				9D29375D1EA0AA0E00A86E10 /* ForCategoricalDataBaseClass.m */,
+				9D29375E1EA0AA0E00A86E10 /* ForCategoricalDataListCategory.h */,
+				9D29375F1EA0AA0E00A86E10 /* ForCategoricalDataListCategory.m */,
+				9D2937601EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.h */,
+				9D2937611EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -2532,6 +2631,7 @@
 				38DB9E6F1E9B194300E4BECA /* icon_order@2x.png in Resources */,
 				38DB9F0C1E9B70F900E4BECA /* bg_rmb@2x.png in Resources */,
 				382E03411E9662BC00DEF382 /* icon_yanzheng.png in Resources */,
+				9D2937551EA09F3B00A86E10 /* ImageAsserts.bundle in Resources */,
 				382E03391E9662BB00DEF382 /* icon_check@2x.png in Resources */,
 				3836556B1E8DEF370034C332 /* icon_cart_white@2x.png in Resources */,
 				383655C71E8E078A0034C332 /* icon_share@2x.png in Resources */,
@@ -2648,6 +2748,7 @@
 			files = (
 				9DB2CB8D1E9DCE1E009DCE8F /* GFMRollOut.m in Sources */,
 				383A44031E94DE91002CBDA0 /* InventoryListCell.m in Sources */,
+				9D2937531EA09F3B00A86E10 /* FTNotificationIndicator.m in Sources */,
 				38EE5F491E97698800A7DE52 /* walletDetailsCell.m in Sources */,
 				383A44191E9510AE002CBDA0 /* AmountToShowCell.m in Sources */,
 				382E034D1E96630500DEF382 /* TheLoginViewController.m in Sources */,
@@ -2701,13 +2802,16 @@
 				382E02A91E95D51500DEF382 /* MoneyAnTimeCell.m in Sources */,
 				38C1A9031E92314A00A26DCF /* NewAddInputBoxCell.m in Sources */,
 				383A43F11E94BA02002CBDA0 /* OrderInformationViewController.m in Sources */,
+				9D2937641EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.m in Sources */,
 				38BD11001E8A42B900028255 /* HomeCell.m in Sources */,
+				9D2937521EA09F3B00A86E10 /* FTIndicator.m in Sources */,
 				38C9DC911E88BF5F00F231B0 /* ViewController.m in Sources */,
 				38EE5F551E978C5E00A7DE52 /* PaymentStatusViewController.m in Sources */,
 				38536CFC1E8F9ABD003E9015 /* MyScreeningView.m in Sources */,
 				38C9DCD21E8901FD00F231B0 /* ShoppingCartViewController.m in Sources */,
 				38C1A9001E922FCB00A26DCF /* newShippingAddress.m in Sources */,
 				382E02CF1E95E90400DEF382 /* ReceivingASuccessfulShow.m in Sources */,
+				9D2937621EA0AA0E00A86E10 /* ForCategoricalDataBaseClass.m in Sources */,
 				382E02E31E96107000DEF382 /* EditTheCollectionViewController.m in Sources */,
 				38EE5F3D1E97598D00A7DE52 /* WalletBalanceDisplayCell.m in Sources */,
 				38EE5F461E97687800A7DE52 /* WalletDetailsViewController.m in Sources */,
@@ -2722,12 +2826,15 @@
 				9DB2CB901E9E1362009DCE8F /* TransferRecordCell.m in Sources */,
 				38C9DCD61E89021600F231B0 /* MyViewController.m in Sources */,
 				382E02E61E96111A00DEF382 /* EditTheCollectionCell.m in Sources */,
+				9D2937541EA09F3B00A86E10 /* FTProgressIndicator.m in Sources */,
 				383655161E8CDCD50034C332 /* MyMessageCells.m in Sources */,
 				38EE5F3A1E9757DA00A7DE52 /* OnlineWalletViewController.m in Sources */,
 				383A43EE1E949BEA002CBDA0 /* OrderViewS.m in Sources */,
 				9DB2CBA01E9F18F7009DCE8F /* FrontPageViewLayer.m in Sources */,
 				38C9DC8E1E88BF5F00F231B0 /* AppDelegate.m in Sources */,
+				9D29375B1EA0A87500A86E10 /* ClassificationRequest.m in Sources */,
 				38536CDB1E8F90CE003E9015 /* DistrictHeadView.m in Sources */,
+				9D2937561EA09F3B00A86E10 /* FTToastIndicator.m in Sources */,
 				383655501E8CEF2B0034C332 /* ShoppingCartProductsCell.m in Sources */,
 				382E02A01E95C53600DEF382 /* MyOrderDetails.m in Sources */,
 				38C9DC8B1E88BF5F00F231B0 /* main.m in Sources */,
@@ -2759,6 +2866,7 @@
 				382E03091E96590600DEF382 /* AboutViewController.m in Sources */,
 				38EE5F401E975EFF00A7DE52 /* PasswordManagement.m in Sources */,
 				9DB2CBA41E9F1FCE009DCE8F /* RequestClass.m in Sources */,
+				9D2937631EA0AA0E00A86E10 /* ForCategoricalDataListCategory.m in Sources */,
 				382E02A31E95CC8A00DEF382 /* ShippingInformationTableViewCell.m in Sources */,
 				9DB2CB991E9E264E009DCE8F /* MyButtonCell.m in Sources */,
 				383A43F41E94BD2C002CBDA0 /* OrderAddressCell.m in Sources */,

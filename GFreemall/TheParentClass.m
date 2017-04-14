@@ -216,12 +216,13 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
     // Dispose of any resources that can be recreated.
 }
 //需要重新登录
-+(void)YouNeedToLogIn{
++(void)YouNeedToLogIn:(NSString *)message{
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@"" forKey:@"token"];
     //同步数据
     [defaults synchronize];
+     [FTIndicator showSuccessWithMessage:message];
 }
 /*
 #pragma mark - Navigation

@@ -37,6 +37,7 @@
 #import "UIKit+AFNetworking.h"//af封装的一些关于ui方面的请求操作
 
 #import "DataModels.h"//model模型类
+#import "FTIndicator.h"//提示框
 
 
 
@@ -102,7 +103,8 @@ autoSizeScaleY = SCREENHEIGHT/1334;\
 //返回指定控制器
 #define ReturnToSpecifyTheController(MyViewController)  for (UIViewController *controller in self.navigationController.viewControllers) {if ([controller isKindOfClass:[MyViewController class]]) {[self.navigationController popToViewController:controller animated:YES];}}
 
-
+//宏定义token
+#define tokenString [[NSUserDefaults standardUserDefaults]valueForKey:@"token"]
 
 
 /*

@@ -238,8 +238,14 @@ autoSize
        LoginBaseClass *login=[[LoginBaseClass alloc]initWithDictionary:dic];
        NSLog(@"%@",login.msg);
        if ([login.code isEqualToString:@"1"]) {//登录成功
+           NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+           [defaults setObject:login.token forKey:@"token"];
+           //同步数据
+           [defaults synchronize];
+            [FTIndicator showSuccessWithMessage:login.msg];
            
-           
+       }else{//登录失败
+           [TheParentClass YouNeedToLogIn:login.msg];
        }
    }];
     

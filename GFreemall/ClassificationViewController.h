@@ -8,5 +8,5 @@
 
 #import "TheParentClass.h"
 @interface ClassificationViewController : TheParentClass
-
+@property(nonatomic,strong)NSDictionary *dataDics;
 @end
