@@ -47,7 +47,7 @@
   
     
     NSString *string= [TheParentClass TheKeyValueSequence:dic];//请求数据排序
-    NSString *RequestUrlString=[NSString stringWithFormat:@"%@%@?&%@",RequestUrl,urlStr,string];//将签名和请求数据以及端口号拼接亲来形成get请求
+    NSString *RequestUrlString=[NSString stringWithFormat:@"%@%@?&%@*SHOP*",RequestUrl,urlStr,string];//将签名和请求数据以及端口号拼接亲来形成get请求
     
     
     AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];

@@ -169,7 +169,6 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
    NSArray *keysArray = [dic allKeys];
     NSMutableDictionary *dataDic=[[NSMutableDictionary alloc]init];
     [dataDic setObject:@([TheParentClass timeStamp]) forKey:@"timestamp"];//添加时间戳
-    [dataDic setObject:@"1*SHOP*" forKey:@"type"];//添加type
     for (int i=0; i<keysArray.count; i++) {
         NSString *key=[NSString stringWithFormat:@"%@",keysArray[i]];
         [dataDic setObject:[dic objectForKey:key] forKey:key];

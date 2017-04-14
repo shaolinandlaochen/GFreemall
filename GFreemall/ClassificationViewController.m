@@ -94,31 +94,24 @@
 //返回区数
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 3;
+    return 1;
 }
 //每区返回的行数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return 5;
+    return 25;
 }
 //构建单元格
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 
 {
     autoSize
-    if (indexPath.section==0) {
-        BrandCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"321" forIndexPath:indexPath];
-        [cell.image sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490897254604&di=00be89d88fda665ad4cc8e2ae15ca1d7&imgtype=0&src=http%3A%2F%2Fpic1.cxtuku.com%2F00%2F01%2F82%2Fb8226fb6afa9.jpg"] placeholderImage:[UIImage imageNamed:@""]];
-        cell.name.text=@"品牌位置";
-        return cell;
-    }else{
+//        BrandCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"321" forIndexPath:indexPath];
+
         SearchListingsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"123" forIndexPath:indexPath];
-        [cell.image sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490897310699&di=71a71beb74fbae5a8048e3683bd5f9db&imgtype=0&src=http%3A%2F%2Fpic65.nipic.com%2Ffile%2F20150421%2F20559754_131621220000_2.jpg"] placeholderImage:[UIImage imageNamed:@""]];
-        cell.name.text=@"商品名称";
+        cell.name.text=@"名称";
         return cell;
-    }
    
-    return nil;
 }
 //点击cell 执行该方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -131,16 +124,8 @@
 {
     autoSize
     CGSize size;
-    if (indexPath.section==0) {//品牌
-        ////上,左,下 右
-    flowLayout.sectionInset = UIEdgeInsetsMake(45*autoSizeScaleX, 36*autoSizeScaleY, 59*autoSizeScaleX, 36*autoSizeScaleY);
-        flowLayout.minimumLineSpacing = 54*autoSizeScaleY;
-        size=CGSizeMake(150*autoSizeScaleX, 152*autoSizeScaleY);
-    }else{
-    flowLayout.sectionInset = UIEdgeInsetsMake(66*autoSizeScaleX, 48*autoSizeScaleY, 59*autoSizeScaleX, 48*autoSizeScaleY);
-        flowLayout.minimumLineSpacing = 40*autoSizeScaleY;
-      size =CGSizeMake(126*autoSizeScaleX, 165*autoSizeScaleX);
-    }
+
+      size =CGSizeMake(130*autoSizeScaleX, 126*autoSizeScaleX);
   
     return size;
 }
