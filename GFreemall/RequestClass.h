@@ -13,6 +13,5 @@
 +(void)postUrl:(NSString *)url Dic:(NSDictionary *)dic block:(void(^)(NSDictionary *dic))block;
 //get请求
 +(void)getUrl:(NSString *)urlStr Dic:(NSDictionary *)dic block:(void(^)(NSDictionary *dic))block;
-//测试封装
-+(void)test:(NSDictionary *)dic block:(void(^)(NSString *string))block;
+
 @end

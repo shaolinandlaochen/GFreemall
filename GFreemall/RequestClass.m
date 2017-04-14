@@ -11,7 +11,32 @@
 @implementation RequestClass
 //post请求
 +(void)postUrl:(NSString *)url Dic:(NSDictionary *)dic block:(void(^)(NSDictionary *dic))block{
+    
+    
+    
+   
+    
+    AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy defaultPolicy];
+    securityPolicy.allowInvalidCertificates = YES;
+    securityPolicy.validatesDomainName = NO;
+    manager.securityPolicy = securityPolicy;
+    manager.responseSerializer =[AFHTTPResponseSerializer serializer];
 
+    
+    NSString *RequestUrlString=[NSString stringWithFormat:@"%@%@",RequestUrl,url];
+    NSLog(@"post请求数据:%@",dic);
+    NSLog(@"post请求端口号:%@",RequestUrlString);
+    NSURLSessionDataTask*task= [manager POST:RequestUrlString parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *Dictionary=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        
+        block(Dictionary);
+
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    [task resume];
     
 }
 //get请求
@@ -21,12 +46,8 @@
     
   
     
-   NSString *string= [TheParentClass TheKeyValueSequence:dic];
-    NSString *sign=[TheParentClass MD5ForLower32Bate:string];
-    NSString *RequestUrlString=[NSString stringWithFormat:@"%@%@?&%@&sign=%@",RequestUrl,urlStr,string,sign];
-    
-    
-    
+    NSString *string= [TheParentClass TheKeyValueSequence:dic];//请求数据排序
+    NSString *RequestUrlString=[NSString stringWithFormat:@"%@%@?&%@",RequestUrl,urlStr,string];//将签名和请求数据以及端口号拼接亲来形成get请求
     
     
     AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
@@ -40,9 +61,9 @@
     NSURLSessionDataTask *task=[manager GET:RequestUrlString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-        NSLog(@"%@",dic);
-        NSLog(@"get请求msg==%@",[dic objectForKey:@"msg"]);
+        NSDictionary *Dictionary=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+
+        block(Dictionary);
   
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -51,17 +72,9 @@
     [task resume];
 
 }
-//测试
-+(void)test:(NSDictionary *)dic block:(void(^)(NSString *string))block{
-    
-    
-    
-   NSString *str= [TheParentClass TheKeyValueSequence:dic];
-   NSString *MD5Str=[TheParentClass MD5ForLower32Bate:str];
-    
-    block(MD5Str);
 
-}
+
+
 /*
  //时间戳
  NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];

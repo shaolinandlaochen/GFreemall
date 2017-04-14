@@ -45,8 +45,10 @@
 
 
 
-//入口
-#define RequestUrl @"http://192.168.88.7:8080/shop_app/"
+//入口(请求端口号)
+#define RequestUrl @"http://192.168.88.89:8080/shop_app/"
+
+
 
 #define TheLogin
 

@@ -7,7 +7,7 @@
 //
 
 #import "FeedbackViewController.h"
-
+#import "setUpRequest.h"
 @interface FeedbackViewController ()<UITextViewDelegate>
 {
     UITextView *_tf;
@@ -30,6 +30,7 @@
     
     _tf=[[UITextView alloc]init];
     _tf.delegate=self;
+    _tf.keyboardType=UIKeyboardTypeDefault;
     _tf.textColor=[TheParentClass colorWithHexString:@"#292929"];
     _tf.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
     [self.view addSubview:_tf];
@@ -71,6 +72,13 @@
 }
 //提交
 -(void)onButtonClick{
+    
+    NSLog(@"意见反馈开始发起请求");
+    
+ [setUpRequest feedback:_tf.text block:^(NSDictionary *dicDatas) {
+     
+ }];
+    
 
 }
 

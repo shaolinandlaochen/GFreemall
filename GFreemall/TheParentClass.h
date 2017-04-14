@@ -32,6 +32,10 @@
 +(NSString *)MD5ForLower16Bate:(NSString *)str;
 #pragma mark - 键值对排序
 +(NSString *)TheKeyValueSequence:(NSDictionary *)dic;
+//获取时间戳
++(NSInteger)timeStamp;
+////传入字典添加数据返回完整的数据
++(NSDictionary *)ReceiveTheOriginalData:(NSDictionary *)dic;
 
 
 

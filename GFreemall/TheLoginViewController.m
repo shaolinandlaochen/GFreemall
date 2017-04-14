@@ -9,6 +9,7 @@
 #import "TheLoginViewController.h"
 #import "RegisteredViewController.h"
 #import "ReplaceAPhoneNumberViewController.h"
+#import "LoginRequuestClass.h"
 @interface TheLoginViewController ()<UITextFieldDelegate>
 {
     UIView *_numberView;
@@ -233,19 +234,9 @@ autoSize
 //登录
 -(void)onTheLognClick{
     
-    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
-    //时间戳
-    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-    NSTimeInterval a=[dat timeIntervalSince1970]*1000;
-    NSString *timeString = [NSString stringWithFormat:@"%f", a];
-    [dic setObject:@([timeString intValue]) forKey:@"timestamp"];
-    [dic setObject:_phoneNumber.text forKey:@"username"];
-    [dic setObject:_pswAndCode.text forKey:@"password"];
-    [dic setObject:@"1*SHOP*" forKey:@"type"];
-    
-    [RequestClass getUrl:@"login" Dic:dic block:^(NSDictionary *dic) {
-        
-    }];
+   [LoginRequuestClass LoginUsername:_phoneNumber.text password:_pswAndCode.text block:^(NSDictionary *dic) {
+      
+   }];
     
     
     

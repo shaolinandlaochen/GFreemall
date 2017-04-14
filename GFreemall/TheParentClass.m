@@ -154,7 +154,34 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
 
     return url;
 }
+//获取时间戳
++(NSInteger)timeStamp{
+    //时间戳
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval a=[dat timeIntervalSince1970]*1000;
+    NSString *timeString = [NSString stringWithFormat:@"%f", a];
 
+    return [timeString integerValue];
+}
+////传入字典添加数据返回完整的数据
++(NSDictionary *)ReceiveTheOriginalData:(NSDictionary *)dic{
+
+   NSArray *keysArray = [dic allKeys];
+    NSMutableDictionary *dataDic=[[NSMutableDictionary alloc]init];
+    [dataDic setObject:@([TheParentClass timeStamp]) forKey:@"timestamp"];//添加时间戳
+    [dataDic setObject:@"1*SHOP*" forKey:@"type"];//添加type
+    for (int i=0; i<keysArray.count; i++) {
+        NSString *key=[NSString stringWithFormat:@"%@",keysArray[i]];
+        [dataDic setObject:[dic objectForKey:key] forKey:key];
+    }
+    
+    NSString *string=[TheParentClass TheKeyValueSequence:dataDic];//去排序
+    NSString *sign=[TheParentClass MD5ForLower32Bate:string];//签名
+    [dataDic setObject:sign forKey:@"sign"];
+
+    return dataDic;//返回添加完毕数据也签名完毕的数据
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
