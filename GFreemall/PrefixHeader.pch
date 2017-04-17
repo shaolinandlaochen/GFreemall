@@ -150,6 +150,22 @@ autoSizeScaleY = SCREENHEIGHT/1334;\
  
  
   _bgImage.userInteractionEnabled = YES;
+ 
+ 
+ 
+ 
+ 
+ [array removeObject:(id)] :删除数组中指定元素，根据对象isEqual消息判断。
+ 
+ [array removeObjectIdenticalTo:(id)] : 删除数组中指定元素,根据对象的地址判断
+ 
+ [array removeObjectIdenticalTo:(id) inRange:(NSRange)] : 在指定范围内删除指定的元素。
+ 
+ [array removeObjectAtIndex:(NSUInteger)]:删除数组中指定脚标索引的数据。
+ 
+ [array removeObjectsInArray:(NSArray *)] :删除一个数组的元素。
+ 
+ 
  */
 
 

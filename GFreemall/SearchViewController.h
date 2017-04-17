@@ -10,4 +10,5 @@
 
 @interface SearchViewController : UIViewController
 @property(nonatomic,copy)NSString *where;
+@property(nonatomic,strong)NSDictionary *dataDic;
 @end

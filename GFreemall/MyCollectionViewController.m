@@ -41,10 +41,22 @@
     // Do any additional setup after loading the view.
 }
 -(void)AccessToDataCollectionList{
+    [SVProgressHUD showWithStatus:@"正在加载"];
     [CollectionRequest ToObtainAListCollectionblock:^(NSDictionary *dic) {
-        
+        self.dataDic =[self deleteEmpty:dic];
+        CollectionBaseClass *class=[[CollectionBaseClass alloc]initWithDictionary:self.dataDic];
+        if ([class.code isEqualToString:@"3"]) {
+            [_tableView reloadData];
+        }else{
+            [FTIndicator showErrorWithMessage:class.msg];
+        }
+        [SVProgressHUD dismiss];
     }];
 
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
 }
 cancelClick
 -(void)CreatView{
@@ -79,15 +91,22 @@ cancelClick
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+     CollectionBaseClass *class=[[CollectionBaseClass alloc]initWithDictionary:self.dataDic];
+    CollectionData *data=class.data;
+    return data.resultList.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section==0) {
+
         SearchForGoodsCell *cell=[SearchForGoodsCell new];
+        CollectionBaseClass *class=[[CollectionBaseClass alloc]initWithDictionary:self.dataDic];
+        CollectionData *data=class.data;
+        CollectionResultList *ResultList=data.resultList[indexPath.row];
+        [cell.img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,ResultList.commodityImagesPath,ResultList.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
+        cell.title.text=ResultList.commodityName;
+        cell.picre.text=[NSString stringWithFormat:@"%f",ResultList.commoditySellprice];
+        
         return cell;
-    }
-    NULLCell *celll=[NULLCell new];
-    return celll;
+
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -96,6 +115,7 @@ cancelClick
 //编辑
 -(void)onrightItemButtonClick{
     EditTheCollectionViewController *EditTheCollection=[[EditTheCollectionViewController alloc]init];
+    EditTheCollection.dataDic=[self deleteEmpty:self.dataDic];
     [self.navigationController pushViewController:EditTheCollection animated:YES];
 
 }

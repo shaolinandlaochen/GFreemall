@@ -10,4 +10,8 @@
 
 @interface EditTheCollectionCell : UITableViewCell
 @property(nonatomic,strong)MyButton *selectedBtn;
+
+@property(nonatomic,strong) UIImageView *image;
+@property(nonatomic,strong) UILabel *title;
+@property(nonatomic,strong) UILabel *picre;
 @end

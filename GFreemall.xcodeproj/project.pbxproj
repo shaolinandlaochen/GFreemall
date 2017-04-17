@@ -467,6 +467,13 @@
 		38EE5F4F1E97753200A7DE52 /* PrepaidPhoneRecordsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F4E1E97753200A7DE52 /* PrepaidPhoneRecordsTableViewCell.m */; };
 		38EE5F521E97825100A7DE52 /* TimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F511E97825100A7DE52 /* TimeViewController.m */; };
 		38EE5F551E978C5E00A7DE52 /* PaymentStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F541E978C5E00A7DE52 /* PaymentStatusViewController.m */; };
+		9D170A221EA451B800A373DD /* CollectionBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A1D1EA451B800A373DD /* CollectionBaseClass.m */; };
+		9D170A231EA451B800A373DD /* CollectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A1F1EA451B800A373DD /* CollectionData.m */; };
+		9D170A241EA451B800A373DD /* CollectionResultList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A211EA451B800A373DD /* CollectionResultList.m */; };
+		9D170A281EA46FDC00A373DD /* SearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A271EA46FDC00A373DD /* SearchRequest.m */; };
+		9D170A301EA473CE00A373DD /* SearchBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A2B1EA473CE00A373DD /* SearchBaseClass.m */; };
+		9D170A311EA473CE00A373DD /* SearchPagingList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A2D1EA473CE00A373DD /* SearchPagingList.m */; };
+		9D170A321EA473CE00A373DD /* SearchResultList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A2F1EA473CE00A373DD /* SearchResultList.m */; };
 		9D2937341EA067FE00A86E10 /* LoginRequuestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937331EA067FE00A86E10 /* LoginRequuestClass.m */; };
 		9D2937381EA075CD00A86E10 /* setUpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937371EA075CD00A86E10 /* setUpRequest.m */; };
 		9D29373C1EA07BE400A86E10 /* fenlei_kk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2937391EA07BE400A86E10 /* fenlei_kk.png */; };
@@ -1111,6 +1118,20 @@
 		38EE5F531E978C5E00A7DE52 /* PaymentStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentStatusViewController.h; sourceTree = "<group>"; };
 		38EE5F541E978C5E00A7DE52 /* PaymentStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentStatusViewController.m; sourceTree = "<group>"; };
 		3CAC99031124F58E22E45701 /* Pods-GFreemall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFreemall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GFreemall/Pods-GFreemall.debug.xcconfig"; sourceTree = "<group>"; };
+		9D170A1C1EA451B800A373DD /* CollectionBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionBaseClass.h; sourceTree = "<group>"; };
+		9D170A1D1EA451B800A373DD /* CollectionBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionBaseClass.m; sourceTree = "<group>"; };
+		9D170A1E1EA451B800A373DD /* CollectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionData.h; sourceTree = "<group>"; };
+		9D170A1F1EA451B800A373DD /* CollectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionData.m; sourceTree = "<group>"; };
+		9D170A201EA451B800A373DD /* CollectionResultList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionResultList.h; sourceTree = "<group>"; };
+		9D170A211EA451B800A373DD /* CollectionResultList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionResultList.m; sourceTree = "<group>"; };
+		9D170A261EA46FDC00A373DD /* SearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRequest.h; sourceTree = "<group>"; };
+		9D170A271EA46FDC00A373DD /* SearchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRequest.m; sourceTree = "<group>"; };
+		9D170A2A1EA473CE00A373DD /* SearchBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBaseClass.h; sourceTree = "<group>"; };
+		9D170A2B1EA473CE00A373DD /* SearchBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBaseClass.m; sourceTree = "<group>"; };
+		9D170A2C1EA473CE00A373DD /* SearchPagingList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPagingList.h; sourceTree = "<group>"; };
+		9D170A2D1EA473CE00A373DD /* SearchPagingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPagingList.m; sourceTree = "<group>"; };
+		9D170A2E1EA473CE00A373DD /* SearchResultList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultList.h; sourceTree = "<group>"; };
+		9D170A2F1EA473CE00A373DD /* SearchResultList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultList.m; sourceTree = "<group>"; };
 		9D2937321EA067FE00A86E10 /* LoginRequuestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequuestClass.h; sourceTree = "<group>"; };
 		9D2937331EA067FE00A86E10 /* LoginRequuestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequuestClass.m; sourceTree = "<group>"; };
 		9D2937361EA075CD00A86E10 /* setUpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setUpRequest.h; sourceTree = "<group>"; };
@@ -1284,6 +1305,7 @@
 				382E02E21E96107000DEF382 /* EditTheCollectionViewController.m */,
 				382E02E41E96111A00DEF382 /* EditTheCollectionCell.h */,
 				382E02E51E96111A00DEF382 /* EditTheCollectionCell.m */,
+				9D170A1B1EA451A800A373DD /* model */,
 				9D2937691EA0D36F00A86E10 /* 请求类 */,
 			);
 			name = "收藏";
@@ -1515,6 +1537,8 @@
 				3836557E1E8DEFB10034C332 /* SearchViewController.m */,
 				383655CF1E8E35120034C332 /* SearchForGoodsCell.h */,
 				383655D01E8E35120034C332 /* SearchForGoodsCell.m */,
+				9D170A291EA473C000A373DD /* model */,
+				9D170A251EA46FBB00A373DD /* 请求类 */,
 			);
 			name = "搜索界面";
 			sourceTree = "<group>";
@@ -2100,6 +2124,41 @@
 				2975E64A1C59A326D2785033 /* Pods-GFreemall.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9D170A1B1EA451A800A373DD /* model */ = {
+			isa = PBXGroup;
+			children = (
+				9D170A1C1EA451B800A373DD /* CollectionBaseClass.h */,
+				9D170A1D1EA451B800A373DD /* CollectionBaseClass.m */,
+				9D170A1E1EA451B800A373DD /* CollectionData.h */,
+				9D170A1F1EA451B800A373DD /* CollectionData.m */,
+				9D170A201EA451B800A373DD /* CollectionResultList.h */,
+				9D170A211EA451B800A373DD /* CollectionResultList.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		9D170A251EA46FBB00A373DD /* 请求类 */ = {
+			isa = PBXGroup;
+			children = (
+				9D170A261EA46FDC00A373DD /* SearchRequest.h */,
+				9D170A271EA46FDC00A373DD /* SearchRequest.m */,
+			);
+			name = "请求类";
+			sourceTree = "<group>";
+		};
+		9D170A291EA473C000A373DD /* model */ = {
+			isa = PBXGroup;
+			children = (
+				9D170A2A1EA473CE00A373DD /* SearchBaseClass.h */,
+				9D170A2B1EA473CE00A373DD /* SearchBaseClass.m */,
+				9D170A2C1EA473CE00A373DD /* SearchPagingList.h */,
+				9D170A2D1EA473CE00A373DD /* SearchPagingList.m */,
+				9D170A2E1EA473CE00A373DD /* SearchResultList.h */,
+				9D170A2F1EA473CE00A373DD /* SearchResultList.m */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 		9D2937311EA067E700A86E10 /* 请求 */ = {
@@ -2777,6 +2836,7 @@
 				9D2937531EA09F3B00A86E10 /* FTNotificationIndicator.m in Sources */,
 				38EE5F491E97698800A7DE52 /* walletDetailsCell.m in Sources */,
 				383A44191E9510AE002CBDA0 /* AmountToShowCell.m in Sources */,
+				9D170A231EA451B800A373DD /* CollectionData.m in Sources */,
 				382E034D1E96630500DEF382 /* TheLoginViewController.m in Sources */,
 				383A43FA1E94D331002CBDA0 /* OrderLogisticsCell.m in Sources */,
 				383A44161E94F23A002CBDA0 /* paymentInformationView.m in Sources */,
@@ -2784,6 +2844,7 @@
 				38536CD21E8F8ADC003E9015 /* GoodsDetailsHTMLContextViewController.m in Sources */,
 				383A44221E9519CE002CBDA0 /* WalletBalanceTop_upCell.m in Sources */,
 				382E02DC1E960C2100DEF382 /* MessageForDetailsViewController.m in Sources */,
+				9D170A281EA46FDC00A373DD /* SearchRequest.m in Sources */,
 				3818ADC21E8BB27D00CA2FB6 /* SearchListingsView.m in Sources */,
 				38DB9EC41E9B6CDF00E4BECA /* LineUp.m in Sources */,
 				9D2937681EA0CDF400A86E10 /* NSObject+DeleteArrOrDeleteDicBothNull.m in Sources */,
@@ -2799,6 +2860,7 @@
 				383A43EB1E948163002CBDA0 /* OrderButtonView.m in Sources */,
 				38536CCC1E8F7232003E9015 /* purchaseOfGoods.m in Sources */,
 				3818ADB31E8B4EE200CA2FB6 /* ThreePictureCell.m in Sources */,
+				9D170A311EA473CE00A373DD /* SearchPagingList.m in Sources */,
 				383655D51E8E3E7F0034C332 /* GoodsDetailsViewController.m in Sources */,
 				3836557F1E8DEFB10034C332 /* SearchViewController.m in Sources */,
 				382E02F01E96241400DEF382 /* BaseInputBoxCell.m in Sources */,
@@ -2871,12 +2933,16 @@
 				38536CD51E8F8BBE003E9015 /* EvaluationViewController.m in Sources */,
 				383A441C1E9512BC002CBDA0 /* PaymentToShowCell.m in Sources */,
 				382E03061E96550D00DEF382 /* FeedbackViewController.m in Sources */,
+				9D170A241EA451B800A373DD /* CollectionResultList.m in Sources */,
 				382E02CC1E95E89900DEF382 /* StayEvaluationListCell.m in Sources */,
 				383655101E8CA5190034C332 /* BrandCell.m in Sources */,
 				3818ADBF1E8BB23200CA2FB6 /* SearchListingsCollectionViewCell.m in Sources */,
+				9D170A221EA451B800A373DD /* CollectionBaseClass.m in Sources */,
 				9DB2CB961E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.m in Sources */,
 				382E02A61E95D1ED00DEF382 /* OrderAmountDetailCell.m in Sources */,
 				3818ADB61E8B5EDC00CA2FB6 /* ImageCell.m in Sources */,
+				9D170A301EA473CE00A373DD /* SearchBaseClass.m in Sources */,
+				9D170A321EA473CE00A373DD /* SearchResultList.m in Sources */,
 				9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */,
 				383A440D1E94E479002CBDA0 /* BillingInfoNumberCell.m in Sources */,
 				383655D81E8E42530034C332 /* MyoptionsView.m in Sources */,

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface EditTheCollectionViewController : UIViewController
-
+@property(nonatomic,strong)NSDictionary *dataDic;
+@property(nonatomic,strong)NSMutableArray *AddAndDeleteArray;
 @end

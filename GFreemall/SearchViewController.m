@@ -8,13 +8,14 @@
 
 #import "SearchViewController.h"
 #import "SearchForGoodsCell.h"
-
+#import "SearchRequest.h"
 @interface SearchViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     UIImageView *imgbg;//搜索框背景
     UITextField *searchField;//搜索框
     UILabel *lineTwo;//搜索框下面第二条线
     UITableView *_tableView;//商品列表
+    
     
 }
 @end
@@ -38,9 +39,10 @@
     [self.view addSubview:_tableView];
 //    [self EmptyTheShoppingCart];//没有搜索到相关商品
     _tableView.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(lineTwo, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0);
-    
+  
     // Do any additional setup after loading the view.
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     autoSize
     return 182*autoSizeScaleY;
@@ -54,24 +56,29 @@
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     MyView *view=[[MyView alloc]init];
-    view.lbl.text=Localized(@"为您搜索到'苹果'商品");
-    
+    if ([searchField.text length]>0) {
+        NSString *string=[NSString stringWithFormat:@"为您找到'%@'商品",searchField.text];
+        view.lbl.text=string;
+    }
+  
     return view;
-    return nil;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    SearchBaseClass *class=[[SearchBaseClass alloc]initWithDictionary:self.dataDic];
+    return class.pagingList.resultList.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section==0) {
-        SearchForGoodsCell *cell=[SearchForGoodsCell new];
-        return cell;
-    }
-    NULLCell *celll=[NULLCell new];
-    return celll;
+   SearchBaseClass *class=[[SearchBaseClass alloc]initWithDictionary:self.dataDic];
+    SearchForGoodsCell *cell=[SearchForGoodsCell new];
+    SearchResultList *list=class.pagingList.resultList[indexPath.row];
+    [cell.img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.commodityImagesPath,list.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
+    cell.title.text=list.commodityName;
+    cell.picre.text=[NSString stringWithFormat:@"%f",list.commoditySellprice];
+    return cell;
+  
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -176,12 +183,18 @@
 }
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     NSLog(@"结束编辑");
+   
     return YES;
 }
 //点击return执行
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     NSLog(@"结束编辑*--*");
+    
     [textField endEditing:YES];
+    if ([textField.text length]>0) {
+          [self GetTheRequestData:@"" priceType:@"" brandSerial:@"" categorySerial:@""];
+    }
+    
     return YES;
 }
 //用户导航条,价格,综合,评级
@@ -232,12 +245,12 @@
     switch (btn.tag) {
         case 1000://综合
         {
-            
+             [self GetTheRequestData:@"" priceType:@"" brandSerial:@"" categorySerial:@""];
         }
             break;
         case 1001://销量
         {
-            
+             [self GetTheRequestData:@"count" priceType:@"" brandSerial:@"" categorySerial:@""];
         }
             break;
         case 1002://价格
@@ -245,9 +258,11 @@
             MyButton *button=(MyButton *)[self.view viewWithTag:1002];
             UIImageView *img=[[UIImageView alloc]init];
             if (button.selected==YES) {
+                [self GetTheRequestData:@"price" priceType:@"0" brandSerial:@"" categorySerial:@""];
                 img.image=[UIImage imageNamed:@"triangle_down_red"];
                 button.selected=NO;
             }else{
+                [self GetTheRequestData:@"price" priceType:@"1" brandSerial:@"" categorySerial:@""];
                 button.selected=YES;
                 img.image=[UIImage imageNamed:@"triangle_up_red-"];
             }
@@ -259,12 +274,12 @@
             break;
         case 1003://评分
         {
-            
+             [self GetTheRequestData:@"grade" priceType:@"" brandSerial:@"" categorySerial:@""];
         }
             break;
         case 1004://新品
         {
-            
+             [self GetTheRequestData:@"time" priceType:@"" brandSerial:@"" categorySerial:@""];
         }
             break;
             
@@ -273,6 +288,20 @@
     }
 
 
+}
+-(void)GetTheRequestData:(NSString *)queryType priceType:(NSString *)priceType brandSerial:(NSString *)brandSerial categorySerial:(NSString *)categorySerial{
+    [SVProgressHUD showWithStatus:@"正在加载"];
+    [SearchRequest AccessToSearchData:searchField.text page:@"1" pageSize:@"999" queryType:queryType priceType:priceType brandSerial:brandSerial categorySerial:categorySerial bolck:^(NSDictionary *dic) {
+        self.dataDic=[self deleteEmpty:dic];
+        SearchBaseClass *class=[[SearchBaseClass alloc]initWithDictionary:self.dataDic];
+        if ([class.code isEqualToString:@"5"]) {
+            [_tableView reloadData];
+        }else{
+            [FTIndicator showInfoWithMessage:class.msg];
+        }
+        [SVProgressHUD dismiss];
+    }];
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

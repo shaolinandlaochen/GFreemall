@@ -10,4 +10,7 @@
 
 @interface SearchForGoodsCell : UITableViewCell
 
+@property(nonatomic,strong) UILabel *title;
+@property(nonatomic,strong) UILabel *picre;
+@property(nonatomic,strong)UIImageView *img;
 @end

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MyCollectionViewController : UIViewController
-
+@property(nonatomic,strong)NSDictionary *dataDic;
 @end

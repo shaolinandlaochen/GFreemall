@@ -11,4 +11,6 @@
 @interface CollectionRequest : NSObject
 //获取收藏数据
 +(void)ToObtainAListCollectionblock:(void(^)(NSDictionary *dic))block;
+//删除收藏
++(void)delegateGoods:(NSString *)idStr block:(void(^)(NSDictionary *dic))block;
 @end

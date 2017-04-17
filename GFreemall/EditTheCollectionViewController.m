@@ -8,6 +8,7 @@
 
 #import "EditTheCollectionViewController.h"
 #import "EditTheCollectionCell.h"
+#import "CollectionRequest.h"
 @interface EditTheCollectionViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 {
@@ -40,6 +41,18 @@
 }
 cancelClick
 -(void)CreatView{
+    _AddAndDeleteArray=[[NSMutableArray alloc]init];
+    CollectionBaseClass *class=[[CollectionBaseClass alloc]initWithDictionary:self.dataDic];
+    CollectionData *data=class.data;
+    for (int i=0; i<data.resultList.count; i++) {
+        CollectionResultList *list=data.resultList[i];
+        list.selected=NO;
+        [_AddAndDeleteArray addObject:list];
+    }
+    
+    
+    
+    
     autoSize
     _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.delegate=self;
@@ -109,17 +122,25 @@ cancelClick
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    
+    return _AddAndDeleteArray.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section==0) {
-        EditTheCollectionCell *cell=[EditTheCollectionCell new];
-        cell.selectedBtn.indexPath=indexPath;
-        [cell.selectedBtn addTarget:self action:@selector(onSlelctedBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
+    
+    EditTheCollectionCell *cell=[EditTheCollectionCell new];
+    CollectionBaseClass *class=[[CollectionBaseClass alloc]initWithDictionary:self.dataDic];
+    CollectionResultList *ResultList=_AddAndDeleteArray[indexPath.row];
+    cell.selectedBtn.selected=ResultList.selected;
+    cell.selectedBtn.indexPath=indexPath;
+    [cell.selectedBtn addTarget:self action:@selector(onSlelctedBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,ResultList.commodityImagesPath,ResultList.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
+    cell.title.text=ResultList.commodityName;
+    cell.picre.text=[NSString stringWithFormat:@"%f",ResultList.commoditySellprice];
         return cell;
-    }
-    NULLCell *celll=[NULLCell new];
-    return celll;
+
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -132,15 +153,81 @@ cancelClick
 }
 //选中
 -(void)onSlelctedBtnClick:(MyButton *)btn{
-btn.selected=!btn.selected;
+    btn.selected=!btn.selected;
+    CollectionResultList *list=_AddAndDeleteArray[btn.indexPath.row];
+    list.selected=btn.selected;
+    [_AddAndDeleteArray replaceObjectAtIndex:btn.indexPath.row withObject:list];
+    
+    int y=0;
+    for (int i=0; i<_AddAndDeleteArray.count; i++) {
+        CollectionResultList *ResultList=_AddAndDeleteArray[i];
+        if (ResultList.selected==YES) {
+            y+=1;
+        }
+    }
+    NSLog(@"数组数量==%ld----%d",_AddAndDeleteArray.count,y);
+    if (y==_AddAndDeleteArray.count) {
+        _selecateButton.selected=YES;
+    }else{
+    _selecateButton.selected=NO;
+    }
+    [_tableView reloadData];
 }
 //全选
 -(void)onFutureGenerationsClick:(UIButton *)btn{
     btn.selected=!btn.selected;
+    for (int i=0; i<_AddAndDeleteArray.count; i++) {
+        CollectionResultList *ResultList=_AddAndDeleteArray[i];
+        if (btn.selected==YES) {
+            ResultList.selected=YES;
+        }else{
+        ResultList.selected=NO;
+        }
+    [_AddAndDeleteArray replaceObjectAtIndex:i withObject:ResultList];
+    }
+    [_tableView reloadData];
 
 }
 //删除
 -(void)onDeleteClick{
+    
+    
+    NSString *idStr=@"";
+    //拼接字符串
+    for (int i=0; i<_AddAndDeleteArray.count; i++) {
+        CollectionResultList *ResultList=_AddAndDeleteArray[i];
+        if (ResultList.selected==YES) {
+            if ([idStr isEqualToString:@""]) {
+                idStr=[NSString stringWithFormat:@"%.0f",ResultList.resultListIdentifier];
+            }else{
+             idStr=[NSString stringWithFormat:@"%@,%.0f",idStr,ResultList.resultListIdentifier];
+            }
+        }
+    }
+    if ([idStr isEqualToString:@""]) {//走到这表示拥护没有选中任何商品
+        [FTIndicator showInfoWithMessage:Localized(@"请选择要删除的商品")];
+    }else{
+        [SVProgressHUD showWithStatus:Localized(@"正在删除")];
+        [CollectionRequest delegateGoods:idStr block:^(NSDictionary *dic) {
+            NSDictionary *dicMessage=[self deleteEmpty:dic];
+            if ([[NSString stringWithFormat:@"%@",[dicMessage objectForKey:@"code"]] isEqualToString:@"50"]) {//删除成功
+                //进行删除
+                for (int i=0; i<_AddAndDeleteArray.count; i++) {
+                    CollectionResultList *ResultList=_AddAndDeleteArray[i];
+                    if (ResultList.selected==YES) {
+                        [_AddAndDeleteArray removeObjectAtIndex:i];
+                    }
+                }
+                [_tableView reloadData];
+            }
+             [FTIndicator showErrorWithMessage:[NSString stringWithFormat:@"%@",[dicMessage objectForKey:@"msg"]]];
+            [SVProgressHUD dismiss];
+        }];
+    }
+    
+    
+    
+    
 
 }
 - (void)didReceiveMemoryWarning {
