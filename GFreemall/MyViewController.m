@@ -16,6 +16,7 @@
 #import "MyBasicInformationViewController.h"
 #import "SetUpViewController.h"
 #import "OnlineWalletViewController.h"
+#import "MyRequest.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -35,7 +36,31 @@
     _tableView.scrollEnabled=NO;
     _tableView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     [self.view addSubview:_tableView];
-    // Do any additional setup after loading the view.
+      // Do any additional setup after loading the view.
+}
+-(void)PersonalInformation{
+ 
+    //打印主线程
+         NSLog(@"主线程----%d",[NSThread isMainThread]);
+    
+        //创建串行队列
+         dispatch_queue_t  queue= dispatch_queue_create("wendingding", NULL);
+         //第一个参数为串行队列的名称，是c语言的字符串
+        //第二个参数为队列的属性，一般来说串行队列不需要赋值任何属性，所以通常传空值（NULL）
+         //2.添加任务到队列中执行
+    
+         dispatch_async(queue, ^{
+           [MyRequest PersonalInformationbblock:^(NSDictionary *dics) {
+               self.dataDic=[self deleteEmpty:dics];
+               dispatch_async(dispatch_get_main_queue(), ^{
+                   //回调或者说是通知主线程刷新，
+                   [_tableView reloadData];
+               });
+               
+            }];
+        
+          });
+
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
@@ -70,8 +95,12 @@ autoSize
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section==0) {
         MyInformationView *view=[[MyInformationView alloc]init];
+        
+        MyBaseClass *class=[[MyBaseClass alloc]initWithDictionary:self.dataDic];
+        
+        
         [view.iconBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490852754875&di=b9a1594e2fbf3199a448a7e85f00afa2&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fmobile%2F1%2F5260a24a48d1c.jpg"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
-        view.name.text=Localized(@"一个萝卜一个坑");
+        view.name.text=class.info.baseUsername;
         [view.iconBtn addTarget:self action:@selector(onTheLoginClick) forControlEvents:UIControlEventTouchUpInside];
         view.level.backgroundColor=[TheParentClass colorWithHexString:@"fffbd4"];
         [view.levelIcon setBackgroundImage:[UIImage imageNamed:@"member_diamond"] forState:UIControlStateNormal];
@@ -194,6 +223,8 @@ autoSize
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:YES];
      self.navigationController.navigationBarHidden=YES;
+    [self PersonalInformation];//获取个人信息
+
 }
 /*
 #pragma mark - Navigation

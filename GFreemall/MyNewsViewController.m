@@ -9,6 +9,7 @@
 #import "MyNewsViewController.h"
 #import "MyNewsCell.h"
 #import "MessageForDetailsViewController.h"
+#import "MessageRequest.h"
 @interface MyNewsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 {
@@ -34,7 +35,30 @@
     [self CreatView];
     //构建没有消息视图
    // [self BuildNoMessageView];
+    [self AccessToThMessageListClick];
     // Do any additional setup after loading the view.
+}
+-(void)AccessToThMessageListClick{
+    [SVProgressHUD showWithStatus:@"正在加载"];
+    [MessageRequest AccessToTheMessageListBlock:^(NSDictionary *dics) {
+        self.dataDic=[self deleteEmpty:dics];
+        MessageBaseClass *class=[[MessageBaseClass alloc]initWithDictionary:self.dataDic];
+        if ([class.code isEqualToString:@"51"]) {
+            [_tableView reloadData];
+            if (class.data.resultList.count<1) {
+                 [self BuildNoMessageView];
+            }
+        }else{
+            [FTIndicator showErrorWithMessage:class.msg];
+        }
+        [SVProgressHUD dismiss];
+        
+    }];
+
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
 }
 cancelClick
 -(void)CreatView{
@@ -70,21 +94,38 @@ cancelClick
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    MessageBaseClass *class=[[MessageBaseClass alloc]initWithDictionary:self.dataDic];
+    return class.data.resultList.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     MyNewsCell *cell=[MyNewsCell new];
-    [cell.img sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491467168888&di=1f494b9b31c6ea307795b15589694d0f&imgtype=0&src=http%3A%2F%2Fimage.sonhoo.com%2Fserver14%2Fphotos%2Fphoto%2Fygz123%2F5891c314a4cb261052ba28b8721516d0.jpg"] placeholderImage:[UIImage imageNamed:@""]];
-    cell.title.text=@"都是固定的鼓捣鼓捣鼓捣鼓捣";
-    cell.context.text=@"打得过的身高多少个地方官的郭德纲的法国队";
+    
+    MessageBaseClass *class=[[MessageBaseClass alloc]initWithDictionary:self.dataDic];
+    MessageResultList *list=class.data.resultList[indexPath.row];
+    if (list.messageCategory==1) {
+        cell.img.image=[UIImage imageNamed:@"icon_order"];
+    }else{
+        cell.img.image=[UIImage imageNamed:@"icon_system"];
+    }
+    if (list.readState==0) {
+        cell.unreadStr=@"未读";
+    }
+    
+    cell.title.text=list.messageTitle;;
+    cell.context.text=list.messageText;
     return cell;
     
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    MessageBaseClass *class=[[MessageBaseClass alloc]initWithDictionary:self.dataDic];
+    MessageResultList *list=class.data.resultList[indexPath.row];
     MessageForDetailsViewController *MessageForDetails=[[MessageForDetailsViewController alloc]init];
+    MessageForDetails.message_id=list.resultListIdentifier;
+    MessageForDetails.titleStr=list.messageTitle;;
+    MessageForDetails.context=list.messageText;
     [self.navigationController pushViewController:MessageForDetails animated:YES];
     
 }

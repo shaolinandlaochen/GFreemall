@@ -35,9 +35,22 @@
  
     [_delegate HomeScroll:index];
 }
--(void)setArray:(NSArray *)Array{
-    scroll.imageURLStringsGroup=Array;
+-(void)setDic:(NSDictionary *)Dic{
+    NSMutableArray *imgArray=[[NSMutableArray  alloc]init];
+    HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:Dic];
+    
+    for (int i=0; i<class.ads.ad1.count; i++) {
+        HomeAd1 *ad1=class.ads.ad1[i];
+        NSString *imgUrls=[NSString stringWithFormat:@"%@%@",class.imgSrc,ad1.adsImages];
+        [imgArray addObject:imgUrls];
+        
+    }
+    
+    scroll.imageURLStringsGroup=imgArray;
+    
+    
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

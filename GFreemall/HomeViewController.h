@@ -9,5 +9,5 @@
 #import "TheParentClass.h"
 
 @interface HomeViewController : TheParentClass
-
+@property(nonatomic,strong)NSDictionary *dataDic;
 @end

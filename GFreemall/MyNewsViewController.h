@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MyNewsViewController : UIViewController
-
+@property(nonatomic,strong)NSDictionary *dataDic;
 @end

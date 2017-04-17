@@ -11,4 +11,5 @@
 @interface SearchViewController : UIViewController
 @property(nonatomic,copy)NSString *where;
 @property(nonatomic,strong)NSDictionary *dataDic;
+@property(nonatomic,copy)NSString *categorySerial;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "MessageForDetailsViewController.h"
-
+#import "MessageRequest.h"
 @interface MessageForDetailsViewController ()
 
 @end
@@ -23,7 +23,13 @@
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
     [self CreatView];
+    [self GetNewsDetails];
     // Do any additional setup after loading the view.
+}
+-(void)GetNewsDetails{
+[MessageRequest GetNewsDetailsmessage_id:self.message_id Block:^(NSDictionary *dics) {
+    
+}];
 }
 cancelClick
 -(void)CreatView{
@@ -35,7 +41,7 @@ cancelClick
     title.textColor=[TheParentClass colorWithHexString:@"#292929"];
     title.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
     title.numberOfLines=0;
-    title.text=@"打狗棍多功能的观点粉身碎三方开个会";
+    title.text=self.titleStr;
     [self.view addSubview:title];
     title.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(self.view, navheight+rectStatus.size.height+(80*autoSizeScaleY)).rightSpaceToView(self.view, 25*autoSizeScaleX).autoHeightRatio(0);
     
@@ -43,7 +49,7 @@ cancelClick
     context.textColor=[TheParentClass colorWithHexString:@"#292929"];
     context.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
     context.numberOfLines=0;
-    context.text=@"打狗棍多功能的观点粉身碎骨东莞市公司广东省手术费和私人医院虽然不是他让不少人也不说一声内容提要少年闰土妖孽人生探讨行业虽然讨厌他愤怒又是否会让他以后的方式跟第三方开个会";
+    context.text=self.context;
     [self.view addSubview:context];
     context.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(title, 76*autoSizeScaleY).rightSpaceToView(self.view, 25*autoSizeScaleX).autoHeightRatio(0);
 }

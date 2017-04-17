@@ -21,7 +21,10 @@
      [dicData setObject:queryType forKey:@"queryType"];
      [dicData setObject:priceType forKey:@"priceType"];
      [dicData setObject:brandSerial forKey:@"brandSerial"];
-     [dicData setObject:categorySerial forKey:@"categorySerial"];
+    if (categorySerial!=nil) {
+         [dicData setObject:categorySerial forKey:@"categorySerial"];
+    }
+    
     NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
     [RequestClass getUrl:@"search" Dic:data block:^(NSDictionary *dic) {
         NSLog(@"获取搜索数据----%@",dic);

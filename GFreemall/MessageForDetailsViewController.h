@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MessageForDetailsViewController : UIViewController
-
+@property(nonatomic,assign)int message_id;
+@property(nonatomic,copy)NSString *titleStr;
+@property(nonatomic,copy)NSString *context;
 @end

@@ -143,8 +143,12 @@
 //点击cell 执行该方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    ForCategoricalDataBaseClass *ForCategoricalData=[[ForCategoricalDataBaseClass alloc]initWithDictionary:self.dataDics];
+    ForCategoricalDataListCategory *ListCategory = ForCategoricalData.listCategory[defaultIdx];
+    ForCategoricalDataSecondNav *secondNav=ListCategory.secondNav[indexPath.row];
     SearchViewController *search=[[SearchViewController alloc]init];
     search.where=@"商品";
+    search.categorySerial=[NSString stringWithFormat:@"%.0f",secondNav.categorySerial];
     [self.navigationController pushViewController:search animated:YES];
 }
 -(CGSize)collectionView:(nonnull UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath

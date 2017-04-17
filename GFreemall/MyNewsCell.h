@@ -12,4 +12,6 @@
 @property(nonatomic,strong)UIImageView *img;
 @property(nonatomic,strong)UILabel *title;
 @property(nonatomic,strong)UILabel *context;
+@property(nonatomic,copy)NSString *unreadStr;
+@property(nonatomic,strong)UILabel *unread;
 @end

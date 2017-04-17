@@ -39,7 +39,9 @@
     [self.view addSubview:_tableView];
 //    [self EmptyTheShoppingCart];//没有搜索到相关商品
     _tableView.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(lineTwo, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0);
-  
+    if (![self.where isEqualToString:@"搜索"]) {
+        [self GetTheRequestData:@"" priceType:@"" brandSerial:@"" categorySerial:self.categorySerial];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -52,7 +54,10 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     autoSize
-    return 88*autoSizeScaleY;
+    if ([self.where isEqualToString:@"搜索"]) {
+        return 88*autoSizeScaleY;
+    }
+    return 0;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     MyView *view=[[MyView alloc]init];
@@ -245,12 +250,12 @@
     switch (btn.tag) {
         case 1000://综合
         {
-             [self GetTheRequestData:@"" priceType:@"" brandSerial:@"" categorySerial:@""];
+             [self GetTheRequestData:@"" priceType:@"" brandSerial:@"" categorySerial:self.categorySerial];
         }
             break;
         case 1001://销量
         {
-             [self GetTheRequestData:@"count" priceType:@"" brandSerial:@"" categorySerial:@""];
+             [self GetTheRequestData:@"count" priceType:@"" brandSerial:@"" categorySerial:self.categorySerial];
         }
             break;
         case 1002://价格
@@ -258,11 +263,11 @@
             MyButton *button=(MyButton *)[self.view viewWithTag:1002];
             UIImageView *img=[[UIImageView alloc]init];
             if (button.selected==YES) {
-                [self GetTheRequestData:@"price" priceType:@"0" brandSerial:@"" categorySerial:@""];
+                [self GetTheRequestData:@"price" priceType:@"0" brandSerial:@"" categorySerial:self.categorySerial];
                 img.image=[UIImage imageNamed:@"triangle_down_red"];
                 button.selected=NO;
             }else{
-                [self GetTheRequestData:@"price" priceType:@"1" brandSerial:@"" categorySerial:@""];
+                [self GetTheRequestData:@"price" priceType:@"1" brandSerial:@"" categorySerial:self.categorySerial];
                 button.selected=YES;
                 img.image=[UIImage imageNamed:@"triangle_up_red-"];
             }
@@ -274,12 +279,12 @@
             break;
         case 1003://评分
         {
-             [self GetTheRequestData:@"grade" priceType:@"" brandSerial:@"" categorySerial:@""];
+             [self GetTheRequestData:@"grade" priceType:@"" brandSerial:@"" categorySerial:self.categorySerial];
         }
             break;
         case 1004://新品
         {
-             [self GetTheRequestData:@"time" priceType:@"" brandSerial:@"" categorySerial:@""];
+             [self GetTheRequestData:@"time" priceType:@"" brandSerial:@"" categorySerial:self.categorySerial];
         }
             break;
             
