@@ -37,4 +37,15 @@
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     [_delegate GoodsScroll:index];
 }
+-(void)setDic:(NSDictionary *)dic{
+    GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:dic];
+    GoodsDetailsComm *comm=class.comm;
+    NSArray *array=class.listPic;
+    NSMutableArray *imgArray=[[NSMutableArray  alloc]init];
+    for (int i=0; i<array.count; i++) {
+        NSString *imgUel=[NSString  stringWithFormat:@"%@%@%@",class.imgSrc,comm.commodityImagesPath,array[i]];
+        [imgArray addObject:imgUel];
+    }
+    _scroll.imageURLStringsGroup=imgArray;
+}
 @end

@@ -25,16 +25,14 @@
         _discount=[[UILabel alloc]init];
         _discount.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _discount.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
-        _discount.text=Localized(@"无折扣");
         [self.contentView addSubview:_discount];
-        _discount.sd_layout.leftSpaceToView(self.contentView, 90*autoSizeScaleX).topSpaceToView(self.contentView, 36*autoSizeScaleY).rightSpaceToView(self.contentView, 25*autoSizeScaleX).autoHeightRatio(0);
+        _discount.sd_layout.leftSpaceToView(self.contentView, 90*autoSizeScaleX).topSpaceToView(self.contentView, 36*autoSizeScaleY).rightSpaceToView(self.contentView, 25*autoSizeScaleX).heightIs(30*autoSizeScaleY);
         
         _freight=[[UILabel alloc]init];
         _freight.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _freight.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
-        _freight.text=Localized(@"5.00");
         [self.contentView addSubview:_freight];
-        _freight.sd_layout.leftSpaceToView(self.contentView, 90*autoSizeScaleX).topSpaceToView(_discount, 36*autoSizeScaleY).rightSpaceToView(self.contentView, 25*autoSizeScaleX).autoHeightRatio(0);
+        _freight.sd_layout.leftSpaceToView(self.contentView, 90*autoSizeScaleX).topSpaceToView(_discount, 36*autoSizeScaleY).rightSpaceToView(self.contentView, 25*autoSizeScaleX).heightIs(30*autoSizeScaleY);
         
         NSArray *nameArray=@[@"折扣",@"运费"];
         for (int i=0; i<2; i++) {

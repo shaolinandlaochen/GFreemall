@@ -87,7 +87,10 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    SearchBaseClass *class=[[SearchBaseClass alloc]initWithDictionary:self.dataDic];
+    SearchResultList *list=class.pagingList.resultList[indexPath.row];
     GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+    goodsDetails.commodity_serial=[NSString stringWithFormat:@"%.0f",list.commoditySerial];
     [self.navigationController pushViewController:goodsDetails animated:YES];
 }
 

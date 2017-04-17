@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GoodsDetailsViewController : UIViewController
-
+@property(nonatomic,copy)NSString *commodity_serial;
+@property(nonatomic,strong)NSDictionary *dataDic;
 @end

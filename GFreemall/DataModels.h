@@ -29,3 +29,7 @@
 #import "HomeAd3.h"
 #import "MyInfo.h"
 #import "MyBaseClass.h"
+#import "GoodsDetailsListComment.h"
+#import "GoodsDetailsMap.h"
+#import "GoodsDetailsComm.h"
+#import "GoodsDetailsBaseClass.h"

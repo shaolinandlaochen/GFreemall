@@ -21,6 +21,7 @@
 #import "EvaluationViewController.h"
 #import "AttributeSelectionViewController.h"
 #import "OrderInformationViewController.h"
+#import "GoodsDetailsRequest.h"
 @interface GoodsDetailsViewController ()<ProductScreeningDelegate,UITableViewDelegate,UITableViewDataSource,GoodsScrollViewDelegate,HTMLContextDelegate,UIScrollViewDelegate,ShutDownDelegate>
 {
     MyoptionsView *optionsView;
@@ -46,11 +47,26 @@
     [self PurchaseOfGoodsView];
     [self BuildView];
     
-
+    [self ForProductInformationClick];
     
    
     // Do any additional setup after loading the view.
 }
+-(void)ForProductInformationClick{//获取商品信息
+    [SVProgressHUD showWithStatus:@"正在加载"];
+[GoodsDetailsRequest ForProductInformationc:self.commodity_serial block:^(NSDictionary *dics) {
+    self.dataDic=[self deleteEmpty:dics];
+    GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    if ([class.code isEqualToString:@"7"]) {
+        [_tableView reloadData];
+    }else{
+        [FTIndicator showErrorWithMessage:class.msg];
+    }
+    [SVProgressHUD dismiss];
+}];
+
+}
+
 -(void)htmlHeight:(float)height{
     if (height>_htmlHeight) {
         _htmlHeight=height;
@@ -60,24 +76,30 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     autoSize
-    if (indexPath.section==0&&indexPath.row==0) {
-        /* model 为模型实例， keyPath 为 model 的属性名，通过 kvc 统一赋值接口 */
-        NSString *txt=@"a";
-        return [tableView cellHeightForIndexPath:indexPath model:txt keyPath:@"text" cellClass:[GoodsScrollViewCell class] contentViewWidth:self.view.frame.size.width];
-    }else if (indexPath.section==0&&indexPath.row==1){
-        NSString *txt=@"a";
-        return [tableView cellHeightForIndexPath:indexPath model:txt keyPath:@"text" cellClass:[ProductDetailsDescriptionCell class] contentViewWidth:self.view.frame.size.width];
-    }else if (indexPath.section==0&&indexPath.row==2){
-        NSString *txt=@"a";
-        return [tableView cellHeightForIndexPath:indexPath model:txt keyPath:@"text" cellClass:[CostCalculationCell class] contentViewWidth:self.view.frame.size.width];
-    }else if (indexPath.section==1){
-        return 114*autoSizeScaleY;
-    }else if (indexPath.section==2){
-        NSString *txt=@"a";
-        return [tableView cellHeightForIndexPath:indexPath model:txt keyPath:@"text" cellClass:[UserCommentsCell class] contentViewWidth:self.view.frame.size.width];
-    }else if (indexPath.section==3){
-        return _htmlHeight;
+    if (self.dataDic!=nil) {
+        if (indexPath.section==0&&indexPath.row==0) {
+            /* model 为模型实例， keyPath 为 model 的属性名，通过 kvc 统一赋值接口 */
+            NSString *txt=@"a";
+            return [tableView cellHeightForIndexPath:indexPath model:txt keyPath:@"text" cellClass:[GoodsScrollViewCell class] contentViewWidth:self.view.frame.size.width];
+        }else if (indexPath.section==0&&indexPath.row==1){
+            
+            GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+            GoodsDetailsComm *comm=class.comm;
+            return [tableView cellHeightForIndexPath:indexPath model:comm keyPath:@"model" cellClass:[ProductDetailsDescriptionCell class] contentViewWidth:self.view.frame.size.width];
+
+        }else if (indexPath.section==0&&indexPath.row==2){
+            NSString *txt=@"a";
+            return [tableView cellHeightForIndexPath:indexPath model:txt keyPath:@"text" cellClass:[CostCalculationCell class] contentViewWidth:self.view.frame.size.width];
+        }else if (indexPath.section==1){
+            return 114*autoSizeScaleY;
+        }else if (indexPath.section==2){
+            NSString *txt=@"a";
+            return [tableView cellHeightForIndexPath:indexPath model:txt keyPath:@"text" cellClass:[UserCommentsCell class] contentViewWidth:self.view.frame.size.width];
+        }else if (indexPath.section==3){
+            return _htmlHeight;
+        }
     }
+   
     return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -122,50 +144,64 @@
     }
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section==0) {
-        return 3;
-    }else if (section==1){
-        return 1;
-    }else if (section==2){
-        return 3;
-    }else if(section==3){
-        return 1;
-    }
+    
+        if (section==0) {
+            return 3;
+        }else if (section==1){
+            return 1;
+        }else if (section==2){
+            return 3;
+        }else if(section==3){
+            return 1;
+        }
+    
+    
     return 0;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+   
     return 4;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section==0) {
-        if (indexPath.row==0) {
-            GoodsScrollViewCell *cell=[GoodsScrollViewCell new];
+    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    if (self.dataDic!=nil) {
+        if (indexPath.section==0) {
+            if (indexPath.row==0) {
+                GoodsScrollViewCell *cell=[GoodsScrollViewCell new];
+                cell.delegate=self;
+                cell.dic=self.dataDic;
+                return cell;
+            }else if (indexPath.row==1){
+                ProductDetailsDescriptionCell *cell=[ProductDetailsDescriptionCell new];
+                if (self.dataDic!=nil) {
+                    cell.model=self.dataDic;
+                }
+                
+                cell.userInteractionEnabled = NO;
+                return cell;
+            }else if (indexPath.row==2){
+                CostCalculationCell *cell=[CostCalculationCell new];
+                cell.discount.text=[NSString stringWithFormat:@"%.2f",classs.comm.commodityDiscount];
+                cell.freight.text=[NSString stringWithFormat:@"%.2f",classs.comm.commodityFreight];
+                cell.userInteractionEnabled = NO;
+                return cell;
+            }
+        }else if (indexPath.section==1){
+            SKUCell *cell=[SKUCell new];
+            return cell;
+        }else if (indexPath.section==2){
+            UserCommentsCell *cell=[UserCommentsCell new];
+            cell.userInteractionEnabled = NO;
+            return cell;
+        }else if (indexPath.section==3){
+            HTMLContextCell *cell=[HTMLContextCell new];
             cell.delegate=self;
-            cell.scroll.imageURLStringsGroup=@[@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490962388422&di=699eff8380ac100ebae0644858d461b5&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2Fa%2F57a0131036064.jpg",@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490962388808&di=7208e5784e83401b8974c309a0ae9d75&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1702%2F10%2Fc23%2F37092600_1486715381472_mthumb.jpg"];
-            return cell;
-        }else if (indexPath.row==1){
-            ProductDetailsDescriptionCell *cell=[ProductDetailsDescriptionCell new];
-            cell.userInteractionEnabled = NO;
-            return cell;
-        }else if (indexPath.row==2){
-            CostCalculationCell *cell=[CostCalculationCell new];
-            cell.userInteractionEnabled = NO;
+            cell.width=self.view.frame.size.width;
             return cell;
         }
-    }else if (indexPath.section==1){
-        SKUCell *cell=[SKUCell new];
-        return cell;
-    }else if (indexPath.section==2){
-        UserCommentsCell *cell=[UserCommentsCell new];
-        cell.userInteractionEnabled = NO;
-        return cell;
-    }else if (indexPath.section==3){
-        HTMLContextCell *cell=[HTMLContextCell new];
-        cell.delegate=self;
-        cell.width=self.view.frame.size.width;
-        return cell;
+        
     }
-    
+ 
     NULLCell *celll=[NULLCell new];
     return celll;
 }
