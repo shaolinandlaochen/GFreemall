@@ -131,13 +131,15 @@
 {
     autoSize
 //        BrandCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"321" forIndexPath:indexPath];
-
+    ForCategoricalDataBaseClass *aaaaa=[[ForCategoricalDataBaseClass alloc]initWithDictionary:self.dataDics];
         SearchListingsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"123" forIndexPath:indexPath];
-        NSArray *listCategory=[self.dataDics objectForKey:@"listCategory"];
-        NSDictionary *dic=listCategory[defaultIdx];
-        NSArray *second_nav=[dic objectForKey:@"second_nav"];
-        NSDictionary *smallDic=second_nav[indexPath.row];
-        cell.name.text=[NSString stringWithFormat:@"%@",[smallDic objectForKey:@"category_name"]];
+    ForCategoricalDataListCategory *bbb = aaaaa.listCategory[indexPath.row];
+    cell.name.text = bbb.categoryName;
+//        NSArray *listCategory=[self.dataDics objectForKey:@"listCategory"];
+//        NSDictionary *dic=listCategory[defaultIdx];
+//        NSArray *second_nav=[dic objectForKey:@"second_nav"];
+//        NSDictionary *smallDic=second_nav[indexPath.row];
+     //   cell.name.text=[NSString stringWithFormat:@"%@",[smallDic objectForKey:@"category_name"]];
         return cell;
    
 }
