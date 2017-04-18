@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol HTMLContextDelegate<NSObject>
 -(void)htmlHeight:(float)height;
+-(void)ReviewImagesUrl:(NSString *)url;
 @end
 @interface HTMLContextCell : UITableViewCell<UIWebViewDelegate>
 @property(nonatomic,assign)id delegate;

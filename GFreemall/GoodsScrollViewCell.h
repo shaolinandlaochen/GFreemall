@@ -12,6 +12,8 @@
 @required//限定实现这个协议,就必须实现这个协议方法
 
 -(void)GoodsScroll:(NSInteger)index;
+//点击查看大图
+-(void)BannerReviewImages:(NSArray *)imgArray idx:(NSInteger)idx;
 
 
 @end
@@ -19,4 +21,5 @@
 @property(nonatomic,assign)id delegate;
 @property(nonatomic,strong)SDCycleScrollView* scroll;
 @property(nonatomic,strong)NSDictionary *dic;
+@property(nonatomic,strong)NSMutableArray *array;
 @end

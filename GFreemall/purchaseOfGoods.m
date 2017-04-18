@@ -34,6 +34,7 @@
             lbl.sd_layout.leftSpaceToView(self, (i*104)*autoSizeScaleY).bottomSpaceToView(self, 10*autoSizeScaleY).widthIs(104*autoSizeScaleX).heightIs(size.height);
             
             UIImageView *img=[[UIImageView alloc]init];
+            img.tag=100+i;
             img.image=[UIImage imageNamed:imgArray[i]];
             [self addSubview:img];
             float x=34+(36+68)*(i%3);
@@ -92,5 +93,14 @@
     }
     return self;
 
+}
+-(void)setIsCollect:(BOOL)isCollect{
+    UIImageView *img=(UIImageView *)[self viewWithTag:101];
+    if (isCollect) {
+        img.image=[UIImage imageNamed:@"icon_collected"];
+    }else{
+     img.image=[UIImage imageNamed:@"icon_collect1"];
+    }
+    _collection.why=isCollect;
 }
 @end

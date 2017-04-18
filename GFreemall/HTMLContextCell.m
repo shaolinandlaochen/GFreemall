@@ -88,10 +88,10 @@
     
     
     CGSize fittingSize = [webView sizeThatFits:CGSizeZero];
-    NSLog(@"网页高度------:%f",fittingSize.height);
+    //NSLog(@"网页高度------:%f",fittingSize.height);
     
     CGFloat height = [[_web stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"]floatValue];
-    NSLog(@"网页高度---111111111111111111111---:%f",height);
+    //NSLog(@"网页高度---111111111111111111111---:%f",height);
     _web.sd_layout.heightIs(fittingSize.height);
     
     
@@ -105,11 +105,11 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
     NSString *requestString = [[[request URL] absoluteString]stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"requestString : %@",requestString);
+    //NSLog(@"requestString : %@",requestString);
     
     
     NSArray *components = [requestString componentsSeparatedByString:@"|"];
-    NSLog(@"=components=====%@",components);
+    //NSLog(@"=components=====%@",components);
     if (components.count>0) {
         NSString *imgstr=[NSString stringWithFormat:@"%@",components[0]];
         
@@ -140,7 +140,7 @@
 
 
 -(void)tapGesture:(NSString *)imgUrl{
-
+    [_delegate ReviewImagesUrl:imgUrl];
 }
 
 -(void)setContext:(NSString *)context{

@@ -14,5 +14,6 @@
 @property(nonatomic,strong)MyButton *shoppingCar;
 @property(nonatomic,strong)MyButton *buy;
 @property(nonatomic,strong)MyButton *addShoppingCar;
+@property(nonatomic,assign)BOOL isCollect;
 
 @end

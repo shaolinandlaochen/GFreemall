@@ -60,6 +60,7 @@
     GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
     if ([class.code isEqualToString:@"7"]) {
         goodsDetailHtmlContextView.context=class.comm.commodityDesc;
+        goods.isCollect=class.isCollect;
         [_tableView reloadData];
     }else{
         [FTIndicator showErrorWithMessage:class.msg];
@@ -211,12 +212,11 @@
     NULLCell *celll=[NULLCell new];
     return celll;
 }
-//点击滚动视图执行该方法
--(void)GoodsScroll:(NSInteger)index{
-    NSLog(@"%ld",index);
+//点击查看大图
+-(void)BannerReviewImages:(NSArray *)imgArray idx:(NSInteger)idx{
+    [TheParentClass ToSeeMorePictures:imgArray idx:idx Controller:self];
 
 }
-
 
 
 cancelClick
@@ -271,6 +271,10 @@ cancelClick
     autoSize
     goods=[[purchaseOfGoods alloc]init];
     [goods.buy addTarget:self action:@selector(onBuyClick) forControlEvents:UIControlEventTouchUpInside];
+    [goods.CustomerService addTarget:self action:@selector(CallCustomerService) forControlEvents:UIControlEventTouchUpInside];
+    [goods.collection addTarget:self action:@selector(CollectionOfGoods:) forControlEvents:UIControlEventTouchUpInside];
+    [goods.shoppingCar addTarget:self action:@selector(IntoTheShoppingCart) forControlEvents:UIControlEventTouchUpInside];
+    [goods.addShoppingCar addTarget:self action:@selector(onAddShopingCharClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goods];
     goods.sd_layout.leftSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).heightIs(96*autoSizeScaleY);
 
@@ -358,9 +362,48 @@ cancelClick
     }];
 
 }
+//查看图片
+-(void)ReviewImagesUrl:(NSString *)url{
+    [TheParentClass SeeAPicture:url Controller:self];
+
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:NO];
+}
+//客服
+-(void)CallCustomerService{
+
+}
+//收藏商品
+-(void)CollectionOfGoods:(MyButton *)BTN{
+    [SVProgressHUD showWithStatus:@"正在收藏"];
+[GoodsDetailsRequest CollectionOrCancelThisCollection:self.commodity_serial block:^(NSDictionary *dics) {
+    GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+    if ([class.code isEqualToString:@"9"]) {
+        goods.isCollect=YES;
+    }else if ([class.code isEqualToString:@"8"]){
+        goods.isCollect=NO;
+    
+    }
+    [FTIndicator showSuccessWithMessage:class.msg];
+    [SVProgressHUD dismiss];
+}];
+
+}
+//进入购物车
+-(void)IntoTheShoppingCart{
+   
+
+}
+//加入购物车
+-(void)onAddShopingCharClick{
+    [GoodsDetailsRequest AddTToCartvalues:@"" serial:self.commodity_serial num:@"1" checkRes:@"NO_ATTR" block:^(NSDictionary *dics) {
+        GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+        [FTIndicator showSuccessWithMessage:class.msg];
+        
+    }];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

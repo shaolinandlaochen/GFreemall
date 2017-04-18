@@ -43,6 +43,9 @@
 +(void)YouNeedToLogIn:(NSString *)message;
 //检测网络
 +(BOOL)DoYouHaveAnyNetwork;
-
+//查看图片一张
++(void)SeeAPicture:(NSString *)imgUrl Controller:(UIViewController *)Controller;
+//查看多张图片
++(void)ToSeeMorePictures:(NSArray *)Array idx:(NSInteger)idx Controller:(UIViewController *)Controller;
 
 @end

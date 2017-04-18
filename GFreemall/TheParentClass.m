@@ -265,7 +265,26 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
         return YES;
     }
 }
+//查看图片一张
++(void)SeeAPicture:(NSString *)imgUrl Controller:(UIViewController *)Controller{
+    NSMutableArray *arrayImgUrl=[NSMutableArray arrayWithObjects:imgUrl, nil];
+    WyzAlbumViewController *WyzAlbum=[[WyzAlbumViewController alloc]init];
+    WyzAlbum.currentIndex=0;
+    WyzAlbum.imgArr=[NSMutableArray arrayWithArray:arrayImgUrl];
+    [Controller presentViewController:WyzAlbum animated:YES completion:^{
+        
+    }];
 
+}
+//查看多张图片
++(void)ToSeeMorePictures:(NSArray *)Array idx:(NSInteger)idx Controller:(UIViewController *)Controller{
+    WyzAlbumViewController *WyzAlbum=[[WyzAlbumViewController alloc]init];
+    WyzAlbum.currentIndex=idx;
+    WyzAlbum.imgArr=[NSMutableArray arrayWithArray:Array];
+    [Controller presentViewController:WyzAlbum animated:YES completion:^{
+        
+    }];
+}
 /*
 #pragma mark - Navigation
 

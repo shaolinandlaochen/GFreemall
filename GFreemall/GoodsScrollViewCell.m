@@ -35,17 +35,18 @@
 }
 /** 点击图片回调 */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-    [_delegate GoodsScroll:index];
+    [_delegate BannerReviewImages:_array idx:index];
+    
 }
 -(void)setDic:(NSDictionary *)dic{
     GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:dic];
     GoodsDetailsComm *comm=class.comm;
     NSArray *array=class.listPic;
-    NSMutableArray *imgArray=[[NSMutableArray  alloc]init];
+    _array=[[NSMutableArray  alloc]init];
     for (int i=0; i<array.count; i++) {
         NSString *imgUel=[NSString  stringWithFormat:@"%@%@%@",class.imgSrc,comm.commodityImagesPath,array[i]];
-        [imgArray addObject:imgUel];
+        [_array addObject:imgUel];
     }
-    _scroll.imageURLStringsGroup=imgArray;
+    _scroll.imageURLStringsGroup=_array;
 }
 @end

@@ -9,6 +9,7 @@
 #import "MyShippingAddress.h"
 #import "InputBoxCell.h"
 #import "newShippingAddress.h"
+#import "ShippingAddressRequest.h"
 @interface MyShippingAddress ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -23,7 +24,21 @@
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:NO];
     self.navigationController.navigationBarHidden=NO;
+    [self LoadTheRequest];
 }
+-(void)LoadTheRequest{
+    [SVProgressHUD showWithStatus:@"正在加载"];
+    [ShippingAddressRequest ToObtainAListShippingAddressblock:^(NSDictionary *dics) {
+        self.dataDic=[self deleteEmpty:dics];
+        [SVProgressHUD dismiss];
+    }];
+
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     autoSize

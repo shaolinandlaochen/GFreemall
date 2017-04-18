@@ -519,6 +519,11 @@
 		9D2937641EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937611EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.m */; };
 		9D2937681EA0CDF400A86E10 /* NSObject+DeleteArrOrDeleteDicBothNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937671EA0CDF400A86E10 /* NSObject+DeleteArrOrDeleteDicBothNull.m */; };
 		9D29376C1EA0D38E00A86E10 /* CollectionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D29376B1EA0D38E00A86E10 /* CollectionRequest.m */; };
+		9D9454831EA5D8D900C6EF21 /* CALayer+Anim.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94547C1EA5D8D900C6EF21 /* CALayer+Anim.m */; };
+		9D9454841EA5D8D900C6EF21 /* CALayer+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94547E1EA5D8D900C6EF21 /* CALayer+Transition.m */; };
+		9D9454851EA5D8D900C6EF21 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9454801EA5D8D900C6EF21 /* PhotoView.m */; };
+		9D9454861EA5D8D900C6EF21 /* WyzAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9454821EA5D8D900C6EF21 /* WyzAlbumViewController.m */; };
+		9D94548B1EA5E89A00C6EF21 /* ShippingAddressRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94548A1EA5E89A00C6EF21 /* ShippingAddressRequest.m */; };
 		9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB861E9CD13A009DCE8F /* GFMCell.m */; };
 		9DB2CB8A1E9DC073009DCE8F /* RecommendedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB891E9DC073009DCE8F /* RecommendedCell.m */; };
 		9DB2CB8D1E9DCE1E009DCE8F /* GFMRollOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB8C1E9DCE1E009DCE8F /* GFMRollOut.m */; };
@@ -1244,6 +1249,16 @@
 		9D2937671EA0CDF400A86E10 /* NSObject+DeleteArrOrDeleteDicBothNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DeleteArrOrDeleteDicBothNull.m"; sourceTree = "<group>"; };
 		9D29376A1EA0D38E00A86E10 /* CollectionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionRequest.h; sourceTree = "<group>"; };
 		9D29376B1EA0D38E00A86E10 /* CollectionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionRequest.m; sourceTree = "<group>"; };
+		9D94547B1EA5D8D900C6EF21 /* CALayer+Anim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Anim.h"; sourceTree = "<group>"; };
+		9D94547C1EA5D8D900C6EF21 /* CALayer+Anim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Anim.m"; sourceTree = "<group>"; };
+		9D94547D1EA5D8D900C6EF21 /* CALayer+Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Transition.h"; sourceTree = "<group>"; };
+		9D94547E1EA5D8D900C6EF21 /* CALayer+Transition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Transition.m"; sourceTree = "<group>"; };
+		9D94547F1EA5D8D900C6EF21 /* PhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoView.h; sourceTree = "<group>"; };
+		9D9454801EA5D8D900C6EF21 /* PhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoView.m; sourceTree = "<group>"; };
+		9D9454811EA5D8D900C6EF21 /* WyzAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WyzAlbumViewController.h; sourceTree = "<group>"; };
+		9D9454821EA5D8D900C6EF21 /* WyzAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WyzAlbumViewController.m; sourceTree = "<group>"; };
+		9D9454891EA5E89A00C6EF21 /* ShippingAddressRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShippingAddressRequest.h; sourceTree = "<group>"; };
+		9D94548A1EA5E89A00C6EF21 /* ShippingAddressRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShippingAddressRequest.m; sourceTree = "<group>"; };
 		9DB2CB851E9CD13A009DCE8F /* GFMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFMCell.h; sourceTree = "<group>"; };
 		9DB2CB861E9CD13A009DCE8F /* GFMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFMCell.m; sourceTree = "<group>"; };
 		9DB2CB881E9DC073009DCE8F /* RecommendedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendedCell.h; sourceTree = "<group>"; };
@@ -1887,6 +1902,8 @@
 				38C1A9051E92390E00A26DCF /* GigAddressTableViewCell.m */,
 				38C1A9071E92393800A26DCF /* NiCaiCell.h */,
 				38C1A9081E92393800A26DCF /* NiCaiCell.m */,
+				9D9454881EA5E87800C6EF21 /* 请求 */,
+				9D9454871EA5E87200C6EF21 /* model */,
 			);
 			name = "收货地址";
 			sourceTree = "<group>";
@@ -1960,6 +1977,7 @@
 				38C9DCC01E89009F00F231B0 /* TheParentClass.h */,
 				38C9DCC11E89009F00F231B0 /* TheParentClass.m */,
 				9D29373F1EA09B5700A86E10 /* DataModels.h */,
+				9D170A8C1EA5D71400A373DD /* 图片浏览器 */,
 				9D2937651EA0CDD400A86E10 /* 空数据过滤 */,
 				9D2937441EA09F2600A86E10 /* 提示框 */,
 				9DB2CBA11E9F1F9A009DCE8F /* 请求 */,
@@ -2359,6 +2377,14 @@
 			name = model;
 			sourceTree = "<group>";
 		};
+		9D170A8C1EA5D71400A373DD /* 图片浏览器 */ = {
+			isa = PBXGroup;
+			children = (
+				9D9454791EA5D8D900C6EF21 /* PhotoBrowser */,
+			);
+			name = "图片浏览器";
+			sourceTree = "<group>";
+		};
 		9D2937311EA067E700A86E10 /* 请求 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2472,6 +2498,45 @@
 				9D29376B1EA0D38E00A86E10 /* CollectionRequest.m */,
 			);
 			name = "请求类";
+			sourceTree = "<group>";
+		};
+		9D9454791EA5D8D900C6EF21 /* PhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				9D94547A1EA5D8D900C6EF21 /* CALayer */,
+				9D94547F1EA5D8D900C6EF21 /* PhotoView.h */,
+				9D9454801EA5D8D900C6EF21 /* PhotoView.m */,
+				9D9454811EA5D8D900C6EF21 /* WyzAlbumViewController.h */,
+				9D9454821EA5D8D900C6EF21 /* WyzAlbumViewController.m */,
+			);
+			path = PhotoBrowser;
+			sourceTree = "<group>";
+		};
+		9D94547A1EA5D8D900C6EF21 /* CALayer */ = {
+			isa = PBXGroup;
+			children = (
+				9D94547B1EA5D8D900C6EF21 /* CALayer+Anim.h */,
+				9D94547C1EA5D8D900C6EF21 /* CALayer+Anim.m */,
+				9D94547D1EA5D8D900C6EF21 /* CALayer+Transition.h */,
+				9D94547E1EA5D8D900C6EF21 /* CALayer+Transition.m */,
+			);
+			path = CALayer;
+			sourceTree = "<group>";
+		};
+		9D9454871EA5E87200C6EF21 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		9D9454881EA5E87800C6EF21 /* 请求 */ = {
+			isa = PBXGroup;
+			children = (
+				9D9454891EA5E89A00C6EF21 /* ShippingAddressRequest.h */,
+				9D94548A1EA5E89A00C6EF21 /* ShippingAddressRequest.m */,
+			);
+			name = "请求";
 			sourceTree = "<group>";
 		};
 		9DB2CB9D1E9F18D5009DCE8F /* 查看成层 */ = {
@@ -3043,7 +3108,9 @@
 				382E034D1E96630500DEF382 /* TheLoginViewController.m in Sources */,
 				383A43FA1E94D331002CBDA0 /* OrderLogisticsCell.m in Sources */,
 				383A44161E94F23A002CBDA0 /* paymentInformationView.m in Sources */,
+				9D9454851EA5D8D900C6EF21 /* PhotoView.m in Sources */,
 				38536CC01E8F45B1003E9015 /* EvaluationOfTheHeadView.m in Sources */,
+				9D9454861EA5D8D900C6EF21 /* WyzAlbumViewController.m in Sources */,
 				38536CD21E8F8ADC003E9015 /* GoodsDetailsHTMLContextViewController.m in Sources */,
 				383A44221E9519CE002CBDA0 /* WalletBalanceTop_upCell.m in Sources */,
 				382E02DC1E960C2100DEF382 /* MessageForDetailsViewController.m in Sources */,
@@ -3113,6 +3180,7 @@
 				9D170A701EA4AF4900A373DD /* GoodsDetailsRequest.m in Sources */,
 				9D170A791EA4B17000A373DD /* GoodsDetailsBaseClass.m in Sources */,
 				38C9DCD21E8901FD00F231B0 /* ShoppingCartViewController.m in Sources */,
+				9D9454831EA5D8D900C6EF21 /* CALayer+Anim.m in Sources */,
 				9D170A6B1EA4AD7500A373DD /* MyInfo.m in Sources */,
 				38C1A9001E922FCB00A26DCF /* newShippingAddress.m in Sources */,
 				382E02CF1E95E90400DEF382 /* ReceivingASuccessfulShow.m in Sources */,
@@ -3133,6 +3201,7 @@
 				9DB2CB901E9E1362009DCE8F /* TransferRecordCell.m in Sources */,
 				38C9DCD61E89021600F231B0 /* MyViewController.m in Sources */,
 				382E02E61E96111A00DEF382 /* EditTheCollectionCell.m in Sources */,
+				9D94548B1EA5E89A00C6EF21 /* ShippingAddressRequest.m in Sources */,
 				9D2937541EA09F3B00A86E10 /* FTProgressIndicator.m in Sources */,
 				383655161E8CDCD50034C332 /* MyMessageCells.m in Sources */,
 				38EE5F3A1E9757DA00A7DE52 /* OnlineWalletViewController.m in Sources */,
@@ -3177,6 +3246,7 @@
 				38C9DCC61E89012A00F231B0 /* HomeViewController.m in Sources */,
 				9D170A3E1EA48A4E00A373DD /* MessageBaseClass.m in Sources */,
 				9D2937431EA09B7000A86E10 /* LoginBaseClass.m in Sources */,
+				9D9454841EA5D8D900C6EF21 /* CALayer+Transition.m in Sources */,
 				38C9DCCE1E8901C300F231B0 /* GFMViewController.m in Sources */,
 				382E03181E965FC700DEF382 /* RetrievePasswordCell.m in Sources */,
 				382E03091E96590600DEF382 /* AboutViewController.m in Sources */,
@@ -3383,6 +3453,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = MXJG8DG39S;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GFreemall/图片浏览器",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GFreemall/PrefixHeader.pch";
 				INFOPLIST_FILE = GFreemall/Info.plist;
@@ -3400,6 +3474,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = MXJG8DG39S;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GFreemall/图片浏览器",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GFreemall/PrefixHeader.pch";
 				INFOPLIST_FILE = GFreemall/Info.plist;

@@ -82,14 +82,7 @@
             ((UIScrollView *)subview).bounces = NO;
     webView.scrollView.bounces = YES;
     
-    
-    CGSize fittingSize = [webView sizeThatFits:CGSizeZero];
-    NSLog(@"网页高度------:%f",fittingSize.height);
-    
-    CGFloat height = [[_web stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"]floatValue];
-    NSLog(@"网页高度---111111111111111111111---:%f",height);
-    //_web.sd_layout.heightIs(fittingSize.height);
-    
+
     
     _web.userInteractionEnabled=YES;//开启交互
     
@@ -135,6 +128,7 @@
 
 
 -(void)tapGesture:(NSString *)imgUrl{
+    [TheParentClass SeeAPicture:imgUrl Controller:self];
     
 }
 
