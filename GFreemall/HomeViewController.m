@@ -64,8 +64,10 @@
         return 1;
     }else if (section==2){
         return 1;
+    }else if (section==3){
+        return 1;
     }
-    return 3;
+    return 0;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
@@ -85,11 +87,14 @@ autoSize
     }else if (indexPath.section==0&&indexPath.row==1) {
         return 234*autoSizeScaleY;
     }else if (indexPath.section==1){
-        return 567*autoSizeScaleY;
+        HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
+        return [tableView cellHeightForIndexPath:indexPath model:class keyPath:@"model" cellClass:[ThreePictureCell class] contentViewWidth:self.view.frame.size.width];
     }else if (indexPath.section==2){
-        return 328*autoSizeScaleY;
-    }else if (indexPath.section>2){
-        return 360*autoSizeScaleY;
+        HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
+        return [tableView cellHeightForIndexPath:indexPath model:class keyPath:@"model" cellClass:[ImageCell class] contentViewWidth:self.view.frame.size.width];
+    }else if (indexPath.section==3){
+        HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
+        return [tableView cellHeightForIndexPath:indexPath model:class keyPath:@"model" cellClass:[MoreAndMoreCell class] contentViewWidth:self.view.frame.size.width];
     }
     return 0;
 }
@@ -99,7 +104,7 @@ autoSize
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 autoSize
-    if (section==1||section==2) {
+    if (section==1||section==2||section==3) {
         return 88*autoSizeScaleY;
     }
     return 0;
@@ -111,7 +116,11 @@ autoSize
         return view;
     }else if (section==2){
         MyView *view=[[MyView alloc]init];
-        view.lbl.text=Localized(@"新款上市啦啦");
+        view.lbl.text=Localized(@"推荐");
+        return view;
+    }else if (section==3){
+        MyView *view=[[MyView alloc]init];
+        view.lbl.text=Localized(@"热卖");
         return view;
     }
     return nil;
@@ -129,25 +138,21 @@ autoSize
         return cell;
     }else if (indexPath.section==1) {
         ThreePictureCell *cell=[ThreePictureCell new];
+        cell.model=self.dataDic;
         [cell.oneBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.oneBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490765107052&di=a2d05e5f5a9a5823fd6fdfdfd9c60ff3&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fbaike%2Fpic%2Fitem%2F8c1001e93901213fb7af127e51e736d12e2e95f7.jpg"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
         
         [cell.twoBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-         [cell.smallOneBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [cell.smallOneBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490897310699&di=57d518cff33e7e2a8d1fe0b0791fcad9&imgtype=0&src=http%3A%2F%2Fup.ekoooo.com%2Fuploads2%2Ftubiao%2F2%2F20088663030703778010.png"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
-        
         [cell.threeBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-         [cell.smallTwoBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.smallTwoBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490897468757&di=01657cb7da33cd9474d1ff43131515f5&imgtype=0&src=http%3A%2F%2Fimg.article.pchome.net%2F00%2F37%2F47%2F30%2Fpic_lib%2Fwm%2Fc157b278a76dc9a72bf76fb5fd53599d.JPG"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
+        
         return cell;
     }else if (indexPath.section==2){
         ImageCell *cell=[ImageCell new];
-        [cell.btn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.btn sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490768069021&di=b97514714244229da8020dad454502dc&imgtype=0&src=http%3A%2F%2Fpic66.nipic.com%2Ffile%2F20150511%2F13629256_135451223000_2.jpg"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
         return cell;
-    }else if(indexPath.section>2){
+       
+    }else if(indexPath.section==3){
         MoreAndMoreCell *cell=[MoreAndMoreCell new];
+        [cell.btn sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490765107052&di=a2d05e5f5a9a5823fd6fdfdfd9c60ff3&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fbaike%2Fpic%2Fitem%2F8c1001e93901213fb7af127e51e736d12e2e95f7.jpg"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
         return cell;
     }
     NULLCell *celll=[NULLCell new];

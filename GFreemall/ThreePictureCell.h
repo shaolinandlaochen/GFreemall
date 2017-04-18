@@ -14,8 +14,9 @@
 @property(nonatomic,strong)MyButton *threeBtn;
 @property(nonatomic,strong)MyButton *smallOneBtn;
 @property(nonatomic,strong)MyButton *smallTwoBtn;
-@property(nonatomic,strong)UILabel *nameOne;
-@property(nonatomic,strong)UILabel *nameTwo;
-@property(nonatomic,strong)UILabel *picOne;
-@property(nonatomic,strong)UILabel *picTwo;
+@property(nonatomic,strong)MyButton *fourBtn;
+@property(nonatomic,strong)MyButton *fiveBtn;
+@property(nonatomic,strong)MyButton *sixBtn;
+@property(nonatomic,strong)MyButton *sevenBtn;
+@property(nonatomic,strong)NSDictionary *model;
 @end

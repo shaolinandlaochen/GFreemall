@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ImageCell : UITableViewCell
-@property(nonatomic,strong)MyButton *btn;
+@property(nonatomic,strong)NSDictionary *model;
 @end
