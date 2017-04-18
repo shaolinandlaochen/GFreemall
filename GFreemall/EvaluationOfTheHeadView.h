@@ -12,4 +12,5 @@
 @property(nonatomic,strong)UILabel *nameNumber;
 @property(nonatomic,strong)MyButton *percentageNumber;
 @property(nonatomic,strong)UIButton *icon;
+@property(nonatomic,strong)GoodsDetailsBaseClass *model;
 @end

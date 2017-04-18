@@ -10,4 +10,5 @@
 
 @interface TheEvaluationListCell : UITableViewCell
 @property(nonatomic,strong)UILabel *context;
+@property(nonatomic,strong)ProductEvaluationResultList *model;
 @end

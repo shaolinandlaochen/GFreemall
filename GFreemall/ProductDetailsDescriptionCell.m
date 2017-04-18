@@ -9,7 +9,9 @@
 #import "ProductDetailsDescriptionCell.h"
 
 @implementation ProductDetailsDescriptionCell
-
+{
+    UIView *lines;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -41,7 +43,9 @@
         [self.contentView addSubview:_picrice];
         _picrice.sd_layout.leftSpaceToView(self.contentView, 25*autoSizeScaleX).rightSpaceToView(self.contentView, 25*autoSizeScaleX);
         
-        
+        lines=[[UIView alloc]init];
+        [self.contentView addSubview:lines];
+        lines.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).heightIs(1);
         
         //[self setupAutoHeightWithBottomView:_picrice bottomMargin:25*autoSizeScaleY];
     }
@@ -58,7 +62,7 @@
     _title.sd_layout.autoHeightRatio(0);
     _string.sd_layout.autoHeightRatio(0).topSpaceToView(_title, 16*autoSizeScaleY);
     _picrice.sd_layout.autoHeightRatio(0).topSpaceToView(_string, 30*autoSizeScaleY);
-    
+    lines.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
     [self setupAutoHeightWithBottomView:_picrice bottomMargin:25*autoSizeScaleY];
 
 }

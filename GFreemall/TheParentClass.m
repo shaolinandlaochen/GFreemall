@@ -224,6 +224,48 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
     [defaults synchronize];
      [FTIndicator showSuccessWithMessage:message];
 }
+//检测网络
+
++(BOOL)DoYouHaveAnyNetwork{
+    NSString *State=@"没有网";
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *children = [[[app valueForKeyPath:@"statusBar"]valueForKeyPath:@"foregroundView"]subviews];
+    int netType = 0;
+    for (id child in children){
+        if ([child isKindOfClass:NSClassFromString(@"UIStatusBarDataNetworkItemView")]){
+            netType = [[child valueForKeyPath:@"dataNetworkType"]intValue];
+            switch (netType) {
+                case 0:
+                NSLog(@"........无网络");
+                break;
+                case 1:
+                NSLog(@"......2G");
+                State=@"2G";
+                break;
+                case 2:
+                NSLog(@".......3G.");
+                State=@"3G";
+                break;
+                case 3:
+                NSLog(@"......4G");
+                State=@"4G";
+                break;
+                case 5:{
+                    NSLog(@".......wifi");
+                    State=@"wifi";
+                }break;
+                default:
+                break;
+            }
+        }
+    }
+    if ([State isEqualToString:@"没有网"]) {
+        return NO;
+    }else{
+        return YES;
+    }
+}
+
 /*
 #pragma mark - Navigation
 

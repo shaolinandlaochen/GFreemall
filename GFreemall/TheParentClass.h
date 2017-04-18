@@ -41,7 +41,8 @@
 +(NSDictionary *)ReceiveTheOriginalData:(NSDictionary *)dic;
 //需要重新登录
 +(void)YouNeedToLogIn:(NSString *)message;
-
+//检测网络
++(BOOL)DoYouHaveAnyNetwork;
 
 
 @end

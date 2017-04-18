@@ -31,6 +31,7 @@
     UIScrollView *_scrollView;
     NSInteger _page;
     AttributeSelectionViewController *attributeSku;
+    GoodsDetailsHTMLContextViewController *goodsDetailHtmlContextView;
 }
 @end
 
@@ -58,6 +59,7 @@
     self.dataDic=[self deleteEmpty:dics];
     GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
     if ([class.code isEqualToString:@"7"]) {
+        goodsDetailHtmlContextView.context=class.comm.commodityDesc;
         [_tableView reloadData];
     }else{
         [FTIndicator showErrorWithMessage:class.msg];
@@ -77,13 +79,14 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     autoSize
     if (self.dataDic!=nil) {
+          GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
         if (indexPath.section==0&&indexPath.row==0) {
             /* model 为模型实例， keyPath 为 model 的属性名，通过 kvc 统一赋值接口 */
             NSString *txt=@"a";
             return [tableView cellHeightForIndexPath:indexPath model:txt keyPath:@"text" cellClass:[GoodsScrollViewCell class] contentViewWidth:self.view.frame.size.width];
         }else if (indexPath.section==0&&indexPath.row==1){
             
-            GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+          
             GoodsDetailsComm *comm=class.comm;
             return [tableView cellHeightForIndexPath:indexPath model:comm keyPath:@"model" cellClass:[ProductDetailsDescriptionCell class] contentViewWidth:self.view.frame.size.width];
 
@@ -93,8 +96,8 @@
         }else if (indexPath.section==1){
             return 114*autoSizeScaleY;
         }else if (indexPath.section==2){
-            NSString *txt=@"a";
-            return [tableView cellHeightForIndexPath:indexPath model:txt keyPath:@"text" cellClass:[UserCommentsCell class] contentViewWidth:self.view.frame.size.width];
+            GoodsDetailsListComment *comment=class.listComment[indexPath.row];
+            return [tableView cellHeightForIndexPath:indexPath model:comment keyPath:@"model" cellClass:[UserCommentsCell class] contentViewWidth:self.view.frame.size.width];
         }else if (indexPath.section==3){
             return _htmlHeight;
         }
@@ -130,7 +133,9 @@
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section==2) {
+        GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
         EvaluationOfTheHeadView *view=[[EvaluationOfTheHeadView alloc]init];
+        view.model=class;
         [view.icon addTarget:self action:@selector(onRatingClick) forControlEvents:UIControlEventTouchUpInside];
         [view.percentageNumber addTarget:self action:@selector(onRatingClick) forControlEvents:UIControlEventTouchUpInside];
         return view;
@@ -144,13 +149,13 @@
     }
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
+    GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
         if (section==0) {
             return 3;
         }else if (section==1){
             return 1;
         }else if (section==2){
-            return 3;
+            return class.listComment.count;
         }else if(section==3){
             return 1;
         }
@@ -176,7 +181,6 @@
                 if (self.dataDic!=nil) {
                     cell.model=self.dataDic;
                 }
-                
                 cell.userInteractionEnabled = NO;
                 return cell;
             }else if (indexPath.row==2){
@@ -191,10 +195,12 @@
             return cell;
         }else if (indexPath.section==2){
             UserCommentsCell *cell=[UserCommentsCell new];
+            cell.model=classs.listComment[indexPath.row];
             cell.userInteractionEnabled = NO;
             return cell;
         }else if (indexPath.section==3){
             HTMLContextCell *cell=[HTMLContextCell new];
+            cell.context=classs.comm.commodityDesc;
             cell.delegate=self;
             cell.width=self.view.frame.size.width;
             return cell;
@@ -294,17 +300,19 @@ cancelClick
     _tableView=[[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.separatorColor=[UIColor clearColor];
     _tableView.backgroundColor=[TheParentClass colorWithHexString:@"f3f5f7"];
     [_scrollView addSubview:_tableView];
     _tableView.sd_layout.leftSpaceToView(_scrollView, 0).topSpaceToView(_scrollView, 0).bottomSpaceToView(_scrollView, 0).widthIs(self.view.frame.size.width);
     //详情
-    GoodsDetailsHTMLContextViewController *goodsDetailHtmlContextView=[[GoodsDetailsHTMLContextViewController alloc]init];
+    goodsDetailHtmlContextView=[[GoodsDetailsHTMLContextViewController alloc]init];
     [_scrollView addSubview:goodsDetailHtmlContextView.view];
     goodsDetailHtmlContextView.view.sd_layout.leftSpaceToView(_tableView, 0).topSpaceToView(_scrollView, 0).bottomSpaceToView(_scrollView, 0).widthIs(self.view.frame.size.width);
     [self addChildViewController:goodsDetailHtmlContextView];
     
     //评价
     EvaluationViewController *evaluation=[[EvaluationViewController alloc]init];
+    evaluation.commodity_serial=self.commodity_serial;
     [_scrollView addSubview:evaluation.view];
     evaluation.view.sd_layout.leftSpaceToView(_tableView, self.view.frame.size.width).topSpaceToView(_scrollView, 0).bottomSpaceToView(_scrollView, 0).widthIs(self.view.frame.size.width);
     [self addChildViewController:evaluation];

@@ -33,3 +33,6 @@
 #import "GoodsDetailsMap.h"
 #import "GoodsDetailsComm.h"
 #import "GoodsDetailsBaseClass.h"
+#import "ProductEvaluationBaseClass.h"
+#import "ProductEvaluationResultList.h"
+#import "ProductEvaluationListComment.h"

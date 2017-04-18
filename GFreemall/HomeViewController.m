@@ -37,20 +37,18 @@
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.frame.size.height-htight) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
-    
     [self.view addSubview:_tableView];
-
-  
+//下拉刷新
+  TheDrop_downRefresh(_tableView, @selector(DataAccessPageRequestClick))
     
     [self DataAccessPageRequestClick];
     // Do any additional setup after loading the view.
 }
 -(void)DataAccessPageRequestClick{
-    [SVProgressHUD showWithStatus:Localized(@"正在加载")];
 [DataAccessPageRequest DataAccessPageRequestBlock:^(NSDictionary *dics) {
     self.dataDic=[self deleteEmpty:dics];
     [_tableView reloadData];
-    [SVProgressHUD dismiss];
+    [_tableView.mj_header endRefreshing];
 }];
 
 }

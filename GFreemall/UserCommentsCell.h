@@ -12,4 +12,5 @@
 @property(nonatomic,strong)UILabel *level;
 @property(nonatomic,strong)UILabel *context;
 @property(nonatomic,strong)UIImageView *icon;
+@property(nonatomic,strong)GoodsDetailsListComment *model;
 @end

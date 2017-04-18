@@ -21,15 +21,15 @@
     autoSize
     if ([super initWithFrame:frame]) {
         autoSize
-        self.backgroundColor=[UIColor whiteColor];
+      
         //评论数
         _nameNumber=[[UILabel alloc]init];
         _nameNumber.textColor=[TheParentClass colorWithHexString:@"#999999"];
         _nameNumber.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         [self addSubview:_nameNumber];
-        _nameNumber.text=Localized(@"评论(999)");
-        CGSize size=[TheParentClass  StringHeight:_nameNumber.text Lblfont:26*autoSizeScaleY heightOfTheMinus:0];
-        _nameNumber.sd_layout.leftSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(size.width);
+  
+      
+        _nameNumber.sd_layout.leftSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0);
         //箭头
         _icon=[[MyButton alloc]init];
         [_icon setImage:[UIImage imageNamed:@"icon_right-"] forState:UIControlStateNormal];
@@ -38,7 +38,6 @@
         
         //百分比
         _percentageNumber=[[MyButton alloc]init];
-        [_percentageNumber setTitle:Localized(@"99%") forState:UIControlStateNormal];
         [_percentageNumber setTitleColor:[TheParentClass colorWithHexString:@"#de0024"] forState:UIControlStateNormal];
         _percentageNumber.titleLabel.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         [self addSubview:_percentageNumber];
@@ -63,5 +62,16 @@
         
     }
     return self;
+}
+-(void)setModel:(GoodsDetailsBaseClass *)model{
+    autoSize
+    self.backgroundColor=[UIColor whiteColor];
+    float a=model.totalCount-model.badCount;
+    float b=a/model.totalCount;
+     _nameNumber.text=[NSString stringWithFormat:@"评论数:%.0f",model.totalCount];
+    CGSize size=[TheParentClass  StringHeight:_nameNumber.text Lblfont:26*autoSizeScaleY heightOfTheMinus:0];
+    _nameNumber.sd_layout.widthIs(size.width);
+    [_percentageNumber setTitle:[NSString stringWithFormat:@"%.0f%%",b] forState:UIControlStateNormal];
+
 }
 @end

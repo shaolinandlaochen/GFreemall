@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GoodsDetailsHTMLContextViewController : UIViewController
-
+@property(nonatomic,copy)NSString *context;
+@property(nonatomic,strong)NSMutableArray *imageUrl;
 @end

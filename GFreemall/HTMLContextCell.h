@@ -10,9 +10,8 @@
 @protocol HTMLContextDelegate<NSObject>
 -(void)htmlHeight:(float)height;
 @end
-@interface HTMLContextCell : UITableViewCell
+@interface HTMLContextCell : UITableViewCell<UIWebViewDelegate>
 @property(nonatomic,assign)id delegate;
-@property(nonatomic,strong)NSDictionary *dataDic;
-@property(nonatomic,strong)UIImageView *imgbj;
-@property(nonatomic,assign)float width;
+@property(nonatomic,copy)NSString *context;
+@property(nonatomic,strong)NSMutableArray *imageUrl;
 @end

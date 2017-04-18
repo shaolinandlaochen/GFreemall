@@ -499,6 +499,9 @@
 		9D170A801EA4C52200A373DD /* icon_collected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D170A7D1EA4C52200A373DD /* icon_collected.png */; };
 		9D170A811EA4C52200A373DD /* icon_collected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D170A7E1EA4C52200A373DD /* icon_collected@2x.png */; };
 		9D170A821EA4C52200A373DD /* icon_collected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D170A7F1EA4C52200A373DD /* icon_collected@3x.png */; };
+		9D170A891EA5C11000A373DD /* ProductEvaluationBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A841EA5C11000A373DD /* ProductEvaluationBaseClass.m */; };
+		9D170A8A1EA5C11000A373DD /* ProductEvaluationListComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A861EA5C11000A373DD /* ProductEvaluationListComment.m */; };
+		9D170A8B1EA5C11000A373DD /* ProductEvaluationResultList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A881EA5C11000A373DD /* ProductEvaluationResultList.m */; };
 		9D2937341EA067FE00A86E10 /* LoginRequuestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937331EA067FE00A86E10 /* LoginRequuestClass.m */; };
 		9D2937381EA075CD00A86E10 /* setUpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937371EA075CD00A86E10 /* setUpRequest.m */; };
 		9D29373C1EA07BE400A86E10 /* fenlei_kk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2937391EA07BE400A86E10 /* fenlei_kk.png */; };
@@ -1204,6 +1207,12 @@
 		9D170A7D1EA4C52200A373DD /* icon_collected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_collected.png; path = "imgs/商品详情切图/icon_collected.png"; sourceTree = "<group>"; };
 		9D170A7E1EA4C52200A373DD /* icon_collected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_collected@2x.png"; path = "imgs/商品详情切图/icon_collected@2x.png"; sourceTree = "<group>"; };
 		9D170A7F1EA4C52200A373DD /* icon_collected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_collected@3x.png"; path = "imgs/商品详情切图/icon_collected@3x.png"; sourceTree = "<group>"; };
+		9D170A831EA5C11000A373DD /* ProductEvaluationBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductEvaluationBaseClass.h; sourceTree = "<group>"; };
+		9D170A841EA5C11000A373DD /* ProductEvaluationBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductEvaluationBaseClass.m; sourceTree = "<group>"; };
+		9D170A851EA5C11000A373DD /* ProductEvaluationListComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductEvaluationListComment.h; sourceTree = "<group>"; };
+		9D170A861EA5C11000A373DD /* ProductEvaluationListComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductEvaluationListComment.m; sourceTree = "<group>"; };
+		9D170A871EA5C11000A373DD /* ProductEvaluationResultList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductEvaluationResultList.h; sourceTree = "<group>"; };
+		9D170A881EA5C11000A373DD /* ProductEvaluationResultList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductEvaluationResultList.m; sourceTree = "<group>"; };
 		9D2937321EA067FE00A86E10 /* LoginRequuestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequuestClass.h; sourceTree = "<group>"; };
 		9D2937331EA067FE00A86E10 /* LoginRequuestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequuestClass.m; sourceTree = "<group>"; };
 		9D2937361EA075CD00A86E10 /* setUpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setUpRequest.h; sourceTree = "<group>"; };
@@ -2340,6 +2349,12 @@
 				9D170A761EA4B17000A373DD /* GoodsDetailsListComment.m */,
 				9D170A771EA4B17000A373DD /* GoodsDetailsMap.h */,
 				9D170A781EA4B17000A373DD /* GoodsDetailsMap.m */,
+				9D170A831EA5C11000A373DD /* ProductEvaluationBaseClass.h */,
+				9D170A841EA5C11000A373DD /* ProductEvaluationBaseClass.m */,
+				9D170A851EA5C11000A373DD /* ProductEvaluationListComment.h */,
+				9D170A861EA5C11000A373DD /* ProductEvaluationListComment.m */,
+				9D170A871EA5C11000A373DD /* ProductEvaluationResultList.h */,
+				9D170A881EA5C11000A373DD /* ProductEvaluationResultList.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -3111,6 +3126,7 @@
 				9DC006191E9F6506001CB6D4 /* DrawACircle.m in Sources */,
 				382E02AC1E95DC4100DEF382 /* InternalOrderButtonCell.m in Sources */,
 				382E02F61E9634D400DEF382 /* MailNextViewController.m in Sources */,
+				9D170A8A1EA5C11000A373DD /* ProductEvaluationListComment.m in Sources */,
 				382E02ED1E961B0A00DEF382 /* basicInformationCell.m in Sources */,
 				383A43F71E94CF2A002CBDA0 /* OrdersForGoodsListCell.m in Sources */,
 				383655D11E8E35130034C332 /* SearchForGoodsCell.m in Sources */,
@@ -3124,6 +3140,7 @@
 				9DB2CBA01E9F18F7009DCE8F /* FrontPageViewLayer.m in Sources */,
 				38C9DC8E1E88BF5F00F231B0 /* AppDelegate.m in Sources */,
 				9D29375B1EA0A87500A86E10 /* ClassificationRequest.m in Sources */,
+				9D170A8B1EA5C11000A373DD /* ProductEvaluationResultList.m in Sources */,
 				38536CDB1E8F90CE003E9015 /* DistrictHeadView.m in Sources */,
 				9D2937561EA09F3B00A86E10 /* FTToastIndicator.m in Sources */,
 				383655501E8CEF2B0034C332 /* ShoppingCartProductsCell.m in Sources */,
@@ -3182,6 +3199,7 @@
 				38EE5F4F1E97753200A7DE52 /* PrepaidPhoneRecordsTableViewCell.m in Sources */,
 				38536CBA1E8F3741003E9015 /* CostCalculationCell.m in Sources */,
 				38E9E3BE1E909948001EFBAD /* AttributeSelectionViewController.m in Sources */,
+				9D170A891EA5C11000A373DD /* ProductEvaluationBaseClass.m in Sources */,
 				9DB2CB931E9E1466009DCE8F /* RollOutTableViewCell.m in Sources */,
 				38536CC91E8F5624003E9015 /* HTMLContextCell.m in Sources */,
 				383A43E51E94803D002CBDA0 /* OrderCell.m in Sources */,

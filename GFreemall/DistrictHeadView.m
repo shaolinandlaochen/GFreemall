@@ -27,20 +27,17 @@
         _icon.sd_layout.leftSpaceToView(self, 24*autoSizeScaleX).topSpaceToView(self, 22*autoSizeScaleY).bottomSpaceToView(self, 22*autoSizeScaleY).widthIs(56*autoSizeScaleX);
         
         _name=[[UILabel alloc]init];
-        _name.text=@"我是小明";
         _name.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _name.font=[UIFont systemFontOfSize:24*autoSizeScaleY];
         [self addSubview:_name];
-        CGSize size=[TheParentClass StringHeight:_name.text Lblfont:24*autoSizeScaleY heightOfTheMinus:0];
-        _name.sd_layout.leftSpaceToView(_icon, 20*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(size.width);
+        _name.sd_layout.leftSpaceToView(_icon, 20*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(200);
         
         _time=[[UILabel alloc]init];
+        _time.textAlignment=NSTextAlignmentRight;
         _time.textColor=[TheParentClass colorWithHexString:@"#999999"];
-        _time.text=@"2016-01-01";
         _time.font=[UIFont systemFontOfSize:24*autoSizeScaleY];
         [self addSubview:_time];
-        CGSize timesize=[TheParentClass StringHeight:_time.text Lblfont:24*autoSizeScaleY heightOfTheMinus:0];
-        _time.sd_layout.rightSpaceToView(self, 25*autoSizeScaleX).topEqualToView(_name).bottomEqualToView(_name).widthIs(timesize.width);
+        _time.sd_layout.rightSpaceToView(self, 25*autoSizeScaleX).topEqualToView(_name).bottomEqualToView(_name).widthIs(200);
         
         UILabel *lines=[[UILabel alloc]init];
         lines.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
@@ -49,5 +46,29 @@
         
     }
     return self;
+}
+-(void)setModel:(ProductEvaluationResultList *)model{
+    NSString *levelStr;
+    if (model.baseGrade==0) {
+        levelStr=Localized(@"注册会员");
+        _icon.image=[UIImage imageNamed:@"icon_register1"];
+    }else if (model.baseGrade==1){
+        levelStr=Localized(@"铜牌会员");
+        _icon.image=[UIImage imageNamed:@"icon_copper1"];
+    }else if (model.baseGrade==2){
+        levelStr=Localized(@"银牌会员");
+        _icon.image=[UIImage imageNamed:@"icon_silver1"];
+    }else if (model.baseGrade==3){
+        levelStr=Localized(@"金牌会员");
+        _icon.image=[UIImage imageNamed:@"icon_gold1"];
+    }else if (model.baseGrade==4){
+        levelStr=Localized(@"钻石会员");
+        _icon.image=[UIImage imageNamed:@"icon_diamond1"];
+    }
+    _name.text=levelStr;
+    _time.text=model.commentReplyTime;
+
+
+
 }
 @end
