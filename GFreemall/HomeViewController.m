@@ -41,7 +41,6 @@
 //下拉刷新
   TheDrop_downRefresh(_tableView, @selector(DataAccessPageRequestClick))
     
-    [self DataAccessPageRequestClick];
     // Do any additional setup after loading the view.
 }
 -(void)DataAccessPageRequestClick{

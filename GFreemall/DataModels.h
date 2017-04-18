@@ -36,3 +36,6 @@
 #import "ProductEvaluationBaseClass.h"
 #import "ProductEvaluationResultList.h"
 #import "ProductEvaluationListComment.h"
+#import "ShoppingCarComm.h"
+#import "ShoppingCarBaseClass.h"
+#import "ShoppingCarList.h"

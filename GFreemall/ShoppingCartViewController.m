@@ -9,6 +9,7 @@
 #import "ShoppingCartViewController.h"
 #import "ShoppingCartProductsCell.h"
 #import "MyNewsViewController.h"
+#import "ShoppingCarRequest.h"
 @interface ShoppingCartViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -28,38 +29,56 @@
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     [self rightBaBarbtn];
+    [self CreatePaymentButton];//创建支付按钮
     _isState=YES;//表示默认是非编辑状态
     autoSize
-    float height=98*autoSizeScaleY;
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-height) style:UITableViewStylePlain];
+    CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
+    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
+    _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.dataSource=self;
     _tableView.delegate=self;
     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
-    
+    _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(view, 0).topSpaceToView(self.view, navheight+rectStatus.size.height);
+    TheDrop_downRefresh(_tableView, @selector(ToGetAShoppingCartGoodsList))
    // [self EmptyTheShoppingCart];//购物车是空的
-    
     // Do any additional setup after loading the view.
 }
+-(void)ToGetAShoppingCartGoodsList{
+    [ShoppingCarRequest ToGetAShoppingCartGoodsListBlock:^(NSDictionary *dics) {
+        self.dataDic=[self deleteEmpty:dics];
+        ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:self.dataDic];
+        if ([class.code isEqualToString:@"13"]) {
+            if (class.list.count>0) {
+                [_tableView reloadData];
+            }else{
+            [self EmptyTheShoppingCart];//购物车是空的
+            }
+        }else{
+            [FTIndicator showErrorWithMessage:class.msg];
+        }
+         [_tableView.mj_header endRefreshing];
+    }];
 
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+     [_tableView.mj_header endRefreshing];
+    [SVProgressHUD dismiss];
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     autoSize
     return 260*autoSizeScaleY;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     autoSize
-    return 99*autoSizeScaleY;
+    return 0*autoSizeScaleY;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    view=[[ShoppingCarViews alloc]init];
-    view.picle.text=@"合计:¥9999";
-    view.state=_isState;
-    [view.PaymentAndDeleteBtn addTarget:self action:@selector(PaymentAndDeleteClick:) forControlEvents:UIControlEventTouchUpInside];
-    [view.selectedBtn addTarget:self action:@selector(FutureGenerations:) forControlEvents:UIControlEventTouchUpInside];
-    return view;
+        return nil;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return nil;
@@ -69,31 +88,33 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:self.dataDic];
+    return class.list.count;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section==0) {
-        ShoppingCartProductsCell *cell=[ShoppingCartProductsCell new];
-        cell.selectedBtn.indexPath=indexPath;
-        [cell.selectedBtn addTarget:self action:@selector(TheSelectedClick:) forControlEvents:UIControlEventTouchUpInside];
-        cell.addBtn.indexPath=indexPath;
-        [cell.addBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
-        cell.deleteBtn.indexPath=indexPath;
-        [cell.deleteBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.icon sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490872623835&di=d3dacb515f3909f186bffe0461180fbd&imgtype=0&src=http%3A%2F%2Fpic38.nipic.com%2F20140222%2F11624852_222803434301_2.jpg"] placeholderImage:[UIImage imageNamed:@""]];
-        cell.name.text=@"我是商品名称大苹果我是商品名称大苹名称大苹果";
-        cell.describe.text=@"颜色:410-蓝色 尺码:34";
-        cell.price.text=@"¥99999";
-        cell.bjImage.image=[UIImage imageNamed:@"edict"];
-        cell.number.text=@"90";
-        
+    ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:self.dataDic];
+    ShoppingCarList *list=class.list[indexPath.row];
+    ShoppingCarComm *comm=list.comm;
+    
+    ShoppingCartProductsCell *cell=[ShoppingCartProductsCell new];
+    cell.selectedBtn.indexPath=indexPath;
+    [cell.selectedBtn addTarget:self action:@selector(TheSelectedClick:) forControlEvents:UIControlEventTouchUpInside];
+    cell.addBtn.indexPath=indexPath;
+    [cell.addBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
+    cell.deleteBtn.indexPath=indexPath;
+    [cell.deleteBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,comm.commodityImagesPath,comm.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
+    cell.name.text=comm.commodityName;
+    cell.describe.text=comm.commodityDigest;
+    cell.price.text=[NSString stringWithFormat:@"%.2f",comm.commoditySellprice];
+    cell.bjImage.image=[UIImage imageNamed:@"edict"];
+    cell.number.text=[NSString stringWithFormat:@"%.0f",list.count];
+    
         return cell;
-    }
-    NULLCell *celll=[NULLCell new];
-    return celll;
+
 }
 
 -(void)rightBaBarbtn{
@@ -212,7 +233,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+//创建支付按钮
+-(void)CreatePaymentButton{
+    autoSize
+    view=[[ShoppingCarViews alloc]init];
+    view.picle.text=@"合计:¥9999";
+    view.state=_isState;
+    [view.PaymentAndDeleteBtn addTarget:self action:@selector(PaymentAndDeleteClick:) forControlEvents:UIControlEventTouchUpInside];
+    [view.selectedBtn addTarget:self action:@selector(FutureGenerations:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:view];
+    view.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 98*autoSizeScaleY).heightIs(99*autoSizeScaleY);
 
+}
 /*
 #pragma mark - Navigation
 
