@@ -10,7 +10,7 @@
 #import "InputBoxCell.h"
 #import "newShippingAddress.h"
 #import "ShippingAddressRequest.h"
-@interface MyShippingAddress ()<UITableViewDelegate,UITableViewDataSource>
+@interface MyShippingAddress ()<UITableViewDelegate,UITableViewDataSource,newShippingAddressOneDelegate>
 {
     UITableView *_tableView;
     MyButton *addRess;
@@ -25,6 +25,9 @@
     [TheParentClass ButtonAtTheBottomOfThesize:NO];
     self.navigationController.navigationBarHidden=NO;
 }
+-(void)newShippingAddres{
+    [self LoadTheRequest];
+}
 -(void)LoadTheRequest{
     [ShippingAddressRequest ToObtainAListShippingAddressblock:^(NSDictionary *dics) {
         self.dataDic=[self deleteEmpty:dics];
@@ -35,6 +38,7 @@
             [FTIndicator showErrorWithMessage:class.msg];
         }
          [_tableView.mj_header endRefreshing];
+        [SVProgressHUD dismiss];
     }];
 
 }
@@ -119,16 +123,40 @@
     AddressList *list=class.list[indexPath.row];
     InputBoxCell *cell=[InputBoxCell new];
     cell.model=list;
-    cell.btn.indexPath=indexPath;
+    cell.btn.row=indexPath.row;
     [cell.btn addTarget:self action:@selector(onEidClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     return cell;
 
 }
+//设置标题
+-(NSArray<UITableViewRowAction*>*)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UITableViewRowAction *rowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+      AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:self.dataDic];
+    AddressList *list=class.list[indexPath.row];
+        [SVProgressHUD showWithStatus:@"正在删除"];
+        [ShippingAddressRequest delegateAddressString:list.listIdentifier block:^(NSDictionary *dics) {
+            AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            if ([class.code isEqualToString:@"55"]) {
+                 [self LoadTheRequest];
+            }else{
+                [FTIndicator showErrorWithMessage:class.msg];
+            }
+           
+        }];
+        
+        
+        
+    }];
+    
+    NSArray *arr = @[rowAction];
+    return arr;
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    newShippingAddress *new=[[newShippingAddress alloc]init];
-    [self.navigationController pushViewController:new animated:YES];
+
 }
 
 
@@ -137,14 +165,32 @@
 }
 //点击编辑进入该方法
 -(void)onEidClick:(MyButton *)btn{
-    NSLog(@"ssssss");
+    AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:self.dataDic];
+    AddressList *list=class.list[btn.row];
     newShippingAddress *new=[[newShippingAddress alloc]init];
+    new.name=list.addressName;
+    new.phoneNumber=list.addressPhone;
+    new.addressString=list.addressAddress;
+    new.address_area=list.addressArea;
+    new.address_city=list.addressCity;
+    new.address_province=list.addressProvince;
+    new.address_country=list.addressCountry;
+    new.ID=list.listIdentifier;
+    if (list.addressIsdefault==1) {
+        new.isDefail=YES;
+    }else{
+        new.isDefail=NO;
+    }
+    new.why=@"修改";
+    new.delegate=self;
     [self.navigationController pushViewController:new animated:YES];
 
 }
 //添加地址
 -(void)onAddressClick{
     newShippingAddress *new=[[newShippingAddress alloc]init];
+    new.delegate=self;
+    new.why=@"新增";
     [self.navigationController pushViewController:new animated:YES];
 }
 - (void)didReceiveMemoryWarning {

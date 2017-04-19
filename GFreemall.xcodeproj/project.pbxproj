@@ -535,6 +535,9 @@
 		9D4BCE3A1EA710E400ED3D3E /* HomePageViewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BCE391EA710E400ED3D3E /* HomePageViewsViewController.m */; };
 		9D4BCE3F1EA729FD00ED3D3E /* AddressBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BCE3C1EA729FD00ED3D3E /* AddressBaseClass.m */; };
 		9D4BCE401EA729FD00ED3D3E /* AddressList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BCE3E1EA729FD00ED3D3E /* AddressList.m */; };
+		9D4BCE431EA7378800ED3D3E /* AddressString.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BCE421EA7378800ED3D3E /* AddressString.m */; };
+		9D4BCE471EA73EF700ED3D3E /* ChooseShippingAddressOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BCE461EA73EF700ED3D3E /* ChooseShippingAddressOne.m */; };
+		9D4BCE4A1EA742A700ED3D3E /* ChooseShippingAddressTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BCE491EA742A700ED3D3E /* ChooseShippingAddressTwo.m */; };
 		9D9454831EA5D8D900C6EF21 /* CALayer+Anim.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94547C1EA5D8D900C6EF21 /* CALayer+Anim.m */; };
 		9D9454841EA5D8D900C6EF21 /* CALayer+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94547E1EA5D8D900C6EF21 /* CALayer+Transition.m */; };
 		9D9454851EA5D8D900C6EF21 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9454801EA5D8D900C6EF21 /* PhotoView.m */; };
@@ -1288,6 +1291,12 @@
 		9D4BCE3C1EA729FD00ED3D3E /* AddressBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBaseClass.m; sourceTree = "<group>"; };
 		9D4BCE3D1EA729FD00ED3D3E /* AddressList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressList.h; sourceTree = "<group>"; };
 		9D4BCE3E1EA729FD00ED3D3E /* AddressList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressList.m; sourceTree = "<group>"; };
+		9D4BCE411EA7378800ED3D3E /* AddressString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressString.h; sourceTree = "<group>"; };
+		9D4BCE421EA7378800ED3D3E /* AddressString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressString.m; sourceTree = "<group>"; };
+		9D4BCE451EA73EF700ED3D3E /* ChooseShippingAddressOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseShippingAddressOne.h; sourceTree = "<group>"; };
+		9D4BCE461EA73EF700ED3D3E /* ChooseShippingAddressOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseShippingAddressOne.m; sourceTree = "<group>"; };
+		9D4BCE481EA742A700ED3D3E /* ChooseShippingAddressTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseShippingAddressTwo.h; sourceTree = "<group>"; };
+		9D4BCE491EA742A700ED3D3E /* ChooseShippingAddressTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseShippingAddressTwo.m; sourceTree = "<group>"; };
 		9D94547B1EA5D8D900C6EF21 /* CALayer+Anim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Anim.h"; sourceTree = "<group>"; };
 		9D94547C1EA5D8D900C6EF21 /* CALayer+Anim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Anim.m"; sourceTree = "<group>"; };
 		9D94547D1EA5D8D900C6EF21 /* CALayer+Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Transition.h"; sourceTree = "<group>"; };
@@ -1950,6 +1959,7 @@
 				38C1A9051E92390E00A26DCF /* GigAddressTableViewCell.m */,
 				38C1A9071E92393800A26DCF /* NiCaiCell.h */,
 				38C1A9081E92393800A26DCF /* NiCaiCell.m */,
+				9D4BCE441EA73C0400ED3D3E /* 选择地址 */,
 				9D9454881EA5E87800C6EF21 /* 请求 */,
 				9D9454871EA5E87200C6EF21 /* model */,
 			);
@@ -2574,6 +2584,17 @@
 			name = model;
 			sourceTree = "<group>";
 		};
+		9D4BCE441EA73C0400ED3D3E /* 选择地址 */ = {
+			isa = PBXGroup;
+			children = (
+				9D4BCE451EA73EF700ED3D3E /* ChooseShippingAddressOne.h */,
+				9D4BCE461EA73EF700ED3D3E /* ChooseShippingAddressOne.m */,
+				9D4BCE481EA742A700ED3D3E /* ChooseShippingAddressTwo.h */,
+				9D4BCE491EA742A700ED3D3E /* ChooseShippingAddressTwo.m */,
+			);
+			name = "选择地址";
+			sourceTree = "<group>";
+		};
 		9D9454791EA5D8D900C6EF21 /* PhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -2604,6 +2625,8 @@
 				9D4BCE3C1EA729FD00ED3D3E /* AddressBaseClass.m */,
 				9D4BCE3D1EA729FD00ED3D3E /* AddressList.h */,
 				9D4BCE3E1EA729FD00ED3D3E /* AddressList.m */,
+				9D4BCE411EA7378800ED3D3E /* AddressString.h */,
+				9D4BCE421EA7378800ED3D3E /* AddressString.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -3205,6 +3228,7 @@
 				9D170A281EA46FDC00A373DD /* SearchRequest.m in Sources */,
 				9D170A6A1EA4AD7500A373DD /* MyBaseClass.m in Sources */,
 				3818ADC21E8BB27D00CA2FB6 /* SearchListingsView.m in Sources */,
+				9D4BCE431EA7378800ED3D3E /* AddressString.m in Sources */,
 				38DB9EC41E9B6CDF00E4BECA /* LineUp.m in Sources */,
 				9D2937681EA0CDF400A86E10 /* NSObject+DeleteArrOrDeleteDicBothNull.m in Sources */,
 				382E02B01E95E26200DEF382 /* ConfirmTheGoodsViewController.m in Sources */,
@@ -3273,6 +3297,7 @@
 				9D170A791EA4B17000A373DD /* GoodsDetailsBaseClass.m in Sources */,
 				38C9DCD21E8901FD00F231B0 /* ShoppingCartViewController.m in Sources */,
 				9D9454831EA5D8D900C6EF21 /* CALayer+Anim.m in Sources */,
+				9D4BCE471EA73EF700ED3D3E /* ChooseShippingAddressOne.m in Sources */,
 				9D170A6B1EA4AD7500A373DD /* MyInfo.m in Sources */,
 				38C1A9001E922FCB00A26DCF /* newShippingAddress.m in Sources */,
 				382E02CF1E95E90400DEF382 /* ReceivingASuccessfulShow.m in Sources */,
@@ -3366,6 +3391,7 @@
 				9D170A891EA5C11000A373DD /* ProductEvaluationBaseClass.m in Sources */,
 				9DB2CB931E9E1466009DCE8F /* RollOutTableViewCell.m in Sources */,
 				38536CC91E8F5624003E9015 /* HTMLContextCell.m in Sources */,
+				9D4BCE4A1EA742A700ED3D3E /* ChooseShippingAddressTwo.m in Sources */,
 				383A43E51E94803D002CBDA0 /* OrderCell.m in Sources */,
 				382E02D21E95EFC100DEF382 /* EvaluationOfTheViewViewController.m in Sources */,
 				38EE5F301E972DC800A7DE52 /* RegisteredViewController.m in Sources */,

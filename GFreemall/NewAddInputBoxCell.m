@@ -56,7 +56,8 @@
 }
 
 - (void)textFieldDidEndEditing:(MyTextField *)textField{
-    NSLog(@"ASDASDADASDASDSA");
+    [_delegate NewString:textField.text indexPath:textField.indexPath];
+    
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

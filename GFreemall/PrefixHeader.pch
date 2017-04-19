@@ -43,6 +43,7 @@
 //下拉刷新
 #import <MJRefresh.h>
 #import "WyzAlbumViewController.h"//图片浏览器
+#import "AddressString.h"//选择地址model
 
 
 
