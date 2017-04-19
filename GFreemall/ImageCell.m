@@ -112,6 +112,12 @@
     for (int i=0; i<class.recommend.count; i++) {
         if (i<5) {
             HomeRecommend *recommend=class.recommend[i];
+            
+            //((UIView *)[self.contentView viewWithTag:i+1]);
+            
+            
+          //  [((MyButton *)[((UIView *)[self.contentView viewWithTag:i+1]) viewWithTag:999]) setTitle:@"111" forState:UIControlStateNormal];
+            
             UIView *view=(UIView *)[self.contentView viewWithTag:i+1];
             MyButton *btn=(MyButton *)[view viewWithTag:1];
             //[btn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,recommend.commodityImagesPath,recommend.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
