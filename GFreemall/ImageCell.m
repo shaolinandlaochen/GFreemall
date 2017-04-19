@@ -106,6 +106,21 @@
     }
     return self;
 }
+-(void)setModel:(NSDictionary *)model{
+    HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:model];
+    
+    for (int i=0; i<class.recommend.count; i++) {
+        if (i<5) {
+            HomeRecommend *recommend=class.recommend[i];
+            UIView *view=(UIView *)[self.contentView viewWithTag:i+1];
+            MyButton *btn=(MyButton *)[view viewWithTag:1];
+            //[btn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,recommend.commodityImagesPath,recommend.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
+        }
+        
+    }
+
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

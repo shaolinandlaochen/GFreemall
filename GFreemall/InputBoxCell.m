@@ -22,10 +22,8 @@
         _name=[[UILabel alloc]init];
         _name.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _name.font=[UIFont systemFontOfSize:32*autoSizeScaleY];
-        _name.text=@"林志玲";
         [self.contentView addSubview:_name];
-        CGSize size=[TheParentClass StringHeight:_name.text Lblfont:32*autoSizeScaleY heightOfTheMinus:0];
-        _name.sd_layout.leftSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 25*autoSizeScaleY).widthIs(size.width).heightIs(size.height);
+       
         
 
         
@@ -34,10 +32,8 @@
         _number=[[UILabel alloc]init];
         _number.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _number.font=[UIFont systemFontOfSize:32*autoSizeScaleY];
-        _number.text=@"13721701737";
         [self.contentView addSubview:_number];
-        CGSize numberSize=[TheParentClass StringHeight:_number.text Lblfont:32*autoSizeScaleY heightOfTheMinus:0];
-        _number.sd_layout.leftSpaceToView(_name, 44*autoSizeScaleX).topEqualToView(_name).widthIs(numberSize.width).heightIs(numberSize.height);
+       
         
         //是否是默认的
         
@@ -46,7 +42,7 @@
         _icon.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         _icon.textAlignment=NSTextAlignmentCenter;
         [self.contentView addSubview:_icon];
-        _icon.sd_layout.leftSpaceToView(_number, 25*autoSizeScaleX).topEqualToView(_number).widthIs(60*autoSizeScaleX).heightIs(30*autoSizeScaleY);
+        
         
         //详细地址
         
@@ -55,13 +51,12 @@
         _context.textColor=[TheParentClass colorWithHexString:@"#999999"];
         _context.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         [self.contentView addSubview:_context];
-        _context.text=@"束带结发是非得失带你飞is方的观点是否覆盖的方式管理地方估计大概不到法国大使馆";
-        _context.sd_layout.leftEqualToView(_name).topSpaceToView(_name, 20*autoSizeScaleY).rightSpaceToView(self.contentView, 95*autoSizeScaleX).autoHeightRatio(0);
+       
         
         _btn=[[MyButton alloc]init];
         [_btn setBackgroundImage:[UIImage imageNamed:@"icon_edit"] forState:UIControlStateNormal];
         [self.contentView addSubview:_btn];
-        _btn.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 70*autoSizeScaleY).widthIs(44*autoSizeScaleX).heightIs(44*autoSizeScaleY);
+       
         
         
         
@@ -71,13 +66,37 @@
         [self.contentView addSubview:lines];
         lines.sd_layout.leftSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).heightIs(0.6);
         
-        [self setupAutoHeightWithBottomView:_context bottomMargin:30*autoSizeScaleY];
+        
         
         
     }
     return self;
 }
+-(void)setModel:(AddressList *)model{
+    autoSize
+    _name.text=model.addressName;
+    _number.text=model.addressPhone;
+    _context.text=model.addressAddress;
+    if (model.addressIsdefault==1) {
+        _icon.text=@"默认";
+        _icon.backgroundColor=[UIColor redColor];
+        
+    }
+    
+    CGSize size=[TheParentClass StringHeight:_name.text Lblfont:32*autoSizeScaleY heightOfTheMinus:0];
+    _name.sd_layout.leftSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 25*autoSizeScaleY).widthIs(size.width).heightIs(size.height);
+    
+    CGSize numberSize=[TheParentClass StringHeight:_number.text Lblfont:32*autoSizeScaleY heightOfTheMinus:0];
+    _number.sd_layout.leftSpaceToView(_name, 44*autoSizeScaleX).topEqualToView(_name).widthIs(numberSize.width).heightIs(numberSize.height);
+    
+    _icon.sd_layout.leftSpaceToView(_number, 25*autoSizeScaleX).topEqualToView(_number).widthIs(60*autoSizeScaleX).heightIs(30*autoSizeScaleY);
+    
+     _context.sd_layout.leftEqualToView(_name).topSpaceToView(_name, 20*autoSizeScaleY).rightSpaceToView(self.contentView, 95*autoSizeScaleX).autoHeightRatio(0);
+    
+     _btn.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 70*autoSizeScaleY).widthIs(44*autoSizeScaleX).heightIs(44*autoSizeScaleY);
+    [self setupAutoHeightWithBottomView:_context bottomMargin:30*autoSizeScaleY];
 
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

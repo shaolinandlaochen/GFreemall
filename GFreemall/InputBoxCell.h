@@ -14,5 +14,6 @@
 @property(nonatomic,strong)UILabel *context;
 @property(nonatomic,strong)UILabel *icon;
 @property(nonatomic,strong)MyButton *btn;
+@property(nonatomic,strong)AddressList *model;
 
 @end

@@ -24,19 +24,24 @@
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:NO];
     self.navigationController.navigationBarHidden=NO;
-    [self LoadTheRequest];
 }
 -(void)LoadTheRequest{
-    [SVProgressHUD showWithStatus:@"正在加载"];
     [ShippingAddressRequest ToObtainAListShippingAddressblock:^(NSDictionary *dics) {
         self.dataDic=[self deleteEmpty:dics];
-        [SVProgressHUD dismiss];
+        AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:self.dataDic];
+        if ([class.code isEqualToString:@"51"]) {
+            [_tableView reloadData];
+        }else{
+            [FTIndicator showErrorWithMessage:class.msg];
+        }
+         [_tableView.mj_header endRefreshing];
     }];
 
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [SVProgressHUD dismiss];
+     [_tableView.mj_header endRefreshing];
 }
 
 - (void)viewDidLoad {
@@ -73,6 +78,7 @@
     [self.view addSubview:_tableView];
     _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(addRess, 20*autoSizeScaleY).topSpaceToView(self.view, navheight+rectStatus.size.height);
     
+    TheDrop_downRefresh(_tableView, @selector(LoadTheRequest))
     
     // Do any additional setup after loading the view.
 }
@@ -82,14 +88,15 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
+    AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:self.dataDic];
 
-    return 6;
+    return class.list.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     autoSize
-    NSString *txt=@"a";
-    return [tableView cellHeightForIndexPath:indexPath model:txt keyPath:@"text" cellClass:[InputBoxCell class] contentViewWidth:self.view.frame.size.width];
+     AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:self.dataDic];
+    AddressList *list=class.list[indexPath.row];
+    return [tableView cellHeightForIndexPath:indexPath model:list keyPath:@"model" cellClass:[InputBoxCell class] contentViewWidth:self.view.frame.size.width];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     autoSize
@@ -108,15 +115,12 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-
+    AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:self.dataDic];
+    AddressList *list=class.list[indexPath.row];
     InputBoxCell *cell=[InputBoxCell new];
-    [cell.btn addTarget:self action:@selector(onEidClick:) forControlEvents:UIControlEventTouchUpInside];
+    cell.model=list;
     cell.btn.indexPath=indexPath;
-    if (indexPath.row==0) {
-        cell.icon.text=@"默认";
-        cell.icon.backgroundColor=[UIColor redColor];
-       
-    }
+    [cell.btn addTarget:self action:@selector(onEidClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     return cell;
 

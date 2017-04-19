@@ -532,6 +532,9 @@
 		9D4BCE321EA5F73600ED3D3E /* icon_tuijian99.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4BCE291EA5F73600ED3D3E /* icon_tuijian99.png */; };
 		9D4BCE331EA5F73600ED3D3E /* icon_tuijian99@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4BCE2A1EA5F73600ED3D3E /* icon_tuijian99@2x.png */; };
 		9D4BCE341EA5F73600ED3D3E /* icon_tuijian99@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4BCE2B1EA5F73600ED3D3E /* icon_tuijian99@3x.png */; };
+		9D4BCE3A1EA710E400ED3D3E /* HomePageViewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BCE391EA710E400ED3D3E /* HomePageViewsViewController.m */; };
+		9D4BCE3F1EA729FD00ED3D3E /* AddressBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BCE3C1EA729FD00ED3D3E /* AddressBaseClass.m */; };
+		9D4BCE401EA729FD00ED3D3E /* AddressList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BCE3E1EA729FD00ED3D3E /* AddressList.m */; };
 		9D9454831EA5D8D900C6EF21 /* CALayer+Anim.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94547C1EA5D8D900C6EF21 /* CALayer+Anim.m */; };
 		9D9454841EA5D8D900C6EF21 /* CALayer+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94547E1EA5D8D900C6EF21 /* CALayer+Transition.m */; };
 		9D9454851EA5D8D900C6EF21 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9454801EA5D8D900C6EF21 /* PhotoView.m */; };
@@ -1279,6 +1282,12 @@
 		9D4BCE291EA5F73600ED3D3E /* icon_tuijian99.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_tuijian99.png; path = "imgs/首页/icon_tuijian99.png"; sourceTree = "<group>"; };
 		9D4BCE2A1EA5F73600ED3D3E /* icon_tuijian99@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_tuijian99@2x.png"; path = "imgs/首页/icon_tuijian99@2x.png"; sourceTree = "<group>"; };
 		9D4BCE2B1EA5F73600ED3D3E /* icon_tuijian99@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_tuijian99@3x.png"; path = "imgs/首页/icon_tuijian99@3x.png"; sourceTree = "<group>"; };
+		9D4BCE381EA710E400ED3D3E /* HomePageViewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewsViewController.h; sourceTree = "<group>"; };
+		9D4BCE391EA710E400ED3D3E /* HomePageViewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewsViewController.m; sourceTree = "<group>"; };
+		9D4BCE3B1EA729FD00ED3D3E /* AddressBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBaseClass.h; sourceTree = "<group>"; };
+		9D4BCE3C1EA729FD00ED3D3E /* AddressBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBaseClass.m; sourceTree = "<group>"; };
+		9D4BCE3D1EA729FD00ED3D3E /* AddressList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressList.h; sourceTree = "<group>"; };
+		9D4BCE3E1EA729FD00ED3D3E /* AddressList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressList.m; sourceTree = "<group>"; };
 		9D94547B1EA5D8D900C6EF21 /* CALayer+Anim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Anim.h"; sourceTree = "<group>"; };
 		9D94547C1EA5D8D900C6EF21 /* CALayer+Anim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Anim.m"; sourceTree = "<group>"; };
 		9D94547D1EA5D8D900C6EF21 /* CALayer+Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Transition.h"; sourceTree = "<group>"; };
@@ -2091,6 +2100,8 @@
 				3818ADB51E8B5EDC00CA2FB6 /* ImageCell.m */,
 				3818ADB71E8B61B000CA2FB6 /* MoreAndMoreCell.h */,
 				3818ADB81E8B61B000CA2FB6 /* MoreAndMoreCell.m */,
+				9D4BCE381EA710E400ED3D3E /* HomePageViewsViewController.h */,
+				9D4BCE391EA710E400ED3D3E /* HomePageViewsViewController.m */,
 				38BD11011E8A46EF00028255 /* NULLCell.h */,
 				38BD11021E8A46EF00028255 /* NULLCell.m */,
 				9D170A421EA49BAB00A373DD /* 请求 */,
@@ -2589,6 +2600,10 @@
 		9D9454871EA5E87200C6EF21 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				9D4BCE3B1EA729FD00ED3D3E /* AddressBaseClass.h */,
+				9D4BCE3C1EA729FD00ED3D3E /* AddressBaseClass.m */,
+				9D4BCE3D1EA729FD00ED3D3E /* AddressList.h */,
+				9D4BCE3E1EA729FD00ED3D3E /* AddressList.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -3206,6 +3221,7 @@
 				38536CCC1E8F7232003E9015 /* purchaseOfGoods.m in Sources */,
 				3818ADB31E8B4EE200CA2FB6 /* ThreePictureCell.m in Sources */,
 				9D170A311EA473CE00A373DD /* SearchPagingList.m in Sources */,
+				9D4BCE3A1EA710E400ED3D3E /* HomePageViewsViewController.m in Sources */,
 				383655D51E8E3E7F0034C332 /* GoodsDetailsViewController.m in Sources */,
 				3836557F1E8DEFB10034C332 /* SearchViewController.m in Sources */,
 				382E02F01E96241400DEF382 /* BaseInputBoxCell.m in Sources */,
@@ -3230,6 +3246,7 @@
 				383655561E8D06470034C332 /* ShoppingCarViews.m in Sources */,
 				38C9DCBF1E89006000F231B0 /* SingletonClass.m in Sources */,
 				9D170A7A1EA4B17000A373DD /* GoodsDetailsComm.m in Sources */,
+				9D4BCE401EA729FD00ED3D3E /* AddressList.m in Sources */,
 				38C1A9091E92393800A26DCF /* NiCaiCell.m in Sources */,
 				38EE5F4C1E9769D800A7DE52 /* MonthView.m in Sources */,
 				9D170A5D1EA49EC400A373DD /* HomeBaseClass.m in Sources */,
@@ -3279,6 +3296,7 @@
 				9D94548B1EA5E89A00C6EF21 /* ShippingAddressRequest.m in Sources */,
 				9D2937541EA09F3B00A86E10 /* FTProgressIndicator.m in Sources */,
 				383655161E8CDCD50034C332 /* MyMessageCells.m in Sources */,
+				9D4BCE3F1EA729FD00ED3D3E /* AddressBaseClass.m in Sources */,
 				38EE5F3A1E9757DA00A7DE52 /* OnlineWalletViewController.m in Sources */,
 				383A43EE1E949BEA002CBDA0 /* OrderViewS.m in Sources */,
 				9DB2CBA01E9F18F7009DCE8F /* FrontPageViewLayer.m in Sources */,

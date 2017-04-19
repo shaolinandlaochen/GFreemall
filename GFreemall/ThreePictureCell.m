@@ -34,22 +34,20 @@
         imgOne.sd_layout.leftSpaceToView(_twoBtn, 66*autoSizeScaleX).topSpaceToView(_twoBtn, 10*autoSizeScaleY).widthIs(174*autoSizeScaleX).heightIs(174*autoSizeScaleX);
         
         //商品1
-        UILabel *_nameOne=[[UILabel alloc]init];
+        _nameOne=[[UILabel alloc]init];
         _nameOne.tag=2;
         _nameOne.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _nameOne.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         _nameOne.textAlignment=NSTextAlignmentCenter;
-        _nameOne.text=@"fffffff";
         [_twoBtn addSubview:_nameOne];
         _nameOne.sd_layout.leftSpaceToView(_twoBtn, 0).topSpaceToView(imgOne, 15*autoSizeScaleY).rightSpaceToView(_twoBtn, 0).heightIs(30*autoSizeScaleY);
         
         //商品1
-        UILabel *_picOne=[[UILabel alloc]init];
+        _picOne=[[UILabel alloc]init];
         _picOne.tag=3;
         _picOne.textAlignment=NSTextAlignmentCenter;
         _picOne.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         _picOne.textColor=[TheParentClass colorWithHexString:@"#de0024"];
-        _picOne.text=@"¥1000";
         [_twoBtn addSubview:_picOne];
         _picOne.sd_layout.leftSpaceToView(_twoBtn, 0).topSpaceToView(_nameOne, 1*autoSizeScaleY).rightSpaceToView(_twoBtn, 0).heightIs(30*autoSizeScaleY);
         
@@ -70,22 +68,20 @@
         imgThree.sd_layout.leftSpaceToView(_threeBtn, 66*autoSizeScaleX).topSpaceToView(_threeBtn, 10*autoSizeScaleY).widthIs(174*autoSizeScaleX).heightIs(174*autoSizeScaleX);
         
         //商品2
-        UILabel *_nameTwo=[[UILabel alloc]init];
+        _nameTwo=[[UILabel alloc]init];
         _nameTwo.tag=2;
         _nameTwo.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _nameTwo.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         _nameTwo.textAlignment=NSTextAlignmentCenter;
-        _nameTwo.text=@"eeeeeeeeee";
         [_threeBtn addSubview:_nameTwo];
         _nameTwo.sd_layout.leftSpaceToView(_threeBtn, 0).topSpaceToView(imgThree, 15*autoSizeScaleY).rightSpaceToView(_threeBtn, 0).heightIs(30*autoSizeScaleY);
         
         //商品2
-         UILabel * _picTwo=[[UILabel alloc]init];
+        _picTwo=[[UILabel alloc]init];
         _picTwo.tag=3;
         _picTwo.textAlignment=NSTextAlignmentCenter;
         _picTwo.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         _picTwo.textColor=[TheParentClass colorWithHexString:@"#de0024"];
-        _picTwo.text=@"¥200";
         [_threeBtn addSubview:_picTwo];
         _picTwo.sd_layout.leftSpaceToView(_threeBtn, 0).topSpaceToView(_nameTwo, 1*autoSizeScaleY).rightSpaceToView(_threeBtn, 0).heightIs(30*autoSizeScaleY);
         
@@ -102,25 +98,23 @@
         UIImageView *imgFour=[[UIImageView alloc]init];
         imgFour.tag=1;
         [_fourBtn addSubview:imgFour];
-        imgFour.sd_layout.leftSpaceToView(_fourBtn, (xxxx-208)/2).topSpaceToView(_fourBtn, 22*autoSizeScaleY).widthIs(208*autoSizeScaleX).heightIs(208*autoSizeScaleX);
+        imgFour.sd_layout.leftSpaceToView(_fourBtn, (xxxx-(208*autoSizeScaleX))/2).topSpaceToView(_fourBtn, 22*autoSizeScaleY).widthIs(208*autoSizeScaleX).heightIs(208*autoSizeScaleX);
         
         //商品3
-        UILabel *_nameFour=[[UILabel alloc]init];
+        _nameFour=[[UILabel alloc]init];
         _nameFour.tag=2;
         _nameFour.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _nameFour.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         _nameFour.textAlignment=NSTextAlignmentCenter;
-        _nameFour.text=@"dddddddd";
         [_fourBtn addSubview:_nameFour];
         _nameFour.sd_layout.leftSpaceToView(_fourBtn, 0).topSpaceToView(imgFour, 20*autoSizeScaleY).rightSpaceToView(_fourBtn, 0).heightIs(30*autoSizeScaleY);
         
         //商品3
-        UILabel * _picFour=[[UILabel alloc]init];
+        _picFour=[[UILabel alloc]init];
         _picFour.tag=3;
         _picFour.textAlignment=NSTextAlignmentCenter;
         _picFour.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         _picFour.textColor=[TheParentClass colorWithHexString:@"#de0024"];
-        _picFour.text=@"¥200";
         [_fourBtn addSubview:_picFour];
         _picFour.sd_layout.leftSpaceToView(_fourBtn, 0).topSpaceToView(_nameFour, 10*autoSizeScaleY).rightSpaceToView(_fourBtn, 0).heightIs(30*autoSizeScaleY);
         
@@ -143,25 +137,23 @@
         UIImageView *imgfive=[[UIImageView alloc]init];
         imgfive.tag=1;
         [_fiveBtn addSubview:imgfive];
-        imgfive.sd_layout.leftSpaceToView(_fiveBtn, (xxxx-208)/2).topSpaceToView(_fiveBtn, 22*autoSizeScaleY).widthIs(208*autoSizeScaleX).heightIs(208*autoSizeScaleX);
+        imgfive.sd_layout.leftSpaceToView(_fiveBtn, (xxxx-(208*autoSizeScaleX))/2).topSpaceToView(_fiveBtn, 22*autoSizeScaleY).widthIs(208*autoSizeScaleX).heightIs(208*autoSizeScaleX);
         
         //商品4
-        UILabel *_namefive=[[UILabel alloc]init];
+        _namefive=[[UILabel alloc]init];
         _namefive.tag=2;
         _namefive.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _namefive.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         _namefive.textAlignment=NSTextAlignmentCenter;
-        _namefive.text=@"cccccccc";
         [_fiveBtn addSubview:_namefive];
         _namefive.sd_layout.leftSpaceToView(_fiveBtn, 0).topSpaceToView(imgfive, 20*autoSizeScaleY).rightSpaceToView(_fiveBtn, 0).heightIs(30*autoSizeScaleY);
         
         //商品4
-        UILabel * _picfive=[[UILabel alloc]init];
+        _picfive=[[UILabel alloc]init];
         _picfive.tag=3;
         _picfive.textAlignment=NSTextAlignmentCenter;
         _picfive.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         _picfive.textColor=[TheParentClass colorWithHexString:@"#de0024"];
-        _picfive.text=@"¥200";
         [_fiveBtn addSubview:_picfive];
         _picfive.sd_layout.leftSpaceToView(_fiveBtn, 0).topSpaceToView(_namefive, 10*autoSizeScaleY).rightSpaceToView(_fiveBtn, 0).heightIs(30*autoSizeScaleY);
         
@@ -181,25 +173,23 @@
         UIImageView *imgSix=[[UIImageView alloc]init];
         imgSix.tag=1;
         [_sixBtn addSubview:imgSix];
-        imgSix.sd_layout.leftSpaceToView(_fiveBtn, (xxxx-208)/2).topSpaceToView(_sixBtn, 22*autoSizeScaleY).widthIs(208*autoSizeScaleX).heightIs(208*autoSizeScaleX);
+        imgSix.sd_layout.leftSpaceToView(_sixBtn, (xxxx-(208*autoSizeScaleX))/2).topSpaceToView(_sixBtn, 22*autoSizeScaleY).widthIs(208*autoSizeScaleX).heightIs(208*autoSizeScaleX);
         
         //商品5
-        UILabel *_nameSix=[[UILabel alloc]init];
+        _nameSix=[[UILabel alloc]init];
         _nameSix.tag=2;
         _nameSix.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _nameSix.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         _nameSix.textAlignment=NSTextAlignmentCenter;
-        _nameSix.text=@"bbbbbbbb";
         [_sixBtn addSubview:_nameSix];
         _nameSix.sd_layout.leftSpaceToView(_sixBtn, 0).topSpaceToView(imgSix, 20*autoSizeScaleY).rightSpaceToView(_sixBtn, 0).heightIs(30*autoSizeScaleY);
         
         //商品5
-        UILabel * _picSix=[[UILabel alloc]init];
+        _picSix=[[UILabel alloc]init];
         _picSix.tag=3;
         _picSix.textAlignment=NSTextAlignmentCenter;
         _picSix.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         _picSix.textColor=[TheParentClass colorWithHexString:@"#de0024"];
-        _picSix.text=@"¥200";
         [_sixBtn addSubview:_picSix];
         _picSix.sd_layout.leftSpaceToView(_sixBtn, 0).topSpaceToView(_nameSix, 10*autoSizeScaleY).rightSpaceToView(_sixBtn, 0).heightIs(30*autoSizeScaleY);
         
@@ -220,10 +210,10 @@
         UIImageView *imgSeven=[[UIImageView alloc]init];
         imgSeven.tag=1;
         [_sevenBtn addSubview:imgSeven];
-        imgSeven.sd_layout.leftSpaceToView(_sevenBtn, (xxxx-208)/2).topSpaceToView(_sevenBtn, 22*autoSizeScaleY).widthIs(208*autoSizeScaleX).heightIs(208*autoSizeScaleX);
+        imgSeven.sd_layout.leftSpaceToView(_sevenBtn, (xxxx-(208*autoSizeScaleX))/2).topSpaceToView(_sevenBtn, 22*autoSizeScaleY).widthIs(208*autoSizeScaleX).heightIs(208*autoSizeScaleX);
         
         //商品6
-        UILabel *_nameSeven=[[UILabel alloc]init];
+        _nameSeven=[[UILabel alloc]init];
         _nameSeven.tag=2;
         _nameSeven.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _nameSeven.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
@@ -232,7 +222,7 @@
         _nameSeven.sd_layout.leftSpaceToView(_sevenBtn, 0).topSpaceToView(imgSeven, 20*autoSizeScaleY).rightSpaceToView(_sevenBtn, 0).heightIs(30*autoSizeScaleY);
         
         //商品6
-        UILabel * _picSeven=[[UILabel alloc]init];
+        _picSeven=[[UILabel alloc]init];
         _picSeven.tag=3;
         _picSeven.textAlignment=NSTextAlignmentCenter;
         _picSeven.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
@@ -260,11 +250,8 @@ autoSize
                 {
                     UIImageView *img=(UIImageView *)[_twoBtn viewWithTag:1];
                     [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
-                    UILabel *name=(UILabel *)[_twoBtn viewWithTag:2];
-                    name.text=news.commodityName;
-                    
-                    UILabel *price=(UILabel *)[_twoBtn viewWithTag:3];
-                    price.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
+                    _nameOne.text=news.commodityName;
+                    _picOne.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
                     
                 }
                     break;
@@ -272,11 +259,8 @@ autoSize
                 {
                     UIImageView *img=(UIImageView *)[_threeBtn viewWithTag:1];
                     [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
-                    UILabel *name=(UILabel *)[_threeBtn viewWithTag:2];
-                    name.text=news.commodityName;
-                    
-                    UILabel *price=(UILabel *)[_threeBtn viewWithTag:3];
-                    price.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
+                    _nameTwo.text=news.commodityName;
+                    _picTwo.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
                     
                 }
                     break;
@@ -284,11 +268,8 @@ autoSize
                 {
                     UIImageView *img=(UIImageView *)[_fourBtn viewWithTag:1];
                     [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
-                    UILabel *name=(UILabel *)[_fourBtn viewWithTag:2];
-                    name.text=news.commodityName;
-                    
-                    UILabel *price=(UILabel *)[_fourBtn viewWithTag:3];
-                    price.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
+                    _nameFour.text=news.commodityName;
+                    _picFour.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
                     
                 }
                     break;
@@ -296,11 +277,8 @@ autoSize
                 {
                     UIImageView *img=(UIImageView *)[_fiveBtn viewWithTag:1];
                     [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
-                    UILabel *name=(UILabel *)[_fiveBtn viewWithTag:2];
-                    name.text=news.commodityName;
-                    
-                    UILabel *price=(UILabel *)[_fiveBtn viewWithTag:3];
-                    price.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
+                    _namefive.text=news.commodityName;
+                    _picfive.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
                     
                 }
                     break;
@@ -308,11 +286,9 @@ autoSize
                 {
                     UIImageView *img=(UIImageView *)[_sixBtn viewWithTag:1];
                     [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
-                    UILabel *name=(UILabel *)[_sixBtn viewWithTag:2];
-                    name.text=news.commodityName;
+                    _nameSix.text=news.commodityName;
                     
-                    UILabel *price=(UILabel *)[_sixBtn viewWithTag:3];
-                    price.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
+                    _picSix.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
                     
                 }
                     break;
@@ -320,11 +296,8 @@ autoSize
                 {
                     UIImageView *img=(UIImageView *)[_sevenBtn viewWithTag:1];
                     [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
-                    UILabel *name=(UILabel *)[_sevenBtn viewWithTag:2];
-                    name.text=news.commodityName;
-                    
-                    UILabel *price=(UILabel *)[_sevenBtn viewWithTag:3];
-                    price.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
+                    _nameSeven.text=news.commodityName;
+                    _picSeven.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
                     
                 }
                     break;
@@ -334,6 +307,13 @@ autoSize
             }
         }
     }
+//    if (class.news.count<3&&class.news.count>0) {
+//        [self setupAutoHeightWithBottomView:_threeBtn bottomMargin:12*autoSizeScaleY];
+//    }else if (class.news.count>2&&class.news.count<5){
+//      [self setupAutoHeightWithBottomView:_fourBtn bottomMargin:12*autoSizeScaleY];
+//    }else if(class.news.count>4&&class.news.count<7){
+//     [self setupAutoHeightWithBottomView:_sixBtn bottomMargin:12*autoSizeScaleY];
+//    }
 
 
 }

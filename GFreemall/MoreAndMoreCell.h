@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HomePageViewsViewController.h"
 //开代理
 @protocol languageDelegate <NSObject>
 

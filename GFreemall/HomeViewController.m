@@ -37,6 +37,7 @@
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.frame.size.height-htight) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
 //下拉刷新
   TheDrop_downRefresh(_tableView, @selector(DataAccessPageRequestClick))
@@ -70,7 +71,10 @@
     return 0;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    if (self.dataDic!=nil) {
+        return 4;
+    }
+    return 0;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -136,21 +140,20 @@ autoSize
         cell.Dic=self.dataDic;
         cell.delegate=self;
         return cell;
-    }else if (indexPath.section==1) {
+    }else if (indexPath.section==1) {//新款
         ThreePictureCell *cell=[ThreePictureCell new];
         cell.model=self.dataDic;
         [cell.oneBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.oneBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490765107052&di=a2d05e5f5a9a5823fd6fdfdfd9c60ff3&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fbaike%2Fpic%2Fitem%2F8c1001e93901213fb7af127e51e736d12e2e95f7.jpg"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
-        
         [cell.twoBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.threeBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
         return cell;
-    }else if (indexPath.section==2){
+    }else if (indexPath.section==2){//推荐
         ImageCell *cell=[ImageCell new];
+        cell.model=self.dataDic;
         return cell;
        
-    }else if(indexPath.section==3){
+    }else if(indexPath.section==3){//热卖
         MoreAndMoreCell *cell=[MoreAndMoreCell new];
         [cell.btn sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490765107052&di=a2d05e5f5a9a5823fd6fdfdfd9c60ff3&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fbaike%2Fpic%2Fitem%2F8c1001e93901213fb7af127e51e736d12e2e95f7.jpg"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
         return cell;
