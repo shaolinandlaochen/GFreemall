@@ -29,10 +29,9 @@
         [self.contentView addSubview:_name];
         _name.sd_layout.leftSpaceToView(_icon, 28*autoSizeScaleX).topSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).widthIs(400*autoSizeScaleX);
         
-        UIImageView *go=[[UIImageView alloc]init];
-        go.image=[UIImage imageNamed:@"icon_right"];
-        [self.contentView addSubview:go];
-        go.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 33*autoSizeScaleY).widthIs(44*autoSizeScaleX).heightIs(44*autoSizeScaleY);
+        _go=[[UIImageView alloc]init];
+        [self.contentView addSubview:_go];
+        _go.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 33*autoSizeScaleY).widthIs(44*autoSizeScaleX).heightIs(44*autoSizeScaleY);
         _lines=[[UILabel alloc]init];
         [self.contentView addSubview:_lines];
         _lines.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).heightIs(0.6);

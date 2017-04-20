@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface BillingInfo : UIViewController
-
+@property(nonatomic,copy)NSString *were;
 @end

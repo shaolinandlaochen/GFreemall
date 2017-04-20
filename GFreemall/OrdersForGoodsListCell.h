@@ -10,4 +10,5 @@
 
 @interface OrdersForGoodsListCell : UITableViewCell
 @property(nonatomic,strong)UILabel *number;
+@property(nonatomic,strong)NSDictionary *dic;
 @end

@@ -44,62 +44,55 @@
     autoSize
     if (indexPath.section==0) {
         return 80*autoSizeScaleY;
-    }else if (indexPath.section==1){
-        return 110*autoSizeScaleY;
     }
     return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     autoSize
     if (section==0) {
-        return 20*autoSizeScaleY;
+        return 100*autoSizeScaleY;
     }
     return 0*autoSizeScaleY;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     autoSize
-    if (section==1) {
-        return 80*autoSizeScaleY;
-    }
+  
     return 0*autoSizeScaleY;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if (section==1) {
-        autoSize
-        UIView *view=[[UIView alloc]init];
-        UILabel *lbl=[[UILabel alloc]init];
-        lbl.textColor=[TheParentClass colorWithHexString:@"#999999"];
-        lbl.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
-        lbl.text=Localized(@"选择支付方式");
-        [view addSubview:lbl];
-        lbl.sd_layout.leftSpaceToView(view, 25*autoSizeScaleX).topSpaceToView(view, 0).bottomSpaceToView(view, 0).rightSpaceToView(view, 0);
-        
-        
-        UILabel *line=[[UILabel alloc]init];
-        line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
-        [view addSubview:line];
-        line.sd_layout.leftSpaceToView(view, 0).bottomSpaceToView(view, 0).rightSpaceToView(view, 0).heightIs(0.6);
-        
-        return view;
-    }
+  
     return nil;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     
-    return nil;
+    UIView *view=[[UIView alloc]init];
+    autoSize
+    view.backgroundColor=[UIColor whiteColor];
+    UIButton * _button=[UIButton buttonWithType:UIButtonTypeCustom];
+    [_button setTitleColor:[TheParentClass colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
+    _button.titleLabel.font=[UIFont systemFontOfSize:36*autoSizeScaleY];
+    _button.backgroundColor=[UIColor blackColor];
+    [_button addTarget:self action:@selector(onGoClick) forControlEvents:UIControlEventTouchUpInside];
+    _button.layer.cornerRadius = 6*autoSizeScaleX;
+    _button.layer.masksToBounds = 6*autoSizeScaleX;
+    [view addSubview:_button];
+    _button.sd_layout.leftSpaceToView(view, 25*autoSizeScaleX).rightSpaceToView(view, 25*autoSizeScaleX).topSpaceToView(view, 20*autoSizeScaleY).bottomSpaceToView(view, 0*autoSizeScaleY);
+    
+    [_button setTitle:Localized(@"去支付") forState:UIControlStateNormal];
+    
+    
+    return view;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section==0) {
-        return 2;
-    }else{
-        return 2;
-    }
+ 
+    return 2;
+    
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section==0) {
+  
         BillingInfoNumberCell *cell=[BillingInfoNumberCell new];
         cell.userInteractionEnabled = NO;
         cell.lines.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
@@ -115,22 +108,7 @@
             
         }
         return cell;
-    }else{
-        
-        ClearingInformationDisplayCell *cell=[ClearingInformationDisplayCell new];
-         cell.lines.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
-        if (indexPath.row==0) {
-            cell.icon.image=[UIImage imageNamed:@"icon_gfm22"];
-            cell.name.text=@"爱积分支付";
-        }else if (indexPath.row==1){
-            cell.name.text=@"在线钱包";
-            cell.icon.image=[UIImage imageNamed:@"payment_wallet"];
-        }
-        return cell;
-    }
-    
-    
-    return nil;
+  
     
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -163,6 +141,10 @@
 -(void)oTop_UpGo{
 
 
+}
+//去支付
+-(void)onGoClick{
+[self PopUpThePaymentInformation:self.were];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

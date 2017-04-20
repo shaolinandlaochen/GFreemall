@@ -15,4 +15,5 @@
 @property(nonatomic,strong)UILabel *context;
 @property(nonatomic,strong)UIImageView *go;
 @property(nonatomic,strong)UIImageView *img_line;
+@property(nonatomic,copy)NSString *strings;
 @end

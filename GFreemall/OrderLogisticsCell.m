@@ -25,9 +25,9 @@
          lbl.sd_layout.leftSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).widthIs(200*autoSizeScaleX);
         
         _txt=[[UILabel alloc]init];
+        _txt.text=@"普通物流";
         _txt.textColor=[TheParentClass colorWithHexString:@"#000000"];
         _txt.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
-        _txt.text=@"普通物流";
         _txt.textAlignment=NSTextAlignmentRight;
         [self.contentView addSubview:_txt];
         _txt.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).widthIs(400*autoSizeScaleX);

@@ -514,6 +514,12 @@
 		9D1AD9321EA860360034527B /* shape_tuijian_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1AD9261EA860360034527B /* shape_tuijian_right.png */; };
 		9D1AD9331EA860360034527B /* shape_tuijian_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1AD9271EA860360034527B /* shape_tuijian_right@2x.png */; };
 		9D1AD9341EA860360034527B /* shape_tuijian_right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1AD9281EA860360034527B /* shape_tuijian_right@3x.png */; };
+		9D1AD9431EA8AB1B0034527B /* ShoppingSettlementAttr.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1AD9381EA8AB1B0034527B /* ShoppingSettlementAttr.m */; };
+		9D1AD9441EA8AB1B0034527B /* ShoppingSettlementBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1AD93A1EA8AB1B0034527B /* ShoppingSettlementBaseClass.m */; };
+		9D1AD9451EA8AB1B0034527B /* ShoppingSettlementCarts.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1AD93C1EA8AB1B0034527B /* ShoppingSettlementCarts.m */; };
+		9D1AD9461EA8AB1B0034527B /* ShoppingSettlementList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1AD93E1EA8AB1B0034527B /* ShoppingSettlementList.m */; };
+		9D1AD9471EA8AB1B0034527B /* ShoppingSettlementListAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1AD9401EA8AB1B0034527B /* ShoppingSettlementListAddress.m */; };
+		9D1AD9481EA8AB1B0034527B /* ShoppingSettlementMapAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1AD9421EA8AB1B0034527B /* ShoppingSettlementMapAddress.m */; };
 		9D2937341EA067FE00A86E10 /* LoginRequuestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937331EA067FE00A86E10 /* LoginRequuestClass.m */; };
 		9D2937381EA075CD00A86E10 /* setUpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937371EA075CD00A86E10 /* setUpRequest.m */; };
 		9D29373C1EA07BE400A86E10 /* fenlei_kk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2937391EA07BE400A86E10 /* fenlei_kk.png */; };
@@ -1261,6 +1267,18 @@
 		9D1AD9261EA860360034527B /* shape_tuijian_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shape_tuijian_right.png; path = "imgs/首页/shape_tuijian_right.png"; sourceTree = "<group>"; };
 		9D1AD9271EA860360034527B /* shape_tuijian_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shape_tuijian_right@2x.png"; path = "imgs/首页/shape_tuijian_right@2x.png"; sourceTree = "<group>"; };
 		9D1AD9281EA860360034527B /* shape_tuijian_right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shape_tuijian_right@3x.png"; path = "imgs/首页/shape_tuijian_right@3x.png"; sourceTree = "<group>"; };
+		9D1AD9371EA8AB1B0034527B /* ShoppingSettlementAttr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingSettlementAttr.h; sourceTree = "<group>"; };
+		9D1AD9381EA8AB1B0034527B /* ShoppingSettlementAttr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingSettlementAttr.m; sourceTree = "<group>"; };
+		9D1AD9391EA8AB1B0034527B /* ShoppingSettlementBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingSettlementBaseClass.h; sourceTree = "<group>"; };
+		9D1AD93A1EA8AB1B0034527B /* ShoppingSettlementBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingSettlementBaseClass.m; sourceTree = "<group>"; };
+		9D1AD93B1EA8AB1B0034527B /* ShoppingSettlementCarts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingSettlementCarts.h; sourceTree = "<group>"; };
+		9D1AD93C1EA8AB1B0034527B /* ShoppingSettlementCarts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingSettlementCarts.m; sourceTree = "<group>"; };
+		9D1AD93D1EA8AB1B0034527B /* ShoppingSettlementList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingSettlementList.h; sourceTree = "<group>"; };
+		9D1AD93E1EA8AB1B0034527B /* ShoppingSettlementList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingSettlementList.m; sourceTree = "<group>"; };
+		9D1AD93F1EA8AB1B0034527B /* ShoppingSettlementListAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingSettlementListAddress.h; sourceTree = "<group>"; };
+		9D1AD9401EA8AB1B0034527B /* ShoppingSettlementListAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingSettlementListAddress.m; sourceTree = "<group>"; };
+		9D1AD9411EA8AB1B0034527B /* ShoppingSettlementMapAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingSettlementMapAddress.h; sourceTree = "<group>"; };
+		9D1AD9421EA8AB1B0034527B /* ShoppingSettlementMapAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingSettlementMapAddress.m; sourceTree = "<group>"; };
 		9D2937321EA067FE00A86E10 /* LoginRequuestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequuestClass.h; sourceTree = "<group>"; };
 		9D2937331EA067FE00A86E10 /* LoginRequuestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequuestClass.m; sourceTree = "<group>"; };
 		9D2937361EA075CD00A86E10 /* setUpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setUpRequest.h; sourceTree = "<group>"; };
@@ -1848,6 +1866,8 @@
 				383A43FF1E94DCD7002CBDA0 /* CommodityListViewController.m */,
 				383A44011E94DE91002CBDA0 /* InventoryListCell.h */,
 				383A44021E94DE91002CBDA0 /* InventoryListCell.m */,
+				9D1AD9361EA8AB0A0034527B /* 请求 */,
+				9D1AD9351EA8AB030034527B /* model */,
 			);
 			name = "订单";
 			sourceTree = "<group>";
@@ -2481,6 +2501,32 @@
 				9D9454791EA5D8D900C6EF21 /* PhotoBrowser */,
 			);
 			name = "图片浏览器";
+			sourceTree = "<group>";
+		};
+		9D1AD9351EA8AB030034527B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				9D1AD9371EA8AB1B0034527B /* ShoppingSettlementAttr.h */,
+				9D1AD9381EA8AB1B0034527B /* ShoppingSettlementAttr.m */,
+				9D1AD9391EA8AB1B0034527B /* ShoppingSettlementBaseClass.h */,
+				9D1AD93A1EA8AB1B0034527B /* ShoppingSettlementBaseClass.m */,
+				9D1AD93B1EA8AB1B0034527B /* ShoppingSettlementCarts.h */,
+				9D1AD93C1EA8AB1B0034527B /* ShoppingSettlementCarts.m */,
+				9D1AD93D1EA8AB1B0034527B /* ShoppingSettlementList.h */,
+				9D1AD93E1EA8AB1B0034527B /* ShoppingSettlementList.m */,
+				9D1AD93F1EA8AB1B0034527B /* ShoppingSettlementListAddress.h */,
+				9D1AD9401EA8AB1B0034527B /* ShoppingSettlementListAddress.m */,
+				9D1AD9411EA8AB1B0034527B /* ShoppingSettlementMapAddress.h */,
+				9D1AD9421EA8AB1B0034527B /* ShoppingSettlementMapAddress.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		9D1AD9361EA8AB0A0034527B /* 请求 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "请求";
 			sourceTree = "<group>";
 		};
 		9D2937311EA067E700A86E10 /* 请求 */ = {
@@ -3258,6 +3304,7 @@
 				9DB2CB8D1E9DCE1E009DCE8F /* GFMRollOut.m in Sources */,
 				383A44031E94DE91002CBDA0 /* InventoryListCell.m in Sources */,
 				9D2937531EA09F3B00A86E10 /* FTNotificationIndicator.m in Sources */,
+				9D1AD9481EA8AB1B0034527B /* ShoppingSettlementMapAddress.m in Sources */,
 				38EE5F491E97698800A7DE52 /* walletDetailsCell.m in Sources */,
 				383A44191E9510AE002CBDA0 /* AmountToShowCell.m in Sources */,
 				9D170A7C1EA4B17000A373DD /* GoodsDetailsMap.m in Sources */,
@@ -3301,6 +3348,7 @@
 				383A43FD1E94D50D002CBDA0 /* OrderMoneyCell.m in Sources */,
 				38536CC61E8F51A1003E9015 /* AllEvaluationView.m in Sources */,
 				38032F4A1E90CD90005F4981 /* SKUCollectionReusableView.m in Sources */,
+				9D1AD9451EA8AB1B0034527B /* ShoppingSettlementCarts.m in Sources */,
 				382E03031E9648B300DEF382 /* SetUpCell.m in Sources */,
 				383655DB1E8E52440034C332 /* GoodsScrollViewCell.m in Sources */,
 				38EE5F521E97825100A7DE52 /* TimeViewController.m in Sources */,
@@ -3343,6 +3391,7 @@
 				38536CFC1E8F9ABD003E9015 /* MyScreeningView.m in Sources */,
 				9D170A701EA4AF4900A373DD /* GoodsDetailsRequest.m in Sources */,
 				9D170A791EA4B17000A373DD /* GoodsDetailsBaseClass.m in Sources */,
+				9D1AD9471EA8AB1B0034527B /* ShoppingSettlementListAddress.m in Sources */,
 				38C9DCD21E8901FD00F231B0 /* ShoppingCartViewController.m in Sources */,
 				9D9454831EA5D8D900C6EF21 /* CALayer+Anim.m in Sources */,
 				9D4BCE471EA73EF700ED3D3E /* ChooseShippingAddressOne.m in Sources */,
@@ -3386,6 +3435,7 @@
 				383A44071E94E2DB002CBDA0 /* BillingInfo.m in Sources */,
 				383655131E8CA5CA0034C332 /* MyInformationView.m in Sources */,
 				38536CD51E8F8BBE003E9015 /* EvaluationViewController.m in Sources */,
+				9D1AD9461EA8AB1B0034527B /* ShoppingSettlementList.m in Sources */,
 				383A441C1E9512BC002CBDA0 /* PaymentToShowCell.m in Sources */,
 				382E03061E96550D00DEF382 /* FeedbackViewController.m in Sources */,
 				9D170A241EA451B800A373DD /* CollectionResultList.m in Sources */,
@@ -3400,6 +3450,7 @@
 				9D170A601EA49EC400A373DD /* HomeRecommend.m in Sources */,
 				9D170A321EA473CE00A373DD /* SearchResultList.m in Sources */,
 				9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */,
+				9D1AD9441EA8AB1B0034527B /* ShoppingSettlementBaseClass.m in Sources */,
 				383A440D1E94E479002CBDA0 /* BillingInfoNumberCell.m in Sources */,
 				383655D81E8E42530034C332 /* MyoptionsView.m in Sources */,
 				9DC006161E9F52BA001CB6D4 /* ViewLayerView.m in Sources */,
@@ -3442,6 +3493,7 @@
 				9D4BCE4A1EA742A700ED3D3E /* ChooseShippingAddressTwo.m in Sources */,
 				383A43E51E94803D002CBDA0 /* OrderCell.m in Sources */,
 				382E02D21E95EFC100DEF382 /* EvaluationOfTheViewViewController.m in Sources */,
+				9D1AD9431EA8AB1B0034527B /* ShoppingSettlementAttr.m in Sources */,
 				38EE5F301E972DC800A7DE52 /* RegisteredViewController.m in Sources */,
 				3818ADB91E8B61B000CA2FB6 /* MoreAndMoreCell.m in Sources */,
 				38C1A9061E92390E00A26DCF /* GigAddressTableViewCell.m in Sources */,

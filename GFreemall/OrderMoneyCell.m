@@ -20,7 +20,6 @@
         autoSize
         
         _picOne=[[UILabel alloc]init];
-        _picOne.text=@"¥999";
         _picOne.textColor=[TheParentClass colorWithHexString:@"#de0024"];
         _picOne.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
         _picOne.textAlignment=NSTextAlignmentRight;
@@ -29,7 +28,6 @@
         _picOne.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 30*autoSizeScaleY).widthIs(300*autoSizeScaleX).heightIs(30*autoSizeScaleY);
         
         _picTwo=[[UILabel alloc]init];
-        _picTwo.text=@"¥888";
         _picTwo.textColor=[TheParentClass colorWithHexString:@"#de0024"];
         _picTwo.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
         _picTwo.textAlignment=NSTextAlignmentRight;

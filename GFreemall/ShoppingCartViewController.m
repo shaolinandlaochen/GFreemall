@@ -10,6 +10,7 @@
 #import "ShoppingCartProductsCell.h"
 #import "MyNewsViewController.h"
 #import "ShoppingCarRequest.h"
+#import "OrderInformationViewController.h"
 @interface ShoppingCartViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -323,6 +324,17 @@
             }else{
                 [SVProgressHUD showWithStatus:@"正在加载"];
             [ShoppingCarRequest TheShoppingCartAndSettlement:IDS Block:^(NSDictionary *dics) {
+                ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+                if ([class.code  isEqualToString:@"24"]) {
+                    [TheParentClass ButtonAtTheBottomOfThesize:NO];
+                    OrderInformationViewController *order=[[OrderInformationViewController alloc]init];
+                    order.dataDic=[self deleteEmpty:dics];
+                    [self.navigationController pushViewController:order animated:YES];
+                    
+                }else{
+                    [FTIndicator showErrorWithMessage:class.msg];
+                }
+                
                 
                 [SVProgressHUD dismiss];
             }];
