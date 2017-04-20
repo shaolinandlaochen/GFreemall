@@ -17,6 +17,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         autoSize
+        self.contentView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
         _oneBtn=[[MyButton alloc]init];
         _oneBtn.tag=1;
         [self.contentView addSubview:_oneBtn];
@@ -24,7 +25,7 @@
         
         _twoBtn=[[MyButton alloc]init];
         _twoBtn.tag=2;
-        _twoBtn.backgroundColor=[TheParentClass colorWithHexString:@"#f2f3f7"];
+        _twoBtn.backgroundColor=[UIColor whiteColor];
         [self.contentView addSubview:_twoBtn];
         _twoBtn.sd_layout.leftSpaceToView(_oneBtn,12*autoSizeScaleX).topSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).heightIs(272*autoSizeScaleY);
         
@@ -57,8 +58,8 @@
         
         
         _threeBtn=[[MyButton alloc]init];
+        _threeBtn.backgroundColor=[UIColor whiteColor];
         _threeBtn.tag=3;
-        _threeBtn.backgroundColor=[TheParentClass colorWithHexString:@"#f2f3f7"];
         [self.contentView addSubview:_threeBtn];
         _threeBtn.sd_layout.leftEqualToView(_twoBtn).topSpaceToView(_twoBtn,12*autoSizeScaleY).rightSpaceToView(self.contentView, 0).bottomEqualToView(_oneBtn);
         
@@ -90,8 +91,8 @@
         float xxxx=xx-(12*autoSizeScaleX);
         
         _fourBtn=[[MyButton alloc]init];
+        _fourBtn.backgroundColor=[UIColor whiteColor];
         _fourBtn.tag=3;
-        _fourBtn.backgroundColor=[TheParentClass colorWithHexString:@"#f2f3f7"];
         [self.contentView addSubview:_fourBtn];
         _fourBtn.sd_layout.leftSpaceToView(self.contentView, 0).topSpaceToView(_oneBtn, 12*autoSizeScaleY).widthIs(xxxx).heightIs(328*autoSizeScaleY);
         
@@ -130,7 +131,7 @@
         
         _fiveBtn=[[MyButton alloc]init];
         _fiveBtn.tag=3;
-        _fiveBtn.backgroundColor=[TheParentClass colorWithHexString:@"#f2f3f7"];
+        _fiveBtn.backgroundColor=[UIColor whiteColor];
         [self.contentView addSubview:_fiveBtn];
         _fiveBtn.sd_layout.leftSpaceToView(_fourBtn, 12*autoSizeScaleX).topEqualToView(_fourBtn).rightSpaceToView(self.contentView, 0).heightIs(328*autoSizeScaleY);
         
@@ -166,7 +167,7 @@
         
         _sixBtn=[[MyButton alloc]init];
         _sixBtn.tag=3;
-        _sixBtn.backgroundColor=[TheParentClass colorWithHexString:@"#f2f3f7"];
+        _sixBtn.backgroundColor=[UIColor whiteColor];
         [self.contentView addSubview:_sixBtn];
         _sixBtn.sd_layout.leftEqualToView(_fourBtn).topSpaceToView(_fourBtn,12*autoSizeScaleY).widthIs(xxxx).heightIs(328*autoSizeScaleX);
         
@@ -203,7 +204,7 @@
         
         _sevenBtn=[[MyButton alloc]init];
         _sevenBtn.tag=3;
-        _sevenBtn.backgroundColor=[TheParentClass colorWithHexString:@"#f2f3f7"];
+        _sevenBtn.backgroundColor=[UIColor whiteColor];
         [self.contentView addSubview:_sevenBtn];
         _sevenBtn.sd_layout.leftEqualToView(_fiveBtn).topSpaceToView(_fiveBtn,12*autoSizeScaleY).rightSpaceToView(self.contentView, 0).bottomEqualToView(_sixBtn);
         

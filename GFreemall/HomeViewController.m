@@ -104,7 +104,7 @@ autoSize
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     autoSize
-    return 20*autoSizeScaleY;
+    return 0*autoSizeScaleY;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 autoSize
@@ -114,17 +114,26 @@ autoSize
     return 0;
 }
 -(nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+     MyView *view=[[MyView alloc]init];
+    view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     if (section==1) {
-        MyView *view=[[MyView alloc]init];
-        view.lbl.text=Localized(@"新款上市");
+        view.img.image=[UIImage imageNamed:@"icon_new99"];
+        view.lbl.text=Localized(@"NEW GOODS 新品");
         return view;
     }else if (section==2){
-        MyView *view=[[MyView alloc]init];
-        view.lbl.text=Localized(@"推荐");
+         view.img1.image=[UIImage imageNamed:@"shape_tuijian_left"];
+         view.img2.image=[UIImage imageNamed:@"shape_tuijian_right"];
+         view.imgviiew.image=[UIImage imageNamed:@"icon_tuijian99"];
+        view.context.textColor=[TheParentClass colorWithHexString:@"#0fa4f3"];
+        view.string=@"人气推荐";
+        
         return view;
     }else if (section==3){
-        MyView *view=[[MyView alloc]init];
-        view.lbl.text=Localized(@"热卖");
+        view.img1.image=[UIImage imageNamed:@"shape_hot_left"];
+        view.img2.image=[UIImage imageNamed:@"shape_hot_right"];
+        view.imgviiew.image=[UIImage imageNamed:@"icon_hot"];
+         view.context.textColor=[TheParentClass colorWithHexString:@"#de0024"];
+        view.string=@"HOT热卖";
         return view;
     }
     return nil;
@@ -155,7 +164,7 @@ autoSize
        
     }else if(indexPath.section==3){//热卖
         MoreAndMoreCell *cell=[MoreAndMoreCell new];
-        [cell.btn sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490765107052&di=a2d05e5f5a9a5823fd6fdfdfd9c60ff3&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fbaike%2Fpic%2Fitem%2F8c1001e93901213fb7af127e51e736d12e2e95f7.jpg"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
+        cell.model=self.dataDic;
         return cell;
     }
     NULLCell *celll=[NULLCell new];

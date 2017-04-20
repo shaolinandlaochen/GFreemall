@@ -23,6 +23,7 @@
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:NO];
     self.navigationController.navigationBarHidden=NO;
+     TheDrop_downRefresh(_tableView, @selector(AccessToDataCollectionList))
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,9 +35,7 @@
     leftCancel
     [self CreatView];
    // [self BuildNoCollectioneView];//没有收藏
-    
-    
-    [self AccessToDataCollectionList];
+
     
     // Do any additional setup after loading the view.
 }
@@ -46,10 +45,16 @@
         self.dataDic =[self deleteEmpty:dic];
         CollectionBaseClass *class=[[CollectionBaseClass alloc]initWithDictionary:self.dataDic];
         if ([class.code isEqualToString:@"3"]) {
-            [_tableView reloadData];
+            if (class.data.resultList.count>0) {
+                 [_tableView reloadData];
+            }else{
+            [self BuildNoCollectioneView];//没有收藏
+            }
+           
         }else{
             [FTIndicator showErrorWithMessage:class.msg];
         }
+        [_tableView.mj_header endRefreshing];
         [SVProgressHUD dismiss];
     }];
 
@@ -57,6 +62,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [SVProgressHUD dismiss];
+   
 }
 cancelClick
 -(void)CreatView{
@@ -70,6 +76,8 @@ cancelClick
     self.navigationItem.rightBarButtonItem=rightItem;
     [self.navigationItem.rightBarButtonItem setTintColor:[TheParentClass colorWithHexString:@"#ffffff"]];
     [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:30*autoSizeScaleX],NSFontAttributeName, nil] forState:UIControlStateNormal];
+    
+    TheDrop_downRefresh(_tableView, @selector(AccessToDataCollectionList))
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

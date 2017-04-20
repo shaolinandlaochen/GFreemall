@@ -9,4 +9,5 @@
 #import "TheParentClass.h"
 @interface ShoppingCartViewController : TheParentClass
 @property(nonatomic,strong)NSDictionary *dataDic;
+@property(nonatomic,strong)NSMutableArray *shoppingCarArray;
 @end

@@ -28,9 +28,9 @@
     [super viewDidLoad];
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    _isState=YES;//表示默认是非编辑状态
     [self rightBaBarbtn];
     [self CreatePaymentButton];//创建支付按钮
-    _isState=YES;//表示默认是非编辑状态
     autoSize
     CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
     CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
@@ -41,15 +41,23 @@
     [self.view addSubview:_tableView];
     _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(view, 0).topSpaceToView(self.view, navheight+rectStatus.size.height);
     TheDrop_downRefresh(_tableView, @selector(ToGetAShoppingCartGoodsList))
-   // [self EmptyTheShoppingCart];//购物车是空的
     // Do any additional setup after loading the view.
 }
 -(void)ToGetAShoppingCartGoodsList{
+    self.shoppingCarArray=[[NSMutableArray alloc]init];
     [ShoppingCarRequest ToGetAShoppingCartGoodsListBlock:^(NSDictionary *dics) {
         self.dataDic=[self deleteEmpty:dics];
         ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:self.dataDic];
+        [[self.view viewWithTag:1314521]removeFromSuperview];
+         [[self.view viewWithTag:1314520]removeFromSuperview];
         if ([class.code isEqualToString:@"13"]) {
             if (class.list.count>0) {
+                for (int i=0; i<class.list.count; i++) {
+                    ShoppingCarList *list=class.list[i];
+                    [self.shoppingCarArray addObject:list];
+                }
+                view.picle.text=@"合计:¥:0.00";
+                view.selectedBtn.selected=NO;
                 [_tableView reloadData];
             }else{
             [self EmptyTheShoppingCart];//购物车是空的
@@ -58,6 +66,7 @@
             [FTIndicator showErrorWithMessage:class.msg];
         }
          [_tableView.mj_header endRefreshing];
+        [SVProgressHUD dismiss];
     }];
 
 }
@@ -88,19 +97,24 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:self.dataDic];
-    return class.list.count;
+ 
+    return self.shoppingCarArray.count;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:self.dataDic];
-    ShoppingCarList *list=class.list[indexPath.row];
+    ShoppingCarList *list=self.shoppingCarArray[indexPath.row];
     ShoppingCarComm *comm=list.comm;
-    
     ShoppingCartProductsCell *cell=[ShoppingCartProductsCell new];
     cell.selectedBtn.indexPath=indexPath;
+    if (_isState) {
+         cell.selectedBtn.selected=list.selected;
+    }else{
+        cell.selectedBtn.selected=list.EditorSelected;
+    }
+   
     [cell.selectedBtn addTarget:self action:@selector(TheSelectedClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.addBtn.indexPath=indexPath;
     [cell.addBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
@@ -162,12 +176,83 @@
 //选择或者取消
 -(void)TheSelectedClick:(MyButton *)btn{
     btn.selected=!btn.selected;
+    if (_isState) {//非编辑状态
+        for (int i=0; i<self.shoppingCarArray.count; i++) {
+            if (i==btn.indexPath.row) {
+                ShoppingCarList *list=self.shoppingCarArray[i];
+                list.selected=btn.selected;
+                [self.shoppingCarArray replaceObjectAtIndex:btn.indexPath.row withObject:list];
+            }
+            
+        }
+        
+        [ShoppingCarRequest DetermineWhetherToChooseSelection:self.shoppingCarArray Block:^(BOOL isSend) {
+            view.selectedBtn.selected=isSend;
+            
+        } Block:^(NSString *price) {
+            view.picle.text=[NSString stringWithFormat:@"合计:¥%@",price];
+            
+        }];
+    }else{//编辑状态
+        for (int i=0; i<self.shoppingCarArray.count; i++) {
+            if (i==btn.indexPath.row) {
+                ShoppingCarList *list=self.shoppingCarArray[i];
+                list.EditorSelected=btn.selected;
+                [self.shoppingCarArray replaceObjectAtIndex:btn.indexPath.row withObject:list];
+            }
+            
+        }
+        [ShoppingCarRequest EditStateSelection:self.shoppingCarArray Block:^(BOOL isSend) {
+            view.selectedBtn.selected=isSend;
+        }];
+        
+    
+    }
+  
+   
+    
+      [_tableView reloadData];
+    
+    
 
 }
 //点击加件数量
 -(void)ChangeTTheNumber:(MyButton *)btn{
 
-    NSLog(@"你点击了第%ld区第%ld行  ----%d",btn.indexPath.section,btn.indexPath.row,btn.why);
+    [SVProgressHUD showWithStatus:@"正在加载"];
+    [ShoppingCarRequest ModifyTheQuantity:1 isSeneld:btn.why idx:btn.indexPath.row array:self.shoppingCarArray Block:^(NSDictionary *dics) {
+        ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+        if ([class.code isEqualToString:@"15"]) {//请求完成,在本地的也改变了
+            ShoppingCarList *list=self.shoppingCarArray[btn.indexPath.row];
+            if (btn.why) {
+                list.count+=1;
+            }else{
+                list.count-=1;
+            }
+           
+            [self.shoppingCarArray replaceObjectAtIndex:btn.indexPath.row withObject:list];
+            
+            
+            if (_isState) {//非编辑状态
+                
+                [ShoppingCarRequest DetermineWhetherToChooseSelection:self.shoppingCarArray Block:^(BOOL isSend) {
+                    
+                } Block:^(NSString *price) {
+                    view.picle.text=[NSString stringWithFormat:@"合计:¥%@",price];
+                    
+                }];
+            }
+            
+            
+            [_tableView reloadData];
+        }else{
+            [FTIndicator showErrorWithMessage:class.msg];
+        }
+        
+        [SVProgressHUD dismiss];
+    }];
+    
+    
 }
 //消息
 -(void)onBarButtonClick:(MyButton *)btn{
@@ -181,32 +266,119 @@
     if (_isState) {
         [editorBtn setTitle:Localized(@"完成") forState:UIControlStateNormal];
         _isState=NO;
+        [_tableView reloadData];
+        view.selectedBtn.selected=NO;
+        view.picle.text=@"";
+        
     }else{
         [editorBtn setTitle:Localized(@"编辑") forState:UIControlStateNormal];
         _isState=YES;
+        [self ToGetAShoppingCartGoodsList];
+        [SVProgressHUD showWithStatus:@"正在加载"];
     }
-     [_tableView reloadData];
+     view.state=_isState;
 }
 //全选
 -(void)FutureGenerations:(MyButton *)btn{
     btn.selected=!btn.selected;
+    if (_isState) {//非编辑状态
+        for (int i=0; i<self.shoppingCarArray.count; i++) {
+            ShoppingCarList *list=self.shoppingCarArray[i];
+            list.selected=btn.selected;
+            [self.shoppingCarArray replaceObjectAtIndex:i withObject:list];
+            
+        }
+        [ShoppingCarRequest AUserClicksOnFutureGenerations:btn.selected Array:self.shoppingCarArray block:^(NSString *priceString) {
+            view.picle.text=[NSString stringWithFormat:@"合计:¥%@",priceString];
+            
+        }];
+    }else{//编辑状态
+        for (int i=0; i<self.shoppingCarArray.count; i++) {
+            ShoppingCarList *list=self.shoppingCarArray[i];
+            list.EditorSelected=btn.selected;
+            [self.shoppingCarArray replaceObjectAtIndex:i withObject:list];
+            
+        }
+        
+        [ShoppingCarRequest EditStateSelection:self.shoppingCarArray Block:^(BOOL isSend) {
+            view.selectedBtn.selected=isSend;
+        }];
+        
+    }
+    
+    
+ 
+    
+     [_tableView reloadData];
 
 }
 //点击支付或者删除
 -(void)PaymentAndDeleteClick:(MyButton *)btn{
     if (btn.why) {
         NSLog(@"支付");
+        [ShoppingCarRequest StitchingId:self.shoppingCarArray Block:^(NSString *IDS) {
+           
+            if ([IDS length]<1) {
+                [FTIndicator showInfoWithMessage:@"选选择您要结算的商品"];
+            }else{
+                [SVProgressHUD showWithStatus:@"正在加载"];
+            [ShoppingCarRequest TheShoppingCartAndSettlement:IDS Block:^(NSDictionary *dics) {
+                
+                [SVProgressHUD dismiss];
+            }];
+            }
+        }];
+        
     }else{
+        
         NSLog(@"删除");
+        [ShoppingCarRequest DeleteShoppingCartOfGoods:self.shoppingCarArray block:^(NSString *IDString) {
+            if ([IDString length]<1) {
+                [FTIndicator showInfoWithMessage:@"请选择要删除的商品"];
+            }else{
+                [SVProgressHUD showWithStatus:@"正在删除"];
+            [ShoppingCarRequest DeleteTheGoods:IDString Block:^(NSDictionary *dics) {
+                ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+                if ([class.code isEqualToString:@"14"]) {//删除成功需要把本地的也删除了
+                    NSArray *idStrAry=[IDString componentsSeparatedByString:@","];//把拼接的字符串分割开
+                    for (int i=0; i<idStrAry.count; i++) {
+                        NSString *string=[NSString stringWithFormat:@"%@",idStrAry[i]];
+                        for (int y=0; y<self.shoppingCarArray.count; y++) {
+                             ShoppingCarList *list=self.shoppingCarArray[y];
+                            if ([[NSString stringWithFormat:@"%.0f",list.listIdentifier]isEqualToString:string]) {//如果这个id跟已经删除的一致就把他删除掉
+                                [self.shoppingCarArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                    if (obj ==list) {
+                                        [self.shoppingCarArray removeObject:obj];
+                                    }
+                                }];
+                            }
+                            
+                            
+                        }
+                    }
+                    [_tableView reloadData];
+                    
+                }else{//删除失败
+                 [FTIndicator showErrorWithMessage:class.msg];
+                }
+               
+                [SVProgressHUD dismiss];
+            }];
+            }
+            
+        }];
+        
     }
 }
 -(void)EmptyTheShoppingCart{
     autoSize
     UIImageView *img=[[UIImageView alloc]init];
     img.image=[UIImage imageNamed:@"pic_cart"];
+    img.tag=1314521;
     [self.view addSubview:img];
     img.sd_layout.leftSpaceToView(self.view, 196*autoSizeScaleX).topSpaceToView(self.view, 597*autoSizeScaleY).widthIs(358*autoSizeScaleX).heightIs(139*autoSizeScaleY);
     UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
+    btn.tag=1314520;
     [btn setTitle:Localized(@"去逛逛") forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(onGoGoClik:) forControlEvents:UIControlEventTouchUpInside];
     [btn setTitleColor:[TheParentClass colorWithHexString:@"#999999"] forState:UIControlStateNormal];
@@ -228,6 +400,7 @@
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:YES];
     self.navigationController.navigationBarHidden=NO;
+    TheDrop_downRefresh(_tableView, @selector(ToGetAShoppingCartGoodsList))
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -237,7 +410,7 @@
 -(void)CreatePaymentButton{
     autoSize
     view=[[ShoppingCarViews alloc]init];
-    view.picle.text=@"合计:¥9999";
+    view.picle.text=@"合计:¥0.00";
     view.state=_isState;
     [view.PaymentAndDeleteBtn addTarget:self action:@selector(PaymentAndDeleteClick:) forControlEvents:UIControlEventTouchUpInside];
     [view.selectedBtn addTarget:self action:@selector(FutureGenerations:) forControlEvents:UIControlEventTouchUpInside];
@@ -245,6 +418,7 @@
     view.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 98*autoSizeScaleY).heightIs(99*autoSizeScaleY);
 
 }
+
 /*
 #pragma mark - Navigation
 

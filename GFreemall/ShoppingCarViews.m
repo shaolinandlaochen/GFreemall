@@ -61,12 +61,19 @@
 }
 -(void)setState:(BOOL)state{
 autoSize
+    NSLog(@"aaaaaaaaaa");
     _PaymentAndDeleteBtn.why=state;
     if (state) {
         _PaymentAndDeleteBtn.backgroundColor=[[UIColor blackColor]colorWithAlphaComponent:0.6];
         [_PaymentAndDeleteBtn setTitle:Localized(@"去支付") forState:UIControlStateNormal];
         [_PaymentAndDeleteBtn setTitleColor:[TheParentClass colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
         _PaymentAndDeleteBtn.titleLabel.font=[UIFont systemFontOfSize:34*autoSizeScaleY];
+        _PaymentAndDeleteBtn.sd_layout.rightSpaceToView(self, 0).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(240*autoSizeScaleX);
+        [_PaymentAndDeleteBtn.layer setBorderColor:[UIColor clearColor].CGColor];
+        [_PaymentAndDeleteBtn.layer setBorderWidth:0];
+        [_PaymentAndDeleteBtn.layer setMasksToBounds:YES];
+        _PaymentAndDeleteBtn.layer.cornerRadius = 0;
+        _PaymentAndDeleteBtn.layer.masksToBounds = 0;
     }else{
         [_PaymentAndDeleteBtn setTitle:Localized(@"删除") forState:UIControlStateNormal];
         _PaymentAndDeleteBtn.backgroundColor=[UIColor whiteColor];

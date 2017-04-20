@@ -34,7 +34,7 @@
 
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+         [SVProgressHUD dismiss];
     }];
     [task resume];
     
@@ -74,6 +74,7 @@
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"****get请求%@",error);
+            [SVProgressHUD dismiss];
         }];
         [task resume];
         
@@ -115,6 +116,7 @@
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"****get请求%@",error);
+             [SVProgressHUD dismiss];
         }];
         [task resume];
         

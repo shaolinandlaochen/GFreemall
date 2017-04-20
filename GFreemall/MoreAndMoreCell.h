@@ -19,5 +19,6 @@
 @interface MoreAndMoreCell : UITableViewCell
 @property(nonatomic,strong)MyButton *btn;
 @property(nonatomic,strong)NSDictionary *model;
+@property(nonatomic,strong)UIView *line;
 
 @end

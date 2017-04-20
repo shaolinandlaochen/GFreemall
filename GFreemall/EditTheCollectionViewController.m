@@ -212,12 +212,23 @@ cancelClick
             NSDictionary *dicMessage=[self deleteEmpty:dic];
             if ([[NSString stringWithFormat:@"%@",[dicMessage objectForKey:@"code"]] isEqualToString:@"50"]) {//删除成功
                 //进行删除
-                for (int i=0; i<_AddAndDeleteArray.count; i++) {
-                    CollectionResultList *ResultList=_AddAndDeleteArray[i];
-                    if (ResultList.selected==YES) {
-                        [_AddAndDeleteArray removeObjectAtIndex:i];
+                NSArray *idstrArray=[idStr componentsSeparatedByString:@","];
+                for (int y=0; y<idstrArray.count; y++) {
+                    for (int i=0; i<_AddAndDeleteArray.count; i++) {
+                        CollectionResultList *ResultList=_AddAndDeleteArray[i];
+                        if ([[NSString stringWithFormat:@"%.0f",ResultList.resultListIdentifier] isEqualToString:idstrArray[y]]) {
+                            [_AddAndDeleteArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                if (obj ==ResultList) {
+                                    [_AddAndDeleteArray removeObject:obj];
+                                }
+                            }];
+                        }
                     }
                 }
+                
+               
+                NSLog(@"%ld",_AddAndDeleteArray.count);
+                //[self.navigationController popViewControllerAnimated:YES];
                 [_tableView reloadData];
             }
              [FTIndicator showErrorWithMessage:[NSString stringWithFormat:@"%@",[dicMessage objectForKey:@"msg"]]];

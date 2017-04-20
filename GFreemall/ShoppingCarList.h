@@ -17,6 +17,8 @@
 @property (nonatomic, assign) double commodityId;
 @property (nonatomic, strong) NSString *commodityName;
 @property (nonatomic, strong) ShoppingCarComm *comm;
+@property(nonatomic,assign)BOOL selected;
+@property(nonatomic,assign)BOOL EditorSelected;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

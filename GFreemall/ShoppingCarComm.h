@@ -43,6 +43,7 @@
 @property (nonatomic, assign) double commodityIsPackage;
 @property (nonatomic, assign) double commodityDiscount;
 @property (nonatomic, assign) double commodityIsonsales;
+@property(nonatomic, assign)BOOL selected;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
