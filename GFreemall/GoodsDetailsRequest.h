@@ -17,4 +17,6 @@
 +(void)CollectionOrCancelThisCollection:(NSString *)serial block:(void(^)(NSDictionary *dics))block;
 //加入购物车
 +(void)AddTToCartvalues:(NSString *)values serial:(NSString *)serial num:(NSString *)num checkRes:(NSString *)checkRes block:(void(^)(NSDictionary *dics))block;
+//立即购买
++(void)BuyNowattr_input:(NSString *)attr_input num:(NSString *)num comm_serial:(NSString *)comm_serial checkRes:(NSString *)checkRes block:(void(^)(NSDictionary *dics))block;
 @end

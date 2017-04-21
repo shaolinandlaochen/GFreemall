@@ -58,7 +58,7 @@
     GoodsDetailsComm *comm=class.comm;
     _title.text=[NSString stringWithFormat:@"%@",comm.commodityName];
     _string.text=[NSString stringWithFormat:@"%@",comm.commodityDigest];
-    _picrice.text=[NSString stringWithFormat:@"%.2f",comm.commodityGrade];
+    _picrice.text=[NSString stringWithFormat:@"%.2f",comm.commoditySellprice];
     _title.sd_layout.autoHeightRatio(0);
     _string.sd_layout.autoHeightRatio(0).topSpaceToView(_title, 16*autoSizeScaleY);
     _picrice.sd_layout.autoHeightRatio(0).topSpaceToView(_string, 30*autoSizeScaleY);

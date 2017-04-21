@@ -11,4 +11,6 @@
 @interface GoodsDetailsViewController : UIViewController
 @property(nonatomic,copy)NSString *commodity_serial;
 @property(nonatomic,strong)NSDictionary *dataDic;
+@property(nonatomic,copy)NSString *SKUString;
+@property(nonatomic,copy)NSString *attr_input;
 @end

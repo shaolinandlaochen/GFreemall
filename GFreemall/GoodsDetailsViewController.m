@@ -204,7 +204,11 @@
         }else if (indexPath.section==1){
             if (![classs.checkRes isEqualToString:@"NO_ATTR"]) {
                 SKUCell *cell=[SKUCell new];
-                cell.string=Localized(@"请选择商品规格");
+                if (self.SKUString==nil) {
+                    cell.string=Localized(@"请选择商品规格");
+                }else{
+                    cell.string=self.SKUString;
+                }
                 return cell;
             }
             
@@ -296,8 +300,29 @@ cancelClick
 }
 //立即购买
 -(void)onBuyClick{
-      OrderInformationViewController *OrderInformation=[[OrderInformationViewController alloc]init];
-      [self.navigationController pushViewController:OrderInformation animated:YES];
+    
+    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    if ([classs.checkRes isEqualToString:@"NO_ATTR"]) {//无属性
+        [SVProgressHUD showWithStatus:@"正在加载"];
+        [GoodsDetailsRequest BuyNowattr_input:@"" num:@"1" comm_serial:self.commodity_serial checkRes:classs.checkRes block:^(NSDictionary *dics) {
+            ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            if ([class.code isEqualToString:@"23"]) {
+                OrderInformationViewController *order=[[OrderInformationViewController alloc]init];
+                order.dataDic=[self deleteEmpty:dics];
+                [self.navigationController pushViewController:order animated:YES];
+                
+            }else{
+                [FTIndicator showErrorWithMessage:class.msg];
+            }
+            [SVProgressHUD dismiss];
+            
+        }];
+    }else{
+        [self BuildTheSkuSet];
+    }
+    
+    //  OrderInformationViewController *OrderInformation=[[OrderInformationViewController alloc]init];
+      //[self.navigationController pushViewController:OrderInformation animated:YES];
 }
 //构建视图
 -(void)BuildView{
@@ -361,6 +386,7 @@ cancelClick
 
     AttributeSelectionViewController *vc=[[AttributeSelectionViewController alloc]init];
     vc.dataDic=self.dataDic;
+    vc.deleghate=self;
     vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self presentViewController:vc animated:YES completion:^{
         vc.view.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:.5];
@@ -370,11 +396,7 @@ cancelClick
    
     
 }
-//关闭按钮代理方法
--(void)hutDownGo{
- 
 
-}
 //查看图片
 -(void)ReviewImagesUrl:(NSString *)url{
     [TheParentClass SeeAPicture:url Controller:self];
@@ -411,13 +433,55 @@ cancelClick
 }
 //加入购物车
 -(void)onAddShopingCharClick{
-    [GoodsDetailsRequest AddTToCartvalues:@"" serial:self.commodity_serial num:@"1" checkRes:@"NO_ATTR" block:^(NSDictionary *dics) {
-        GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-        [FTIndicator showSuccessWithMessage:class.msg];
-        
-    }];
+    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    if ([classs.checkRes isEqualToString:@"NO_ATTR"]) {//无属性
+        [SVProgressHUD showWithStatus:@"正在加载"];
+        [GoodsDetailsRequest AddTToCartvalues:@"" serial:self.commodity_serial num:@"1" checkRes:@"NO_ATTR" block:^(NSDictionary *dics) {
+            GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            [FTIndicator showSuccessWithMessage:class.msg];
+            [SVProgressHUD dismiss];
+            
+        }];
+    }else{
+        [self BuildTheSkuSet];
+    }
+   
 
 }
+//立即购买(代理)
+-(void)BuyNowattr_input:(NSString *)attr_input message:(NSString *)Message number:(NSInteger)number{
+    NSLog(@"%@............%@",attr_input,Message);
+    [SVProgressHUD showWithStatus:@"正在加载"];
+      GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    [GoodsDetailsRequest BuyNowattr_input:[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input] num:[NSString stringWithFormat:@"%ld",number] comm_serial:self.commodity_serial checkRes:classs.checkRes block:^(NSDictionary *dics) {
+        ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+        if ([class.code isEqualToString:@"23"]) {
+            OrderInformationViewController *order=[[OrderInformationViewController alloc]init];
+            order.dataDic=[self deleteEmpty:dics];
+            [self.navigationController pushViewController:order animated:YES];
+
+        }else{
+            [FTIndicator showErrorWithMessage:class.msg];
+        }
+        [SVProgressHUD dismiss];
+        
+    }];
+}
+//加入购物车(代理)
+-(void)AddToCart:(NSString *)attr_input message:(NSString *)Message number:(NSInteger)number{
+    self.SKUString=[NSString stringWithFormat:@"已选:%@",Message];
+    self.attr_input=attr_input;
+    [_tableView reloadData];
+    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+       [SVProgressHUD showWithStatus:@"正在加载"];
+    [GoodsDetailsRequest AddTToCartvalues:[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input] serial:self.commodity_serial num:[NSString stringWithFormat:@"%ld",number] checkRes:classs.checkRes block:^(NSDictionary *dics) {
+        GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+        [FTIndicator showSuccessWithMessage:class.msg];
+        [SVProgressHUD dismiss];
+        
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

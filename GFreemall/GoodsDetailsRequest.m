@@ -82,4 +82,24 @@
     }];
 
 }
+//立即购买
++(void)BuyNowattr_input:(NSString *)attr_input num:(NSString *)num comm_serial:(NSString *)comm_serial checkRes:(NSString *)checkRes block:(void(^)(NSDictionary *dics))block{
+
+    NSMutableDictionary *dicData=[[NSMutableDictionary alloc]init];
+    if ([tokenString length]>0) {
+        [dicData setObject:tokenString forKey:@"token"];
+    }
+    [dicData setObject:attr_input forKey:@"attr_input"];
+    [dicData setObject:num forKey:@"num"];
+    [dicData setObject:checkRes forKey:@"checkRes"];
+    [dicData setObject:comm_serial forKey:@"comm_serial"];
+    NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
+    [RequestClass getUrl:@"settle" Dic:data block:^(NSDictionary *dic) {
+        NSLog(@"/立即购买---%@",dic);
+        NSLog(@"get/立即购买---msg==%@",[dic objectForKey:@"msg"]);
+        block(dic);
+        
+    }];
+
+}
 @end
