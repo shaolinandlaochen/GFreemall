@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor=[[TheParentClass colorWithHexString:@"#1b1b1b"]colorWithAlphaComponent:0.8];
+
     [self BuildView];
     [self AddTheCommodityInformation];
     // Do any additional setup after loading the view.
@@ -51,7 +51,8 @@ autoSize
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-    
+    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    GoodsDetailsListAttribute *Attribute=classs.listAttribute[indexPath.section];
     NSString *reuseIdentifier;
     if ([kind isEqualToString: UICollectionElementKindSectionHeader ]){
         reuseIdentifier = @"cellHeader";
@@ -60,7 +61,7 @@ autoSize
     SKUCollectionReusableView *view =  [collectionView dequeueReusableSupplementaryViewOfKind :kind withReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
-        view.name.text=@"我是标题";
+        view.name.text=[NSString stringWithFormat:@"%@",Attribute.attributeName];
     }
     return view;
 }
@@ -75,25 +76,35 @@ autoSize
 //返回区数
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 3;
+    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    return classs.listAttribute.count;
 }
 //每区返回的行数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    
-    return 5;
+    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    GoodsDetailsListAttribute *Attribute=classs.listAttribute[section];
+    return Attribute.eAttributeVal.count;
 }
 //构建单元格
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 
 {
+    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    GoodsDetailsListAttribute *Attribute=classs.listAttribute[indexPath.section];
+    NSArray *array=[self deleteEmptyArr:Attribute.eAttributeVal];
     autoSize
+    NSArray *strArray=[[NSString stringWithFormat:@"%@",array[indexPath.row]] componentsSeparatedByString:@"_"];
     AttributeSkuCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"321" forIndexPath:indexPath];
-    [cell.string setTitle:@"黑色" forState:UIControlStateNormal];
+    if (strArray.count>1) {
+          [cell.string setTitle:[NSString stringWithFormat:@"%@",strArray[1]] forState:UIControlStateNormal];
+    }
+  
     
     return cell;
 }
 //点击cell 执行该方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 -(CGSize)collectionView:(nonnull UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
@@ -142,12 +153,15 @@ autoSize
 }
 //关闭
 -(void)onButtonClick{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 [_deleghate hutDownGo];
 }
 //添加商品信息
 -(void)AddTheCommodityInformation{
     autoSize
-    
+    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
     
     
     MyButton *imgBtn=[[MyButton alloc]init];

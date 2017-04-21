@@ -1,7 +1,7 @@
 //
 //  GoodsDetailsListComment.h
 //
-//  Created by   on 2017/4/17
+//  Created by   on 2017/4/21
 //  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
 //
 
@@ -19,9 +19,9 @@
 @property (nonatomic, assign) double commentGrade;
 @property (nonatomic, strong) NSString *baseUsername;
 @property (nonatomic, assign) id baseEmail;
-@property (nonatomic, strong) NSString *commentReply;
+@property (nonatomic, assign) id commentReply;
 @property (nonatomic, strong) NSString *commentTime;
-@property (nonatomic, strong) NSString *commentReplyTime;
+@property (nonatomic, assign) id commentReplyTime;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

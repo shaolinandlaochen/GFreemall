@@ -10,4 +10,6 @@
 
 @interface SKUCell : UITableViewCell
 @property(nonatomic,strong)UILabel *stringSKU;
+@property(nonatomic,strong)UILabel *lbl;
+@property(nonatomic,copy)NSString *string;
 @end

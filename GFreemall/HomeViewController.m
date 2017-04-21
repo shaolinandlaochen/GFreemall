@@ -47,8 +47,10 @@
 -(void)DataAccessPageRequestClick{
 [DataAccessPageRequest DataAccessPageRequestBlock:^(NSDictionary *dics) {
     self.dataDic=[self deleteEmpty:dics];
+    HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
     [_tableView reloadData];
     [_tableView.mj_header endRefreshing];
+    [SVProgressHUD dismiss];
 }];
 
 }

@@ -1,7 +1,7 @@
 //
 //  GoodsDetailsMap.h
 //
-//  Created by   on 2017/4/17
+//  Created by   on 2017/4/21
 //  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
 //
 

@@ -15,4 +15,5 @@
 @end
 @interface AttributeSelectionViewController : UIViewController
 @property(nonatomic,assign)id deleghate;
+@property(nonatomic,strong)NSDictionary *dataDic;
 @end

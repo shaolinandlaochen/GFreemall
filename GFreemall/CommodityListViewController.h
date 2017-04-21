@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CommodityListViewController : UIViewController
-
+@property(nonatomic,strong)NSDictionary *dataDic;
 @end

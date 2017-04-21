@@ -114,7 +114,8 @@ autoSizeScaleY = SCREENHEIGHT/1334;\
 //下拉刷新
 #define TheDrop_downRefresh(view,selector)  MJRefreshNormalHeader*  header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:selector];[header setTitle:@"快来拉我刷新" forState:MJRefreshStateIdle];[header setTitle:@"松开即可刷新" forState:MJRefreshStatePulling];[header setTitle:@"正在刷新" forState:MJRefreshStateRefreshing];header.stateLabel.font = [UIFont systemFontOfSize:15];header.lastUpdatedTimeLabel.font = [UIFont systemFontOfSize:14];header.stateLabel.textColor = [UIColor grayColor];header.lastUpdatedTimeLabel.textColor = [UIColor grayColor];NSDate *date=[[NSDate alloc]init];[header.lastUpdatedTime laterDate:date];if ([TheParentClass DoYouHaveAnyNetwork]) {[header beginRefreshing];}else{[FTIndicator showInfoWithMessage:Localized(@"网络连接错误")];}view.mj_header = header;
 
-
+//刷新
+#define FormToUpdate(section,UITableView) NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:section];[UITableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 /*
  
  // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）

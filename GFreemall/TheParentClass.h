@@ -48,4 +48,5 @@
 //查看多张图片
 +(void)ToSeeMorePictures:(NSArray *)Array idx:(NSInteger)idx Controller:(UIViewController *)Controller;
 
+
 @end

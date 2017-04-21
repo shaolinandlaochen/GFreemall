@@ -156,6 +156,12 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if ([self.where isEqualToString:@"选择地址"]) {
+        AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:self.dataDic];
+        AddressList *list=class.list[indexPath.row];
+        [self.navigationController popViewControllerAnimated:YES];
+        [_delegate MyShippingAddressAddress_address:list.addressAddress address_area:list.addressArea address_city:list.addressCity address_country:list.addressCountry address_isdefault:list.addressIsdefault address_name:list.addressName address_phone:list.addressPhone address_province:list.addressProvince address_zipcode:list.addressZipcode];
+    }
 
 }
 

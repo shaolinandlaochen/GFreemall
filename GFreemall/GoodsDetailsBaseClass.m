@@ -1,13 +1,14 @@
 //
 //  GoodsDetailsBaseClass.m
 //
-//  Created by   on 2017/4/17
+//  Created by   on 2017/4/21
 //  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
 //
 
 #import "GoodsDetailsBaseClass.h"
 #import "GoodsDetailsComm.h"
 #import "GoodsDetailsMap.h"
+#import "GoodsDetailsListAttribute.h"
 #import "GoodsDetailsListComment.h"
 
 
@@ -72,7 +73,20 @@ NSString *const kGoodsDetailsBaseClassListComment = @"listComment";
             self.serial = [[self objectOrNilForKey:kGoodsDetailsBaseClassSerial fromDictionary:dict] doubleValue];
             self.commonlyCount = [[self objectOrNilForKey:kGoodsDetailsBaseClassCommonlyCount fromDictionary:dict] doubleValue];
             self.imgSrc = [self objectOrNilForKey:kGoodsDetailsBaseClassImgSrc fromDictionary:dict];
-            self.listAttribute = [self objectOrNilForKey:kGoodsDetailsBaseClassListAttribute fromDictionary:dict];
+    NSObject *receivedGoodsDetailsListAttribute = [dict objectForKey:kGoodsDetailsBaseClassListAttribute];
+    NSMutableArray *parsedGoodsDetailsListAttribute = [NSMutableArray array];
+    
+    if ([receivedGoodsDetailsListAttribute isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *item in (NSArray *)receivedGoodsDetailsListAttribute) {
+            if ([item isKindOfClass:[NSDictionary class]]) {
+                [parsedGoodsDetailsListAttribute addObject:[GoodsDetailsListAttribute modelObjectWithDictionary:item]];
+            }
+       }
+    } else if ([receivedGoodsDetailsListAttribute isKindOfClass:[NSDictionary class]]) {
+       [parsedGoodsDetailsListAttribute addObject:[GoodsDetailsListAttribute modelObjectWithDictionary:(NSDictionary *)receivedGoodsDetailsListAttribute]];
+    }
+
+    self.listAttribute = [NSArray arrayWithArray:parsedGoodsDetailsListAttribute];
             self.code = [self objectOrNilForKey:kGoodsDetailsBaseClassCode fromDictionary:dict];
             self.checkRes = [self objectOrNilForKey:kGoodsDetailsBaseClassCheckRes fromDictionary:dict];
             self.size = [[self objectOrNilForKey:kGoodsDetailsBaseClassSize fromDictionary:dict] doubleValue];

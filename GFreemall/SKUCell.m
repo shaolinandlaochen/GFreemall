@@ -17,19 +17,16 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         autoSize
-        UILabel *lbl=[[UILabel alloc]init];
-        lbl.textColor=[TheParentClass colorWithHexString:@"#999999"];
-        lbl.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
-        lbl.text=Localized(@"已选");
-        [self.contentView addSubview:lbl];
-        CGSize size=[TheParentClass StringHeight:lbl.text Lblfont:26*autoSizeScaleY heightOfTheMinus:0];
-        lbl.sd_layout.leftSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).widthIs(size.width);
+        _lbl=[[UILabel alloc]init];
+        _lbl.textColor=[TheParentClass colorWithHexString:@"#999999"];
+        _lbl.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
+        [self.contentView addSubview:_lbl];
+       
         _stringSKU=[[UILabel alloc]init];
         _stringSKU.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _stringSKU.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
-        _stringSKU.text=@"很色,L号,5个";
         [self.contentView addSubview:_stringSKU];
-        _stringSKU.sd_layout.leftSpaceToView(lbl, 25*autoSizeScaleX).rightSpaceToView(self.contentView, 80*autoSizeScaleX).topSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0);
+        _stringSKU.sd_layout.leftSpaceToView(_lbl, 25*autoSizeScaleX).rightSpaceToView(self.contentView, 80*autoSizeScaleX).topSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0);
         
         UIImageView *icon=[[UIImageView alloc]init];
         icon.image=[UIImage imageNamed:@"icon_more"];
@@ -41,6 +38,12 @@
     }
     return self;
 
+}
+-(void)setString:(NSString *)string{
+    autoSize
+    _lbl.text=string;
+    CGSize size=[TheParentClass StringHeight:_lbl.text Lblfont:26*autoSizeScaleY heightOfTheMinus:0];
+    _lbl.sd_layout.leftSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).widthIs(size.width);
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

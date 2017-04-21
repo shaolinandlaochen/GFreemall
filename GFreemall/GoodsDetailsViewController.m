@@ -30,7 +30,6 @@
     purchaseOfGoods *goods;
     UIScrollView *_scrollView;
     NSInteger _page;
-    AttributeSelectionViewController *attributeSku;
     GoodsDetailsHTMLContextViewController *goodsDetailHtmlContextView;
 }
 @end
@@ -95,7 +94,12 @@
             NSString *txt=@"a";
             return [tableView cellHeightForIndexPath:indexPath model:txt keyPath:@"text" cellClass:[CostCalculationCell class] contentViewWidth:self.view.frame.size.width];
         }else if (indexPath.section==1){
+            if ([class.checkRes isEqualToString:@"NO_ATTR"]) {
+                return 0;
+            }else{
             return 114*autoSizeScaleY;
+            }
+            
         }else if (indexPath.section==2){
             GoodsDetailsListComment *comment=class.listComment[indexPath.row];
             return [tableView cellHeightForIndexPath:indexPath model:comment keyPath:@"model" cellClass:[UserCommentsCell class] contentViewWidth:self.view.frame.size.width];
@@ -112,6 +116,12 @@
         return 110*autoSizeScaleY;
     }else if (section==3){
         return 0;
+    }else if (section==1){
+          GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+        if ([class.checkRes isEqualToString:@"NO_ATTR"]) {
+           
+            return 0;
+        }
     }
     return 10;
 }
@@ -192,8 +202,12 @@
                 return cell;
             }
         }else if (indexPath.section==1){
-            SKUCell *cell=[SKUCell new];
-            return cell;
+            if (![classs.checkRes isEqualToString:@"NO_ATTR"]) {
+                SKUCell *cell=[SKUCell new];
+                cell.string=Localized(@"请选择商品规格");
+                return cell;
+            }
+            
         }else if (indexPath.section==2){
             UserCommentsCell *cell=[UserCommentsCell new];
             cell.model=classs.listComment[indexPath.row];
@@ -344,22 +358,21 @@ cancelClick
 
 //构建sku'集view
 -(void)BuildTheSkuSet{
-    attributeSku=[[AttributeSelectionViewController alloc]init];
-    attributeSku.deleghate=self;
-    attributeSku.view.tag=478;
-    [self.view addSubview:attributeSku.view];
-     attributeSku.view.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0);
-    [self addChildViewController:attributeSku];
+
+    AttributeSelectionViewController *vc=[[AttributeSelectionViewController alloc]init];
+    vc.dataDic=self.dataDic;
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:vc animated:YES completion:^{
+        vc.view.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:.5];
+    }];
+    
+    
    
     
 }
 //关闭按钮代理方法
 -(void)hutDownGo{
-    NSLog(@"111111");
-    [UIView animateWithDuration:0.5 animations:^{
-       //attributeSku.view.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(self.view, 1000).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0);
-        [[self.view viewWithTag:478]removeFromSuperview];
-    }];
+ 
 
 }
 //查看图片

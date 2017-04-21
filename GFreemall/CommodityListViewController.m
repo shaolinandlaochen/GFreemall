@@ -26,6 +26,9 @@
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
+    
+
+    
     [self CreatView];
     // Do any additional setup after loading the view.
 }
@@ -33,7 +36,7 @@
     _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
-    // _tableView.separatorColor=[UIColor clearColor];
+     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -60,10 +63,21 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+     ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:self.dataDic];
+    return class.list.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     InventoryListCell *cell=[InventoryListCell new];
+    
+    ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:self.dataDic];
+    
+    ShoppingSettlementList *list=class.list[indexPath.row];
+    [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.attr.commodityImagesPath,list.attr.commodityImages]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
+    cell.list=list;
+
+    
+    
+    
     return cell;
 
     
@@ -71,7 +85,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     GoodsDetailsViewController *GoodsDetails=[[GoodsDetailsViewController alloc]init];
-    [self.navigationController pushViewController:GoodsDetails animated:YES];
+    //[self.navigationController pushViewController:GoodsDetails animated:YES];
 }
 -(void)onCanceClick{
     [self.navigationController popViewControllerAnimated:YES];

@@ -120,10 +120,9 @@
 //每区返回的行数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    NSArray *listCategory=[self.dataDics objectForKey:@"listCategory"];
-    NSDictionary *dic=listCategory[defaultIdx];
-    NSArray *second_nav=[dic objectForKey:@"second_nav"];
-    return second_nav.count;
+    ForCategoricalDataBaseClass *ForCategoricalData=[[ForCategoricalDataBaseClass alloc]initWithDictionary:self.dataDics];
+    ForCategoricalDataListCategory *listCategory = ForCategoricalData.listCategory[defaultIdx];
+    return listCategory.secondNav.count;
 }
 //构建单元格
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -299,6 +298,8 @@ autoSize
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:YES];
+     [self ToGetTheData];//获取数据
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

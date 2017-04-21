@@ -1,19 +1,19 @@
 //
 //  GoodsDetailsComm.m
 //
-//  Created by   on 2017/4/17
+//  Created by   on 2017/4/21
 //  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
 //
 
 #import "GoodsDetailsComm.h"
 
 
-NSString *const kGoodsDetailsCommCommodityLookcount = @"commodity_lookcount";
+NSString *const kGoodsDetailsCommCommoditySerial = @"commodity_serial";
 NSString *const kGoodsDetailsCommCommodityWeight = @"commodity_weight";
 NSString *const kGoodsDetailsCommCommodityCoverImage = @"commodity_cover_image";
 NSString *const kGoodsDetailsCommCommoditySales = @"commodity_sales";
-NSString *const kGoodsDetailsCommCommodityName = @"commodity_name";
-NSString *const kGoodsDetailsCommCommodityDesc = @"commodity_desc";
+NSString *const kGoodsDetailsCommCommodityDiscount = @"commodity_discount";
+NSString *const kGoodsDetailsCommCommodityIsonsales = @"commodity_isonsales";
 NSString *const kGoodsDetailsCommCommodityFreight = @"commodity_freight";
 NSString *const kGoodsDetailsCommCommodityMarketprice = @"commodity_marketprice";
 NSString *const kGoodsDetailsCommCommodityIsrecommend = @"commodity_isrecommend";
@@ -36,10 +36,10 @@ NSString *const kGoodsDetailsCommCommodityIshot = @"commodity_ishot";
 NSString *const kGoodsDetailsCommCommodityIsnew = @"commodity_isnew";
 NSString *const kGoodsDetailsCommCommodityAttributeNameEn = @"commodity_attribute_name_en";
 NSString *const kGoodsDetailsCommCommodityReserves = @"commodity_reserves";
-NSString *const kGoodsDetailsCommCommoditySerial = @"commodity_serial";
+NSString *const kGoodsDetailsCommCommodityLookcount = @"commodity_lookcount";
 NSString *const kGoodsDetailsCommCommodityIsPackage = @"commodity_is_package";
-NSString *const kGoodsDetailsCommCommodityDiscount = @"commodity_discount";
-NSString *const kGoodsDetailsCommCommodityIsonsales = @"commodity_isonsales";
+NSString *const kGoodsDetailsCommCommodityName = @"commodity_name";
+NSString *const kGoodsDetailsCommCommodityDesc = @"commodity_desc";
 
 
 @interface GoodsDetailsComm ()
@@ -50,12 +50,12 @@ NSString *const kGoodsDetailsCommCommodityIsonsales = @"commodity_isonsales";
 
 @implementation GoodsDetailsComm
 
-@synthesize commodityLookcount = _commodityLookcount;
+@synthesize commoditySerial = _commoditySerial;
 @synthesize commodityWeight = _commodityWeight;
 @synthesize commodityCoverImage = _commodityCoverImage;
 @synthesize commoditySales = _commoditySales;
-@synthesize commodityName = _commodityName;
-@synthesize commodityDesc = _commodityDesc;
+@synthesize commodityDiscount = _commodityDiscount;
+@synthesize commodityIsonsales = _commodityIsonsales;
 @synthesize commodityFreight = _commodityFreight;
 @synthesize commodityMarketprice = _commodityMarketprice;
 @synthesize commodityIsrecommend = _commodityIsrecommend;
@@ -78,10 +78,10 @@ NSString *const kGoodsDetailsCommCommodityIsonsales = @"commodity_isonsales";
 @synthesize commodityIsnew = _commodityIsnew;
 @synthesize commodityAttributeNameEn = _commodityAttributeNameEn;
 @synthesize commodityReserves = _commodityReserves;
-@synthesize commoditySerial = _commoditySerial;
+@synthesize commodityLookcount = _commodityLookcount;
 @synthesize commodityIsPackage = _commodityIsPackage;
-@synthesize commodityDiscount = _commodityDiscount;
-@synthesize commodityIsonsales = _commodityIsonsales;
+@synthesize commodityName = _commodityName;
+@synthesize commodityDesc = _commodityDesc;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict {
@@ -94,17 +94,17 @@ NSString *const kGoodsDetailsCommCommodityIsonsales = @"commodity_isonsales";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.commodityLookcount = [[self objectOrNilForKey:kGoodsDetailsCommCommodityLookcount fromDictionary:dict] doubleValue];
+            self.commoditySerial = [[self objectOrNilForKey:kGoodsDetailsCommCommoditySerial fromDictionary:dict] doubleValue];
             self.commodityWeight = [[self objectOrNilForKey:kGoodsDetailsCommCommodityWeight fromDictionary:dict] doubleValue];
             self.commodityCoverImage = [self objectOrNilForKey:kGoodsDetailsCommCommodityCoverImage fromDictionary:dict];
             self.commoditySales = [[self objectOrNilForKey:kGoodsDetailsCommCommoditySales fromDictionary:dict] doubleValue];
-            self.commodityName = [self objectOrNilForKey:kGoodsDetailsCommCommodityName fromDictionary:dict];
-            self.commodityDesc = [self objectOrNilForKey:kGoodsDetailsCommCommodityDesc fromDictionary:dict];
+            self.commodityDiscount = [[self objectOrNilForKey:kGoodsDetailsCommCommodityDiscount fromDictionary:dict] doubleValue];
+            self.commodityIsonsales = [[self objectOrNilForKey:kGoodsDetailsCommCommodityIsonsales fromDictionary:dict] doubleValue];
             self.commodityFreight = [[self objectOrNilForKey:kGoodsDetailsCommCommodityFreight fromDictionary:dict] doubleValue];
             self.commodityMarketprice = [[self objectOrNilForKey:kGoodsDetailsCommCommodityMarketprice fromDictionary:dict] doubleValue];
             self.commodityIsrecommend = [[self objectOrNilForKey:kGoodsDetailsCommCommodityIsrecommend fromDictionary:dict] doubleValue];
             self.commodityDigest = [self objectOrNilForKey:kGoodsDetailsCommCommodityDigest fromDictionary:dict];
-            self.commodityShowtime = [[self objectOrNilForKey:kGoodsDetailsCommCommodityShowtime fromDictionary:dict] doubleValue];
+            self.commodityShowtime = [self objectOrNilForKey:kGoodsDetailsCommCommodityShowtime fromDictionary:dict];
             self.commodityAttributeName = [self objectOrNilForKey:kGoodsDetailsCommCommodityAttributeName fromDictionary:dict];
             self.commodityGrade = [[self objectOrNilForKey:kGoodsDetailsCommCommodityGrade fromDictionary:dict] doubleValue];
             self.commodityImagesPath = [self objectOrNilForKey:kGoodsDetailsCommCommodityImagesPath fromDictionary:dict];
@@ -122,10 +122,10 @@ NSString *const kGoodsDetailsCommCommodityIsonsales = @"commodity_isonsales";
             self.commodityIsnew = [[self objectOrNilForKey:kGoodsDetailsCommCommodityIsnew fromDictionary:dict] doubleValue];
             self.commodityAttributeNameEn = [self objectOrNilForKey:kGoodsDetailsCommCommodityAttributeNameEn fromDictionary:dict];
             self.commodityReserves = [[self objectOrNilForKey:kGoodsDetailsCommCommodityReserves fromDictionary:dict] doubleValue];
-            self.commoditySerial = [[self objectOrNilForKey:kGoodsDetailsCommCommoditySerial fromDictionary:dict] doubleValue];
+            self.commodityLookcount = [[self objectOrNilForKey:kGoodsDetailsCommCommodityLookcount fromDictionary:dict] doubleValue];
             self.commodityIsPackage = [[self objectOrNilForKey:kGoodsDetailsCommCommodityIsPackage fromDictionary:dict] doubleValue];
-            self.commodityDiscount = [[self objectOrNilForKey:kGoodsDetailsCommCommodityDiscount fromDictionary:dict] doubleValue];
-            self.commodityIsonsales = [[self objectOrNilForKey:kGoodsDetailsCommCommodityIsonsales fromDictionary:dict] doubleValue];
+            self.commodityName = [self objectOrNilForKey:kGoodsDetailsCommCommodityName fromDictionary:dict];
+            self.commodityDesc = [self objectOrNilForKey:kGoodsDetailsCommCommodityDesc fromDictionary:dict];
 
     }
     
@@ -135,17 +135,17 @@ NSString *const kGoodsDetailsCommCommodityIsonsales = @"commodity_isonsales";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.commodityLookcount] forKey:kGoodsDetailsCommCommodityLookcount];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.commoditySerial] forKey:kGoodsDetailsCommCommoditySerial];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commodityWeight] forKey:kGoodsDetailsCommCommodityWeight];
     [mutableDict setValue:self.commodityCoverImage forKey:kGoodsDetailsCommCommodityCoverImage];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commoditySales] forKey:kGoodsDetailsCommCommoditySales];
-    [mutableDict setValue:self.commodityName forKey:kGoodsDetailsCommCommodityName];
-    [mutableDict setValue:self.commodityDesc forKey:kGoodsDetailsCommCommodityDesc];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.commodityDiscount] forKey:kGoodsDetailsCommCommodityDiscount];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.commodityIsonsales] forKey:kGoodsDetailsCommCommodityIsonsales];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commodityFreight] forKey:kGoodsDetailsCommCommodityFreight];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commodityMarketprice] forKey:kGoodsDetailsCommCommodityMarketprice];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commodityIsrecommend] forKey:kGoodsDetailsCommCommodityIsrecommend];
     [mutableDict setValue:self.commodityDigest forKey:kGoodsDetailsCommCommodityDigest];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.commodityShowtime] forKey:kGoodsDetailsCommCommodityShowtime];
+    [mutableDict setValue:self.commodityShowtime forKey:kGoodsDetailsCommCommodityShowtime];
     [mutableDict setValue:self.commodityAttributeName forKey:kGoodsDetailsCommCommodityAttributeName];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commodityGrade] forKey:kGoodsDetailsCommCommodityGrade];
     [mutableDict setValue:self.commodityImagesPath forKey:kGoodsDetailsCommCommodityImagesPath];
@@ -163,10 +163,10 @@ NSString *const kGoodsDetailsCommCommodityIsonsales = @"commodity_isonsales";
     [mutableDict setValue:[NSNumber numberWithDouble:self.commodityIsnew] forKey:kGoodsDetailsCommCommodityIsnew];
     [mutableDict setValue:self.commodityAttributeNameEn forKey:kGoodsDetailsCommCommodityAttributeNameEn];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commodityReserves] forKey:kGoodsDetailsCommCommodityReserves];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.commoditySerial] forKey:kGoodsDetailsCommCommoditySerial];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.commodityLookcount] forKey:kGoodsDetailsCommCommodityLookcount];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commodityIsPackage] forKey:kGoodsDetailsCommCommodityIsPackage];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.commodityDiscount] forKey:kGoodsDetailsCommCommodityDiscount];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.commodityIsonsales] forKey:kGoodsDetailsCommCommodityIsonsales];
+    [mutableDict setValue:self.commodityName forKey:kGoodsDetailsCommCommodityName];
+    [mutableDict setValue:self.commodityDesc forKey:kGoodsDetailsCommCommodityDesc];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -187,17 +187,17 @@ NSString *const kGoodsDetailsCommCommodityIsonsales = @"commodity_isonsales";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
 
-    self.commodityLookcount = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityLookcount];
+    self.commoditySerial = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommoditySerial];
     self.commodityWeight = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityWeight];
     self.commodityCoverImage = [aDecoder decodeObjectForKey:kGoodsDetailsCommCommodityCoverImage];
     self.commoditySales = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommoditySales];
-    self.commodityName = [aDecoder decodeObjectForKey:kGoodsDetailsCommCommodityName];
-    self.commodityDesc = [aDecoder decodeObjectForKey:kGoodsDetailsCommCommodityDesc];
+    self.commodityDiscount = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityDiscount];
+    self.commodityIsonsales = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityIsonsales];
     self.commodityFreight = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityFreight];
     self.commodityMarketprice = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityMarketprice];
     self.commodityIsrecommend = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityIsrecommend];
     self.commodityDigest = [aDecoder decodeObjectForKey:kGoodsDetailsCommCommodityDigest];
-    self.commodityShowtime = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityShowtime];
+    self.commodityShowtime = [aDecoder decodeObjectForKey:kGoodsDetailsCommCommodityShowtime];
     self.commodityAttributeName = [aDecoder decodeObjectForKey:kGoodsDetailsCommCommodityAttributeName];
     self.commodityGrade = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityGrade];
     self.commodityImagesPath = [aDecoder decodeObjectForKey:kGoodsDetailsCommCommodityImagesPath];
@@ -215,27 +215,27 @@ NSString *const kGoodsDetailsCommCommodityIsonsales = @"commodity_isonsales";
     self.commodityIsnew = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityIsnew];
     self.commodityAttributeNameEn = [aDecoder decodeObjectForKey:kGoodsDetailsCommCommodityAttributeNameEn];
     self.commodityReserves = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityReserves];
-    self.commoditySerial = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommoditySerial];
+    self.commodityLookcount = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityLookcount];
     self.commodityIsPackage = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityIsPackage];
-    self.commodityDiscount = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityDiscount];
-    self.commodityIsonsales = [aDecoder decodeDoubleForKey:kGoodsDetailsCommCommodityIsonsales];
+    self.commodityName = [aDecoder decodeObjectForKey:kGoodsDetailsCommCommodityName];
+    self.commodityDesc = [aDecoder decodeObjectForKey:kGoodsDetailsCommCommodityDesc];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeDouble:_commodityLookcount forKey:kGoodsDetailsCommCommodityLookcount];
+    [aCoder encodeDouble:_commoditySerial forKey:kGoodsDetailsCommCommoditySerial];
     [aCoder encodeDouble:_commodityWeight forKey:kGoodsDetailsCommCommodityWeight];
     [aCoder encodeObject:_commodityCoverImage forKey:kGoodsDetailsCommCommodityCoverImage];
     [aCoder encodeDouble:_commoditySales forKey:kGoodsDetailsCommCommoditySales];
-    [aCoder encodeObject:_commodityName forKey:kGoodsDetailsCommCommodityName];
-    [aCoder encodeObject:_commodityDesc forKey:kGoodsDetailsCommCommodityDesc];
+    [aCoder encodeDouble:_commodityDiscount forKey:kGoodsDetailsCommCommodityDiscount];
+    [aCoder encodeDouble:_commodityIsonsales forKey:kGoodsDetailsCommCommodityIsonsales];
     [aCoder encodeDouble:_commodityFreight forKey:kGoodsDetailsCommCommodityFreight];
     [aCoder encodeDouble:_commodityMarketprice forKey:kGoodsDetailsCommCommodityMarketprice];
     [aCoder encodeDouble:_commodityIsrecommend forKey:kGoodsDetailsCommCommodityIsrecommend];
     [aCoder encodeObject:_commodityDigest forKey:kGoodsDetailsCommCommodityDigest];
-    [aCoder encodeDouble:_commodityShowtime forKey:kGoodsDetailsCommCommodityShowtime];
+    [aCoder encodeObject:_commodityShowtime forKey:kGoodsDetailsCommCommodityShowtime];
     [aCoder encodeObject:_commodityAttributeName forKey:kGoodsDetailsCommCommodityAttributeName];
     [aCoder encodeDouble:_commodityGrade forKey:kGoodsDetailsCommCommodityGrade];
     [aCoder encodeObject:_commodityImagesPath forKey:kGoodsDetailsCommCommodityImagesPath];
@@ -253,10 +253,10 @@ NSString *const kGoodsDetailsCommCommodityIsonsales = @"commodity_isonsales";
     [aCoder encodeDouble:_commodityIsnew forKey:kGoodsDetailsCommCommodityIsnew];
     [aCoder encodeObject:_commodityAttributeNameEn forKey:kGoodsDetailsCommCommodityAttributeNameEn];
     [aCoder encodeDouble:_commodityReserves forKey:kGoodsDetailsCommCommodityReserves];
-    [aCoder encodeDouble:_commoditySerial forKey:kGoodsDetailsCommCommoditySerial];
+    [aCoder encodeDouble:_commodityLookcount forKey:kGoodsDetailsCommCommodityLookcount];
     [aCoder encodeDouble:_commodityIsPackage forKey:kGoodsDetailsCommCommodityIsPackage];
-    [aCoder encodeDouble:_commodityDiscount forKey:kGoodsDetailsCommCommodityDiscount];
-    [aCoder encodeDouble:_commodityIsonsales forKey:kGoodsDetailsCommCommodityIsonsales];
+    [aCoder encodeObject:_commodityName forKey:kGoodsDetailsCommCommodityName];
+    [aCoder encodeObject:_commodityDesc forKey:kGoodsDetailsCommCommodityDesc];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -266,17 +266,17 @@ NSString *const kGoodsDetailsCommCommodityIsonsales = @"commodity_isonsales";
     
     if (copy) {
 
-        copy.commodityLookcount = self.commodityLookcount;
+        copy.commoditySerial = self.commoditySerial;
         copy.commodityWeight = self.commodityWeight;
         copy.commodityCoverImage = [self.commodityCoverImage copyWithZone:zone];
         copy.commoditySales = self.commoditySales;
-        copy.commodityName = [self.commodityName copyWithZone:zone];
-        copy.commodityDesc = [self.commodityDesc copyWithZone:zone];
+        copy.commodityDiscount = self.commodityDiscount;
+        copy.commodityIsonsales = self.commodityIsonsales;
         copy.commodityFreight = self.commodityFreight;
         copy.commodityMarketprice = self.commodityMarketprice;
         copy.commodityIsrecommend = self.commodityIsrecommend;
         copy.commodityDigest = [self.commodityDigest copyWithZone:zone];
-        copy.commodityShowtime = self.commodityShowtime;
+        copy.commodityShowtime = [self.commodityShowtime copyWithZone:zone];
         copy.commodityAttributeName = [self.commodityAttributeName copyWithZone:zone];
         copy.commodityGrade = self.commodityGrade;
         copy.commodityImagesPath = [self.commodityImagesPath copyWithZone:zone];
@@ -294,10 +294,10 @@ NSString *const kGoodsDetailsCommCommodityIsonsales = @"commodity_isonsales";
         copy.commodityIsnew = self.commodityIsnew;
         copy.commodityAttributeNameEn = [self.commodityAttributeNameEn copyWithZone:zone];
         copy.commodityReserves = self.commodityReserves;
-        copy.commoditySerial = self.commoditySerial;
+        copy.commodityLookcount = self.commodityLookcount;
         copy.commodityIsPackage = self.commodityIsPackage;
-        copy.commodityDiscount = self.commodityDiscount;
-        copy.commodityIsonsales = self.commodityIsonsales;
+        copy.commodityName = [self.commodityName copyWithZone:zone];
+        copy.commodityDesc = [self.commodityDesc copyWithZone:zone];
     }
     
     return copy;

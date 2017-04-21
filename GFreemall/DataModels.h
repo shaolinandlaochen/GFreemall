@@ -33,6 +33,7 @@
 #import "GoodsDetailsMap.h"
 #import "GoodsDetailsComm.h"
 #import "GoodsDetailsBaseClass.h"
+#import "GoodsDetailsListAttribute.h"
 #import "ProductEvaluationBaseClass.h"
 #import "ProductEvaluationResultList.h"
 #import "ProductEvaluationListComment.h"
@@ -47,3 +48,4 @@
 #import "ShoppingSettlementCarts.h"
 #import "ShoppingSettlementMapAddress.h"
 #import "ShoppingSettlementListAddress.h"
+
