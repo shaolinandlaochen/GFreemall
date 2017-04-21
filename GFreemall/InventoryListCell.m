@@ -90,7 +90,7 @@
     }
  
     
-    _number.text=[NSString stringWithFormat:@"%.0f",list.attr.commodityDiscount];
+    _number.text=[NSString stringWithFormat:@"x%.0f",list.attr.commodityDiscount];
     
     
 }

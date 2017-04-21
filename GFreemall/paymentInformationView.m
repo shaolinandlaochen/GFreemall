@@ -12,7 +12,7 @@
 #import "PayThePasswordCell.h"
 #import "WalletBalanceTop_upCell.h"
 #import "RetrievePasswordCell.h"
-@interface paymentInformationView ()<UITableViewDelegate,UITableViewDataSource>
+@interface paymentInformationView ()<UITableViewDelegate,UITableViewDataSource,PayThePasswordDelegate>
 {
     UITableView *_tableView;
     MyButton *_button;
@@ -24,11 +24,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.view.backgroundColor=[[UIColor blackColor]colorWithAlphaComponent:0.4];
+self.pswString=@"";
     [self caretView];
     // Do any additional setup after loading the view.
 }
+
 -(void)caretView{
     autoSize
     
@@ -152,9 +152,11 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:self.dataDic];
     if (indexPath.section==0) {
         if (indexPath.row==0) {
             AmountToShowCell *cell=[AmountToShowCell new];
+            cell.picre.text=[NSString stringWithFormat:@"¥%@",class.amountTotal];
             cell.userInteractionEnabled = NO;
             return cell;
         }else if (indexPath.row==1){
@@ -179,13 +181,13 @@
             return cell;
             
         }else if ([self.were isEqualToString:@"在线钱包"]){
-            NSLog(@"dsfsfsf");
             WalletBalanceTop_upCell *CELL=[WalletBalanceTop_upCell new];
             [CELL.btn addTarget:self action:@selector(oTop_UpClick) forControlEvents:UIControlEventTouchUpInside];
             return CELL;
         }
     }else if (indexPath.section==2){
         PayThePasswordCell *cell=[PayThePasswordCell new];
+        cell.delegate=self;
         return cell;
     }else if (indexPath.section==3){
         RetrievePasswordCell *cell=[RetrievePasswordCell new];
@@ -211,11 +213,19 @@
 }
 //开始支付
 -(void)onButtonClick{
+    if ([self.pswString length]<1) {
+        [FTIndicator showInfoWithMessage:@"请输入支付密码"];
+    }else{
+        [_delegate BeginToPayPsw:self.pswString];
+    }
 
 }
 //点击叉号
 -(void)oncloseClick{
-    [_delegate CancelTheView];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+   // [_delegate CancelTheView];
 }
 //充值
 -(void)oTop_UpClick{
@@ -223,6 +233,11 @@
 }
 //忘记密码
 -(void)RetrievPassword{
+
+}
+//输入支付密码代理
+-(void)Psw:(NSString *)pswString{
+    self.pswString=pswString;
 
 }
 - (void)didReceiveMemoryWarning {

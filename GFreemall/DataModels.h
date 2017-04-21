@@ -48,4 +48,5 @@
 #import "ShoppingSettlementCarts.h"
 #import "ShoppingSettlementMapAddress.h"
 #import "ShoppingSettlementListAddress.h"
+#import "PayBaseClass.h"
 

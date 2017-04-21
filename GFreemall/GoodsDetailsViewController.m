@@ -309,6 +309,12 @@ cancelClick
             if ([class.code isEqualToString:@"23"]) {
                 OrderInformationViewController *order=[[OrderInformationViewController alloc]init];
                 order.dataDic=[self deleteEmpty:dics];
+                order.where=@"商品";
+                order.attribute=@"";
+                order.number=@"1";
+                order.checkRes=classs.checkRes;
+                order.comm_serial=self.commodity_serial;
+
                 [self.navigationController pushViewController:order animated:YES];
                 
             }else{
@@ -320,9 +326,7 @@ cancelClick
     }else{
         [self BuildTheSkuSet];
     }
-    
-    //  OrderInformationViewController *OrderInformation=[[OrderInformationViewController alloc]init];
-      //[self.navigationController pushViewController:OrderInformation animated:YES];
+
 }
 //构建视图
 -(void)BuildView{
@@ -458,6 +462,11 @@ cancelClick
         if ([class.code isEqualToString:@"23"]) {
             OrderInformationViewController *order=[[OrderInformationViewController alloc]init];
             order.dataDic=[self deleteEmpty:dics];
+            order.where=@"商品";
+            order.attribute=[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input];
+            order.number=[NSString stringWithFormat:@"%ld",number];
+            order.checkRes=classs.checkRes;
+            order.comm_serial=self.commodity_serial;
             [self.navigationController pushViewController:order animated:YES];
 
         }else{

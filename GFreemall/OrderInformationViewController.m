@@ -15,6 +15,7 @@
 #import "CommodityListViewController.h"
 #import "BillingInfo.h"
 #import "ClearingInformationDisplayCell.h"
+#import "SubmitOrderRequest.h"
 @interface OrderInformationViewController ()<UITableViewDelegate,UITableViewDataSource,MyShippingAddressDelegate>
 {
     UITableView *_tableView;
@@ -187,11 +188,12 @@
         }
         
         if (indexPath.row==0) {
-            cell.icon.image=[UIImage imageNamed:@"icon_gfm22"];
-            cell.name.text=@"爱积分支付";
-        }else if (indexPath.row==1){
             cell.name.text=@"在线钱包";
             cell.icon.image=[UIImage imageNamed:@"payment_wallet"];
+           
+        }else if (indexPath.row==1){
+            cell.icon.image=[UIImage imageNamed:@"icon_gfm22"];
+            cell.name.text=@"爱积分支付";
         }else if (indexPath.row==2){
             cell.icon.image=[UIImage imageNamed:@"payment_online"];
             cell.name.text=@"在线支付";
@@ -258,13 +260,49 @@ autoSize
     
     BillingInfo *Billing=[[BillingInfo alloc]init];
     if (MethodOfPayment==0) {
-        Billing.were=@"爱积分支付";
-    }else if (MethodOfPayment==1){
     Billing.were=@"在线钱包";
+    }else if (MethodOfPayment==1){
+    Billing.were=@"爱积分支付";
     }else if (MethodOfPayment==2){
     Billing.were=@"在线支付";
     }
-    [self.navigationController pushViewController:Billing animated:YES];
+    if ([self.where isEqualToString:@"商品"]) {
+        [SVProgressHUD showWithStatus:@"正在加载"];
+        [SubmitOrderRequest GoodsSubmitOrderscountry:self.address_country province:self.address_province city:self.address_city area:self.address_area address:self.address_address phone:self.address_phone name:self.address_name num:self.number attribute:self.attribute pay_type:[NSString stringWithFormat:@"%ld",MethodOfPayment] zipcode:self.address_zipcode checkRes:self.checkRes comm_serial:self.comm_serial block:^(NSDictionary *dics) {
+            PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            if ([class.code isEqualToString:@"25"]) {
+                Billing.dataDic=[self deleteEmpty:dics];
+                [self.navigationController pushViewController:Billing animated:YES];
+            }else{
+                [FTIndicator showErrorWithMessage:class.msg];
+            }
+            [SVProgressHUD dismiss];
+            
+        }];
+    }else if ([self.where isEqualToString:@"购物车"]){
+       
+        [SubmitOrderRequest SubmitOrdersAShoppingCart:self.address_country province:self.address_province city:self.address_city area:self.address_area address:self.address_address phone:self.address_phone name:self.address_name num:self.number attribute:self.attribute pay_type:[NSString stringWithFormat:@"%ld",MethodOfPayment] zipcode:self.address_zipcode commBox:self.IDS block:^(NSDictionary *dics) {
+            PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            if ([class.code isEqualToString:@"25"]) {
+                Billing.dataDic=[self deleteEmpty:dics];
+                [self.navigationController pushViewController:Billing animated:YES];
+            }else{
+                [FTIndicator showErrorWithMessage:class.msg];
+            }
+            [SVProgressHUD dismiss];
+            
+        }];
+    
+    }
+    
+   
+    
+    
+    
+    
+    
+    
+   // [self.navigationController pushViewController:Billing animated:YES];
 }
 //选择完毕地址的代理
 -(void)MyShippingAddressAddress_address:(NSString *)address_address address_area:(NSString *)address_area address_city:(NSString *)address_city address_country:(NSString *)address_country address_isdefault:(NSInteger)address_isdefault address_name:(NSString *)address_name address_phone:(NSString *)address_phone address_province:(NSString *)address_province address_zipcode:(NSString *)address_zipcode{

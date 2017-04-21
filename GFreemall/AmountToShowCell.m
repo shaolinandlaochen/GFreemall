@@ -31,7 +31,6 @@
         _picre.textColor=[TheParentClass colorWithHexString:@"#000000"];
         _picre.textAlignment=NSTextAlignmentCenter;
         _picre.font=[UIFont systemFontOfSize:68*autoSizeScaleY];
-        _picre.text=@"¥65411";
         [self.contentView addSubview:_picre];
         _picre.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).topSpaceToView(lbl, 28*autoSizeScaleY).heightIs(100*autoSizeScaleY);
         

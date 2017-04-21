@@ -10,6 +10,7 @@
 #import "ClearingInformationDisplayCell.h"
 #import "BillingInfoNumberCell.h"
 #import "paymentInformationView.h"
+#import "PayRequest.h"
 @interface BillingInfo ()<UITableViewDataSource,UITableViewDelegate,CancelTheViewDelegate>
 {
     UITableView *_tableView;
@@ -92,18 +93,18 @@
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-  
+    PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:self.dataDic];
         BillingInfoNumberCell *cell=[BillingInfoNumberCell new];
         cell.userInteractionEnabled = NO;
         cell.lines.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
         if (indexPath.row==0) {
             cell.name.text=Localized(@"订单号");
-            cell.numbber.text=@"646465464646464";
+            cell.numbber.text=class.serial;
             cell.numbber.textColor=[TheParentClass colorWithHexString:@"#292929"];
             
         }else if (indexPath.row==1){
             cell.name.text=Localized(@"订单金额");
-            cell.numbber.text=@"¥56461";
+            cell.numbber.text=[NSString stringWithFormat:@"¥%@",class.amountTotal];
             cell.numbber.textColor=[TheParentClass colorWithHexString:@"#de0024"];
             
         }
@@ -116,30 +117,67 @@
     if (indexPath.section==1) {
         //弹出支付信息
         if (indexPath.row==0) {
-        [self PopUpThePaymentInformation:@"爱积分支付"];
+        [self PopUpThePaymentInformation:@"在线钱包"];
+        
         }else if (indexPath.row==1){
-         [self PopUpThePaymentInformation:@"在线钱包"];
+       [self PopUpThePaymentInformation:@"爱积分支付"];
         }
        
         
     }
 }
 -(void)PopUpThePaymentInformation:(NSString *)str{
+    
+    
     paymentInformationView *pay=[[paymentInformationView alloc]init];
     pay.delegate=self;
-    pay.view.tag=987;
     pay.were=str;
-    [self.view addSubview:pay.view];
-    pay.view.frame=self.view.frame;
-    [self addChildViewController:pay];
+    pay.dataDic=self.dataDic;
+    pay.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:pay animated:YES completion:^{
+        pay.view.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:.5];
+    }];
+    
+    
+
 }
-//点击叉号代理
--(void)CancelTheView{
-    [[self.view viewWithTag:987]removeFromSuperview];
-}
+
 //充值
 -(void)oTop_UpGo{
 
+
+}
+
+//开始支付
+-(void)BeginToPayPsw:(NSString *)pswString{
+    if ([self.were isEqualToString:@"在线钱包"]) {
+        [SVProgressHUD showWithStatus:@"正在支付"];
+        [PayRequest OnlineWalletPaymentthird_pwd:pswString block:^(NSDictionary *dics) {
+            NSDictionary *data=[self deleteEmpty:dics];
+            if (![[data objectForKey:@"msg"]isEqual:[NSNull null]]) {
+                NSString *msg=[NSString stringWithFormat:@"%@",[data objectForKey:@"msg"]];
+                [FTIndicator showSuccessWithMessage:msg];
+            }
+            
+            [SVProgressHUD dismiss];
+        }];
+    }else if ([self.were isEqualToString:@"爱积分支付"]){
+        [SVProgressHUD showWithStatus:@"正在支付"];
+        [PayRequest LovePointsToPaythird_pwd:pswString block:^(NSDictionary *dics) {
+            NSDictionary *data=[self deleteEmpty:dics];
+            if (![[data objectForKey:@"msg"]isEqual:[NSNull null]]) {
+                NSString *msg=[NSString stringWithFormat:@"%@",[data objectForKey:@"msg"]];
+                [FTIndicator showSuccessWithMessage:msg];
+            }
+            
+            [SVProgressHUD dismiss];
+        }];
+    }
+
+}
+
+//忘记支付密码
+-(void)ForgotPassword{
 
 }
 //去支付

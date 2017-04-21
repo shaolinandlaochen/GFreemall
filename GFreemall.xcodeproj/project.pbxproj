@@ -503,6 +503,9 @@
 		9D175A161EA9C67200583DE6 /* GoodsDetailsListAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D175A0F1EA9C67200583DE6 /* GoodsDetailsListAttribute.m */; };
 		9D175A171EA9C67200583DE6 /* GoodsDetailsListComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D175A111EA9C67200583DE6 /* GoodsDetailsListComment.m */; };
 		9D175A181EA9C67200583DE6 /* GoodsDetailsMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D175A131EA9C67200583DE6 /* GoodsDetailsMap.m */; };
+		9D175A1B1EA9F70100583DE6 /* SubmitOrderRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D175A1A1EA9F70100583DE6 /* SubmitOrderRequest.m */; };
+		9D175A201EA9FEB900583DE6 /* PayBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D175A1F1EA9FEB900583DE6 /* PayBaseClass.m */; };
+		9D175A231EAA070300583DE6 /* PayRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D175A221EAA070300583DE6 /* PayRequest.m */; };
 		9D1AD9291EA860360034527B /* shape_hot_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1AD91D1EA860360034527B /* shape_hot_left.png */; };
 		9D1AD92A1EA860360034527B /* shape_hot_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1AD91E1EA860360034527B /* shape_hot_left@2x.png */; };
 		9D1AD92B1EA860360034527B /* shape_hot_left@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1AD91F1EA860360034527B /* shape_hot_left@3x.png */; };
@@ -1258,6 +1261,12 @@
 		9D175A111EA9C67200583DE6 /* GoodsDetailsListComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailsListComment.m; sourceTree = "<group>"; };
 		9D175A121EA9C67200583DE6 /* GoodsDetailsMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailsMap.h; sourceTree = "<group>"; };
 		9D175A131EA9C67200583DE6 /* GoodsDetailsMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailsMap.m; sourceTree = "<group>"; };
+		9D175A191EA9F70100583DE6 /* SubmitOrderRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitOrderRequest.h; sourceTree = "<group>"; };
+		9D175A1A1EA9F70100583DE6 /* SubmitOrderRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitOrderRequest.m; sourceTree = "<group>"; };
+		9D175A1E1EA9FEB900583DE6 /* PayBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayBaseClass.h; sourceTree = "<group>"; };
+		9D175A1F1EA9FEB900583DE6 /* PayBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayBaseClass.m; sourceTree = "<group>"; };
+		9D175A211EAA070300583DE6 /* PayRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayRequest.h; sourceTree = "<group>"; };
+		9D175A221EAA070300583DE6 /* PayRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayRequest.m; sourceTree = "<group>"; };
 		9D1AD91D1EA860360034527B /* shape_hot_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shape_hot_left.png; path = "imgs/首页/shape_hot_left.png"; sourceTree = "<group>"; };
 		9D1AD91E1EA860360034527B /* shape_hot_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shape_hot_left@2x.png"; path = "imgs/首页/shape_hot_left@2x.png"; sourceTree = "<group>"; };
 		9D1AD91F1EA860360034527B /* shape_hot_left@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shape_hot_left@3x.png"; path = "imgs/首页/shape_hot_left@3x.png"; sourceTree = "<group>"; };
@@ -1896,6 +1905,8 @@
 				383A44211E9519CE002CBDA0 /* WalletBalanceTop_upCell.m */,
 				382E03161E965FC700DEF382 /* RetrievePasswordCell.h */,
 				382E03171E965FC700DEF382 /* RetrievePasswordCell.m */,
+				9D175A1D1EA9FEA100583DE6 /* 请求 */,
+				9D175A1C1EA9FE9A00583DE6 /* model */,
 			);
 			name = "结算";
 			sourceTree = "<group>";
@@ -2508,6 +2519,24 @@
 			name = "图片浏览器";
 			sourceTree = "<group>";
 		};
+		9D175A1C1EA9FE9A00583DE6 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				9D175A1E1EA9FEB900583DE6 /* PayBaseClass.h */,
+				9D175A1F1EA9FEB900583DE6 /* PayBaseClass.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		9D175A1D1EA9FEA100583DE6 /* 请求 */ = {
+			isa = PBXGroup;
+			children = (
+				9D175A211EAA070300583DE6 /* PayRequest.h */,
+				9D175A221EAA070300583DE6 /* PayRequest.m */,
+			);
+			name = "请求";
+			sourceTree = "<group>";
+		};
 		9D1AD9351EA8AB030034527B /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2530,6 +2559,8 @@
 		9D1AD9361EA8AB0A0034527B /* 请求 */ = {
 			isa = PBXGroup;
 			children = (
+				9D175A191EA9F70100583DE6 /* SubmitOrderRequest.h */,
+				9D175A1A1EA9F70100583DE6 /* SubmitOrderRequest.m */,
 			);
 			name = "请求";
 			sourceTree = "<group>";
@@ -3350,6 +3381,7 @@
 				383655D51E8E3E7F0034C332 /* GoodsDetailsViewController.m in Sources */,
 				3836557F1E8DEFB10034C332 /* SearchViewController.m in Sources */,
 				382E02F01E96241400DEF382 /* BaseInputBoxCell.m in Sources */,
+				9D175A231EAA070300583DE6 /* PayRequest.m in Sources */,
 				9D170A371EA4891800A373DD /* MessageRequest.m in Sources */,
 				383A43FD1E94D50D002CBDA0 /* OrderMoneyCell.m in Sources */,
 				38536CC61E8F51A1003E9015 /* AllEvaluationView.m in Sources */,
@@ -3369,6 +3401,7 @@
 				9D170A401EA48A4E00A373DD /* MessageResultList.m in Sources */,
 				9D4BCE211EA5EE0500ED3D3E /* ShoppingCarComm.m in Sources */,
 				38EE5F431E97650100A7DE52 /* PasswordManagementSecurityVerification.m in Sources */,
+				9D175A1B1EA9F70100583DE6 /* SubmitOrderRequest.m in Sources */,
 				382E02F31E96271F00DEF382 /* ReplaceAPhoneNumberViewController.m in Sources */,
 				383655561E8D06470034C332 /* ShoppingCarViews.m in Sources */,
 				38C9DCBF1E89006000F231B0 /* SingletonClass.m in Sources */,
@@ -3453,6 +3486,7 @@
 				3818ADB61E8B5EDC00CA2FB6 /* ImageCell.m in Sources */,
 				9D170A301EA473CE00A373DD /* SearchBaseClass.m in Sources */,
 				9D170A601EA49EC400A373DD /* HomeRecommend.m in Sources */,
+				9D175A201EA9FEB900583DE6 /* PayBaseClass.m in Sources */,
 				9D170A321EA473CE00A373DD /* SearchResultList.m in Sources */,
 				9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */,
 				9D1AD9441EA8AB1B0034527B /* ShoppingSettlementBaseClass.m in Sources */,

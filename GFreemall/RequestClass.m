@@ -93,6 +93,12 @@
     //第二个参数为队列的属性，一般来说串行队列不需要赋值任何属性，所以通常传空值（NULL）
     //2.添加任务到队列中执行
     
+    
+    
+    NSString *string= [TheParentClass SimpleSorting:dic];//请求数据排序
+    NSString *RequestUrlString=[NSString stringWithFormat:@"%@%@?&%@",RequestUrl,urlStr,string];
+    NSLog(@"请求URL==%@",RequestUrlString);
+    
     dispatch_async(queue, ^{
         NSString *RequestUrlString=[NSString stringWithFormat:@"%@%@?",RequestUrl,urlStr];//将签名和请求数据以及端口号拼接亲来形成get请求
         AFHTTPSessionManager *manager=[AFHTTPSessionManager manager];
@@ -102,7 +108,7 @@
         manager.securityPolicy = securityPolicy;
         manager.responseSerializer =[AFHTTPResponseSerializer serializer];
         
-        NSLog(@"请求URL==%@",RequestUrlString);
+      
         NSURLSessionDataTask *task=[manager GET:RequestUrlString parameters:dic progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

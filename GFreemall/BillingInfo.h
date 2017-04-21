@@ -10,4 +10,5 @@
 
 @interface BillingInfo : UIViewController
 @property(nonatomic,copy)NSString *were;
+@property(nonatomic,strong)NSDictionary *dataDic;
 @end

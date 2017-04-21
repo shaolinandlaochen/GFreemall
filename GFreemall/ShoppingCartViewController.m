@@ -329,6 +329,7 @@
                     [TheParentClass ButtonAtTheBottomOfThesize:NO];
                     OrderInformationViewController *order=[[OrderInformationViewController alloc]init];
                     order.dataDic=[self deleteEmpty:dics];
+                    order.where=@"购物车";
                     [self.navigationController pushViewController:order animated:YES];
                     
                 }else{

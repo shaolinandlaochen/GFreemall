@@ -38,7 +38,9 @@
     return self;
     
 }
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    [_delegate Psw:textField.text];
     return YES;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

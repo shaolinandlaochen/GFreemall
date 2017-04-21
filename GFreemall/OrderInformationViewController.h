@@ -19,5 +19,12 @@
 @property(nonatomic,copy)NSString *address_phone;
 @property(nonatomic,copy)NSString *address_province;
 @property(nonatomic,copy)NSString *address_zipcode;
+@property(nonatomic,copy)NSString *where;
+@property(nonatomic,copy)NSString *number;
+@property(nonatomic,copy)NSString *attribute;
+@property(nonatomic,copy)NSString *checkRes;
+@property(nonatomic,copy)NSString *comm_serial;
+@property(nonatomic,copy)NSString *IDS;
+
 
 @end

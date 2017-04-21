@@ -10,14 +10,18 @@
 @protocol CancelTheViewDelegate <NSObject>
 
 @required//限定实现这个协议,就必须实现这个协议方法
-
--(void)CancelTheView;
+//开始支付
+-(void)BeginToPayPsw:(NSString *)pswString;
 //c充值
 -(void)oTop_UpGo;
+//忘记支付密码
+-(void)ForgotPassword;
 
 @end
 @interface paymentInformationView : UIViewController
 @property(nonatomic,assign)id delegate;
 @property(nonatomic,copy)NSString *were;
+@property(nonatomic,strong)NSDictionary *dataDic;
+@property(nonatomic,copy)NSString *pswString;
 
 @end
