@@ -93,18 +93,17 @@
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:self.dataDic];
         BillingInfoNumberCell *cell=[BillingInfoNumberCell new];
         cell.userInteractionEnabled = NO;
         cell.lines.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
         if (indexPath.row==0) {
             cell.name.text=Localized(@"订单号");
-            cell.numbber.text=class.serial;
+            cell.numbber.text=self.orderNumber;
             cell.numbber.textColor=[TheParentClass colorWithHexString:@"#292929"];
             
         }else if (indexPath.row==1){
             cell.name.text=Localized(@"订单金额");
-            cell.numbber.text=[NSString stringWithFormat:@"¥%@",class.amountTotal];
+            cell.numbber.text=[NSString stringWithFormat:@"¥%@",self.money];
             cell.numbber.textColor=[TheParentClass colorWithHexString:@"#de0024"];
             
         }
@@ -132,7 +131,7 @@
     paymentInformationView *pay=[[paymentInformationView alloc]init];
     pay.delegate=self;
     pay.were=str;
-    pay.dataDic=self.dataDic;
+    pay.money=self.money;
     pay.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self presentViewController:pay animated:YES completion:^{
         pay.view.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:.5];

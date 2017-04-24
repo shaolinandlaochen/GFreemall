@@ -11,4 +11,7 @@
 @interface BillingInfo : UIViewController
 @property(nonatomic,copy)NSString *were;
 @property(nonatomic,strong)NSDictionary *dataDic;
+@property(nonatomic,copy)NSString *why;
+@property(nonatomic,copy)NSString *orderNumber;
+@property(nonatomic,copy)NSString *money;
 @end

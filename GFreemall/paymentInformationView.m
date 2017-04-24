@@ -152,11 +152,10 @@ self.pswString=@"";
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:self.dataDic];
     if (indexPath.section==0) {
         if (indexPath.row==0) {
             AmountToShowCell *cell=[AmountToShowCell new];
-            cell.picre.text=[NSString stringWithFormat:@"¥%@",class.amountTotal];
+            cell.picre.text=[NSString stringWithFormat:@"¥%@",self.money];
             cell.userInteractionEnabled = NO;
             return cell;
         }else if (indexPath.row==1){

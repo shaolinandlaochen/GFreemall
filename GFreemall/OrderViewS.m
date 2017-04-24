@@ -33,9 +33,7 @@
             [btn setTitleColor:[TheParentClass colorWithHexString:@"#292929"] forState:UIControlStateNormal];
              [btn setTitleColor:[TheParentClass colorWithHexString:@"#de0024"] forState:UIControlStateSelected];
             btn.titleLabel.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
-            if (i==0) {
-                btn.selected=YES;
-            }
+
             btn.tag=i+1;
             [btn addTarget:self action:@selector(onButtonCLick:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:btn];
@@ -48,9 +46,7 @@
             lin.tag=i+10;
             [self addSubview:lin];
             float xxx=50+(90+96)*(i%4);
-            if (i==0) {
-                lin.backgroundColor=[UIColor redColor];
-            }
+
             lin.sd_layout.leftSpaceToView(self, xxx*autoSizeScaleX).bottomSpaceToView(self, 0).widthIs(90*autoSizeScaleX).heightIs(2);
             
         }
@@ -72,7 +68,24 @@
     btn.selected=YES;
     UILabel *lines=(UILabel *)[self viewWithTag:btn.tag+9];
     lines.backgroundColor=[UIColor redColor];
-    
+    [_delegate OrderTypeSwitch:btn.tag];
+
+
+}
+-(void)setType:(NSInteger)type{
+    for (int i=0; i<4; i++) {
+        MyButton *buttong=(MyButton *)[self viewWithTag:i+1];
+        buttong.selected=NO;
+        UILabel *line=(UILabel *)[self viewWithTag:i+10];
+        line.backgroundColor=[UIColor clearColor];
+        if (i==type) {
+                buttong.selected=YES;
+            UILabel *lines=(UILabel *)[self viewWithTag:i+10];
+            lines.backgroundColor=[UIColor redColor];
+        }
+        
+    }
+
 
 
 }

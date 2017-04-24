@@ -24,6 +24,7 @@
         _btnOne.titleLabel.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
        // [_PaymentAndDeleteBtn.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
         [_btnOne.layer setBorderWidth:1];
+        _btnOne.tag=1;
         [_btnOne.layer setMasksToBounds:YES];
         _btnOne.layer.cornerRadius = 4*autoSizeScaleX;
         _btnOne.layer.masksToBounds = 4*autoSizeScaleX;
@@ -31,6 +32,7 @@
         
         _BtnTwo=[[MyButton alloc]init];
         [_BtnTwo.layer setBorderWidth:1];
+        _BtnTwo.tag=2;
         [_BtnTwo.layer setMasksToBounds:YES];
         _BtnTwo.layer.cornerRadius = 4*autoSizeScaleX;
         _BtnTwo.layer.masksToBounds = 4*autoSizeScaleX;
@@ -111,7 +113,7 @@
     autoSize
     
     
-    if (map.orderPayState==0) {//未付款
+    if (map.orderState==0) {//未付款
         [_btnOne setTitle:@"去支付" forState:UIControlStateNormal];
         _btnOne.string=@"待付款";
         [_btnOne.layer setBorderColor:[TheParentClass colorWithHexString:@"#de0024"].CGColor];
@@ -126,11 +128,11 @@
         _BtnTwo.sd_layout.rightSpaceToView(_btnOne, 20*autoSizeScaleY).topSpaceToView(self, 14*autoSizeScaleY).bottomSpaceToView(_line, 14*autoSizeScaleY).widthIs(150*autoSizeScaleX);
         [_BtnTwo setTitleColor:[TheParentClass colorWithHexString:@"292929"] forState:UIControlStateNormal];
         
-    }else if (map.orderPayState==1){//已付款未发货
+    }else if (map.orderState==1){//已付款未发货
         _messageString.text=@"请等待...";
         _messageString.sd_layout.rightSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(200);
         
-    }else if (map.orderPayState==2){//已发货
+    }else if (map.orderState==2){//已发货
         
         [_btnOne setTitle:@"确认收货" forState:UIControlStateNormal];
         _btnOne.string=@"确认收货";
@@ -139,21 +141,21 @@
         [_btnOne setTitleColor:[TheParentClass colorWithHexString:@"71b247"] forState:UIControlStateNormal];
         
         
-    }else if (map.orderPayState==3){//已收货未评价
+    }else if (map.orderState==3){//已收货未评价
         [_btnOne setTitle:@"去评价" forState:UIControlStateNormal];
         _btnOne.string=@"去评价";
         [_btnOne.layer setBorderColor:[TheParentClass colorWithHexString:@"#e6671a"].CGColor];
         _btnOne.sd_layout.rightSpaceToView(self, 25*autoSizeScaleY).topSpaceToView(self, 14*autoSizeScaleY).bottomSpaceToView(_line, 14*autoSizeScaleY).widthIs(150*autoSizeScaleX);
         [_btnOne setTitleColor:[TheParentClass colorWithHexString:@"#e6671a"] forState:UIControlStateNormal];
-    }else if (map.orderPayState==4){//已收货已评价
+    }else if (map.orderState==4){//已收货已评价
         _messageString.text=@"已完成";
         _messageString.textColor=[TheParentClass colorWithHexString:@"#adb0ae"];
         _messageString.sd_layout.rightSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 20*autoSizeScaleY).widthIs(200);
-    }else if (map.orderPayState==-1){//撤销
+    }else if (map.orderState==-1){//撤销
         _messageString.text=@"已取消";
         _messageString.textColor=[TheParentClass colorWithHexString:@"#adb0ae"];
         _messageString.sd_layout.rightSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 20*autoSizeScaleY).widthIs(200);
-    }else if (map.orderPayState==-2){//平台撤销
+    }else if (map.orderState==-2){//平台撤销
         _messageString.text=@"已撤销";
         _messageString.textColor=[TheParentClass colorWithHexString:@"#adb0ae"];
         _messageString.sd_layout.rightSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 20*autoSizeScaleY).widthIs(200);

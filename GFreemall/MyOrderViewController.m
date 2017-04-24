@@ -14,7 +14,7 @@
 #import "OrderInformationViewController.h"
 #import "MyOrderDetails.h"
 #import "SubmitOrderRequest.h"
-@interface MyOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface MyOrderViewController ()<UITableViewDelegate,UITableViewDataSource,OrderViewSDelegate>
 {
     UITableView *_tableView;
     OrderViewS *_OrderView;
@@ -63,6 +63,7 @@
         }
         
         [_tableView.mj_header endRefreshing];
+        [SVProgressHUD dismiss];
     }];
 
 }
@@ -167,6 +168,17 @@ autoSize
     CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
     CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
     _OrderView=[[OrderViewS alloc]init];
+    if ([self.OrderType isEqualToString:@"all"]||self.OrderType==nil) {
+        _OrderView.type=0;
+    }else if ([self.OrderType isEqualToString:@"nopay"]){
+         _OrderView.type=1;
+    }else if ([self.OrderType isEqualToString:@"noreceiving"]){
+        _OrderView.type=2;
+    }else if ([self.OrderType isEqualToString:@"iscomment"]){
+        _OrderView.type=3;
+    }
+    
+    _OrderView.delegate=self;
     [self.view addSubview:_OrderView];
     _OrderView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(self.view, navheight+rectStatus.size.height).heightIs(78*autoSizeScaleY);
     
@@ -194,6 +206,19 @@ autoSize
     lbl.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(img, 10).heightIs(35*autoSizeScaleY);
     
     
+}
+-(void)OrderTypeSwitch:(NSInteger)idx{
+    if (idx==1) {
+        self.OrderType=@"all";
+    }else if (idx==2){
+        self.OrderType=@"nopay";
+    }else if (idx==3){
+        self.OrderType=@"noreceiving";
+    }else if (idx==4){
+        self.OrderType=@"iscomment";
+    }
+    [SVProgressHUD showWithStatus:@"正在加载"];
+    [self RequestData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

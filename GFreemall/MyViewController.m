@@ -181,32 +181,35 @@ autoSize
 }
 //代付款待收货待评价等等
 -(void)myOrderAll:(MyButton *)btn{
+    MyOrderViewController *order=[[MyOrderViewController alloc]init];
+ 
     switch (btn.tag) {
         case 100:
         {
-            NSLog(@"待付款");
+            
+            order.OrderType=@"nopay";
         }
             break;
         case 101:
         {
-            NSLog(@"待收货");
+           order.OrderType=@"noreceiving";
         }
             break;
         case 102:
         {
-            NSLog(@"待评价");
+            order.OrderType=@"iscomment";
         }
             break;
         case 103:
         {
-            NSLog(@"已完成");
+            order.OrderType=@"iscomment";
         }
             break;
             
         default:
             break;
     }
-    [self onOrderClick];
+       [self.navigationController pushViewController:order animated:YES];
 }
 //点击头像
 -(void)onTheLoginClick{

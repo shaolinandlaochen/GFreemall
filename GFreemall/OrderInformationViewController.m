@@ -274,6 +274,8 @@ autoSize
                 PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
                 if ([class.code isEqualToString:@"25"]) {
                     Billing.dataDic=[self deleteEmpty:dics];
+                    Billing.money=[NSString stringWithFormat:@"%@",class.amountTotal];
+                    Billing.orderNumber=[NSString stringWithFormat:@"%@",class.serial];
                     [self.navigationController pushViewController:Billing animated:YES];
                 }else{
                     [FTIndicator showErrorWithMessage:class.msg];
@@ -287,6 +289,7 @@ autoSize
                 PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
                 if ([class.code isEqualToString:@"25"]) {
                     Billing.dataDic=[self deleteEmpty:dics];
+                    Billing.why=@"提交订单";
                     [self.navigationController pushViewController:Billing animated:YES];
                 }else{
                     [FTIndicator showErrorWithMessage:class.msg];

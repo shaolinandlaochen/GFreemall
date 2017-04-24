@@ -11,4 +11,5 @@
 @interface MyOrderViewController : UIViewController
 @property(nonatomic,copy)NSString *OrderType;
 @property(nonatomic,strong)NSDictionary *DataDic;
+
 @end

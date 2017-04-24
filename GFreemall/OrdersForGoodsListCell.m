@@ -47,14 +47,12 @@
 -(void)setDic:(NSDictionary *)dic{
     ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:dic];
     
-    _number.text=[NSString stringWithFormat:@"共%ld件",class.list.count];
+    _number.text=[NSString stringWithFormat:@"共%.0f件",class.count];
     for (int i=0; i<class.list.count; i++) {
         if (i<3) {
             
             ShoppingSettlementList *list=class.list[i];
-            NSLog(@"%@",[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.attr.commodityImagesPath,list.attr.commodityImages]);
             [((UIImageView *)[self.contentView viewWithTag:i+1]) sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.attr.commodityImagesPath,list.attr.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
-            NSLog(@"/////////%@",[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.attr.commodityImagesPath,list.attr.commodityCoverImage]);
         }
         
     }

@@ -21,6 +21,7 @@
 @interface paymentInformationView : UIViewController
 @property(nonatomic,assign)id delegate;
 @property(nonatomic,copy)NSString *were;
+@property(nonatomic,copy)NSString *money;
 @property(nonatomic,strong)NSDictionary *dataDic;
 @property(nonatomic,copy)NSString *pswString;
 
