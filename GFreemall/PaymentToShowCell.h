@@ -11,4 +11,5 @@
 @interface PaymentToShowCell : UITableViewCell
 @property(nonatomic,strong)UILabel *name;
 @property(nonatomic,strong)UILabel *context;
+@property(nonatomic,strong)UILabel *line;
 @end

@@ -73,24 +73,29 @@
 }
 -(void)setList:(ShoppingSettlementList *)list{
     autoSize
-    _name.text=list.attr.commodityName;
+    _name.text=list.carts.commodityName;
     CGSize size=[TheParentClass StringHeight:_name.text Lblfont:28*autoSizeScaleY heightOfTheMinus:265*autoSizeScaleX];
     _name.sd_layout.leftSpaceToView(_icon, 18*autoSizeScaleX).topEqualToView(_icon).rightSpaceToView(self.contentView, 70).heightIs(size.height);
     
+   
     
-    _text.text=[NSString stringWithFormat:@"%@%@",list.attr.commodityAttributeName,list.attr.commodityAttributeValues];
+    _text.text=[NSString stringWithFormat:@"%@",list.attr.commodityAttributes];
      _text.sd_layout.leftEqualToView(_name).topSpaceToView(_name, 10*autoSizeScaleY).rightEqualToView(_name).heightIs(30*autoSizeScaleY);
+    if (list.attr.commoditySerial==0) {
+        _text.text=@"";
+    }
     
     _picre.text=[NSString stringWithFormat:@"¥%.2f",list.attr.commoditySellprice];
     CGSize picSize=[TheParentClass StringHeight:_picre.text Lblfont:26*autoSizeScaleY heightOfTheMinus:310*autoSizeScaleX];
     _picre.sd_layout.leftEqualToView(_name).bottomSpaceToView(self.contentView, 42*autoSizeScaleY).widthIs(picSize.width).heightIs(35*autoSizeScaleY);
-    if (list.attr.commodityFreight>0) {
-        _freight.text=[NSString stringWithFormat:@"(含运费%.2f)",list.attr.commodityFreight];
+    if (list.carts.commodityFreight>0) {
+        
+        _freight.text=[NSString stringWithFormat:@"(含运费%.2f)",list.carts.commodityFreight];
         _freight.sd_layout.leftSpaceToView(_picre, 0).topEqualToView(_picre).rightSpaceToView(self.contentView, 70*autoSizeScaleX).heightIs(35*autoSizeScaleY);
     }
  
     
-    _number.text=[NSString stringWithFormat:@"x%.0f",list.attr.commodityDiscount];
+    _number.text=[NSString stringWithFormat:@"x%.0f",list.carts.count];
     
     
 }

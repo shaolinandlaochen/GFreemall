@@ -72,7 +72,7 @@
     ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:self.dataDic];
     
     ShoppingSettlementList *list=class.list[indexPath.row];
-    [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.attr.commodityImagesPath,list.attr.commodityImages]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
+    [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.attr.commodityImagesPath,list.attr.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
     cell.list=list;
 
     
@@ -85,6 +85,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     GoodsDetailsViewController *GoodsDetails=[[GoodsDetailsViewController alloc]init];
+    ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:self.dataDic];
+    ShoppingSettlementList *list=class.list[indexPath.row];
+    if (list.attr.commoditySerial==0) {
+        list.attr.commoditySerial=list.carts.commodityId;
+    }
     //[self.navigationController pushViewController:GoodsDetails animated:YES];
 }
 -(void)onCanceClick{

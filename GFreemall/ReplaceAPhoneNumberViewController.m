@@ -11,11 +11,14 @@
 #import "MailNextViewController.h"
 #import "SetThPasswordAgainViewController.h"
 #import "PasswordManagementSecurityVerification.h"
-@interface ReplaceAPhoneNumberViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "TheBasicInformationRequest.h"
+@interface ReplaceAPhoneNumberViewController ()<UITableViewDataSource,UITableViewDelegate,BaseInputBoxDelegate>
 
 {
     UITableView *_tableView;
     UIButton *_button;
+    NSString *_nameString;//名字
+    NSString *_IdentityDocumentNumber;//证件号码
 }
 
 @end
@@ -136,6 +139,7 @@ cancelClick
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BaseInputBoxCell *cell=[BaseInputBoxCell new];
+    cell.delegate=self;
     [cell.btn.layer setBorderColor:[UIColor clearColor].CGColor];
     cell.btn.indexPath=indexPath;
     cell.tf.indexPath=indexPath;
@@ -271,6 +275,31 @@ cancelClick
         PasswordManagementSecurityVerification *PasswordManagement=[[PasswordManagementSecurityVerification alloc]init];
         [self.navigationController pushViewController:PasswordManagement animated:YES];
     
+    }else if ([self.were isEqualToString:@"实名认证"]){
+        if ([_nameString length]<1||[_IdentityDocumentNumber length]<1) {
+            [FTIndicator showInfoWithMessage:@"请完整填写信息"];
+        }else{
+            [SVProgressHUD showWithStatus:@"正在加载"];
+        [TheBasicInformationRequest Real_NameAuthenticationName:_nameString idcard:_IdentityDocumentNumber block:^(NSDictionary *disa) {
+            BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
+            if ([class.code isEqualToString:@"11"]) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+             [FTIndicator showInfoWithMessage:class.msg];
+            [SVProgressHUD dismiss];
+        }];
+        }
+    
+    }
+
+}
+//实名认证
+-(void)Real_nameAuthentication:(MyTextField *)TextField{
+    NSLog(@"11111111%@",TextField.text);
+    if (TextField.indexPath.row==0) {
+        _nameString=TextField.text;
+    }else if (TextField.indexPath.row==1){
+        _IdentityDocumentNumber=TextField.text;
     }
 
 }

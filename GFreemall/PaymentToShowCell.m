@@ -17,7 +17,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         autoSize
-      _context=[[UILabel alloc]init];
+        _context=[[UILabel alloc]init];
         _context.textColor=[TheParentClass colorWithHexString:@"#999999"];
         _context.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
         [self.contentView addSubview:_context];
@@ -32,6 +32,11 @@
         _name.textAlignment=NSTextAlignmentRight;
         [self.contentView addSubview:_name];
         _name.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).widthIs(300*autoSizeScaleX);
+        
+        _line=[[UILabel alloc]init];
+        _line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
+        [self.contentView addSubview:_line];
+        _line.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).heightIs(1);
     }
     
     return self;

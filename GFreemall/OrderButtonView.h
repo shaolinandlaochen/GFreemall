@@ -13,6 +13,6 @@
 @property(nonatomic,strong)MyButton *BtnTwo;//去支付
 @property(nonatomic,strong)UILabel *messageString;//已撤销
 @property(nonatomic,strong)UILabel *line;
-@property(nonatomic,copy)NSString *strOne;
-@property(nonatomic,copy)NSString *strTwo;
+@property(nonatomic,strong)OrderListResultList *list;
+@property(nonatomic,strong)OrderDetailsMap *map;
 @end

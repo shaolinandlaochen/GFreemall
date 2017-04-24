@@ -9,6 +9,7 @@
 #import "MyBasicInformationViewController.h"
 #import "basicInformationCell.h"
 #import "ReplaceAPhoneNumberViewController.h"
+#import "MyRequest.h"
 @interface MyBasicInformationViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 {
@@ -22,6 +23,7 @@
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:NO];
     self.navigationController.navigationBarHidden=NO;
+    TheDrop_downRefresh(_tableView, @selector(RequestData))
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +47,15 @@ cancelClick
     [self.view addSubview:_tableView];
 
 }
+-(void)RequestData{
+
+    [MyRequest PersonalInformationbblock:^(NSDictionary *dics) {
+        self.dataDic=[self deleteEmpty:dics];
+        [_tableView reloadData];
+        [_tableView.mj_header endRefreshing];
+        
+    }];
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     autoSize
     return 90*autoSizeScaleY;
@@ -64,31 +75,51 @@ cancelClick
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    if (self.dataDic!=nil) {
+        return 5;
+    }
+    return 0;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:self.dataDic];
     if (indexPath.section==0) {
         basicInformationCell *cell=[basicInformationCell new];
         if (indexPath.row==0) {
             cell.name.text=Localized(@"账户ID");
             cell.userInteractionEnabled = NO;
-            cell.string.text=@"56464646";
+            cell.string.text=[NSString stringWithFormat:@"%.0f",class.info.infoIdentifier];
         }else if (indexPath.row==1){
             cell.name.text=Localized(@"账户手机");
-            cell.string.text=@"137******89";
+            if (class.info.baseAuthPhone==1) {//已经绑定手机
+                 cell.string.text=class.info.basePhone;
+            }else if (class.info.baseAuthPhone==0){//暂未绑定
+                 cell.string.text=@"未绑定";
+                 cell.imgName=@"icon_right";
+            }
+           
         }else if (indexPath.row==2){
             cell.name.text=Localized(@"用户名");
-            cell.string.text=@"未设置";
+            cell.string.text=class.info.baseUsername;
             cell.imgName=@"icon_right";
         }else if (indexPath.row==3){
             cell.name.text=Localized(@"实名认证");
-            cell.string.text=@"未认证";
-            cell.imgName=@"icon_right";
+            if (class.info.baseAuthName==1) {
+                cell.string.text=class.info.baseName;
+            }else{
+                cell.string.text=@"未认证";
+                cell.imgName=@"icon_right";
+            }
+          
             
         }else if (indexPath.row==4){
             cell.name.text=Localized(@"账户邮箱");
-            cell.string.text=@"未设置";
-            cell.imgName=@"icon_right";
+            if (class.info.baseAuthEmail==1) {
+                cell.string.text=class.info.baseEmail;
+            }else{
+                cell.string.text=@"未设置";
+                cell.imgName=@"icon_right";
+            }
+    
             
         }
         return cell;
@@ -99,17 +130,23 @@ cancelClick
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ReplaceAPhoneNumberViewController *ReplaceAPhoneNumber=[[ReplaceAPhoneNumberViewController alloc]init];
-    
+     BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:self.dataDic];
     if (indexPath.row==1) {//更换手机号
      ReplaceAPhoneNumber.were=@"更换手机号";
     }else if (indexPath.row==2){
      ReplaceAPhoneNumber.were=@"用户名设置";
     }else if (indexPath.row==3){
-        ReplaceAPhoneNumber.were=@"实名认证";
+        if (class.info.baseAuthName==1) {
+        }else{
+             ReplaceAPhoneNumber.were=@"实名认证";
+            [self.navigationController pushViewController:ReplaceAPhoneNumber animated:YES];
+        }
+        
+      
     }else if (indexPath.row==4){
         ReplaceAPhoneNumber.were=@"邮箱绑定";
     }
-    [self.navigationController pushViewController:ReplaceAPhoneNumber animated:YES];
+  
     
 }
 - (void)didReceiveMemoryWarning {

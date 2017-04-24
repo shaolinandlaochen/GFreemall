@@ -53,7 +53,8 @@
             
             ShoppingSettlementList *list=class.list[i];
             NSLog(@"%@",[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.attr.commodityImagesPath,list.attr.commodityImages]);
-            [((UIImageView *)[self.contentView viewWithTag:i+1]) sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.attr.commodityImagesPath,list.attr.commodityImages]] placeholderImage:[UIImage imageNamed:@""]];
+            [((UIImageView *)[self.contentView viewWithTag:i+1]) sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.attr.commodityImagesPath,list.attr.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
+            NSLog(@"/////////%@",[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.attr.commodityImagesPath,list.attr.commodityCoverImage]);
         }
         
     }

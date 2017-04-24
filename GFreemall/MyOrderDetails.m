@@ -18,6 +18,7 @@
 #import "ConfirmTheGoodsViewController.h"
 #import "BillingInfo.h"
 #import "ViewTheOrderDetailsButtonsView.h"
+#import "OrderDetailsRequest.h"
 @interface MyOrderDetails ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *_tableView;
@@ -38,6 +39,24 @@
     [self CreatView];
 
     // Do any additional setup after loading the view.
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    TheDrop_downRefresh(_tableView, @selector(QequestData))
+}
+//加载数据
+-(void)QequestData{
+[OrderDetailsRequest OrderDetails:self.serial block:^(NSDictionary *dics) {
+    self.DataDic=[self deleteEmpty:dics];
+    OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:self.DataDic];
+    if ([class.code isEqualToString:@"51"]) {
+        [_tableView reloadData];
+    }else{
+        [FTIndicator showErrorWithMessage:class.msg];
+    }
+    [_tableView.mj_header endRefreshing];
+}];
+
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     autoSize
@@ -76,10 +95,38 @@
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section==0) {
+        OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:self.DataDic];
         OrderNumberView *view=[[OrderNumberView alloc]init];
-        view.strNumber.text=@"订单号:123456789";
-        view.state.text=@"待付款";
-        view.state.textColor=[UIColor redColor];
+        view.strNumber.text=[NSString stringWithFormat:@"订单号:%.0f",class.map.orderSerial];
+
+        
+        if (class.map.orderState==0) {//未付款
+            view.state.text=@"待付款";
+            view.state.textColor=[UIColor redColor];
+            
+        }else if (class.map.orderState==1){//已付款未发货
+            view.state.text=@"待发货";
+            view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
+        }else if (class.map.orderState==2){//已发货
+            view.state.text=@"发货中";
+            view.state.textColor=[TheParentClass colorWithHexString:@"#718247"];
+        }else if (class.map.orderState==3){//已收货未评价
+            view.state.text=@"待评价";
+            view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
+        }else if (class.map.orderState==4){//已收货已评价
+            view.state.text=@"已完成";
+            view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
+        }else if (class.map.orderState==-1){//撤销
+            view.state.text=@"已完成";
+            view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
+        }else if (class.map.orderState==-2){//平台撤销
+            view.state.text=@"已完成";
+            view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
+        }else if (class.map.orderState==-3){//有退货
+            view.state.text=@"已完成";
+            view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
+            
+        }
         return view;
     }
     
@@ -88,33 +135,24 @@
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section==3) {
+        OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:self.DataDic];
         OrderButtonView *view=[[OrderButtonView alloc]init];
-        if ([self.state isEqualToString:@"待收货"]) {
-            view.strOne=@"确认收货";
-            [view.btnOne addTarget:self action:@selector(onButtonOneCLIck:) forControlEvents:UIControlEventTouchUpInside];
-            
-        }else if ([self.state isEqualToString:@"待评价"]){
-            
-            view.strOne=@"去评价";
-            [view.btnOne addTarget:self action:@selector(onButtonOneCLIck:) forControlEvents:UIControlEventTouchUpInside];
-            
-        }else if ([self.state isEqualToString:@"待付款"]){
-            view.strOne=@"去支付";
-            [view.btnOne addTarget:self action:@selector(onButtonOneCLIck:) forControlEvents:UIControlEventTouchUpInside];
-            view.strTwo=@"取消";
-            [view.BtnTwo addTarget:self action:@selector(onButtonOneCLIck:) forControlEvents:UIControlEventTouchUpInside];
-            
-        }
+        view.map=class.map;
+
         return view;
     }
     return nil;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    if (self.DataDic!=nil) {
+        return 4;
+    }
+    return 0;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+     OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:self.DataDic];
     if (section==0) {
-        return 3;
+        return class.map.commodity.count;
     }else if (section==1){
         return 1;
     }else if (section==2){
@@ -128,46 +166,67 @@
     return 0;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section==0) {
-        //商品
-        OrderCell *cell=[OrderCell new];
-        cell.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
-        return cell;
-    }else if (indexPath.section==1){
-        //收货地址
-        OrderAddressCell *cell=[OrderAddressCell new];
-        cell.userInteractionEnabled=NO;
-        return cell;
-    
-    }else if (indexPath.section==2){
-        if (indexPath.row==0) {//支付方式
-            PaymentToShowCell *cell=[PaymentToShowCell new];
-            cell.userInteractionEnabled=NO;
-            cell.context.text=Localized(@"支付方式");
-            cell.name.text=@"GFM支付";
+    if (self.DataDic!=nil) {
+        OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:self.DataDic];
+       
+        if (indexPath.section==0) {
+             OrderDetailsCommodity *Commodity=class.map.commodity[indexPath.row];
+            //商品
+            OrderCell *cell=[OrderCell new];
+            cell.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+            cell.Commodity=class.map.commodity[indexPath.row];
+            [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,Commodity.commodityImagesPath,Commodity.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
             return cell;
-        }else if (indexPath.row==1){//配送信息
-            ShippingInformationTableViewCell *cell=[ShippingInformationTableViewCell new];
+        }else if (indexPath.section==1){
+            //收货地址
+            OrderAddressCell *cell=[OrderAddressCell new];
             cell.userInteractionEnabled=NO;
-            cell.name.text=@"中通快递";
-            cell.numberString.text=@"快递单号:123456789";
+            cell.strings=[NSString stringWithFormat:@"%@    %@",class.map.addressName,class.map.addressPhone];
+            cell.context.text=class.map.addressAddress;
             return cell;
-        
-        }
-      
-    }else if (indexPath.section==3){
-        if (indexPath.row==0) {//运费以及商品金额
-            OrderAmountDetailCell *cell=[OrderAmountDetailCell new];
-            cell.userInteractionEnabled=NO;
-            cell.AmountOfGoods.text=@"¥789";
-            cell.freight.text=@"¥852";
-            return cell;
-        }else if (indexPath.row==1){//实付款
-            MoneyAnTimeCell *cell=[MoneyAnTimeCell new];
-            cell.userInteractionEnabled=NO;
-            return cell;
+            
+        }else if (indexPath.section==2){
+            if (indexPath.row==0) {//支付方式
+                PaymentToShowCell *cell=[PaymentToShowCell new];
+                cell.userInteractionEnabled=NO;
+                cell.context.text=Localized(@"支付方式");
+                if (class.map.orderPayment==0) {
+                     cell.name.text=@"在线钱包";
+                }else if (class.map.orderPayment==1){
+                     cell.name.text=@"第三方付款";
+                }else if (class.map.orderPayment==2){
+                     cell.name.text=@"爱积分支付";
+                }
+               
+                return cell;
+            }else if (indexPath.row==1){//配送信息
+                ShippingInformationTableViewCell *cell=[ShippingInformationTableViewCell new];
+                cell.userInteractionEnabled=NO;
+                cell.name.text=class.map.orderLogCompany;
+                cell.numberString.text=[NSString stringWithFormat:@"快递单号:%@",class.map.orderLogOrder];
+                return cell;
+                
+            }
+            
+        }else if (indexPath.section==3){
+            if (indexPath.row==0) {//运费以及商品金额
+                OrderAmountDetailCell *cell=[OrderAmountDetailCell new];
+                cell.userInteractionEnabled=NO;
+                cell.AmountOfGoods.text=[NSString stringWithFormat:@"¥%.2f",class.map.orderAmount-class.map.orderFreight];
+                cell.freight.text=[NSString stringWithFormat:@"¥%.2f",class.map.orderFreight];
+                return cell;
+            }else if (indexPath.row==1){//实付款
+                MoneyAnTimeCell *cell=[MoneyAnTimeCell new];
+                cell.userInteractionEnabled=NO;
+                cell.money.text=[NSString stringWithFormat:@"¥%.2f",class.map.orderAmount];
+                
+                cell.time.text=[NSString stringWithFormat:@"下单时间:%@",class.map.orderTime];
+                return cell;
+            }
         }
     }
+    
+  
     
     NULLCell *cell=[NULLCell new];
  
@@ -184,7 +243,7 @@ autoSize
     _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
-    // _tableView.separatorColor=[UIColor clearColor];
+     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
 }
 -(void)onCanceClick{

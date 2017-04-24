@@ -49,4 +49,13 @@
 #import "ShoppingSettlementMapAddress.h"
 #import "ShoppingSettlementListAddress.h"
 #import "PayBaseClass.h"
+#import "BasicInformationInfo.h"
+#import "BasicInformationBaseClass.h"
+#import "OrderListCommodity.h"
+#import "OrderListResultList.h"
+#import "OrderListPagingList.h"
+#import "OrderListBaseClass.h"
+#import "OrderDetailsCommodity.h"
+#import "OrderDetailsMap.h"
+#import "OrderDetailsBaseClass.h"
 

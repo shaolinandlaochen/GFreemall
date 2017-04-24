@@ -48,6 +48,12 @@
         _freight.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topEqualToView(nametWO).leftSpaceToView(nametWO, 25*autoSizeScaleX).heightIs(35*autoSizeScaleY);
         
         
+        
+        
+        _line=[[UILabel alloc]init];
+        _line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
+        [self.contentView addSubview:_line];
+        _line.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).heightIs(1);
     }
 
     return self;

@@ -11,4 +11,5 @@
 @interface OrderAmountDetailCell : UITableViewCell
 @property(nonatomic,strong)UILabel *AmountOfGoods;
 @property(nonatomic,strong)UILabel *freight;
+@property(nonatomic,strong)UILabel *line;
 @end

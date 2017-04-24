@@ -10,4 +10,6 @@
 
 @interface MyOrderDetails : UIViewController
 @property(nonatomic,copy)NSString *state;
+@property(nonatomic,copy)NSString *serial;
+@property(nonatomic,strong)NSDictionary *DataDic;
 @end

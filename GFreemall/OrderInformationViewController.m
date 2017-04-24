@@ -257,49 +257,50 @@ autoSize
 //提交订单
 -(void)onSubmitOrdersClick{
     
-    
-    BillingInfo *Billing=[[BillingInfo alloc]init];
-    if (MethodOfPayment==0) {
-    Billing.were=@"在线钱包";
-    }else if (MethodOfPayment==1){
-    Billing.were=@"爱积分支付";
-    }else if (MethodOfPayment==2){
-    Billing.were=@"在线支付";
-    }
-    if ([self.where isEqualToString:@"商品"]) {
-        [SVProgressHUD showWithStatus:@"正在加载"];
-        [SubmitOrderRequest GoodsSubmitOrderscountry:self.address_country province:self.address_province city:self.address_city area:self.address_area address:self.address_address phone:self.address_phone name:self.address_name num:self.number attribute:self.attribute pay_type:[NSString stringWithFormat:@"%ld",MethodOfPayment] zipcode:self.address_zipcode checkRes:self.checkRes comm_serial:self.comm_serial block:^(NSDictionary *dics) {
-            PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-            if ([class.code isEqualToString:@"25"]) {
-                Billing.dataDic=[self deleteEmpty:dics];
-                [self.navigationController pushViewController:Billing animated:YES];
-            }else{
-                [FTIndicator showErrorWithMessage:class.msg];
-            }
-            [SVProgressHUD dismiss];
+    if (self.address_area==nil||self.address_city==nil||self.address_phone==nil||self.address_address==nil||self.address_country==nil) {
+        [FTIndicator showInfoWithMessage:@"请填写收货地址"];
+    }else{
+        BillingInfo *Billing=[[BillingInfo alloc]init];
+        if (MethodOfPayment==0) {
+            Billing.were=@"在线钱包";
+        }else if (MethodOfPayment==1){
+            Billing.were=@"爱积分支付";
+        }else if (MethodOfPayment==2){
+            Billing.were=@"在线支付";
+        }
+        if ([self.where isEqualToString:@"商品"]) {
+            [SVProgressHUD showWithStatus:@"正在加载"];
+            [SubmitOrderRequest GoodsSubmitOrderscountry:self.address_country province:self.address_province city:self.address_city area:self.address_area address:self.address_address phone:self.address_phone name:self.address_name num:self.number attribute:self.attribute pay_type:[NSString stringWithFormat:@"%ld",MethodOfPayment] zipcode:self.address_zipcode checkRes:self.checkRes comm_serial:self.comm_serial block:^(NSDictionary *dics) {
+                PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+                if ([class.code isEqualToString:@"25"]) {
+                    Billing.dataDic=[self deleteEmpty:dics];
+                    [self.navigationController pushViewController:Billing animated:YES];
+                }else{
+                    [FTIndicator showErrorWithMessage:class.msg];
+                }
+                [SVProgressHUD dismiss];
+                
+            }];
+        }else if ([self.where isEqualToString:@"购物车"]){
+            [SVProgressHUD showWithStatus:@"正在加载"];
+            [SubmitOrderRequest SubmitOrdersAShoppingCart:self.address_country province:self.address_province city:self.address_city area:self.address_area address:self.address_address phone:self.address_phone name:self.address_name num:self.number attribute:self.attribute pay_type:[NSString stringWithFormat:@"%ld",MethodOfPayment] zipcode:self.address_zipcode commBox:self.IDS block:^(NSDictionary *dics) {
+                PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+                if ([class.code isEqualToString:@"25"]) {
+                    Billing.dataDic=[self deleteEmpty:dics];
+                    [self.navigationController pushViewController:Billing animated:YES];
+                }else{
+                    [FTIndicator showErrorWithMessage:class.msg];
+                }
+                [SVProgressHUD dismiss];
+                
+            }];
             
-        }];
-    }else if ([self.where isEqualToString:@"购物车"]){
-       
-        [SubmitOrderRequest SubmitOrdersAShoppingCart:self.address_country province:self.address_province city:self.address_city area:self.address_area address:self.address_address phone:self.address_phone name:self.address_name num:self.number attribute:self.attribute pay_type:[NSString stringWithFormat:@"%ld",MethodOfPayment] zipcode:self.address_zipcode commBox:self.IDS block:^(NSDictionary *dics) {
-            PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-            if ([class.code isEqualToString:@"25"]) {
-                Billing.dataDic=[self deleteEmpty:dics];
-                [self.navigationController pushViewController:Billing animated:YES];
-            }else{
-                [FTIndicator showErrorWithMessage:class.msg];
-            }
-            [SVProgressHUD dismiss];
-            
-        }];
-    
+        }
+        
+
     }
     
-   
-    
-    
-    
-    
+        
     
     
    // [self.navigationController pushViewController:Billing animated:YES];

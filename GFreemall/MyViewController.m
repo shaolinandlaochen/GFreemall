@@ -50,14 +50,7 @@
          //2.添加任务到队列中执行
     
          dispatch_async(queue, ^{
-           [MyRequest PersonalInformationbblock:^(NSDictionary *dics) {
-               self.dataDic=[self deleteEmpty:dics];
-               dispatch_async(dispatch_get_main_queue(), ^{
-                   //回调或者说是通知主线程刷新，
-                   [_tableView reloadData];
-               });
-               
-            }];
+         
         
           });
 

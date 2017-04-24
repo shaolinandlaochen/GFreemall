@@ -15,4 +15,5 @@
 @property(nonatomic,strong)UILabel *freight;
 @property(nonatomic,strong)UILabel *number;
 @property(nonatomic,strong)MyButton *icon;
+@property(nonatomic,strong)OrderListCommodity *Commodity;
 @end

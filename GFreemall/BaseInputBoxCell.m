@@ -43,6 +43,10 @@
     return self;
 
 }
+- (void)textFieldDidEndEditing:(MyTextField *)textField{
+
+    [_delegate Real_nameAuthentication:textField];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

@@ -1,13 +1,14 @@
 //
 //  ShoppingSettlementAttr.m
 //
-//  Created by   on 2017/4/20
+//  Created by   on 2017/4/24
 //  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
 //
 
 #import "ShoppingSettlementAttr.h"
 
 
+NSString *const kShoppingSettlementAttrCommodityIsPackage = @"commodity_is_package";
 NSString *const kShoppingSettlementAttrCommodityWeight = @"commodity_weight";
 NSString *const kShoppingSettlementAttrCommodityCoverImage = @"commodity_cover_image";
 NSString *const kShoppingSettlementAttrCommodityAttributes = @"commodity_attributes";
@@ -24,10 +25,10 @@ NSString *const kShoppingSettlementAttrCommodityImages = @"commodity_images";
 NSString *const kShoppingSettlementAttrBrandSerial = @"brand_serial";
 NSString *const kShoppingSettlementAttrCommoditySellprice = @"commodity_sellprice";
 NSString *const kShoppingSettlementAttrCommodityReserves = @"commodity_reserves";
+NSString *const kShoppingSettlementAttrCommoditySerial = @"commodity_serial";
 NSString *const kShoppingSettlementAttrCommodityId = @"commodity_id";
-NSString *const kShoppingSettlementAttrCommodityDiscount = @"commodity_discount";
 NSString *const kShoppingSettlementAttrCommodityName = @"commodity_name";
-NSString *const kShoppingSettlementAttrCommodityIsPackage = @"commodity_is_package";
+NSString *const kShoppingSettlementAttrCommodityDiscount = @"commodity_discount";
 
 
 @interface ShoppingSettlementAttr ()
@@ -38,6 +39,7 @@ NSString *const kShoppingSettlementAttrCommodityIsPackage = @"commodity_is_packa
 
 @implementation ShoppingSettlementAttr
 
+@synthesize commodityIsPackage = _commodityIsPackage;
 @synthesize commodityWeight = _commodityWeight;
 @synthesize commodityCoverImage = _commodityCoverImage;
 @synthesize commodityAttributes = _commodityAttributes;
@@ -54,10 +56,10 @@ NSString *const kShoppingSettlementAttrCommodityIsPackage = @"commodity_is_packa
 @synthesize brandSerial = _brandSerial;
 @synthesize commoditySellprice = _commoditySellprice;
 @synthesize commodityReserves = _commodityReserves;
+@synthesize commoditySerial = _commoditySerial;
 @synthesize commodityId = _commodityId;
-@synthesize commodityDiscount = _commodityDiscount;
 @synthesize commodityName = _commodityName;
-@synthesize commodityIsPackage = _commodityIsPackage;
+@synthesize commodityDiscount = _commodityDiscount;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict {
@@ -70,6 +72,7 @@ NSString *const kShoppingSettlementAttrCommodityIsPackage = @"commodity_is_packa
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
+            self.commodityIsPackage = [[self objectOrNilForKey:kShoppingSettlementAttrCommodityIsPackage fromDictionary:dict] doubleValue];
             self.commodityWeight = [[self objectOrNilForKey:kShoppingSettlementAttrCommodityWeight fromDictionary:dict] doubleValue];
             self.commodityCoverImage = [self objectOrNilForKey:kShoppingSettlementAttrCommodityCoverImage fromDictionary:dict];
             self.commodityAttributes = [self objectOrNilForKey:kShoppingSettlementAttrCommodityAttributes fromDictionary:dict];
@@ -86,10 +89,10 @@ NSString *const kShoppingSettlementAttrCommodityIsPackage = @"commodity_is_packa
             self.brandSerial = [[self objectOrNilForKey:kShoppingSettlementAttrBrandSerial fromDictionary:dict] doubleValue];
             self.commoditySellprice = [[self objectOrNilForKey:kShoppingSettlementAttrCommoditySellprice fromDictionary:dict] doubleValue];
             self.commodityReserves = [[self objectOrNilForKey:kShoppingSettlementAttrCommodityReserves fromDictionary:dict] doubleValue];
+            self.commoditySerial = [[self objectOrNilForKey:kShoppingSettlementAttrCommoditySerial fromDictionary:dict] doubleValue];
             self.commodityId = [[self objectOrNilForKey:kShoppingSettlementAttrCommodityId fromDictionary:dict] doubleValue];
-            self.commodityDiscount = [[self objectOrNilForKey:kShoppingSettlementAttrCommodityDiscount fromDictionary:dict] doubleValue];
             self.commodityName = [self objectOrNilForKey:kShoppingSettlementAttrCommodityName fromDictionary:dict];
-            self.commodityIsPackage = [[self objectOrNilForKey:kShoppingSettlementAttrCommodityIsPackage fromDictionary:dict] doubleValue];
+            self.commodityDiscount = [[self objectOrNilForKey:kShoppingSettlementAttrCommodityDiscount fromDictionary:dict] doubleValue];
 
     }
     
@@ -99,6 +102,7 @@ NSString *const kShoppingSettlementAttrCommodityIsPackage = @"commodity_is_packa
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.commodityIsPackage] forKey:kShoppingSettlementAttrCommodityIsPackage];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commodityWeight] forKey:kShoppingSettlementAttrCommodityWeight];
     [mutableDict setValue:self.commodityCoverImage forKey:kShoppingSettlementAttrCommodityCoverImage];
     [mutableDict setValue:self.commodityAttributes forKey:kShoppingSettlementAttrCommodityAttributes];
@@ -115,10 +119,10 @@ NSString *const kShoppingSettlementAttrCommodityIsPackage = @"commodity_is_packa
     [mutableDict setValue:[NSNumber numberWithDouble:self.brandSerial] forKey:kShoppingSettlementAttrBrandSerial];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commoditySellprice] forKey:kShoppingSettlementAttrCommoditySellprice];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commodityReserves] forKey:kShoppingSettlementAttrCommodityReserves];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.commoditySerial] forKey:kShoppingSettlementAttrCommoditySerial];
     [mutableDict setValue:[NSNumber numberWithDouble:self.commodityId] forKey:kShoppingSettlementAttrCommodityId];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.commodityDiscount] forKey:kShoppingSettlementAttrCommodityDiscount];
     [mutableDict setValue:self.commodityName forKey:kShoppingSettlementAttrCommodityName];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.commodityIsPackage] forKey:kShoppingSettlementAttrCommodityIsPackage];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.commodityDiscount] forKey:kShoppingSettlementAttrCommodityDiscount];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -139,6 +143,7 @@ NSString *const kShoppingSettlementAttrCommodityIsPackage = @"commodity_is_packa
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
 
+    self.commodityIsPackage = [aDecoder decodeDoubleForKey:kShoppingSettlementAttrCommodityIsPackage];
     self.commodityWeight = [aDecoder decodeDoubleForKey:kShoppingSettlementAttrCommodityWeight];
     self.commodityCoverImage = [aDecoder decodeObjectForKey:kShoppingSettlementAttrCommodityCoverImage];
     self.commodityAttributes = [aDecoder decodeObjectForKey:kShoppingSettlementAttrCommodityAttributes];
@@ -155,16 +160,17 @@ NSString *const kShoppingSettlementAttrCommodityIsPackage = @"commodity_is_packa
     self.brandSerial = [aDecoder decodeDoubleForKey:kShoppingSettlementAttrBrandSerial];
     self.commoditySellprice = [aDecoder decodeDoubleForKey:kShoppingSettlementAttrCommoditySellprice];
     self.commodityReserves = [aDecoder decodeDoubleForKey:kShoppingSettlementAttrCommodityReserves];
+    self.commoditySerial = [aDecoder decodeDoubleForKey:kShoppingSettlementAttrCommoditySerial];
     self.commodityId = [aDecoder decodeDoubleForKey:kShoppingSettlementAttrCommodityId];
-    self.commodityDiscount = [aDecoder decodeDoubleForKey:kShoppingSettlementAttrCommodityDiscount];
     self.commodityName = [aDecoder decodeObjectForKey:kShoppingSettlementAttrCommodityName];
-    self.commodityIsPackage = [aDecoder decodeDoubleForKey:kShoppingSettlementAttrCommodityIsPackage];
+    self.commodityDiscount = [aDecoder decodeDoubleForKey:kShoppingSettlementAttrCommodityDiscount];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
+    [aCoder encodeDouble:_commodityIsPackage forKey:kShoppingSettlementAttrCommodityIsPackage];
     [aCoder encodeDouble:_commodityWeight forKey:kShoppingSettlementAttrCommodityWeight];
     [aCoder encodeObject:_commodityCoverImage forKey:kShoppingSettlementAttrCommodityCoverImage];
     [aCoder encodeObject:_commodityAttributes forKey:kShoppingSettlementAttrCommodityAttributes];
@@ -181,10 +187,10 @@ NSString *const kShoppingSettlementAttrCommodityIsPackage = @"commodity_is_packa
     [aCoder encodeDouble:_brandSerial forKey:kShoppingSettlementAttrBrandSerial];
     [aCoder encodeDouble:_commoditySellprice forKey:kShoppingSettlementAttrCommoditySellprice];
     [aCoder encodeDouble:_commodityReserves forKey:kShoppingSettlementAttrCommodityReserves];
+    [aCoder encodeDouble:_commoditySerial forKey:kShoppingSettlementAttrCommoditySerial];
     [aCoder encodeDouble:_commodityId forKey:kShoppingSettlementAttrCommodityId];
-    [aCoder encodeDouble:_commodityDiscount forKey:kShoppingSettlementAttrCommodityDiscount];
     [aCoder encodeObject:_commodityName forKey:kShoppingSettlementAttrCommodityName];
-    [aCoder encodeDouble:_commodityIsPackage forKey:kShoppingSettlementAttrCommodityIsPackage];
+    [aCoder encodeDouble:_commodityDiscount forKey:kShoppingSettlementAttrCommodityDiscount];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -194,6 +200,7 @@ NSString *const kShoppingSettlementAttrCommodityIsPackage = @"commodity_is_packa
     
     if (copy) {
 
+        copy.commodityIsPackage = self.commodityIsPackage;
         copy.commodityWeight = self.commodityWeight;
         copy.commodityCoverImage = [self.commodityCoverImage copyWithZone:zone];
         copy.commodityAttributes = [self.commodityAttributes copyWithZone:zone];
@@ -210,10 +217,10 @@ NSString *const kShoppingSettlementAttrCommodityIsPackage = @"commodity_is_packa
         copy.brandSerial = self.brandSerial;
         copy.commoditySellprice = self.commoditySellprice;
         copy.commodityReserves = self.commodityReserves;
+        copy.commoditySerial = self.commoditySerial;
         copy.commodityId = self.commodityId;
-        copy.commodityDiscount = self.commodityDiscount;
         copy.commodityName = [self.commodityName copyWithZone:zone];
-        copy.commodityIsPackage = self.commodityIsPackage;
+        copy.commodityDiscount = self.commodityDiscount;
     }
     
     return copy;

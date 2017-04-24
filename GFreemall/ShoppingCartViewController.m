@@ -59,10 +59,11 @@
                 }
                 view.picle.text=@"合计:¥:0.00";
                 view.selectedBtn.selected=NO;
-                [_tableView reloadData];
+               
             }else{
             [self EmptyTheShoppingCart];//购物车是空的
             }
+             [_tableView reloadData];
         }else{
             [FTIndicator showErrorWithMessage:class.msg];
         }
@@ -122,8 +123,8 @@
     cell.deleteBtn.indexPath=indexPath;
     [cell.deleteBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
     [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,comm.commodityImagesPath,comm.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
-    cell.name.text=comm.commodityName;
-    cell.describe.text=comm.commodityDigest;
+    cell.name.text=list.commodityName;
+    cell.describe.text=list.commodityAttributes;
     cell.price.text=[NSString stringWithFormat:@"%.2f",comm.commoditySellprice];
     cell.bjImage.image=[UIImage imageNamed:@"edict"];
     cell.number.text=[NSString stringWithFormat:@"%.0f",list.count];
@@ -330,6 +331,7 @@
                     OrderInformationViewController *order=[[OrderInformationViewController alloc]init];
                     order.dataDic=[self deleteEmpty:dics];
                     order.where=@"购物车";
+                    order.IDS=IDS;
                     [self.navigationController pushViewController:order animated:YES];
                     
                 }else{

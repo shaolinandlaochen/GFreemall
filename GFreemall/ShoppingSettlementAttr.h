@@ -1,7 +1,7 @@
 //
 //  ShoppingSettlementAttr.h
 //
-//  Created by   on 2017/4/20
+//  Created by   on 2017/4/24
 //  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,6 +11,7 @@
 
 @interface ShoppingSettlementAttr : NSObject <NSCoding, NSCopying>
 
+@property (nonatomic, assign) double commodityIsPackage;
 @property (nonatomic, assign) double commodityWeight;
 @property (nonatomic, strong) NSString *commodityCoverImage;
 @property (nonatomic, strong) NSString *commodityAttributes;
@@ -27,10 +28,10 @@
 @property (nonatomic, assign) double brandSerial;
 @property (nonatomic, assign) double commoditySellprice;
 @property (nonatomic, assign) double commodityReserves;
+@property (nonatomic, assign) double commoditySerial;
 @property (nonatomic, assign) double commodityId;
-@property (nonatomic, assign) double commodityDiscount;
 @property (nonatomic, strong) NSString *commodityName;
-@property (nonatomic, assign) double commodityIsPackage;
+@property (nonatomic, assign) double commodityDiscount;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

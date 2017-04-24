@@ -13,6 +13,7 @@
 #import "OrderViewS.h"
 #import "OrderInformationViewController.h"
 #import "MyOrderDetails.h"
+#import "SubmitOrderRequest.h"
 @interface MyOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -26,7 +27,12 @@
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:NO];
     self.navigationController.navigationBarHidden=NO;
+    TheDrop_downRefresh(_tableView, @selector(RequestData))
     
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_tableView.mj_header endRefreshing];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,6 +48,24 @@
     
     // Do any additional setup after loading the view.
 }
+-(void)RequestData{
+    if (self.OrderType==nil) {
+        self.OrderType=@"all";
+    }
+    [SubmitOrderRequest ToObtainAListOrder:self.OrderType page:1 pageSize:200 block:^(NSDictionary *dics) {
+        self.DataDic=[self deleteEmpty:dics];
+        OrderListBaseClass *class=[[OrderListBaseClass alloc]initWithDictionary:self.DataDic];
+        if ([class.code isEqualToString:@"51"]) {
+            [_tableView reloadData];
+            
+        }else{
+            [FTIndicator showErrorWithMessage:class.msg];
+        }
+        
+        [_tableView.mj_header endRefreshing];
+    }];
+
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     autoSize
     return 176*autoSizeScaleY;
@@ -55,41 +79,83 @@
     return 80*autoSizeScaleY;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    OrderListBaseClass *class=[[OrderListBaseClass alloc]initWithDictionary:self.DataDic];
+    OrderListResultList *list=class.pagingList.resultList[section];
     OrderNumberView *view=[[OrderNumberView alloc]init];
-    view.strNumber.text=@"订单号:123456789";
-    view.state.text=@"待付款";
-    view.state.textColor=[UIColor redColor];
+    
+    view.strNumber.text=[NSString stringWithFormat:@"订单号:%.0f",list.categorySerial];
+    if (list.orderState==0) {//未付款
+        view.state.text=@"待付款";
+        view.state.textColor=[UIColor redColor];
+        
+    }else if (list.orderState==1){//已付款未发货
+        view.state.text=@"待发货";
+        view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
+    }else if (list.orderState==2){//已发货
+        view.state.text=@"发货中";
+        view.state.textColor=[TheParentClass colorWithHexString:@"#718247"];
+    }else if (list.orderState==3){//已收货未评价
+        view.state.text=@"待评价";
+        view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
+    }else if (list.orderState==4){//已收货已评价
+        view.state.text=@"已完成";
+        view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
+    }else if (list.orderState==-1){//撤销
+        view.state.text=@"已完成";
+        view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
+    }else if (list.orderState==-2){//平台撤销
+        view.state.text=@"已完成";
+        view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
+    }else if (list.orderState==-3){//有退货
+        view.state.text=@"已完成";
+        view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
+        
+    }
+
     return view;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    OrderListBaseClass *class=[[OrderListBaseClass alloc]initWithDictionary:self.DataDic];
+    OrderListResultList *list=class.pagingList.resultList[section];
     OrderButtonView *view=[[OrderButtonView alloc]init];
-    view.strOne=@"去支付";
-    view.strTwo=@"取消";
+    view.list=list;
+
     return view;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 10;
+    if (self.DataDic!=nil) {
+        OrderListBaseClass *class=[[OrderListBaseClass alloc]initWithDictionary:self.DataDic];
+        if (class.pagingList.resultList.count>0) {
+            return class.pagingList.resultList.count;
+        }
+    }
+    return 0;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+     OrderListBaseClass *class=[[OrderListBaseClass alloc]initWithDictionary:self.DataDic];
+    OrderListResultList *list=class.pagingList.resultList[section];
+    
+    return list.commodity.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-  
+  OrderListBaseClass *class=[[OrderListBaseClass alloc]initWithDictionary:self.DataDic];
+    OrderListResultList *list=class.pagingList.resultList[indexPath.section];
+    OrderListCommodity *Commodity =list.commodity[indexPath.row];
     OrderCell *cell=[OrderCell new];
+    cell.Commodity=Commodity;
+    [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,Commodity.commodityImagesPath,Commodity.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
+  
+    
     cell.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     return cell;
 
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    OrderListBaseClass *class=[[OrderListBaseClass alloc]initWithDictionary:self.DataDic];
+    OrderListResultList *list=class.pagingList.resultList[indexPath.section];
     MyOrderDetails *MyOrder=[[MyOrderDetails alloc]init];
-    if (indexPath.section==0) {
-        MyOrder.state=@"待付款";
-    }else if (indexPath.section==1){
-    MyOrder.state=@"待收货";
-    }else{
-        MyOrder.state=@"待评价";
-    }
+    MyOrder.serial=[NSString stringWithFormat:@"%.0f",list.orderSerial];
     [self.navigationController pushViewController:MyOrder animated:YES];
 
 }
@@ -107,7 +173,7 @@ autoSize
     _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
-    // _tableView.separatorColor=[UIColor clearColor];
+     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
     _tableView.sd_layout.leftEqualToView(_OrderView).topSpaceToView(_OrderView, 0).rightEqualToView(_OrderView).bottomSpaceToView(self.view, 0);
     //[self BuildNoOrderView];//没有订单

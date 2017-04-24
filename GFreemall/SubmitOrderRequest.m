@@ -54,7 +54,9 @@
     [dicData setObject:phone forKey:@"phone"];
     [dicData setObject:name forKey:@"name"];
     //[dicData setObject:num forKey:@"num"];
-    [dicData setObject:attribute forKey:@"attribute"];
+    if (attribute!=nil) {
+        [dicData setObject:attribute forKey:@"attribute"];
+    }
     [dicData setObject:pay_type forKey:@"pay_type"];
     [dicData setObject:zipcode forKey:@"zipcode"];
     [dicData setObject:commBox forKey:@"commBox"];
@@ -64,6 +66,27 @@
     [RequestClass getAddressUrl:@"paycarts" Dic:data block:^(NSDictionary *dic) {
         NSLog(@"//提交订单购物车----%@",dic);
         NSLog(@"get//提交订单购物车---msg==%@",[dic objectForKey:@"msg"]);
+        block(dic);
+        
+    }];
+
+}
+//获取订单列表
++(void)ToObtainAListOrder:(NSString *)type page:(int)page pageSize:(int)pageSize block:(void(^)(NSDictionary *dics))block{
+    NSMutableDictionary *dicData=[[NSMutableDictionary alloc]init];
+    if ([tokenString length]>0) {
+        [dicData setObject:tokenString forKey:@"token"];
+    }
+    [dicData setObject:type forKey:@"type"];
+    [dicData setObject:@(page) forKey:@"page"];
+    [dicData setObject:@(pageSize) forKey:@"pageSize"];
+
+    
+    
+    NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
+    [RequestClass getAddressUrl:@"order" Dic:data block:^(NSDictionary *dic) {
+        NSLog(@"获取订单列表----%@",dic);
+        NSLog(@"get获取订单列表---msg==%@",[dic objectForKey:@"msg"]);
         block(dic);
         
     }];
