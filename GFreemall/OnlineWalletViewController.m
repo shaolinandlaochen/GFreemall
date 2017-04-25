@@ -11,6 +11,7 @@
 #import "WalletBalanceDisplayCell.h"
 #import "PasswordManagement.h"
 #import "WalletDetailsViewController.h"//钱包明细
+#import "WalletRequestClass.h"
 @interface OnlineWalletViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 {
@@ -25,6 +26,7 @@
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:NO];
     self.navigationController.navigationBarHidden=NO;
+    TheDrop_downRefresh(_tableView, @selector(RequestData))
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,6 +40,14 @@
     [self CreatView];
     
     // Do any additional setup after loading the view.
+}
+-(void)RequestData{
+[WalletRequestClass  walletBalanceQueryblock:^(NSDictionary *dic) {
+    
+    
+    [_tableView.mj_header endRefreshing];
+    [SVProgressHUD dismiss];
+}];
 }
 cancelClick
 -(void)CreatView{
