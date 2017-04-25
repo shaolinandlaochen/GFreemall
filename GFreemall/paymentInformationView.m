@@ -52,7 +52,7 @@ self.pswString=@"";
     _tableView.dataSource=self;
     _tableView.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:_tableView];
-    _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(_button, 20*autoSizeScaleY).topSpaceToView(self.view, 450*autoSizeScaleY);
+    _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(_button, 20*autoSizeScaleY).topSpaceToView(self.view, 520*autoSizeScaleY);
 
 
 }
@@ -64,15 +64,6 @@ self.pswString=@"";
             return 248*autoSizeScaleY;
         }else if (indexPath.row==1){
             return 99*autoSizeScaleY;
-        }
-    }else if (indexPath.section==1){
-    
-        if ([self.were isEqualToString:@"爱积分支付"]) {
-            
-            return 99*autoSizeScaleY;
-            
-        }else if ([self.were isEqualToString:@"在线钱包"]){
-            return 160*autoSizeScaleY;
         }
     }
     return 99*autoSizeScaleY;
@@ -127,27 +118,15 @@ self.pswString=@"";
     return nil;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return 3;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {
        
         return 2;
-    }else if (section==1){
-        
-        if ([self.were isEqualToString:@"爱积分支付"]) {
-            
-            return 2;
-            
-        }else if ([self.were isEqualToString:@"在线钱包"]){
-            return 1;
-        }
     }else{
         return 1;
     }
-    
-    
-    return 0;
  
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -155,7 +134,12 @@ self.pswString=@"";
     if (indexPath.section==0) {
         if (indexPath.row==0) {
             AmountToShowCell *cell=[AmountToShowCell new];
-            cell.picre.text=[NSString stringWithFormat:@"¥%@",self.money];
+            if ([self.were isEqualToString:@"在线钱包"]) {
+                cell.picre.text=[NSString stringWithFormat:@"¥%@",self.money];
+            }else{
+            cell.picre.text=[NSString stringWithFormat:@"%@LC",self.money];
+            }
+            
             cell.userInteractionEnabled = NO;
             return cell;
         }else if (indexPath.row==1){
@@ -166,29 +150,10 @@ self.pswString=@"";
             return cell;
         }
     }else if (indexPath.section==1){
-        if ([self.were isEqualToString:@"爱积分支付"]) {
-            
-            PaymentToShowCell *cell=[PaymentToShowCell new];
-            if (indexPath.row==0) {
-                cell.name.text=Localized(@"GFM价格");
-                cell.context.text=Localized(@"支付方式");
-            }else if (indexPath.row==1){
-                
-                cell.name.text=Localized(@"GFM支付金额");;
-                cell.context.text=Localized(@"支付方式");
-            }
-            return cell;
-            
-        }else if ([self.were isEqualToString:@"在线钱包"]){
-            WalletBalanceTop_upCell *CELL=[WalletBalanceTop_upCell new];
-            [CELL.btn addTarget:self action:@selector(oTop_UpClick) forControlEvents:UIControlEventTouchUpInside];
-            return CELL;
-        }
-    }else if (indexPath.section==2){
         PayThePasswordCell *cell=[PayThePasswordCell new];
         cell.delegate=self;
         return cell;
-    }else if (indexPath.section==3){
+    }else if (indexPath.section==2){
         RetrievePasswordCell *cell=[RetrievePasswordCell new];
         [cell.btn addTarget:self action:@selector(RetrievPassword) forControlEvents:UIControlEventTouchUpInside];
 
@@ -232,7 +197,10 @@ self.pswString=@"";
 }
 //忘记密码
 -(void)RetrievPassword{
-
+    [self dismissViewControllerAnimated:YES completion:^{
+        [_delegate ForgotPassword];
+    }];
+    
 }
 //输入支付密码代理
 -(void)Psw:(NSString *)pswString{

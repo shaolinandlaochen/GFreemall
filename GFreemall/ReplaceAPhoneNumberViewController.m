@@ -26,6 +26,7 @@
     NSString *_phoneString;
     NSString *_codeTitle;
     NSTimer *timer;//定时器
+    NSInteger seconds;
 }
 
 @end
@@ -294,6 +295,7 @@ cancelClick
 [TheBasicInformationRequest GetVerificationCodeblock:^(NSDictionary *disa) {
     BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
     if ([class.code isEqualToString:@"21"]) {
+        seconds=[[NSString stringWithFormat:@"%@",[[self deleteEmpty:disa]objectForKey:@"time"]]integerValue];
         //获取验证码成功
         [timer invalidate];
         timer = nil;
@@ -304,12 +306,13 @@ cancelClick
 }];
 }
 -(void)action{
-    static int i=90;
-    if (i>0) {
-        i-=1;
-        _codeTitle=[NSString stringWithFormat:@"%ds",i];
+   
+    if (seconds>0) {
+        seconds-=1;
+        _codeTitle=[NSString stringWithFormat:@"%lds",seconds];
         [_tableView reloadData];
     }else{
+        _codeTitle=@"获取验证码";
         [timer invalidate];
         timer = nil;
     }

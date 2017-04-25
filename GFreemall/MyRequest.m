@@ -24,4 +24,19 @@
         
     }];
 }
+//获取我的个人信息和订单数量等等
++(void)MyInformationAndOrderQuantityblock:(void(^)(NSDictionary *dics))block{
+    NSMutableDictionary *dicData=[[NSMutableDictionary alloc]init];
+    if ([tokenString length]>0) {
+        [dicData setObject:tokenString forKey:@"token"];
+    }
+    
+    NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
+    [RequestClass getUrl:@"queryordercount" Dic:data block:^(NSDictionary *dic) {
+        NSLog(@"获取我的个人信息和订单数量等等----%@",dic);
+        NSLog(@"ge获取我的个人信息和订单数量等等---msg==%@",[dic objectForKey:@"msg"]);
+        block(dic);
+        
+    }];
+}
 @end

@@ -11,6 +11,7 @@
 #import "BillingInfoNumberCell.h"
 #import "paymentInformationView.h"
 #import "PayRequest.h"
+#import "ReplaceAPhoneNumberViewController.h"
 @interface BillingInfo ()<UITableViewDataSource,UITableViewDelegate,CancelTheViewDelegate>
 {
     UITableView *_tableView;
@@ -177,6 +178,9 @@
 
 //忘记支付密码
 -(void)ForgotPassword{
+    ReplaceAPhoneNumberViewController *ReplaceAPhoneNumber=[[ReplaceAPhoneNumberViewController alloc]init];
+    ReplaceAPhoneNumber.were=@"安全验证";
+    [self.navigationController pushViewController:ReplaceAPhoneNumber animated:YES];
 
 }
 //去支付

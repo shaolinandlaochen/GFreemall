@@ -17,12 +17,12 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         autoSize
-        UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setTitle:Localized(@"忘记支付密码?") forState:UIControlStateNormal];
-        btn.titleLabel.font=[UIFont systemFontOfSize:24*autoSizeScaleY];
-        [btn setTitleColor:[TheParentClass colorWithHexString:@"#292929"] forState:UIControlStateNormal];
-        [self.contentView addSubview:btn];
-        btn.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 20*autoSizeScaleY).widthIs(200*autoSizeScaleX).heightIs(60*autoSizeScaleY);
+        _btn=[UIButton buttonWithType:UIButtonTypeCustom];
+        [_btn setTitle:Localized(@"忘记支付密码?") forState:UIControlStateNormal];
+        _btn.titleLabel.font=[UIFont systemFontOfSize:24*autoSizeScaleY];
+        [_btn setTitleColor:[TheParentClass colorWithHexString:@"#292929"] forState:UIControlStateNormal];
+        [self.contentView addSubview:_btn];
+        _btn.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 20*autoSizeScaleY).widthIs(200*autoSizeScaleX).heightIs(60*autoSizeScaleY);
     }
     return self;
 

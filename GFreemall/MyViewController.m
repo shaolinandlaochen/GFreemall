@@ -50,9 +50,11 @@
          //2.添加任务到队列中执行
     
          dispatch_async(queue, ^{
-         
+         [MyRequest MyInformationAndOrderQuantityblock:^(NSDictionary *dics) {
+             
+         }];
         
-          });
+        });
 
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

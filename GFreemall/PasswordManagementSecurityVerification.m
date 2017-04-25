@@ -10,6 +10,7 @@
 #import "BaseInputBoxCell.h"
 #import "WalletRequestClass.h"
 #import "PasswordManagement.h"
+#import "BillingInfo.h"
 @interface PasswordManagementSecurityVerification ()<UITableViewDataSource,UITableViewDelegate,BaseInputBoxDelegate>
 
 {
@@ -119,7 +120,8 @@ cancelClick
         WalletBaseClass *class=[[WalletBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
         [FTIndicator showInfoWithMessage:class.msg];
         [SVProgressHUD dismiss];
-        ReturnToSpecifyTheController(PasswordManagement)
+        ReturnToSpecifyTheController(PasswordManagement)//钱包进来
+        ReturnToSpecifyTheController(BillingInfo)//正在支付界面进来的
     }];
     }
     

@@ -91,7 +91,7 @@ cancelClick
         }else if (indexPath.row==1){
             cell.name.text=Localized(@"账户手机");
             if (class.info.baseAuthPhone==1) {//已经绑定手机
-                 cell.string.text=class.info.basePhone;
+                 cell.string.text=[NSString stringWithFormat:@"%@%@",class.info.baseCountry,class.info.basePhone];
             }else if (class.info.baseAuthPhone==0){//暂未绑定
                  cell.string.text=@"未绑定";
                  cell.imgName=@"icon_right";
