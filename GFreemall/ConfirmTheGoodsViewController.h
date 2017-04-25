@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ConfirmTheGoodsViewController : UIViewController
-
+@property(nonatomic,strong)NSDictionary *dataDic;
+@property(nonatomic,copy)NSString *ASuccess;
+@property(nonatomic,copy)NSString *serial;
 @end

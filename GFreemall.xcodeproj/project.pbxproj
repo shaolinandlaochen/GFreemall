@@ -575,6 +575,7 @@
 		9DB2CBA41E9F1FCE009DCE8F /* RequestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CBA31E9F1FCE009DCE8F /* RequestClass.m */; };
 		9DC006161E9F52BA001CB6D4 /* ViewLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC006151E9F52BA001CB6D4 /* ViewLayerView.m */; };
 		9DC006191E9F6506001CB6D4 /* DrawACircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC006181E9F6506001CB6D4 /* DrawACircle.m */; };
+		9DE2E5F81EAEE0B9006B529A /* GoodsAndEvaluationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2E5F71EAEE0B9006B529A /* GoodsAndEvaluationRequest.m */; };
 		9DFF87FB1EAD8395005E5E64 /* TheBasicInformationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF87FA1EAD8395005E5E64 /* TheBasicInformationRequest.m */; };
 		9DFF88011EAD8AB4005E5E64 /* BasicInformationBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF87FE1EAD8AB4005E5E64 /* BasicInformationBaseClass.m */; };
 		9DFF88021EAD8AB4005E5E64 /* BasicInformationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF88001EAD8AB4005E5E64 /* BasicInformationInfo.m */; };
@@ -1392,6 +1393,8 @@
 		9DC006151E9F52BA001CB6D4 /* ViewLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewLayerView.m; sourceTree = "<group>"; };
 		9DC006171E9F6506001CB6D4 /* DrawACircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawACircle.h; sourceTree = "<group>"; };
 		9DC006181E9F6506001CB6D4 /* DrawACircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawACircle.m; sourceTree = "<group>"; };
+		9DE2E5F61EAEE0B9006B529A /* GoodsAndEvaluationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsAndEvaluationRequest.h; sourceTree = "<group>"; };
+		9DE2E5F71EAEE0B9006B529A /* GoodsAndEvaluationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsAndEvaluationRequest.m; sourceTree = "<group>"; };
 		9DFF87F91EAD8395005E5E64 /* TheBasicInformationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheBasicInformationRequest.h; sourceTree = "<group>"; };
 		9DFF87FA1EAD8395005E5E64 /* TheBasicInformationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheBasicInformationRequest.m; sourceTree = "<group>"; };
 		9DFF87FD1EAD8AB4005E5E64 /* BasicInformationBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInformationBaseClass.h; sourceTree = "<group>"; };
@@ -1493,6 +1496,7 @@
 				382E02CE1E95E90400DEF382 /* ReceivingASuccessfulShow.m */,
 				382E02D01E95EFC100DEF382 /* EvaluationOfTheViewViewController.h */,
 				382E02D11E95EFC100DEF382 /* EvaluationOfTheViewViewController.m */,
+				9DE2E5F51EAEE089006B529A /* 请求 */,
 			);
 			name = "收货和评价";
 			sourceTree = "<group>";
@@ -2825,6 +2829,15 @@
 			name = "请求";
 			sourceTree = "<group>";
 		};
+		9DE2E5F51EAEE089006B529A /* 请求 */ = {
+			isa = PBXGroup;
+			children = (
+				9DE2E5F61EAEE0B9006B529A /* GoodsAndEvaluationRequest.h */,
+				9DE2E5F71EAEE0B9006B529A /* GoodsAndEvaluationRequest.m */,
+			);
+			name = "请求";
+			sourceTree = "<group>";
+		};
 		9DFF87F81EAD8361005E5E64 /* 请求 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3494,6 +3507,7 @@
 				382E02F31E96271F00DEF382 /* ReplaceAPhoneNumberViewController.m in Sources */,
 				9DFF880E1EAD95E5005E5E64 /* OrderListResultList.m in Sources */,
 				383655561E8D06470034C332 /* ShoppingCarViews.m in Sources */,
+				9DE2E5F81EAEE0B9006B529A /* GoodsAndEvaluationRequest.m in Sources */,
 				38C9DCBF1E89006000F231B0 /* SingletonClass.m in Sources */,
 				9D4BCE401EA729FD00ED3D3E /* AddressList.m in Sources */,
 				38C1A9091E92393800A26DCF /* NiCaiCell.m in Sources */,

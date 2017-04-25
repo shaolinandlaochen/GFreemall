@@ -7,11 +7,13 @@
 //
 
 #import "EvaluationOfTheViewViewController.h"
-
+#import "GoodsAndEvaluationRequest.h"
 @interface EvaluationOfTheViewViewController ()<UITextViewDelegate>
 {
     UIView *_view;
     UILabel *_message;
+    UITextView *_tf;
+    int xingxing;
 
 }
 @end
@@ -21,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     autoSize
+    xingxing=5;
     self.title=Localized(@"评价晒单");
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
@@ -36,6 +39,23 @@
     // Do any additional setup after loading the view.
 }
 -(void)onrightItemButtonClick{
+    if ([_tf.text length]<10) {
+        [FTIndicator showInfoWithMessage:@"至少十个字哦"];
+    }else if ([_tf.text length]>500){
+       [FTIndicator showInfoWithMessage:@"评论不得大于五百字哦"];
+    }else{
+        [SVProgressHUD showWithStatus:@"正在加载"];
+        [GoodsAndEvaluationRequest EvaluationOfBaskInSingle:self.order_serial comment_content:_tf.text comment_grade:xingxing commodity_serial:self.commodity_serial order_commodity_id:self.order_commodity_id block:^(NSDictionary *dics) {
+            MessageBaseClass *class=[[MessageBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            if ([class.code isEqualToString:@"61"]) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            [FTIndicator showSuccessWithMessage:class.msg];
+            
+            [SVProgressHUD dismiss];
+        }];
+    }
+   
 
 }
 cancelClick
@@ -68,7 +88,7 @@ cancelClick
         [_view addSubview:btn];
         btn.sd_layout.leftSpaceToView(img, x*autoSizeScaleX).topSpaceToView(lbl, 30*autoSizeScaleY).widthIs(38*autoSizeScaleX).heightIs(38*autoSizeScaleY);
     }
-    UITextView *_tf=[[UITextView alloc]init];
+    _tf=[[UITextView alloc]init];
     _tf.delegate=self;
     _tf.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     [self.view addSubview:_tf];
@@ -107,7 +127,7 @@ cancelClick
             [button setBackgroundImage:[UIImage imageNamed:@"icon_star_empty"] forState:UIControlStateNormal];
         }
     }
-
+    xingxing=btn.tag;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

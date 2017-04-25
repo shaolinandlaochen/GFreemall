@@ -10,6 +10,7 @@
 #import "StayEvaluationListCell.h"
 #import "ReceivingASuccessfulShow.h"
 #import "EvaluationOfTheViewViewController.h"
+#import "OrderDetailsRequest.h"
 @interface ConfirmTheGoodsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 {
@@ -23,13 +24,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     autoSize
-    self.title=Localized(@"确认收货成功");
+    if ([self.ASuccess isEqualToString:@"成功"]) {
+        self.title=Localized(@"确认收货成功");
+    }else{
+    self.title=Localized(@"待评价订单列表");
+    }
+    
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
     [self CreatView];
+    [self QequestData];
     // Do any additional setup after loading the view.
+}
+//加载数据
+-(void)QequestData{
+    [SVProgressHUD showWithStatus:@"正在加载"];
+    [OrderDetailsRequest OrderDetails:self.serial block:^(NSDictionary *dics) {
+        self.dataDic=[self deleteEmpty:dics];
+        OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+        if ([class.code isEqualToString:@"51"]) {
+            [_tableView reloadData];
+        }else{
+            [FTIndicator showErrorWithMessage:class.msg];
+        }
+        [_tableView.mj_header endRefreshing];
+        [SVProgressHUD dismiss];
+    }];
+    
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [SVProgressHUD dismiss];
 }
 -(void)CreatView{
 
@@ -49,15 +76,23 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     autoSize
-    return 380*autoSizeScaleY;
+    if ([self.ASuccess isEqualToString:@"成功"]) {
+         return 380*autoSizeScaleY;
+    }
+    return 0;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    ReceivingASuccessfulShow *view=[[ReceivingASuccessfulShow alloc]init];
-    view.backgroundColor=[UIColor whiteColor];
-    view.img.image=[UIImage imageNamed:@"icon_success"];
-    view.name.text=@"确认收货成功";
+    if ([self.ASuccess isEqualToString:@"成功"]) {
+        ReceivingASuccessfulShow *view=[[ReceivingASuccessfulShow alloc]init];
+        view.backgroundColor=[UIColor whiteColor];
+        view.img.image=[UIImage imageNamed:@"icon_success"];
+        view.name.text=@"确认收货成功";
+        
+        return view;
+    }
+
     
-    return view;
+    return nil;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
 
@@ -67,12 +102,16 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    
+    OrderDetailsBaseClass *classData=[[OrderDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    return classData.map.commodity.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+     OrderDetailsBaseClass *classData=[[OrderDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    OrderDetailsCommodity *commodity=classData.map.commodity[indexPath.row];
     StayEvaluationListCell *cell=[StayEvaluationListCell new];
-    [cell.img sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491459623882&di=a59328062fe263027fb17f1727903f49&imgtype=0&src=http%3A%2F%2Fpic2.nipic.com%2F20090427%2F47541_171444055_2.jpg"] placeholderImage:[UIImage imageNamed:@""]];
-    cell.title.text=@"电饭锅电饭锅电饭锅电饭锅电饭锅地方方法滚动固定队的";
+    [cell.img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",classData.imgSrc,commodity.commodityImagesPath,commodity.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
+    cell.title.text=commodity.commodityName;
     [cell.btn setTitle:@"去评价" forState:UIControlStateNormal];
     cell.btn.indexPath=indexPath;
     [cell.btn addTarget:self action:@selector(onButtonCLIck:) forControlEvents:UIControlEventTouchUpInside];
@@ -86,7 +125,12 @@
 }
 //去评价
 -(void)onButtonCLIck:(MyButton *)btn{
+    OrderDetailsBaseClass *classData=[[OrderDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    OrderDetailsCommodity *commodity=classData.map.commodity[btn.indexPath.row];
     EvaluationOfTheViewViewController *EvaluationOfTheView=[[EvaluationOfTheViewViewController alloc]init];
+    EvaluationOfTheView.order_serial=[NSString stringWithFormat:@"%.0f",classData.map.orderSerial];
+    EvaluationOfTheView.commodity_serial=[NSString stringWithFormat:@"%.0f",commodity.commoditySerial];
+    EvaluationOfTheView.order_commodity_id=[NSString stringWithFormat:@"%.0f",commodity.commodityIdentifier];
     [self.navigationController pushViewController:EvaluationOfTheView animated:YES];
 }
 -(void)onCanceClick{

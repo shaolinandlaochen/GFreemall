@@ -14,6 +14,9 @@
 #import "OrderInformationViewController.h"
 #import "MyOrderDetails.h"
 #import "SubmitOrderRequest.h"
+#import "OrderDetailsRequest.h"
+#import "BillingInfo.h"
+#import "ConfirmTheGoodsViewController.h"
 @interface MyOrderViewController ()<UITableViewDelegate,UITableViewDataSource,OrderViewSDelegate>
 {
     UITableView *_tableView;
@@ -119,6 +122,10 @@
     OrderListBaseClass *class=[[OrderListBaseClass alloc]initWithDictionary:self.DataDic];
     OrderListResultList *list=class.pagingList.resultList[section];
     OrderButtonView *view=[[OrderButtonView alloc]init];
+    view.btnOne.section=section;
+    view.BtnTwo.section=section;
+    [view.btnOne addTarget:self action:@selector(onOrderEventClick:) forControlEvents:UIControlEventTouchUpInside];
+    [view.BtnTwo addTarget:self action:@selector(onOrderEventClick:) forControlEvents:UIControlEventTouchUpInside];
     view.list=list;
 
     return view;
@@ -219,6 +226,96 @@ autoSize
     }
     [SVProgressHUD showWithStatus:@"正在加载"];
     [self RequestData];
+}
+//点击取消订单或者去支付或者收货或者评价
+-(void)onOrderEventClick:(MyButton *)btn{
+    NSLog(@"/////////////////---------%ld",btn.section);
+    
+    
+    OrderListBaseClass *class=[[OrderListBaseClass alloc]initWithDictionary:self.DataDic];
+    OrderListResultList *list=class.pagingList.resultList[btn.section];
+    if (btn.tag==1) {//
+        if (list.orderState==0) {//未付款
+            [SVProgressHUD showWithStatus:@"正在加载"];
+            [OrderDetailsRequest OrderPaymentToJump:[NSString stringWithFormat:@"%.0f",list.orderSerial] block:^(NSDictionary *dics) {
+                OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+                if ([class.code isEqualToString:@"60"]) {
+                    BillingInfo *Billing=[[BillingInfo alloc]init];
+                    if (list.orderPayment==0) {
+                        Billing.were=@"在线钱包";
+                    }else if (list.orderPayment==1){
+                        
+                    }else if (list.orderPayment==2){
+                        Billing.were=@"爱积分支付";
+                    }
+                    Billing.orderNumber=[NSString stringWithFormat:@"%.0f",list.orderSerial];
+                    Billing.money=[NSString stringWithFormat:@"%.2f",list.orderAmount];
+                    [self.navigationController pushViewController:Billing animated:YES];
+                }else{
+                    [FTIndicator showErrorWithMessage:class.msg];
+                }
+                
+                [SVProgressHUD dismiss];
+            }];
+            
+            
+            
+            
+        }else if (list.orderState==1){//已付款未发货
+            
+        }else if (list.orderState==2){//已发货
+            [SVProgressHUD showWithStatus:@"正在加载"];
+            [OrderDetailsRequest ConfirmTheGoods:[NSString stringWithFormat:@"%.0f",list.orderId] block:^(NSDictionary *dics) {
+                OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+                if ([class.code isEqualToString:@"57"]) {//收货完毕去评价订单列表
+                    ConfirmTheGoodsViewController *confirm=[[ConfirmTheGoodsViewController alloc]init];
+                    confirm.serial=[NSString stringWithFormat:@"%.0f",list.orderSerial];
+                    confirm.ASuccess=@"成功";
+                    [self.navigationController pushViewController:confirm animated:YES];
+                }
+                [FTIndicator showInfoWithMessage:class.msg];
+                
+                [SVProgressHUD dismiss];
+                
+            }];
+            
+        }else if (list.orderState==3){//已收货未评价
+            
+            ConfirmTheGoodsViewController *confirm=[[ConfirmTheGoodsViewController alloc]init];
+            confirm.serial=[NSString stringWithFormat:@"%.0f",list.orderSerial];
+            [self.navigationController pushViewController:confirm animated:YES];
+            
+        }else if (list.orderState==4){//已收货已评价
+            
+        }else if (list.orderState==-1){//撤销
+            
+        }else if (list.orderState==-2){//平台撤销
+            
+        }else if (list.orderState==-3){//有退货
+            
+            
+        }
+        
+        
+        
+    }else if (btn.tag==2){//取订单
+        [SVProgressHUD showWithStatus:@"正在加载"];
+        [SubmitOrderRequest CancelTheOrderserial:[NSString stringWithFormat:@"%.0f",list.orderSerial] block:^(NSDictionary *dics) {
+            OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            if ([class.code isEqualToString:@"56"]) {
+                [SVProgressHUD showWithStatus:@"正在加载"];
+                [self RequestData];
+            }
+            
+            [FTIndicator showInfoWithMessage:class.msg];
+            [SVProgressHUD dismiss];
+        }];
+    }
+    
+    
+    
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

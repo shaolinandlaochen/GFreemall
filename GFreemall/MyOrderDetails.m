@@ -21,6 +21,7 @@
 #import "OrderDetailsRequest.h"
 #import "SubmitOrderRequest.h"
 #import "BillingInfo.h"
+#import "EvaluationOfTheViewViewController.h"
 @interface MyOrderDetails ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *_tableView;
@@ -292,8 +293,11 @@ autoSize
             [SVProgressHUD showWithStatus:@"正在加载"];
             [OrderDetailsRequest ConfirmTheGoods:self.serial block:^(NSDictionary *dics) {
                 OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-                if ([class.code isEqualToString:@"57"]) {
-                    [self.navigationController popViewControllerAnimated:YES];
+                if ([class.code isEqualToString:@"57"]) {//收货完毕去评价订单列表
+                    ConfirmTheGoodsViewController *confirm=[[ConfirmTheGoodsViewController alloc]init];
+                    confirm.serial=self.serial;
+                    confirm.ASuccess=@"成功";
+                    [self.navigationController pushViewController:confirm animated:YES];
                 }
                 [FTIndicator showInfoWithMessage:class.msg];
                 
@@ -302,6 +306,9 @@ autoSize
             }];
           
         }else if (classData.map.orderState==3){//已收货未评价
+            ConfirmTheGoodsViewController *confirm=[[ConfirmTheGoodsViewController alloc]init];
+            confirm.serial=self.serial;
+            [self.navigationController pushViewController:confirm animated:YES];
           
         }else if (classData.map.orderState==4){//已收货已评价
            
