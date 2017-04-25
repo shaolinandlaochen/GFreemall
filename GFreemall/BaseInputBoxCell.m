@@ -45,7 +45,7 @@
 }
 - (void)textFieldDidEndEditing:(MyTextField *)textField{
 
-    [_delegate Real_nameAuthentication:textField];
+    [_delegate ToObtainInputBox:textField];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

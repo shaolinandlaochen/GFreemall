@@ -27,12 +27,12 @@
         
         
         _button=[UIButton buttonWithType:UIButtonTypeCustom];
-        _button.layer.cornerRadius = 6*autoSizeScaleX;
-        _button.layer.masksToBounds = 6*autoSizeScaleX;
-        [_button setTitle:Localized(@"充值") forState:UIControlStateNormal];
-        [_button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        _button.backgroundColor=[UIColor whiteColor];
-        _button.titleLabel.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
+//        _button.layer.cornerRadius = 6*autoSizeScaleX;
+//        _button.layer.masksToBounds = 6*autoSizeScaleX;
+//        [_button setTitle:Localized(@"充值") forState:UIControlStateNormal];
+//        [_button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        _button.backgroundColor=[UIColor whiteColor];
+//        _button.titleLabel.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
         [self.contentView addSubview:_button];
         _button.sd_layout.rightSpaceToView(self.contentView, 112*autoSizeScaleX).topSpaceToView(self.contentView, 140*autoSizeScaleY).widthIs(100*autoSizeScaleX).heightIs(56*autoSizeScaleY);
         

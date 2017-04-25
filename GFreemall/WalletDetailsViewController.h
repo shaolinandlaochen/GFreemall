@@ -10,4 +10,10 @@
 
 @interface WalletDetailsViewController : UIViewController
 @property(nonatomic,copy)NSString *were;
+@property(nonatomic,strong)NSDictionary *dataDic;//充值记录
+@property(nonatomic,copy)NSString *timeBegin;
+@property(nonatomic,copy)NSString *timeEnd;
+@property(nonatomic,copy)NSString *type;
+@property(nonatomic,copy)NSString *urlString;
+@property(nonatomic,copy)NSString *inStr;
 @end

@@ -44,6 +44,13 @@
 -(void)RequestData{
 [WalletRequestClass  walletBalanceQueryblock:^(NSDictionary *dic) {
     
+    WalletBaseClass *class=[[WalletBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
+    if ([class.code isEqualToString:@"16"]) {
+        self.dataDic=[self deleteEmpty:dic];
+        [_tableView reloadData];
+    }else{
+        [FTIndicator showErrorWithMessage:class.msg];
+    }
     
     [_tableView.mj_header endRefreshing];
     [SVProgressHUD dismiss];
@@ -94,9 +101,10 @@ cancelClick
     return 4;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+       WalletBaseClass *class=[[WalletBaseClass alloc]initWithDictionary:self.dataDic];
     if (indexPath.row==0) {
         WalletBalanceDisplayCell *cell=[WalletBalanceDisplayCell new];
-        cell.pirce.text=@"¥999999999";
+        cell.pirce.text=[NSString stringWithFormat:@"¥%.2f",class.cremain];
         [cell.button addTarget:self action:@selector(onMoneyClick) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }else{
@@ -121,10 +129,12 @@ cancelClick
     if (indexPath.row==1) {
         WalletDetailsViewController *WalletDetails=[[WalletDetailsViewController alloc]init];
         WalletDetails.were=@"充值记录";
+        WalletDetails.urlString=@"querycrecharge";
         [self.navigationController pushViewController:WalletDetails animated:YES];
     }else if (indexPath.row==2){//钱包明细
         WalletDetailsViewController *WalletDetails=[[WalletDetailsViewController alloc]init];
         WalletDetails.were=@"钱包明细";
+        WalletDetails.urlString=@"querycdetail";
         [self.navigationController pushViewController:WalletDetails animated:YES];
     
     }else if (indexPath.row==3){//密码管理

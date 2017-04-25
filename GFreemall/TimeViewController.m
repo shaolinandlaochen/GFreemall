@@ -11,6 +11,7 @@
 @interface TimeViewController ()
 {
     UILabel *times;
+    UIView *_views;
 }
 @end
 
@@ -18,19 +19,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     autoSize
+    
+    _views=[[UIView alloc]init];
+    _views.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    [self.view addSubview:_views];
+    _views.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0).heightIs(self.view.frame.size.height/2);
+    
     
     times=[[UILabel alloc]init];
     times.textColor=[TheParentClass colorWithHexString:@"#292929"];
     times.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
     times.textAlignment=NSTextAlignmentCenter;
-    [self.view addSubview:times];
-    times.sd_layout.leftSpaceToView(self.view,200*autoSizeScaleX).rightSpaceToView(self.view, 200*autoSizeScaleX).topSpaceToView(self.view, 0).heightIs(100*autoSizeScaleY);
+    [_views addSubview:times];
+    times.sd_layout.leftSpaceToView(_views,200*autoSizeScaleX).rightSpaceToView(_views, 200*autoSizeScaleX).topSpaceToView(_views, 0).heightIs(100*autoSizeScaleY);
     
     //当前时间
      NSString *dataTimes=  [self GetTomorrowDay:[NSDate date]];
-    times.text=dataTimes;
+    
+    times.text=[self SegmentationOfTime:dataTimes];
     
     
     UIButton *cancel=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -38,8 +45,8 @@
     cancel.titleLabel.font=[UIFont systemFontOfSize:35*autoSizeScaleY];
     [cancel addTarget:self action:@selector(onCancelClick) forControlEvents:UIControlEventTouchUpInside];
     [cancel setTitleColor:[TheParentClass colorWithHexString:@"#292929"] forState:UIControlStateNormal];
-    [self.view addSubview:cancel];
-    cancel.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(self.view, 0).widthIs(150*autoSizeScaleX).heightIs(100*autoSizeScaleY);
+    [_views addSubview:cancel];
+    cancel.sd_layout.leftSpaceToView(_views, 25*autoSizeScaleX).topSpaceToView(_views, 0).widthIs(150*autoSizeScaleX).heightIs(100*autoSizeScaleY);
     
     
     UIButton *goBtn=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -47,8 +54,8 @@
     goBtn.titleLabel.font=[UIFont systemFontOfSize:35*autoSizeScaleY];
     [goBtn addTarget:self action:@selector(onYesGoClick) forControlEvents:UIControlEventTouchUpInside];
     [goBtn setTitleColor:[TheParentClass colorWithHexString:@"#292929"] forState:UIControlStateNormal];
-    [self.view addSubview:goBtn];
-    goBtn.sd_layout.rightSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(self.view, 0).widthIs(150*autoSizeScaleX).heightIs(100*autoSizeScaleY);
+    [_views addSubview:goBtn];
+    goBtn.sd_layout.rightSpaceToView(_views, 25*autoSizeScaleX).topSpaceToView(_views, 0).widthIs(150*autoSizeScaleX).heightIs(100*autoSizeScaleY);
     
     
     
@@ -58,8 +65,8 @@
     
     UIView *view=[[UIView alloc]init];
     view.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
-    [self.view addSubview:view];
-    view.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(times, 0).heightIs(0.6);
+    [_views addSubview:view];
+    view.sd_layout.leftSpaceToView(_views, 0).rightSpaceToView(_views, 0).topSpaceToView(times, 0).heightIs(0.6);
     
     
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
@@ -75,8 +82,14 @@
     //datePicker.minimumDate = [NSDate dateWithTimeIntervalSince1970:0];
     [datePicker addTarget:self action:@selector(onDatePickerClick:) forControlEvents:UIControlEventValueChanged];
     
-    [self.view addSubview:datePicker];
-    datePicker.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(view, 0).bottomSpaceToView(self.view, 100*autoSizeScaleY);
+    [_views addSubview:datePicker];
+    datePicker.sd_layout.leftSpaceToView(_views, 200*autoSizeScaleX).topSpaceToView(view, 0).bottomSpaceToView(_views, 100*autoSizeScaleY).widthIs(500*autoSizeScaleX);
+    
+    
+    UIView *bjView=[[UIView alloc]init];
+    bjView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    [_views addSubview:bjView];
+    bjView.sd_layout.rightSpaceToView(_views, 0).topEqualToView(datePicker).bottomEqualToView(datePicker).widthIs(250*autoSizeScaleX);
     
     
     // Do any additional setup after loading the view.
@@ -92,7 +105,8 @@
     NSArray *timeArray=[currentTime componentsSeparatedByString:@" "];
     NSString *time=[NSString stringWithFormat:@"%@",timeArray[0]];
     NSLog(@"当前选择时间%@",time);
-    times.text=Localized(time);
+    
+    times.text=[self SegmentationOfTime:time];
 
 }
 -(NSString *)GetTomorrowDay:(NSDate *)aDate {
@@ -108,12 +122,25 @@
 
 //取消
 -(void)onCancelClick{
-    [_delegate ToChooseTime:NO String:nil];
+   [self dismissViewControllerAnimated:YES completion:^{
+       
+   }];
 
 }
 //确定
 -(void)onYesGoClick{
- [_delegate ToChooseTime:YES String:times.text];
+    [self dismissViewControllerAnimated:YES completion:^{
+         [_delegate ToChooseTime:YES String:times.text];
+    }];
+
+}
+//将日期分割开
+-(NSString *)SegmentationOfTime:(NSString *)time{
+    NSString *string;
+    NSArray *strArray=[time componentsSeparatedByString:@"-"];
+    string=[NSString stringWithFormat:@"%@-%@",strArray[0],strArray[1]];
+
+    return string;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

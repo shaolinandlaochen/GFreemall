@@ -468,6 +468,13 @@
 		38EE5F521E97825100A7DE52 /* TimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F511E97825100A7DE52 /* TimeViewController.m */; };
 		38EE5F551E978C5E00A7DE52 /* PaymentStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EE5F541E978C5E00A7DE52 /* PaymentStatusViewController.m */; };
 		9D0047481EAEFDE7006AED06 /* WalletRequestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0047471EAEFDE7006AED06 /* WalletRequestClass.m */; };
+		9D00474B1EAF0095006AED06 /* WalletBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D00474A1EAF0095006AED06 /* WalletBaseClass.m */; };
+		9D0047521EAF26A7006AED06 /* Top_UpBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D00474D1EAF26A7006AED06 /* Top_UpBaseClass.m */; };
+		9D0047531EAF26A7006AED06 /* Top_UpPagingList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D00474F1EAF26A7006AED06 /* Top_UpPagingList.m */; };
+		9D0047541EAF26A7006AED06 /* Top_UpResultList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0047511EAF26A7006AED06 /* Top_UpResultList.m */; };
+		9D00475B1EAF2C66006AED06 /* WalletDetailsBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0047561EAF2C66006AED06 /* WalletDetailsBaseClass.m */; };
+		9D00475C1EAF2C66006AED06 /* WalletDetailsPagingList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0047581EAF2C66006AED06 /* WalletDetailsPagingList.m */; };
+		9D00475D1EAF2C66006AED06 /* WalletDetailsResultList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D00475A1EAF2C66006AED06 /* WalletDetailsResultList.m */; };
 		9D170A221EA451B800A373DD /* CollectionBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A1D1EA451B800A373DD /* CollectionBaseClass.m */; };
 		9D170A231EA451B800A373DD /* CollectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A1F1EA451B800A373DD /* CollectionData.m */; };
 		9D170A241EA451B800A373DD /* CollectionResultList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A211EA451B800A373DD /* CollectionResultList.m */; };
@@ -1207,6 +1214,20 @@
 		3CAC99031124F58E22E45701 /* Pods-GFreemall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFreemall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GFreemall/Pods-GFreemall.debug.xcconfig"; sourceTree = "<group>"; };
 		9D0047461EAEFDE7006AED06 /* WalletRequestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletRequestClass.h; sourceTree = "<group>"; };
 		9D0047471EAEFDE7006AED06 /* WalletRequestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletRequestClass.m; sourceTree = "<group>"; };
+		9D0047491EAF0095006AED06 /* WalletBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletBaseClass.h; sourceTree = "<group>"; };
+		9D00474A1EAF0095006AED06 /* WalletBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletBaseClass.m; sourceTree = "<group>"; };
+		9D00474C1EAF26A7006AED06 /* Top_UpBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Top_UpBaseClass.h; sourceTree = "<group>"; };
+		9D00474D1EAF26A7006AED06 /* Top_UpBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Top_UpBaseClass.m; sourceTree = "<group>"; };
+		9D00474E1EAF26A7006AED06 /* Top_UpPagingList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Top_UpPagingList.h; sourceTree = "<group>"; };
+		9D00474F1EAF26A7006AED06 /* Top_UpPagingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Top_UpPagingList.m; sourceTree = "<group>"; };
+		9D0047501EAF26A7006AED06 /* Top_UpResultList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Top_UpResultList.h; sourceTree = "<group>"; };
+		9D0047511EAF26A7006AED06 /* Top_UpResultList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Top_UpResultList.m; sourceTree = "<group>"; };
+		9D0047551EAF2C66006AED06 /* WalletDetailsBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletDetailsBaseClass.h; sourceTree = "<group>"; };
+		9D0047561EAF2C66006AED06 /* WalletDetailsBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletDetailsBaseClass.m; sourceTree = "<group>"; };
+		9D0047571EAF2C66006AED06 /* WalletDetailsPagingList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletDetailsPagingList.h; sourceTree = "<group>"; };
+		9D0047581EAF2C66006AED06 /* WalletDetailsPagingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletDetailsPagingList.m; sourceTree = "<group>"; };
+		9D0047591EAF2C66006AED06 /* WalletDetailsResultList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletDetailsResultList.h; sourceTree = "<group>"; };
+		9D00475A1EAF2C66006AED06 /* WalletDetailsResultList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletDetailsResultList.m; sourceTree = "<group>"; };
 		9D170A1C1EA451B800A373DD /* CollectionBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionBaseClass.h; sourceTree = "<group>"; };
 		9D170A1D1EA451B800A373DD /* CollectionBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionBaseClass.m; sourceTree = "<group>"; };
 		9D170A1E1EA451B800A373DD /* CollectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionData.h; sourceTree = "<group>"; };
@@ -2417,6 +2438,20 @@
 		9D0047441EAEFD91006AED06 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				9D0047491EAF0095006AED06 /* WalletBaseClass.h */,
+				9D00474A1EAF0095006AED06 /* WalletBaseClass.m */,
+				9D00474C1EAF26A7006AED06 /* Top_UpBaseClass.h */,
+				9D00474D1EAF26A7006AED06 /* Top_UpBaseClass.m */,
+				9D00474E1EAF26A7006AED06 /* Top_UpPagingList.h */,
+				9D00474F1EAF26A7006AED06 /* Top_UpPagingList.m */,
+				9D0047501EAF26A7006AED06 /* Top_UpResultList.h */,
+				9D0047511EAF26A7006AED06 /* Top_UpResultList.m */,
+				9D0047551EAF2C66006AED06 /* WalletDetailsBaseClass.h */,
+				9D0047561EAF2C66006AED06 /* WalletDetailsBaseClass.m */,
+				9D0047571EAF2C66006AED06 /* WalletDetailsPagingList.h */,
+				9D0047581EAF2C66006AED06 /* WalletDetailsPagingList.m */,
+				9D0047591EAF2C66006AED06 /* WalletDetailsResultList.h */,
+				9D00475A1EAF2C66006AED06 /* WalletDetailsResultList.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -3486,6 +3521,7 @@
 				9D2937681EA0CDF400A86E10 /* NSObject+DeleteArrOrDeleteDicBothNull.m in Sources */,
 				382E02B01E95E26200DEF382 /* ConfirmTheGoodsViewController.m in Sources */,
 				382E02EA1E961A3100DEF382 /* MyBasicInformationViewController.m in Sources */,
+				9D0047521EAF26A7006AED06 /* Top_UpBaseClass.m in Sources */,
 				383654301E8CA2E10034C332 /* MyAllCell.m in Sources */,
 				38DB9E611E9B144400E4BECA /* ViewTheOrderDetailsButtonsView.m in Sources */,
 				383A440A1E94E410002CBDA0 /* ClearingInformationDisplayCell.m in Sources */,
@@ -3550,6 +3586,7 @@
 				383A43F11E94BA02002CBDA0 /* OrderInformationViewController.m in Sources */,
 				9D2937641EA0AA0E00A86E10 /* ForCategoricalDataSecondNav.m in Sources */,
 				38BD11001E8A42B900028255 /* HomeCell.m in Sources */,
+				9D0047541EAF26A7006AED06 /* Top_UpResultList.m in Sources */,
 				9DFF881E1EADCC39005E5E64 /* OrderDetailsCommodity.m in Sources */,
 				9D2937521EA09F3B00A86E10 /* FTIndicator.m in Sources */,
 				9DFF881D1EADCC39005E5E64 /* OrderDetailsBaseClass.m in Sources */,
@@ -3560,6 +3597,7 @@
 				9D1AD9471EA8AB1B0034527B /* ShoppingSettlementListAddress.m in Sources */,
 				38C9DCD21E8901FD00F231B0 /* ShoppingCartViewController.m in Sources */,
 				9D9454831EA5D8D900C6EF21 /* CALayer+Anim.m in Sources */,
+				9D00475B1EAF2C66006AED06 /* WalletDetailsBaseClass.m in Sources */,
 				9D4BCE471EA73EF700ED3D3E /* ChooseShippingAddressOne.m in Sources */,
 				9D170A6B1EA4AD7500A373DD /* MyInfo.m in Sources */,
 				38C1A9001E922FCB00A26DCF /* newShippingAddress.m in Sources */,
@@ -3568,6 +3606,7 @@
 				9D170A5E1EA49EC400A373DD /* HomeHot.m in Sources */,
 				382E02E31E96107000DEF382 /* EditTheCollectionViewController.m in Sources */,
 				38EE5F3D1E97598D00A7DE52 /* WalletBalanceDisplayCell.m in Sources */,
+				9D00475D1EAF2C66006AED06 /* WalletDetailsResultList.m in Sources */,
 				38EE5F461E97687800A7DE52 /* WalletDetailsViewController.m in Sources */,
 				38536CBD1E8F3D0A003E9015 /* SKUCell.m in Sources */,
 				382E03001E96451600DEF382 /* SetUpViewController.m in Sources */,
@@ -3644,8 +3683,10 @@
 				38EE5F401E975EFF00A7DE52 /* PasswordManagement.m in Sources */,
 				9D170A651EA4A9EC00A373DD /* MyRequest.m in Sources */,
 				9DB2CBA41E9F1FCE009DCE8F /* RequestClass.m in Sources */,
+				9D0047531EAF26A7006AED06 /* Top_UpPagingList.m in Sources */,
 				9D2937631EA0AA0E00A86E10 /* ForCategoricalDataListCategory.m in Sources */,
 				9DFF88021EAD8AB4005E5E64 /* BasicInformationInfo.m in Sources */,
+				9D00474B1EAF0095006AED06 /* WalletBaseClass.m in Sources */,
 				382E02A31E95CC8A00DEF382 /* ShippingInformationTableViewCell.m in Sources */,
 				9DB2CB991E9E264E009DCE8F /* MyButtonCell.m in Sources */,
 				383A43F41E94BD2C002CBDA0 /* OrderAddressCell.m in Sources */,
@@ -3666,6 +3707,7 @@
 				38536CC91E8F5624003E9015 /* HTMLContextCell.m in Sources */,
 				9DFF87FB1EAD8395005E5E64 /* TheBasicInformationRequest.m in Sources */,
 				9D4BCE4A1EA742A700ED3D3E /* ChooseShippingAddressTwo.m in Sources */,
+				9D00475C1EAF2C66006AED06 /* WalletDetailsPagingList.m in Sources */,
 				383A43E51E94803D002CBDA0 /* OrderCell.m in Sources */,
 				382E02D21E95EFC100DEF382 /* EvaluationOfTheViewViewController.m in Sources */,
 				38EE5F301E972DC800A7DE52 /* RegisteredViewController.m in Sources */,

@@ -58,4 +58,11 @@
 #import "OrderDetailsCommodity.h"
 #import "OrderDetailsMap.h"
 #import "OrderDetailsBaseClass.h"
+#import "WalletBaseClass.h"
+#import "Top_UpBaseClass.h"
+#import "Top_UpResultList.h"
+#import "Top_UpPagingList.h"
+#import "WalletDetailsBaseClass.h"
+#import "WalletDetailsResultList.h"
+#import "WalletDetailsPagingList.h"
 

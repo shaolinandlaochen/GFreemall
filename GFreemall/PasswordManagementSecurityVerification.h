@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface PasswordManagementSecurityVerification : UIViewController
-
+@property(nonatomic,copy)NSString *code;
 @end

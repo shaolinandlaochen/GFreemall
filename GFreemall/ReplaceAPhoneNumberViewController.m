@@ -19,6 +19,13 @@
     UIButton *_button;
     NSString *_nameString;//名字
     NSString *_IdentityDocumentNumber;//证件号码
+    NSString *_originalPayThePassword;//原支付密码
+    NSString *_newPassword;//原支付密码
+    NSString *_ToNewPassword;//原支付密码
+    NSString *_codeString;
+    NSString *_phoneString;
+    NSString *_codeTitle;
+    NSTimer *timer;//定时器
 }
 
 @end
@@ -27,6 +34,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden=NO;
+    if ([self.were isEqualToString:@"安全验证"]) {
+        [self GetAPhoneNumber];
+    }
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,8 +46,21 @@
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
+    _codeTitle=@"获取验证码";
     [self CreatView];
     // Do any additional setup after loading the view.
+}
+//获取手机号
+-(void)GetAPhoneNumber{
+    [SVProgressHUD showWithStatus:@"正在获取手机号码"];
+[TheBasicInformationRequest GetAPhoneNumber:^(NSDictionary *disa) {
+    NSDictionary *data=[self deleteEmpty:disa];
+    if ([[NSString stringWithFormat:@"%@",[data objectForKey:@"code"]] isEqualToString:@"30"]) {
+        _phoneString=[NSString stringWithFormat:@"%@",[data objectForKey:@"phone"]];
+    }
+    [_tableView reloadData];
+    [SVProgressHUD dismiss];
+}];
 }
 cancelClick
 -(void)CreatView{
@@ -234,6 +257,7 @@ cancelClick
             
         }
     }else if ([self.were isEqualToString:@"修改支付密码"]){
+        cell.tf.secureTextEntry=YES;
         if (indexPath.row==0) {
         cell.tf.placeholder=Localized(@"原支付密码");
         }else if (indexPath.row==1){
@@ -243,9 +267,16 @@ cancelClick
         }
     }else if ([self.were isEqualToString:@"安全验证"]){
         if (indexPath.row==0) {
-            cell.tf.text=@"137*****737";
+            if (_phoneString!=nil) {
+                cell.tf.text=_phoneString;
+            }
             [cell.btn.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
-            [cell.btn setTitle:@"获取验证码" forState:UIControlStateNormal];
+            if ([_codeTitle length]<4) {
+                [cell.btn setUserInteractionEnabled:NO];//正在倒计时  就设置不可点击
+            }else{
+             [cell.btn setUserInteractionEnabled:YES];
+            }
+            [cell.btn setTitle:_codeTitle forState:UIControlStateNormal];
             [cell.btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         }else if (indexPath.row==1){
          cell.tf.placeholder=Localized(@"请输入手机验证码");
@@ -255,12 +286,43 @@ cancelClick
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-   
     
 }
 //点击获取验证码
 -(void)onButtonClick:(MyButton *)btnn{
-
+    [SVProgressHUD showWithStatus:@"正在加载"];
+[TheBasicInformationRequest GetVerificationCodeblock:^(NSDictionary *disa) {
+    BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
+    if ([class.code isEqualToString:@"21"]) {
+        //获取验证码成功
+        [timer invalidate];
+        timer = nil;
+        timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(action) userInfo:nil repeats:YES];
+    }
+    [FTIndicator showInfoWithMessage:class.msg];
+    [SVProgressHUD dismiss];
+}];
+}
+-(void)action{
+    static int i=90;
+    if (i>0) {
+        i-=1;
+        _codeTitle=[NSString stringWithFormat:@"%ds",i];
+        [_tableView reloadData];
+    }else{
+        [timer invalidate];
+        timer = nil;
+    }
+    
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [timer invalidate];
+    timer = nil;
+}
+-(void)dealloc{
+    [timer invalidate];
+    timer = nil;
 }
 //确定或者下一步
 -(void)onGoClick:(UIButton *)btn{
@@ -272,8 +334,15 @@ cancelClick
         SetThPasswordAgainViewController *setTThePasWord=[[SetThPasswordAgainViewController alloc]init];
         [self.navigationController pushViewController:setTThePasWord animated:YES];
     }else if ([self.were isEqualToString:@"安全验证"]){
-        PasswordManagementSecurityVerification *PasswordManagement=[[PasswordManagementSecurityVerification alloc]init];
-        [self.navigationController pushViewController:PasswordManagement animated:YES];
+        if (_codeString==nil||[_codeString length]!=6) {
+             [FTIndicator showInfoWithMessage:@"请正确填写验证码"];
+        }else{
+            PasswordManagementSecurityVerification *PasswordManagement=[[PasswordManagementSecurityVerification alloc]init];
+            PasswordManagement.code=_codeString;
+            [self.navigationController pushViewController:PasswordManagement animated:YES];
+        }
+        
+
     
     }else if ([self.were isEqualToString:@"实名认证"]){
         if ([_nameString length]<1||[_IdentityDocumentNumber length]<1) {
@@ -290,17 +359,75 @@ cancelClick
         }];
         }
     
+    }else if ([self.were isEqualToString:@"修改支付密码"]){
+        if ([_originalPayThePassword length]<1||[_newPassword length]<1||[_ToNewPassword length]<1) {
+            [FTIndicator showErrorWithMessage:@"信息填写不完整"];
+        }else if(_newPassword!=_ToNewPassword){
+            [FTIndicator showErrorWithMessage:@"新密码不一致"];
+        }else{
+            [SVProgressHUD showWithStatus:@"正在加载"];
+        [TheBasicInformationRequest ModifyPaymentPassword:_originalPayThePassword third_newpwd:_newPassword block:^(NSDictionary *disa) {
+            BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
+            if ([class.code isEqualToString:@"18"]) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            [FTIndicator showErrorWithMessage:class.msg];
+            [SVProgressHUD dismiss];
+        }];
+        }
+    
     }
 
 }
-//实名认证
--(void)Real_nameAuthentication:(MyTextField *)TextField{
-    NSLog(@"11111111%@",TextField.text);
-    if (TextField.indexPath.row==0) {
-        _nameString=TextField.text;
-    }else if (TextField.indexPath.row==1){
-        _IdentityDocumentNumber=TextField.text;
+//获取输入框内容
+-(void)ToObtainInputBox:(MyTextField *)TextField{
+  
+    
+    
+    if ([self.were isEqualToString:@"更换手机号"]) {
+        
+     
+    }else if ([self.were isEqualToString:@"绑定手机号"]){
+       
+        
+        
+    }else if ([self.were isEqualToString:@"更换邮箱"]){
+        
+     
+    }else if ([self.were isEqualToString:@"实名认证"]){
+        if (TextField.indexPath.row==0) {
+            _nameString=TextField.text;
+        }else if (TextField.indexPath.row==1){
+            _IdentityDocumentNumber=TextField.text;
+        }
+        
+    }else if ([self.were isEqualToString:@"用户名设置"]){
+        
+        
+    }else if ([self.were isEqualToString:@"邮箱绑定"]){
+        
+        
+    }else if ([self.were isEqualToString:@"交易密码设置"]){
+        
+        
+    }else if ([self.were isEqualToString:@"忘记密码"]){
+        
+      
+    }else if ([self.were isEqualToString:@"修改支付密码"]){
+        if (TextField.indexPath.row==0) {
+            _originalPayThePassword=TextField.text;
+        }else if (TextField.indexPath.row==1){
+            _newPassword=TextField.text;
+        }else if (TextField.indexPath.row==2){
+            _ToNewPassword=TextField.text;
+        }
+        
+        
+    }else if ([self.were isEqualToString:@"安全验证"]){//忘记支付密码
+        _codeString=TextField.text;
+     
     }
+    
 
 }
 - (void)didReceiveMemoryWarning {

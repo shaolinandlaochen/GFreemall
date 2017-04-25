@@ -11,8 +11,8 @@
 
 @required//限定实现这个协议,就必须实现这个协议方法
 //实名认证
--(void)Real_nameAuthentication:(MyTextField *)TextField;
-
+-(void)ToObtainInputBox:(MyTextField *)TextField;
+//
 
 @end
 @interface BaseInputBoxCell : UITableViewCell<UITextFieldDelegate>

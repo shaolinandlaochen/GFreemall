@@ -17,4 +17,6 @@
 @end
 @interface PaymentStatusViewController : UIViewController
 @property(nonatomic,assign)id delegate;
+@property(nonatomic,strong)NSArray *typeArray;
+@property(nonatomic,strong)NSArray *nameArray;
 @end

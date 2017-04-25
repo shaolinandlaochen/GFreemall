@@ -8,11 +8,15 @@
 
 #import "PasswordManagementSecurityVerification.h"
 #import "BaseInputBoxCell.h"
-@interface PasswordManagementSecurityVerification ()<UITableViewDataSource,UITableViewDelegate>
+#import "WalletRequestClass.h"
+#import "PasswordManagement.h"
+@interface PasswordManagementSecurityVerification ()<UITableViewDataSource,UITableViewDelegate,BaseInputBoxDelegate>
 
 {
     UITableView *_tableView;
     UIButton *_button;
+    NSString *_psw;
+     NSString *_Topsw;
 }
 
 @end
@@ -84,10 +88,13 @@ cancelClick
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BaseInputBoxCell *cell=[BaseInputBoxCell new];
+    cell.delegate=self;
     [cell.btn.layer setBorderColor:[UIColor clearColor].CGColor];
     cell.btn.indexPath=indexPath;
     cell.tf.indexPath=indexPath;
+    cell.tf.secureTextEntry=YES;
     if (indexPath.row==0) {
+        
         cell.tf.placeholder=Localized(@"支付密码");
         
     }else if (indexPath.row==1){
@@ -104,10 +111,26 @@ cancelClick
 
 //确定或者下一步
 -(void)onGoClick:(UIButton *)btn{
-    
+    if ([_psw length]<1||_psw==nil||[_Topsw length]<1||_Topsw==nil) {
+        [FTIndicator showErrorWithMessage:@"请填写完整信息"];
+    }else{
+        [SVProgressHUD showWithStatus:@"正在加载"];
+    [WalletRequestClass SetUpToPayThePassword:_psw validateCode:self.code block:^(NSDictionary *dic) {
+        WalletBaseClass *class=[[WalletBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
+        [FTIndicator showInfoWithMessage:class.msg];
+        [SVProgressHUD dismiss];
+        ReturnToSpecifyTheController(PasswordManagement)
+    }];
+    }
     
 }
-
+-(void)ToObtainInputBox:(MyTextField *)TextField{
+    if (TextField.indexPath.row==0) {
+        _psw=TextField.text;
+    }else if (TextField.indexPath.row==1){
+        _Topsw=TextField.text;
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

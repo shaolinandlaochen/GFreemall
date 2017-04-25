@@ -13,6 +13,7 @@
 #import "TimeViewController.h"
 #import "PaymentStatusViewController.h"
 #import "TransferRecordCell.h"//转出记录
+#import "WalletRequestClass.h"
 @interface WalletDetailsViewController ()<UITableViewDataSource,UITableViewDelegate,ToChooseTimeIsDelegate,PaymentStatusDelegate>
 
 {
@@ -27,11 +28,16 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden=NO;
+    TheDrop_downRefresh(_tableView, @selector(ToGetTheData))
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     autoSize
+    
+    
+    
+    
     self.title=Localized(self.were);
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
@@ -39,7 +45,36 @@
     leftCancel
     [self CreatView];
     
+    
     // Do any additional setup after loading the view.
+}
+
+//获取数据
+-(void)ToGetTheData{
+[WalletRequestClass PrepaidPhoneRecordsDicpage:@"1" pageSize:@"1000" start:self.timeBegin end:self.timeEnd type:self.type url:self.urlString block:^(NSDictionary *dic) {
+    if ([self.were isEqualToString:@"充值记录"]) {
+        Top_UpBaseClass *class=[[Top_UpBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
+        if ([class.code isEqualToString:@"17"]) {
+            self.dataDic=[self deleteEmpty:dic];
+            [_tableView reloadData];
+        }else{
+            [FTIndicator showErrorWithMessage:class.msg];
+        }
+    }else if ([self.were isEqualToString:@"钱包明细"]){
+        WalletDetailsBaseClass *class=[[WalletDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
+        if ([class.code isEqualToString:@"17"]) {
+            self.dataDic=[self deleteEmpty:dic];
+            [_tableView reloadData];
+        }else{
+            [FTIndicator showErrorWithMessage:class.msg];
+        }
+    }
+    
+    [SVProgressHUD dismiss];
+    [_tableView.mj_header endRefreshing];
+}];
+    
+    
 }
 cancelClick
 -(void)CreatView{
@@ -56,7 +91,6 @@ cancelClick
     [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:30*autoSizeScaleX],NSFontAttributeName, nil] forState:UIControlStateNormal];
     
     
-    [self CreatTimeView];
     [self PaymentStatus];
     
 }
@@ -77,21 +111,7 @@ autoSize
     
 
 }
-//时间筛选
--(void)CreatTimeView{
-autoSize
-    _timeView=[[UIView alloc]init];
-    _timeView.frame=CGRectMake(0, 2000, self.view.frame.size.width, self.view.frame.size.height);
-    _timeView.backgroundColor=[[UIColor blackColor]colorWithAlphaComponent:0.3];
-    [self.view addSubview:_timeView];
-    TimeViewController *time=[[TimeViewController alloc]init];
-    time.delegate=self;
-    [_timeView addSubview:time.view];
-    time.view.sd_layout.leftSpaceToView(_timeView, 0).rightSpaceToView(_timeView, 0).bottomSpaceToView(_timeView, 0).heightIs(_timeView.frame.size.height/2);
-    [self addChildViewController:time];
-    
 
-}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     autoSize
     if ([self.were isEqualToString:@"钱包明细"]) {
@@ -112,7 +132,10 @@ autoSize
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     MonthView *view=[[MonthView alloc]init];
-    view.MonthTitle.text=Localized(@"本月");
+    if (self.inStr !=nil) {
+    view.MonthTitle.text=Localized(self.inStr);
+    }
+   
     [view.btn addTarget:self action:@selector(onTimeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     return view;
 }
@@ -125,28 +148,45 @@ autoSize
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return 14;
+    if ([self.were isEqualToString:@"充值记录"]) {
+        Top_UpBaseClass *class=[[Top_UpBaseClass alloc]initWithDictionary:self.dataDic];
+        return class.pagingList.resultList.count;
+    }else if ([self.were isEqualToString:@"钱包明细"]){
+        WalletDetailsBaseClass *class=[[WalletDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+        return class.pagingList.resultList.count;
+    }else if ([self.were isEqualToString:@"转出记录"]){
+        
+    }
+    return 0;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     if ([self.were isEqualToString:@"钱包明细"]) {
-        
+        WalletDetailsBaseClass *class=[[WalletDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+        WalletDetailsResultList *list=class.pagingList.resultList[indexPath.row];
         PrepaidPhoneRecordsTableViewCell *cell=[PrepaidPhoneRecordsTableViewCell new];
-        cell.time.text=Localized(@"2020-02-01  12:21:12");
-        cell.type.text=Localized(@"分红");
-        cell.money.text=Localized(@"+123456元");
-        cell.balance.text=Localized(@"1992元");
-        cell.context.text=Localized(@"我是备注东方闪电分手方式发送到发送到");
+        cell.time.text=list.cwalletTime;
+        cell.type.text=list.cwalletType;
+        cell.money.text=[NSString stringWithFormat:@"¥%.2f",list.cwalletAmount];
+        cell.balance.text=[NSString stringWithFormat:@"¥%.2f",list.cwalletRemain];
+        cell.context.text=list.remark;
         return cell;
         
     }else if ([self.were isEqualToString:@"充值记录"]){
+        Top_UpBaseClass *class=[[Top_UpBaseClass alloc]initWithDictionary:self.dataDic];
+        Top_UpResultList *list=class.pagingList.resultList[indexPath.row];
         walletDetailsCell *cell=[walletDetailsCell new];
         cell.userInteractionEnabled = NO;
-        cell.money.text=@"¥99999";
-        cell.state.text=Localized(@"待支付");
-        cell.time.text=Localized(@"2017-12-12 12:00:12");
-        cell.orderNumber.text=Localized(@"65465464646");
+        cell.money.text=[NSString stringWithFormat:@"¥%.2f",list.rechargeAmount];
+        if (list.rechargeState==0) {
+             cell.state.text=Localized(@"待支付");
+        }else if (list.rechargeState==1){
+             cell.state.text=Localized(@"成功");
+        }else if (list.rechargeState==-1){
+             cell.state.text=Localized(@"失败");
+        }
+        cell.time.text=[NSString stringWithFormat:@"%@",list.rechargeTime];
+        cell.orderNumber.text=[NSString stringWithFormat:@"%@",list.rechargeSerial];
         return cell;
     
     }else if ([self.were isEqualToString:@"转出记录"]){
@@ -176,33 +216,51 @@ autoSize
 }
 //区头选择时间
 -(void)onTimeBtnClick:(MyButton *)btn{
-    [UIView animateWithDuration:0.5 animations:^{
-        _timeView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    TimeViewController *time=[[TimeViewController alloc]init];
+    time.delegate=self;
+    time.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:time animated:YES completion:^{
+        time.view.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:.5];
     }];
+    
+
 }
 //点击筛选执行该方法
 -(void)onrightItemButtonClick{
-    [UIView animateWithDuration:0.5 animations:^{
-        _PaymentStatusView.frame=self.view.frame;
+    PaymentStatusViewController *pay=[[PaymentStatusViewController alloc]init];
+    pay.delegate=self;
+    if ([self.were isEqualToString:@"充值记录"]) {
+        pay.typeArray=@[@"0",@"1",@"-1"];
+        pay.nameArray=@[@"待支付",@"成功",@"失败"];
+    }else if ([self.were isEqualToString:@"钱包明细"]){
+       pay.typeArray=@[@"Repeat",@"Buy",@"Recharge"];
+        pay.nameArray=@[@"重消预扣",@"购买",@"充值"];
+    }
+    pay.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:pay animated:YES completion:^{
+        pay.view.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:.5];
     }];
+    
+
 
 }
 //选择时间完毕
 -(void)ToChooseTime:(BOOL)WHY String:(NSString *)time{
-    [UIView animateWithDuration:0.5 animations:^{
-        _timeView.frame=CGRectMake(0, 2000, self.view.frame.size.width, self.view.frame.size.height);
-    }];
+    self.timeBegin=[NSString stringWithFormat:@"%@-01",time];
+     self.timeEnd=[NSString stringWithFormat:@"%@-31",time];
+    self.inStr=time;
+    [SVProgressHUD showWithStatus:@"正在加载"];
+    [self ToGetTheData];
     
-    if (WHY==NO) {
-        
-    }
-    NSLog(@"%@",time);
 }
 //帅选支付状态
 -(void)PaymentStatus:(BOOL)why String:(NSString *)time{
-    [UIView animateWithDuration:0.5 animations:^{
-        _PaymentStatusView.frame=CGRectMake(0, 2000, self.view.frame.size.width, self.view.frame.size.height);
-    }];
+
+    NSLog(@"tye--%@",time);
+    self.type=time;
+    [SVProgressHUD showWithStatus:@"正在加载"];
+    [self ToGetTheData];
 
 }
 - (void)didReceiveMemoryWarning {
