@@ -25,6 +25,7 @@
 @property(nonatomic,strong)UILabel *redTwo;//待收货小红点
 @property(nonatomic,strong)UILabel *redThree;//待评价小红点
 @property(nonatomic,strong)UILabel *redFour;//已完成小红点
+@property(nonatomic,assign)NSInteger levelNumber;
 
 
 

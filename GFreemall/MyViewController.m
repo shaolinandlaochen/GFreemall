@@ -51,7 +51,14 @@
     
          dispatch_async(queue, ^{
          [MyRequest MyInformationAndOrderQuantityblock:^(NSDictionary *dics) {
-             
+             MyInformationDataBaseClass *class=[[MyInformationDataBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+             self.dataDic=[self deleteEmpty:dics];
+             if ([class.code isEqualToString:@"19"]) {
+                 
+                 [_tableView reloadData];
+             }else{
+                 [FTIndicator showErrorWithMessage:class.msg];
+             }
          }];
         
         });
@@ -91,25 +98,23 @@ autoSize
     if (section==0) {
         MyInformationView *view=[[MyInformationView alloc]init];
         
-        MyBaseClass *class=[[MyBaseClass alloc]initWithDictionary:self.dataDic];
+        MyInformationDataBaseClass *class=[[MyInformationDataBaseClass alloc]initWithDictionary:self.dataDic];
         
         
         [view.iconBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490852754875&di=b9a1594e2fbf3199a448a7e85f00afa2&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fmobile%2F1%2F5260a24a48d1c.jpg"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
-        view.name.text=class.info.baseUsername;
+        view.name.text=class.username;
+        view.levelNumber=class.baseGrade;
         [view.iconBtn addTarget:self action:@selector(onTheLoginClick) forControlEvents:UIControlEventTouchUpInside];
-        view.level.backgroundColor=[TheParentClass colorWithHexString:@"fffbd4"];
-        [view.levelIcon setBackgroundImage:[UIImage imageNamed:@"member_diamond"] forState:UIControlStateNormal];
-        [view.levelName setTitle:@"黄金会员" forState:UIControlStateNormal];
         [view.orderName addTarget:self action:@selector(onOrderClick) forControlEvents:UIControlEventTouchUpInside];
         [view.GoOrderIcon addTarget:self action:@selector(onOrderClick) forControlEvents:UIControlEventTouchUpInside];
         [view.ForThePaymentBtn addTarget:self action:@selector(myOrderAll:) forControlEvents:UIControlEventTouchUpInside];
         [view.ForTheGoods addTarget:self action:@selector(myOrderAll:) forControlEvents:UIControlEventTouchUpInside];
         [view.ToEvaluate addTarget:self action:@selector(myOrderAll:) forControlEvents:UIControlEventTouchUpInside];
         [view.HasBeenCompleted addTarget:self action:@selector(myOrderAll:) forControlEvents:UIControlEventTouchUpInside];
-        view.redOne.text=@"9";
-        view.redTwo.text=@"9";
-        view.redThree.text=@"9";
-        view.redFour.text=@"9";
+        view.redOne.text=[NSString stringWithFormat:@"%.0f",class.payment];
+        view.redTwo.text=[NSString stringWithFormat:@"%.0f",class.send];
+        view.redThree.text=[NSString stringWithFormat:@"%.0f",class.comment];
+        view.redFour.backgroundColor=[UIColor clearColor];
         
         return view;
     }

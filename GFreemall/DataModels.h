@@ -65,4 +65,5 @@
 #import "WalletDetailsBaseClass.h"
 #import "WalletDetailsResultList.h"
 #import "WalletDetailsPagingList.h"
+#import "MyInformationDataBaseClass.h"
 

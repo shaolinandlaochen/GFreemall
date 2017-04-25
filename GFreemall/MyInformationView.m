@@ -170,4 +170,46 @@
     }
     return self;
 }
+-(void)setLevelNumber:(NSInteger)levelNumber{
+
+    
+
+    
+    switch (levelNumber) {
+        case 0://注册
+        {
+        
+        }
+            break;
+        case 1://铜牌
+        {
+            
+        }
+            break;
+        case 2://银牌
+        {
+            
+        }
+            break;
+        case 3://金牌
+        {
+            _level.backgroundColor=[TheParentClass colorWithHexString:@"fffbd4"];
+            [_levelIcon setBackgroundImage:[UIImage imageNamed:@"member_diamond"] forState:UIControlStateNormal];
+            [_levelName setTitle:@"黄金会员" forState:UIControlStateNormal];
+            
+        }
+            break;
+        case 4://钻石
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+
+
+
+}
 @end

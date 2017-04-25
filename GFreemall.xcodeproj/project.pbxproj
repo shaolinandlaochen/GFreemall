@@ -475,6 +475,7 @@
 		9D00475B1EAF2C66006AED06 /* WalletDetailsBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0047561EAF2C66006AED06 /* WalletDetailsBaseClass.m */; };
 		9D00475C1EAF2C66006AED06 /* WalletDetailsPagingList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0047581EAF2C66006AED06 /* WalletDetailsPagingList.m */; };
 		9D00475D1EAF2C66006AED06 /* WalletDetailsResultList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D00475A1EAF2C66006AED06 /* WalletDetailsResultList.m */; };
+		9D0047601EAF5091006AED06 /* MyInformationDataBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D00475F1EAF5091006AED06 /* MyInformationDataBaseClass.m */; };
 		9D170A221EA451B800A373DD /* CollectionBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A1D1EA451B800A373DD /* CollectionBaseClass.m */; };
 		9D170A231EA451B800A373DD /* CollectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A1F1EA451B800A373DD /* CollectionData.m */; };
 		9D170A241EA451B800A373DD /* CollectionResultList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A211EA451B800A373DD /* CollectionResultList.m */; };
@@ -1228,6 +1229,8 @@
 		9D0047581EAF2C66006AED06 /* WalletDetailsPagingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletDetailsPagingList.m; sourceTree = "<group>"; };
 		9D0047591EAF2C66006AED06 /* WalletDetailsResultList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletDetailsResultList.h; sourceTree = "<group>"; };
 		9D00475A1EAF2C66006AED06 /* WalletDetailsResultList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletDetailsResultList.m; sourceTree = "<group>"; };
+		9D00475E1EAF5091006AED06 /* MyInformationDataBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInformationDataBaseClass.h; sourceTree = "<group>"; };
+		9D00475F1EAF5091006AED06 /* MyInformationDataBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInformationDataBaseClass.m; sourceTree = "<group>"; };
 		9D170A1C1EA451B800A373DD /* CollectionBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionBaseClass.h; sourceTree = "<group>"; };
 		9D170A1D1EA451B800A373DD /* CollectionBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionBaseClass.m; sourceTree = "<group>"; };
 		9D170A1E1EA451B800A373DD /* CollectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionData.h; sourceTree = "<group>"; };
@@ -2563,6 +2566,8 @@
 				9D170A671EA4AD7500A373DD /* MyBaseClass.m */,
 				9D170A681EA4AD7500A373DD /* MyInfo.h */,
 				9D170A691EA4AD7500A373DD /* MyInfo.m */,
+				9D00475E1EAF5091006AED06 /* MyInformationDataBaseClass.h */,
+				9D00475F1EAF5091006AED06 /* MyInformationDataBaseClass.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -3647,6 +3652,7 @@
 				382E02CC1E95E89900DEF382 /* StayEvaluationListCell.m in Sources */,
 				383655101E8CA5190034C332 /* BrandCell.m in Sources */,
 				3818ADBF1E8BB23200CA2FB6 /* SearchListingsCollectionViewCell.m in Sources */,
+				9D0047601EAF5091006AED06 /* MyInformationDataBaseClass.m in Sources */,
 				9D170A221EA451B800A373DD /* CollectionBaseClass.m in Sources */,
 				9DB2CB961E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.m in Sources */,
 				382E02A61E95D1ED00DEF382 /* OrderAmountDetailCell.m in Sources */,
