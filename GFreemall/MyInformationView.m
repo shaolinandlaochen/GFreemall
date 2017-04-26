@@ -31,8 +31,9 @@
         _iconBtn=[[MyButton alloc]init];
         _iconBtn.layer.cornerRadius = 65*autoSizeScaleY;
         _iconBtn.layer.masksToBounds = 65*autoSizeScaleY;
+        [_iconBtn setBackgroundImage:[UIImage imageNamed:@"pic_portrait"] forState:UIControlStateNormal];
         [self addSubview:_iconBtn];
-        _iconBtn.sd_layout.leftSpaceToView(self, 309*autoSizeScaleX).topSpaceToView(self, 82*autoSizeScaleY).widthIs(131*autoSizeScaleX).heightIs(131*autoSizeScaleY);
+        _iconBtn.sd_layout.leftSpaceToView(self, 309*autoSizeScaleX).topSpaceToView(self, 82*autoSizeScaleY).widthIs(131*autoSizeScaleX).heightIs(112*autoSizeScaleY);
         //名字
         _name=[[UILabel alloc]init];
         _name.textColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
@@ -173,22 +174,28 @@
 -(void)setLevelNumber:(NSInteger)levelNumber{
 
     
-
+    NSLog(@"aaaaaaaaaaa");
     
     switch (levelNumber) {
         case 0://注册
         {
-        
+            _level.backgroundColor=[TheParentClass colorWithHexString:@"fffbd4"];
+            [_levelIcon setBackgroundImage:[UIImage imageNamed:@"member_register"] forState:UIControlStateNormal];
+            [_levelName setTitle:@"注册会员" forState:UIControlStateNormal];
         }
             break;
         case 1://铜牌
         {
-            
+            _level.backgroundColor=[TheParentClass colorWithHexString:@"fffbd4"];
+            [_levelIcon setBackgroundImage:[UIImage imageNamed:@"member_copper"] forState:UIControlStateNormal];
+            [_levelName setTitle:@"铜牌会员" forState:UIControlStateNormal];
         }
             break;
         case 2://银牌
         {
-            
+            _level.backgroundColor=[TheParentClass colorWithHexString:@"fffbd4"];
+            [_levelIcon setBackgroundImage:[UIImage imageNamed:@"member_silver"] forState:UIControlStateNormal];
+            [_levelName setTitle:@"银牌会员" forState:UIControlStateNormal];
         }
             break;
         case 3://金牌
@@ -201,7 +208,9 @@
             break;
         case 4://钻石
         {
-            
+            _level.backgroundColor=[TheParentClass colorWithHexString:@"fffbd4"];
+            [_levelIcon setBackgroundImage:[UIImage imageNamed:@"member_diamond"] forState:UIControlStateNormal];
+            [_levelName setTitle:@"钻石会员" forState:UIControlStateNormal];
         }
             break;
             

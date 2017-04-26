@@ -12,7 +12,8 @@
 #import "SetThPasswordAgainViewController.h"
 #import "PasswordManagementSecurityVerification.h"
 #import "TheBasicInformationRequest.h"
-@interface ReplaceAPhoneNumberViewController ()<UITableViewDataSource,UITableViewDelegate,BaseInputBoxDelegate>
+#import "CountryCodeViewController.h"
+@interface ReplaceAPhoneNumberViewController ()<UITableViewDataSource,UITableViewDelegate,BaseInputBoxDelegate,CountryCodeDelegate>
 
 {
     UITableView *_tableView;
@@ -27,6 +28,9 @@
     NSString *_codeTitle;
     NSTimer *timer;//定时器
     NSInteger seconds;
+    NSArray *_CountriesArray;//装有国家名称
+    NSArray *_CountriesNumberArray;//装有国家编码
+    NSInteger _ChooseTheCountr;
 }
 
 @end
@@ -47,6 +51,10 @@
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
+    _ChooseTheCountr=0;//默认中国
+    //国家名称
+    _CountriesArray=@[@"中国",@"中国香港",@"中国澳门",@"中国台湾",@"America",@"Singapore",@"Vietnam",@"Korea",@"Malaysia",@"Thailand",@"Indonesia",@"Philippines"];
+    _CountriesNumberArray=@[@"86",@"852",@"853",@"886",@"1",@"65",@"84",@"82",@"60",@"66",@"62",@"63"];
     _codeTitle=@"获取验证码";
     [self CreatView];
     // Do any additional setup after loading the view.
@@ -247,9 +255,13 @@ cancelClick
     
     }else if ([self.were isEqualToString:@"忘记密码"]){
         if (indexPath.row==0) {
+            self.delegate=cell;
+            [cell.CHOOSE addTarget:self action:@selector(onChooseTheCountryCodeClick) forControlEvents:UIControlEventTouchUpInside];
+            
+            cell.stringBtnTitle=_CountriesArray[_ChooseTheCountr];
             cell.tf.placeholder=Localized(@"请输入手机号");
             [cell.btn.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
-            [cell.btn setTitle:@"获取验证码" forState:UIControlStateNormal];
+            [cell.btn setTitle:_codeTitle forState:UIControlStateNormal];
             [cell.btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             
         }else if (indexPath.row==1){
@@ -267,16 +279,13 @@ cancelClick
         cell.tf.placeholder=Localized(@"确认支付密码");
         }
     }else if ([self.were isEqualToString:@"安全验证"]){
+      
         if (indexPath.row==0) {
+              self.delegate=cell;
             if (_phoneString!=nil) {
                 cell.tf.text=_phoneString;
             }
             [cell.btn.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
-            if ([_codeTitle length]<4) {
-                [cell.btn setUserInteractionEnabled:NO];//正在倒计时  就设置不可点击
-            }else{
-             [cell.btn setUserInteractionEnabled:YES];
-            }
             [cell.btn setTitle:_codeTitle forState:UIControlStateNormal];
             [cell.btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         }else if (indexPath.row==1){
@@ -291,28 +300,66 @@ cancelClick
 }
 //点击获取验证码
 -(void)onButtonClick:(MyButton *)btnn{
-    [SVProgressHUD showWithStatus:@"正在加载"];
-[TheBasicInformationRequest GetVerificationCodeblock:^(NSDictionary *disa) {
-    BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
-    if ([class.code isEqualToString:@"21"]) {
-        seconds=[[NSString stringWithFormat:@"%@",[[self deleteEmpty:disa]objectForKey:@"time"]]integerValue];
-        //获取验证码成功
-        [timer invalidate];
-        timer = nil;
-        timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(action) userInfo:nil repeats:YES];
+    if ([self.were isEqualToString:@"安全验证"]) {
+        [SVProgressHUD showWithStatus:@"正在加载"];
+        [TheBasicInformationRequest GetVerificationCodeblock:^(NSDictionary *disa) {
+            BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
+            if ([class.code isEqualToString:@"21"]) {
+                seconds=[[NSString stringWithFormat:@"%@",[[self deleteEmpty:disa]objectForKey:@"time"]]integerValue];
+                //获取验证码成功
+                [timer invalidate];
+                timer = nil;
+                timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(action) userInfo:nil repeats:YES];
+            }
+            [FTIndicator showInfoWithMessage:class.msg];
+            [SVProgressHUD dismiss];
+        }];
+    }else if([self.were isEqualToString:@"忘记密码"]){
+        if ([_phoneString length]<1) {
+            [FTIndicator showInfoWithMessage:@"请输入手机号码"];
+        }else{
+            
+            NSString *string;
+            string=_CountriesArray[_ChooseTheCountr];
+            if ([string isEqualToString:@"中国"]) {
+                string=@"China";
+            }else if ([string isEqualToString:@"中国香港"]){
+                string=@"Hongkong";
+            }else if ([string isEqualToString:@"中国澳门"]){
+                string=@"Macau";
+            }else if ([string isEqualToString:@"中国台湾"]){
+                string=@"Taiwan";
+            }
+            
+            [SVProgressHUD showWithStatus:@"正在加载"];
+        [TheBasicInformationRequest LoginRegistrationVerificationCodecountry:string phone:_phoneString block:^(NSDictionary *disa) {
+            BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
+            if ([class.code isEqualToString:@"21"]) {
+                seconds=[[NSString stringWithFormat:@"%@",[[self deleteEmpty:disa]objectForKey:@"time"]]integerValue];
+                //获取验证码成功
+                [timer invalidate];
+                timer = nil;
+                timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(action) userInfo:nil repeats:YES];
+            }
+            [FTIndicator showInfoWithMessage:class.msg];
+            [SVProgressHUD dismiss];
+
+        }];
+        
+        }
+    
     }
-    [FTIndicator showInfoWithMessage:class.msg];
-    [SVProgressHUD dismiss];
-}];
+
 }
 -(void)action{
    
     if (seconds>0) {
         seconds-=1;
         _codeTitle=[NSString stringWithFormat:@"%lds",seconds];
-        [_tableView reloadData];
+        [_delegate ButtonTitleString:_codeTitle];
     }else{
         _codeTitle=@"获取验证码";
+        [_delegate ButtonTitleString:_codeTitle];
         [timer invalidate];
         timer = nil;
     }
@@ -334,8 +381,17 @@ cancelClick
         MailNextViewController *mailNext=[[MailNextViewController alloc]init];
         [self.navigationController pushViewController:mailNext animated:YES];
     }else if ([self.were isEqualToString:@"忘记密码"]){
-        SetThPasswordAgainViewController *setTThePasWord=[[SetThPasswordAgainViewController alloc]init];
-        [self.navigationController pushViewController:setTThePasWord animated:YES];
+        if ([_phoneString length]<1||[_codeString length]<1) {
+            [FTIndicator showErrorWithMessage:@"请完整填写信息"];
+        }else{
+            
+            SetThPasswordAgainViewController *setTThePasWord=[[SetThPasswordAgainViewController alloc]init];
+            setTThePasWord.phone=_phoneString;
+            setTThePasWord.captcha=_codeString;
+            setTThePasWord.country=[TheParentClass country:_CountriesArray[_ChooseTheCountr]];
+            [self.navigationController pushViewController:setTThePasWord animated:YES];
+        }
+
     }else if ([self.were isEqualToString:@"安全验证"]){
         if (_codeString==nil||[_codeString length]!=6) {
              [FTIndicator showInfoWithMessage:@"请正确填写验证码"];
@@ -414,7 +470,11 @@ cancelClick
         
         
     }else if ([self.were isEqualToString:@"忘记密码"]){
-        
+       if (TextField.indexPath.row==0){
+            _phoneString=TextField.text;
+        }else if (TextField.indexPath.row==1){
+            _codeString=TextField.text;
+        }
       
     }else if ([self.were isEqualToString:@"修改支付密码"]){
         if (TextField.indexPath.row==0) {
@@ -432,6 +492,23 @@ cancelClick
     }
     
 
+}
+//选择国家区号
+-(void)onChooseTheCountryCodeClick{
+    CountryCodeViewController *CountryCode=[[CountryCodeViewController alloc]init];
+    CountryCode.delegate=self;
+    CountryCode.array=_CountriesArray;
+    CountryCode.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:CountryCode animated:YES completion:^{
+        CountryCode.view.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:.5];
+    }];
+    
+}
+-(void)codes:(NSInteger)index{
+    autoSize
+    _ChooseTheCountr=index;
+    [_tableView reloadData];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

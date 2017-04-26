@@ -8,11 +8,15 @@
 
 #import "SetThPasswordAgainViewController.h"
 #import "BaseInputBoxCell.h"
-@interface SetThPasswordAgainViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "LoginRequuestClass.h"
+#import "TheLoginViewController.h"
+@interface SetThPasswordAgainViewController ()<UITableViewDataSource,UITableViewDelegate,BaseInputBoxDelegate>
 
 {
     UITableView *_tableView;
     UIButton *_button;
+    NSString *_Psw;
+    NSString *_ToPsw;
 }
 
 @end
@@ -84,6 +88,7 @@ cancelClick
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BaseInputBoxCell *cell=[BaseInputBoxCell new];
+    cell.delegate=self;
     [cell.btn.layer setBorderColor:[UIColor clearColor].CGColor];
     cell.btn.indexPath=indexPath;
     cell.tf.indexPath=indexPath;
@@ -101,6 +106,15 @@ cancelClick
     
     
 }
+//捕捉输入框输入内容
+-(void)ToObtainInputBox:(MyTextField *)TextField{
+    if (TextField.indexPath.row==0) {
+        _Psw=TextField.text;
+    }else if (TextField.indexPath.row==1){
+        _ToPsw=TextField.text;
+    }
+
+}
 //点击获取验证码
 -(void)onButtonClick:(MyButton *)btnn{
     
@@ -108,7 +122,25 @@ cancelClick
 //确定或者下一步
 -(void)onGoClick:(UIButton *)btn{
 
-    
+    if ([_Psw length]<1||[_ToPsw length]<1) {
+        [FTIndicator showErrorWithMessage:@"请完整填写密码"];
+    }else{
+        [SVProgressHUD showWithStatus:@"正在加载"];
+    [LoginRequuestClass ChangeThePassword:_Psw confirmPassword:_ToPsw phone:self.phone captcha:self.captcha country:self.country block:^(NSDictionary *dic) {
+        LoginBaseClass *class=[[LoginBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
+        if ([class.code isEqualToString:@""]) {
+            //返回登录界面
+            ReturnToSpecifyTheController(TheLoginViewController)
+            [FTIndicator showSuccessWithMessage:class.msg];
+        }else{
+             [FTIndicator showErrorWithMessage:class.msg];
+        }
+        
+    [SVProgressHUD dismiss];
+        
+    }];
+       
+    }
 }
 
 - (void)didReceiveMemoryWarning {

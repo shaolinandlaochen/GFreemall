@@ -69,7 +69,7 @@ cancelClick
     _view.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(self.view, navheight+rectStatus.size.height).rightSpaceToView(self.view, 0).heightIs(200*autoSizeScaleY);
     
     UIImageView *img=[[UIImageView alloc]init];
-    [img sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491460531239&di=7465c82b0f0ab81da83713337695e0bf&imgtype=0&src=http%3A%2F%2Fpic2.nipic.com%2F20090427%2F47541_171444055_2.jpg"] placeholderImage:[UIImage imageNamed:@""]];
+    [img sd_setImageWithURL:[NSURL URLWithString:self.iconImage] placeholderImage:[UIImage imageNamed:@""]];
     [_view addSubview:img];
     img.sd_layout.leftSpaceToView(_view, 25*autoSizeScaleX).topSpaceToView(_view, 20*autoSizeScaleY).bottomSpaceToView(_view, 20*autoSizeScaleY).widthIs(160*autoSizeScaleX);
     UILabel *lbl=[[UILabel alloc]init];

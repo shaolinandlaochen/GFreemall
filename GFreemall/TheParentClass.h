@@ -47,6 +47,7 @@
 +(void)SeeAPicture:(NSString *)imgUrl Controller:(UIViewController *)Controller;
 //查看多张图片
 +(void)ToSeeMorePictures:(NSArray *)Array idx:(NSInteger)idx Controller:(UIViewController *)Controller;
-
+//过滤国家编号
++(NSString *)country:(NSString *)countryString;
 
 @end

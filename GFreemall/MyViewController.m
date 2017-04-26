@@ -101,7 +101,6 @@ autoSize
         MyInformationDataBaseClass *class=[[MyInformationDataBaseClass alloc]initWithDictionary:self.dataDic];
         
         
-        [view.iconBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490852754875&di=b9a1594e2fbf3199a448a7e85f00afa2&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fmobile%2F1%2F5260a24a48d1c.jpg"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
         view.name.text=class.username;
         view.levelNumber=class.baseGrade;
         [view.iconBtn addTarget:self action:@selector(onTheLoginClick) forControlEvents:UIControlEventTouchUpInside];

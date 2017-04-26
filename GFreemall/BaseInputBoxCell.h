@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ReplaceAPhoneNumberViewController.h"
 @protocol BaseInputBoxDelegate <NSObject>
 
 @required//限定实现这个协议,就必须实现这个协议方法
@@ -15,8 +16,11 @@
 //
 
 @end
-@interface BaseInputBoxCell : UITableViewCell<UITextFieldDelegate>
+@interface BaseInputBoxCell : UITableViewCell<UITextFieldDelegate,ReplaceAPhoneNumberDelegate>
 @property(nonatomic,assign)id delegate;
 @property(nonatomic,strong)MyTextField *tf;
 @property(nonatomic,strong)MyButton *btn;
+@property(nonatomic,strong)MyButton *CHOOSE;
+@property(nonatomic,strong)UIImageView *imgTopBo;
+@property(nonatomic,copy)NSString *stringBtnTitle;
 @end

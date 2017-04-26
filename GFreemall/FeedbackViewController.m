@@ -79,7 +79,9 @@
         
         [setUpRequest feedback:_tf.text block:^(NSDictionary *dicDatas) {
             LoginBaseClass *lgClass=[[LoginBaseClass alloc]initWithDictionary:dicDatas];
-            
+            if ([lgClass.code isEqualToString:@"2"]) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
             [FTIndicator showSuccessWithMessage:lgClass.msg];
             
         }];

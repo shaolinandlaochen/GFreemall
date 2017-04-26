@@ -285,6 +285,20 @@ NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whit
         
     }];
 }
+//过滤国家编号
++(NSString *)country:(NSString *)countryString{
+
+    if ([countryString isEqualToString:@"中国"]) {
+        countryString=@"China";
+    }else if ([countryString isEqualToString:@"中国香港"]){
+        countryString=@"Hongkong";
+    }else if ([countryString isEqualToString:@"中国澳门"]){
+        countryString=@"Macau";
+    }else if ([countryString isEqualToString:@"中国台湾"]){
+        countryString=@"Taiwan";
+    }
+    return countryString;
+}
 /*
 #pragma mark - Navigation
 

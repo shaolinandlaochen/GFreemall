@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SetThPasswordAgainViewController : UIViewController
-
+@property(nonatomic,copy)NSString *captcha;
+@property(nonatomic,copy)NSString *phone;
+@property(nonatomic,copy)NSString *country;
 @end

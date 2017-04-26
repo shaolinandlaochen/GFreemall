@@ -131,6 +131,7 @@
     EvaluationOfTheView.order_serial=[NSString stringWithFormat:@"%.0f",classData.map.orderSerial];
     EvaluationOfTheView.commodity_serial=[NSString stringWithFormat:@"%.0f",commodity.commoditySerial];
     EvaluationOfTheView.order_commodity_id=[NSString stringWithFormat:@"%.0f",commodity.commodityIdentifier];
+    EvaluationOfTheView.iconImage=[NSString stringWithFormat:@"%@%@%@",classData.imgSrc,commodity.commodityImagesPath,commodity.commodityCoverImage];
     [self.navigationController pushViewController:EvaluationOfTheView animated:YES];
 }
 -(void)onCanceClick{
