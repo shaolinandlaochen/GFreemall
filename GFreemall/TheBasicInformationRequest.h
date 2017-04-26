@@ -18,5 +18,5 @@
 //获取手机号
 +(void)GetAPhoneNumber:(void(^)(NSDictionary *disa))block;
 //注册-找回登录密码-验证码发送
-+(void)LoginRegistrationVerificationCodecountry:(NSString *)country phone:(NSString *)phone block:(void(^)(NSDictionary *disa))block;
++(void)LoginRegistrationVerificationCodecountry:(NSString *)country phone:(NSString *)phone type:(NSString *)type block:(void(^)(NSDictionary *disa))block;
 @end

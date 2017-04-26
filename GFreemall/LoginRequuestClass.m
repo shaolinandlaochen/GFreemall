@@ -75,4 +75,56 @@
     }];
 
 }
+//注册
++(void)Registeredbase_username:(NSString *)base_username password:(NSString *)password confirmPassword:(NSString *)confirmPassword base_recommend:(NSString *)base_recommend phone:(NSString *)phone captcha:(NSString *)captcha country:(NSString *)country block:(void(^)(NSDictionary *dic))block{
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    if ([tokenString length]>0) {
+        [dic setObject:tokenString forKey:@"token"];
+    }
+    [dic setObject:phone forKey:@"phone"];
+    [dic setObject:country forKey:@"country"];
+    [dic setObject:password forKey:@"password"];
+    [dic setObject:confirmPassword forKey:@"confirmPassword"];
+    [dic setObject:captcha forKey:@"captcha"];
+    [dic setObject:base_username forKey:@"base_username"];
+    [dic setObject:base_recommend forKey:@"base_recommend"];
+    NSDictionary *dataDic=[TheParentClass ReceiveTheOriginalData:dic];//去添加时间戳等数据然后返回签名后的数据
+    [RequestClass getUrl:@"register" Dic:dataDic block:^(NSDictionary *dic) {
+        NSLog(@"注册%@",dic);
+        block(dic);
+        
+    }];
+
+}
+//判断是否已经注册
++(void)DetermineWhetherHasBeenRegisteredcountry:(NSString *)country phone:(NSString *)phone block:(void(^)(NSDictionary *dic))block{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    if ([tokenString length]>0) {
+        [dic setObject:tokenString forKey:@"token"];
+    }
+    [dic setObject:phone forKey:@"phone"];
+    [dic setObject:country forKey:@"country"];
+    NSDictionary *dataDic=[TheParentClass ReceiveTheOriginalData:dic];//去添加时间戳等数据然后返回签名后的数据
+    [RequestClass getUrl:@"phoneisexsit" Dic:dataDic block:^(NSDictionary *dic) {
+        NSLog(@"判断是否已经注册%@",dic);
+        block(dic);
+        
+    }];
+}
+//交易密码设置
++(void)TradingPassword:(NSString *)third_pwd confirmThird_pwd:(NSString *)confirmThird_pwd block:(void(^)(NSDictionary *dic))block{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    if ([tokenString length]>0) {
+        [dic setObject:tokenString forKey:@"token"];
+    }
+    [dic setObject:third_pwd forKey:@"third_pwd"];
+    [dic setObject:confirmThird_pwd forKey:@"confirmThird_pwd"];
+    NSDictionary *dataDic=[TheParentClass ReceiveTheOriginalData:dic];//去添加时间戳等数据然后返回签名后的数据
+    [RequestClass getUrl:@"registersetpwd" Dic:dataDic block:^(NSDictionary *dic) {
+        NSLog(@"交易密码设置%@",dic);
+        block(dic);
+        
+    }];
+}
 @end

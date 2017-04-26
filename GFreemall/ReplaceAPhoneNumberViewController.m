@@ -13,6 +13,7 @@
 #import "PasswordManagementSecurityVerification.h"
 #import "TheBasicInformationRequest.h"
 #import "CountryCodeViewController.h"
+#import "LoginRequuestClass.h"
 @interface ReplaceAPhoneNumberViewController ()<UITableViewDataSource,UITableViewDelegate,BaseInputBoxDelegate,CountryCodeDelegate>
 
 {
@@ -31,6 +32,10 @@
     NSArray *_CountriesArray;//装有国家名称
     NSArray *_CountriesNumberArray;//装有国家编码
     NSInteger _ChooseTheCountr;
+    NSString *_Psw;//交易密码设置
+    NSString *_ToPsw;//交易密码设置
+    
+    
 }
 
 @end
@@ -320,19 +325,11 @@ cancelClick
         }else{
             
             NSString *string;
-            string=_CountriesArray[_ChooseTheCountr];
-            if ([string isEqualToString:@"中国"]) {
-                string=@"China";
-            }else if ([string isEqualToString:@"中国香港"]){
-                string=@"Hongkong";
-            }else if ([string isEqualToString:@"中国澳门"]){
-                string=@"Macau";
-            }else if ([string isEqualToString:@"中国台湾"]){
-                string=@"Taiwan";
-            }
+            string=[TheParentClass country:_CountriesArray[_ChooseTheCountr]];
+          
             
             [SVProgressHUD showWithStatus:@"正在加载"];
-        [TheBasicInformationRequest LoginRegistrationVerificationCodecountry:string phone:_phoneString block:^(NSDictionary *disa) {
+        [TheBasicInformationRequest LoginRegistrationVerificationCodecountry:string phone:_phoneString type:@"pwd" block:^(NSDictionary *disa) {
             BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
             if ([class.code isEqualToString:@"21"]) {
                 seconds=[[NSString stringWithFormat:@"%@",[[self deleteEmpty:disa]objectForKey:@"time"]]integerValue];
@@ -367,6 +364,7 @@ cancelClick
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [timer invalidate];
     timer = nil;
 }
@@ -435,6 +433,27 @@ cancelClick
         }];
         }
     
+    }else if ([self.were isEqualToString:@"交易密码设置"]){
+        if ([_Psw length]<1||[_ToPsw length]<1) {
+            [FTIndicator showErrorWithMessage:@"请填写交易密码"];
+        }else if (![_Psw isEqualToString:_ToPsw]){
+         [FTIndicator showErrorWithMessage:@"交易密码不一致"];
+        }else{
+            [SVProgressHUD showWithStatus:@"正在加载"];
+            [LoginRequuestClass TradingPassword:_Psw confirmThird_pwd:_ToPsw block:^(NSDictionary *dic) {
+                LoginBaseClass *class=[[LoginBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
+                if ([class.code isEqualToString:@"63"]) {
+                    [[NSNotificationCenter defaultCenter]postNotificationName:@"TheMoneyPasswordSet" object:nil];
+                    [FTIndicator showSuccessWithMessage:class.msg];
+                }else{
+                    [FTIndicator showErrorWithMessage:class.msg];
+                }
+                
+                [SVProgressHUD dismiss];
+            }];
+        }
+
+     
     }
 
 }
@@ -468,7 +487,11 @@ cancelClick
         
     }else if ([self.were isEqualToString:@"交易密码设置"]){
         
-        
+        if (TextField.indexPath.row==0){
+            _Psw=TextField.text;
+        }else if (TextField.indexPath.row==1){
+            _ToPsw=TextField.text;
+        }
     }else if ([self.were isEqualToString:@"忘记密码"]){
        if (TextField.indexPath.row==0){
             _phoneString=TextField.text;

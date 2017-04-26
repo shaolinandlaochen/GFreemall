@@ -15,7 +15,7 @@
     [dicData setObject:message forKey:@"message"];
     [dicData setObject:tokenString forKey:@"token"];
     NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
-    [RequestClass getUrl:@"feedback" Dic:data block:^(NSDictionary *dic) {
+    [RequestClass getAddressUrl:@"feedback" Dic:data block:^(NSDictionary *dic) {
         NSLog(@"意见反馈----%@",dic);
         NSLog(@"get意见反馈---msg==%@",[dic objectForKey:@"msg"]);
         block(dic);

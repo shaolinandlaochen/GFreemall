@@ -72,13 +72,14 @@
     }];
 }
 //注册-找回登录密码-验证码发送
-+(void)LoginRegistrationVerificationCodecountry:(NSString *)country phone:(NSString *)phone block:(void(^)(NSDictionary *disa))block{
++(void)LoginRegistrationVerificationCodecountry:(NSString *)country phone:(NSString *)phone type:(NSString *)type block:(void(^)(NSDictionary *disa))block{
     NSMutableDictionary *dicData=[[NSMutableDictionary alloc]init];
     if ([tokenString length]>0) {
         [dicData setObject:tokenString forKey:@"token"];
     }
     [dicData setObject:country forKey:@"country"];
     [dicData setObject:phone forKey:@"phone"];
+     [dicData setObject:type forKey:@"type"];
     NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
     [RequestClass getUrl:@"sendphonereg" Dic:data block:^(NSDictionary *dic) {
         NSLog(@"注册-找回登录密码-验证码发送----%@",dic);

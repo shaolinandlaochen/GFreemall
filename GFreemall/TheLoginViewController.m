@@ -55,6 +55,7 @@
     _CountriesArray=@[@"中国",@"中国香港",@"中国澳门",@"中国台湾",@"America",@"Singapore",@"Vietnam",@"Korea",@"Malaysia",@"Thailand",@"Indonesia",@"Philippines"];
     _CountriesNumberArray=@[@"86",@"852",@"853",@"886",@"1",@"65",@"84",@"82",@"60",@"66",@"62",@"63"];
     [self creatView];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(MoneyPassword) name:@"TheMoneyPasswordSet" object:nil];
     // Do any additional setup after loading the view.
 }
 -(void)creatView{
@@ -399,6 +400,7 @@ autoSize
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [timer invalidate];
     timer = nil;
 }
@@ -517,6 +519,13 @@ autoSize
 -(void)registered{
     RegisteredViewController *Registered=[[RegisteredViewController alloc]init];
     [self.navigationController pushViewController:Registered animated:YES];
+
+}
+//资金密码设置完毕  要返回了
+-(void)MoneyPassword{
+[self dismissViewControllerAnimated:YES completion:^{
+    
+}];
 
 }
 /*
