@@ -18,7 +18,7 @@
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         autoSize
         _lbl=[[UILabel alloc]init];
-        _lbl.textColor=[TheParentClass colorWithHexString:@"#de0024"];
+        _lbl.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _lbl.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
         _lbl.textAlignment=NSTextAlignmentCenter;
         [self.contentView addSubview:_lbl];

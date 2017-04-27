@@ -13,6 +13,7 @@
 #import "BrandCell.h"
 #import "MyNewsViewController.h"
 #import "ClassificationRequest.h"
+#import "DataAccessPageRequest.h"
 @interface ClassificationViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
 {
     UILabel *number;
@@ -200,8 +201,10 @@ autoSize
     
         if (indexPath.row==defaultIdx) {
             cell.backgroundColor=[UIColor whiteColor];
+            cell.lbl.textColor=[TheParentClass colorWithHexString:@"#de0024"];
         }else{
             cell.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+            cell.lbl.textColor=[TheParentClass colorWithHexString:@"#292929"];
         }
       
         return cell;
@@ -231,7 +234,6 @@ autoSize
     [view addSubview:BarButton];
     
     number=[[UILabel alloc]init];
-    number.text=@"99";
     number.layer.cornerRadius = 13*autoSizeScaleX;
     number.layer.masksToBounds = 13*autoSizeScaleX;
     if ([number.text length]==1) {
@@ -241,7 +243,6 @@ autoSize
     }
     number.textColor=[UIColor whiteColor];
     number.textAlignment=NSTextAlignmentCenter;
-    number.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
     number.font=[UIFont systemFontOfSize:20*autoSizeScaleY];
     [view addSubview:number];
     //右按钮
@@ -299,6 +300,33 @@ autoSize
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:YES];
      [self ToGetTheData];//获取数据
+    [self messageNumber];//查询未读消息
+    
+}
+-(void)messageNumber{
+    autoSize
+    
+    if ([tokenString length]>0) {
+        [DataAccessPageRequest GetNumbeOfUnreadMessagesBlock:^(NSDictionary *dics) {
+            MessageNumberBaseClass *class=[[MessageNumberBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            if ([class.code isEqualToString:@"51"]) {
+                if (class.data>0) {
+                    number.text=[NSString stringWithFormat:@"%.0f",class.data];
+                    number.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
+                    
+                }else{
+                    number.backgroundColor=[UIColor clearColor];
+                    number.text=@"";
+                }
+                
+                if ([number.text length]==1) {
+                    number.frame=frame(170, 10, 26, 26);
+                }else if ([number.text length]>1){
+                    number.frame=frame(170, 10, 36, 26);
+                }
+            }
+        }];
+    }
     
 }
 - (void)didReceiveMemoryWarning {

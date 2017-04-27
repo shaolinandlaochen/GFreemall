@@ -492,6 +492,7 @@
 		9D0047931EB198EB006AED06 /* HomeHot.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0047851EB198EB006AED06 /* HomeHot.m */; };
 		9D0047941EB198EB006AED06 /* HomeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0047871EB198EB006AED06 /* HomeNews.m */; };
 		9D0047951EB198EB006AED06 /* HomeRecommend.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0047891EB198EB006AED06 /* HomeRecommend.m */; };
+		9D0047981EB1D153006AED06 /* MessageNumberBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0047971EB1D153006AED06 /* MessageNumberBaseClass.m */; };
 		9D170A221EA451B800A373DD /* CollectionBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A1D1EA451B800A373DD /* CollectionBaseClass.m */; };
 		9D170A231EA451B800A373DD /* CollectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A1F1EA451B800A373DD /* CollectionData.m */; };
 		9D170A241EA451B800A373DD /* CollectionResultList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A211EA451B800A373DD /* CollectionResultList.m */; };
@@ -1267,6 +1268,8 @@
 		9D0047871EB198EB006AED06 /* HomeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNews.m; sourceTree = "<group>"; };
 		9D0047881EB198EB006AED06 /* HomeRecommend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeRecommend.h; sourceTree = "<group>"; };
 		9D0047891EB198EB006AED06 /* HomeRecommend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeRecommend.m; sourceTree = "<group>"; };
+		9D0047961EB1D153006AED06 /* MessageNumberBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageNumberBaseClass.h; sourceTree = "<group>"; };
+		9D0047971EB1D153006AED06 /* MessageNumberBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageNumberBaseClass.m; sourceTree = "<group>"; };
 		9D170A1C1EA451B800A373DD /* CollectionBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionBaseClass.h; sourceTree = "<group>"; };
 		9D170A1D1EA451B800A373DD /* CollectionBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionBaseClass.m; sourceTree = "<group>"; };
 		9D170A1E1EA451B800A373DD /* CollectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionData.h; sourceTree = "<group>"; };
@@ -2551,6 +2554,8 @@
 		9D170A411EA49BA200A373DD /* model */ = {
 			isa = PBXGroup;
 			children = (
+				9D0047961EB1D153006AED06 /* MessageNumberBaseClass.h */,
+				9D0047971EB1D153006AED06 /* MessageNumberBaseClass.m */,
 				9D0047721EB198EB006AED06 /* HomeAd1.h */,
 				9D0047731EB198EB006AED06 /* HomeAd1.m */,
 				9D0047741EB198EB006AED06 /* HomeAd2.h */,
@@ -3667,6 +3672,7 @@
 				9D4BCE3F1EA729FD00ED3D3E /* AddressBaseClass.m in Sources */,
 				38EE5F3A1E9757DA00A7DE52 /* OnlineWalletViewController.m in Sources */,
 				383A43EE1E949BEA002CBDA0 /* OrderViewS.m in Sources */,
+				9D0047981EB1D153006AED06 /* MessageNumberBaseClass.m in Sources */,
 				9DB2CBA01E9F18F7009DCE8F /* FrontPageViewLayer.m in Sources */,
 				38C9DC8E1E88BF5F00F231B0 /* AppDelegate.m in Sources */,
 				9D29375B1EA0A87500A86E10 /* ClassificationRequest.m in Sources */,

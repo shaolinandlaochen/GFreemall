@@ -425,7 +425,12 @@ cancelClick
         goods.isCollect=NO;
     
     }
-    [FTIndicator showSuccessWithMessage:class.msg];
+    if ([class.code isEqualToString:@"9"]||[class.code isEqualToString:@"8"]) {
+            [FTIndicator showSuccessWithMessage:class.msg];
+    }else{
+        [FTIndicator showErrorWithMessage:class.msg];
+    }
+
     [SVProgressHUD dismiss];
 }];
 

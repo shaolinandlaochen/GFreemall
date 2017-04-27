@@ -149,7 +149,7 @@ cancelClick
 //完成
 -(void)onrightItemButtonClick{
 
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 //选中
 -(void)onSlelctedBtnClick:(MyButton *)btn{

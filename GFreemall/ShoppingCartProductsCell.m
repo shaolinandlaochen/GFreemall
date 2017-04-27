@@ -24,7 +24,7 @@
         [self.contentView addSubview:_selectedBtn];
         _selectedBtn.sd_layout.leftSpaceToView(self.contentView, 10*autoSizeScaleX).topSpaceToView(self.contentView, 100*autoSizeScaleY).widthIs(60*autoSizeScaleX).heightIs(60*autoSizeScaleY);
         //商品图片
-        _icon=[[UIImageView alloc]init];
+        _icon=[[MyButton alloc]init];
         [_icon.layer setBorderColor:[TheParentClass colorWithHexString:@"#d7d7d7"].CGColor];
         [_icon.layer setBorderWidth:0.6];
         [_icon.layer setMasksToBounds:YES];

@@ -34,6 +34,7 @@
 
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"TheRequestFailed" object:nil];
          [SVProgressHUD dismiss];
     }];
     [task resume];
@@ -74,6 +75,7 @@
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"****get请求%@",error);
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"TheRequestFailed" object:nil];
             [SVProgressHUD dismiss];
         }];
         [task resume];
@@ -122,6 +124,7 @@
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"****get请求%@",error);
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"TheRequestFailed" object:nil];
              [SVProgressHUD dismiss];
         }];
         [task resume];

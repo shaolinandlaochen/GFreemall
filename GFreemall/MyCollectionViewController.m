@@ -40,7 +40,7 @@
     // Do any additional setup after loading the view.
 }
 -(void)AccessToDataCollectionList{
-    [SVProgressHUD showWithStatus:@"正在加载"];
+    //[SVProgressHUD showWithStatus:@"正在加载"];
     [CollectionRequest ToObtainAListCollectionblock:^(NSDictionary *dic) {
         self.dataDic =[self deleteEmpty:dic];
         CollectionBaseClass *class=[[CollectionBaseClass alloc]initWithDictionary:self.dataDic];
@@ -118,6 +118,12 @@ cancelClick
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //商品位
+    CollectionBaseClass *class=[[CollectionBaseClass alloc]initWithDictionary:self.dataDic];
+    CollectionResultList *list=class.data.resultList[indexPath.row];
+    GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+    goodsDetails.commodity_serial=[NSString stringWithFormat:@"%.0f",list.commoditySerial];
+    [self.navigationController pushViewController:goodsDetails animated:YES];
 
 }
 //编辑

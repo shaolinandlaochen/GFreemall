@@ -11,6 +11,7 @@
 #import "MyNewsViewController.h"
 #import "ShoppingCarRequest.h"
 #import "OrderInformationViewController.h"
+#import "DataAccessPageRequest.h"
 @interface ShoppingCartViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
@@ -104,6 +105,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:self.dataDic];
@@ -122,7 +124,9 @@
     [cell.addBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
     cell.deleteBtn.indexPath=indexPath;
     [cell.deleteBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,comm.commodityImagesPath,comm.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
+    [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,comm.commodityImagesPath,comm.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
+    cell.icon.indexPath=indexPath;
+    [cell.icon addTarget:self action:@selector(onGoodDetaileClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.name.text=list.commodityName;
     cell.describe.text=list.commodityAttributes;
     cell.price.text=[NSString stringWithFormat:@"%.2f",comm.commoditySellprice];
@@ -132,7 +136,14 @@
         return cell;
 
 }
-
+//点击图片查看详情
+-(void)onGoodDetaileClick:(MyButton *)btn{
+        ShoppingCarList *list=self.shoppingCarArray[btn.indexPath.row];
+        ShoppingCarComm *comm=list.comm;
+        GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+        goodsDetails.commodity_serial=[NSString stringWithFormat:@"%.0f",comm.commoditySerial];
+        [self.navigationController pushViewController:goodsDetails animated:YES];
+}
 -(void)rightBaBarbtn{
     autoSize
     self.title=Localized(@"购物车");
@@ -148,7 +159,6 @@
     [views addSubview:BarButton];
     
     number=[[UILabel alloc]init];
-    number.text=@"99";
     number.layer.cornerRadius = 13*autoSizeScaleX;
     number.layer.masksToBounds = 13*autoSizeScaleX;
     if ([number.text length]==1) {
@@ -158,7 +168,6 @@
     }
     number.textColor=[UIColor whiteColor];
     number.textAlignment=NSTextAlignmentCenter;
-    number.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
     number.font=[UIFont systemFontOfSize:20*autoSizeScaleY];
     [views addSubview:number];
     
@@ -416,6 +425,33 @@
     [TheParentClass ButtonAtTheBottomOfThesize:YES];
     self.navigationController.navigationBarHidden=NO;
     TheDrop_downRefresh(_tableView, @selector(ToGetAShoppingCartGoodsList))
+    [self messageNumber];
+}
+-(void)messageNumber{
+    autoSize
+    
+    if ([tokenString length]>0) {
+        [DataAccessPageRequest GetNumbeOfUnreadMessagesBlock:^(NSDictionary *dics) {
+            MessageNumberBaseClass *class=[[MessageNumberBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            if ([class.code isEqualToString:@"51"]) {
+                if (class.data>0) {
+                    number.text=[NSString stringWithFormat:@"%.0f",class.data];
+                    number.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
+                    
+                }else{
+                    number.backgroundColor=[UIColor clearColor];
+                    number.text=@"";
+                }
+                
+                if ([number.text length]==1) {
+                    number.frame=frame(170, 10, 26, 26);
+                }else if ([number.text length]>1){
+                    number.frame=frame(170, 10, 36, 26);
+                }
+            }
+        }];
+    }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

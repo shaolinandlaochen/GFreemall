@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ShoppingCartProductsCell : UITableViewCell
-@property(nonatomic,strong)UIImageView *icon;
+@property(nonatomic,strong)MyButton *icon;
 @property(nonatomic,strong)UILabel *name;
 @property(nonatomic,strong)UILabel *describe;
 @property(nonatomic,strong)UILabel *number;

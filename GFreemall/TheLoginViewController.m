@@ -512,9 +512,13 @@ autoSize
 
     }else if (btn.tag==101){
     //语言切换
+        
+        [self TheLanguageWwitchBox];
+        
     }
 
 }
+
 //注册
 -(void)registered{
     RegisteredViewController *Registered=[[RegisteredViewController alloc]init];
@@ -527,6 +531,57 @@ autoSize
      [[NSNotificationCenter defaultCenter] removeObserver:self];
 }];
 
+}
+
+-(void)TheLanguageWwitchBox{
+    NSString *language=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"appLanguage"]];
+    
+    UIAlertController *aler=[UIAlertController alertControllerWithTitle:Localized(@"prompt") message:Localized(@"choose") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action=[UIAlertAction actionWithTitle:Localized(@"cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        
+    }];
+    [aler addAction:action];
+    //2.
+    UIAlertAction *languageOne=[UIAlertAction actionWithTitle:@"简体中文" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        if (![language isEqualToString:@"zh-Hans"]) {//目前不是简体中文需要切换
+            //简体中文
+            [[NSUserDefaults standardUserDefaults] setObject:@"zh-Hans" forKey:@"appLanguage"];
+            //切换语言
+            [self dismissViewControllerAnimated:YES completion:^{
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"InTheLoginScreenClickSwitchLanguageNeeds" object:nil];
+            }];
+            
+        }
+    }];
+    [aler addAction:languageOne];
+    UIAlertAction *languageTwo=[UIAlertAction actionWithTitle:@"繁體中文" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (![language isEqualToString:@"zh-Hant"]) {//目前不是繁体中文需要切换
+            //繁体中文
+            [[NSUserDefaults standardUserDefaults] setObject:@"zh-Hant" forKey:@"appLanguage"];
+            //切换语言
+            [self dismissViewControllerAnimated:YES completion:^{
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"InTheLoginScreenClickSwitchLanguageNeeds" object:nil];
+            }];
+        }
+        
+    }];
+    [aler addAction:languageTwo];
+    UIAlertAction *languageThree=[UIAlertAction actionWithTitle:@"English" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (![language isEqualToString:@"en"]) {//目前不是英文需要切换
+            //英文
+            [[NSUserDefaults standardUserDefaults] setObject:@"en" forKey:@"appLanguage"];
+            //切换语言
+            [self dismissViewControllerAnimated:YES completion:^{
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"InTheLoginScreenClickSwitchLanguageNeeds" object:nil];
+            }];
+        }
+        
+    }];
+    [aler addAction:languageThree];
+    //最后一步
+    [self presentViewController:aler animated:YES completion:nil];
 }
 /*
 #pragma mark - Navigation

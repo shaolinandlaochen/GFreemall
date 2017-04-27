@@ -23,4 +23,18 @@
         
     }];
 }
+//获取未读消息数量
++(void)GetNumbeOfUnreadMessagesBlock:(void(^)(NSDictionary *dics))block{
+    NSMutableDictionary *dicData=[[NSMutableDictionary alloc]init];
+    if ([tokenString length]>0) {
+        [dicData setObject:tokenString forKey:@"token"];
+    }
+    NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
+    [RequestClass getUrl:@"nomessageread" Dic:data block:^(NSDictionary *dic) {
+        NSLog(@"获取未读消息数量----%@",dic);
+        NSLog(@"get获取未读消息数量---msg==%@",[dic objectForKey:@"msg"]);
+        block(dic);
+        
+    }];
+}
 @end

@@ -38,8 +38,10 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TheLanguageWwitchBox) name:@"TheLanguageWwitchBox" object:nil];//切换语言
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(big) name:@"big" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(small) name:@"small" object:nil];
-//监听登录通知
+   //监听登录通知
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TheLongin) name:@"MonitorTheLoginNotifications" object:nil];
+    //在登录界面点击切换语言需求
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ToWwitchBetweenLanguagesClick) name:@"InTheLoginScreenClickSwitchLanguageNeeds" object:nil];
     
   
     

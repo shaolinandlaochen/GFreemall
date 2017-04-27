@@ -34,6 +34,7 @@
     [super viewDidLoad];
     autoSize
 
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(RequestFailed) name:@"TheRequestFailed" object:nil];
     [self SetTheNavigationBar];//设置导航条
     float htight=98*autoSizeScaleY;
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.frame.size.height-htight) style:UITableViewStylePlain];
@@ -45,6 +46,10 @@
   TheDrop_downRefresh(_tableView, @selector(DataAccessPageRequestClick))
     
     // Do any additional setup after loading the view.
+}
+-(void)RequestFailed{//请求失败收到通知
+    [_tableView.mj_header endRefreshing];
+    [FTIndicator showErrorWithMessage:@"请求失败"];
 }
 -(void)DataAccessPageRequestClick{
 [DataAccessPageRequest DataAccessPageRequestBlock:^(NSDictionary *dics) {
@@ -204,17 +209,10 @@ autoSize
     [view addSubview:BarButton];
     
     number=[[UILabel alloc]init];
-    number.text=@"99";
     number.layer.cornerRadius = 13*autoSizeScaleX;
     number.layer.masksToBounds = 13*autoSizeScaleX;
-    if ([number.text length]==1) {
-        number.frame=frame(170, 10, 26, 26);
-    }else if ([number.text length]>1){
-        number.frame=frame(170, 10, 36, 26);
-    }
     number.textColor=[UIColor whiteColor];
     number.textAlignment=NSTextAlignmentCenter;
-    number.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
     number.font=[UIFont systemFontOfSize:20*autoSizeScaleY];
     [view addSubview:number];
     //右按钮
@@ -277,6 +275,33 @@ autoSize
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:YES];
+    [self messageNumber];
+}
+-(void)messageNumber{
+    autoSize
+    
+    if ([tokenString length]>0) {
+        [DataAccessPageRequest GetNumbeOfUnreadMessagesBlock:^(NSDictionary *dics) {
+            MessageNumberBaseClass *class=[[MessageNumberBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            if ([class.code isEqualToString:@"51"]) {
+                if (class.data>0) {
+                    number.text=[NSString stringWithFormat:@"%.0f",class.data];
+                    number.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
+
+                }else{
+                    number.backgroundColor=[UIColor clearColor];
+                    number.text=@"";
+                }
+                
+                if ([number.text length]==1) {
+                    number.frame=frame(170, 10, 26, 26);
+                }else if ([number.text length]>1){
+                    number.frame=frame(170, 10, 36, 26);
+                }
+            }
+        }];
+    }
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
