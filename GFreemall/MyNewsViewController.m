@@ -39,7 +39,7 @@
     // Do any additional setup after loading the view.
 }
 -(void)AccessToThMessageListClick{
-    [SVProgressHUD showWithStatus:@"正在加载"];
+    //[SVProgressHUD showWithStatus:@"正在加载"];
     [MessageRequest AccessToTheMessageListBlock:^(NSDictionary *dics) {
         self.dataDic=[self deleteEmpty:dics];
         MessageBaseClass *class=[[MessageBaseClass alloc]initWithDictionary:self.dataDic];
