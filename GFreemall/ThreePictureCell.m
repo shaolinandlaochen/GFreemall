@@ -92,7 +92,7 @@
         
         _fourBtn=[[MyButton alloc]init];
         _fourBtn.backgroundColor=[UIColor whiteColor];
-        _fourBtn.tag=3;
+        _fourBtn.tag=4;
         [self.contentView addSubview:_fourBtn];
         _fourBtn.sd_layout.leftSpaceToView(self.contentView, 0).topSpaceToView(_oneBtn, 12*autoSizeScaleY).widthIs(xxxx).heightIs(328*autoSizeScaleY);
         
@@ -130,7 +130,7 @@
         
         
         _fiveBtn=[[MyButton alloc]init];
-        _fiveBtn.tag=3;
+        _fiveBtn.tag=5;
         _fiveBtn.backgroundColor=[UIColor whiteColor];
         [self.contentView addSubview:_fiveBtn];
         _fiveBtn.sd_layout.leftSpaceToView(_fourBtn, 12*autoSizeScaleX).topEqualToView(_fourBtn).rightSpaceToView(self.contentView, 0).heightIs(328*autoSizeScaleY);
@@ -166,7 +166,7 @@
         
         
         _sixBtn=[[MyButton alloc]init];
-        _sixBtn.tag=3;
+        _sixBtn.tag=6;
         _sixBtn.backgroundColor=[UIColor whiteColor];
         [self.contentView addSubview:_sixBtn];
         _sixBtn.sd_layout.leftEqualToView(_fourBtn).topSpaceToView(_fourBtn,12*autoSizeScaleY).widthIs(xxxx).heightIs(328*autoSizeScaleX);
@@ -203,7 +203,7 @@
         
         
         _sevenBtn=[[MyButton alloc]init];
-        _sevenBtn.tag=3;
+        _sevenBtn.tag=7;
         _sevenBtn.backgroundColor=[UIColor whiteColor];
         [self.contentView addSubview:_sevenBtn];
         _sevenBtn.sd_layout.leftEqualToView(_fiveBtn).topSpaceToView(_fiveBtn,12*autoSizeScaleY).rightSpaceToView(self.contentView, 0).bottomEqualToView(_sixBtn);

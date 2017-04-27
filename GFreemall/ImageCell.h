@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol ImageButtonDelegate <NSObject>
 
+@required//限定实现这个协议,就必须实现这个协议方法
+
+-(void)ImageButton:(NSInteger)index;
+@end
 @interface ImageCell : UITableViewCell
 @property(nonatomic,strong)NSDictionary *model;
+@property(nonatomic,assign)id delegate;
 @end

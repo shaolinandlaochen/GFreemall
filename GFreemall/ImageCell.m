@@ -32,6 +32,7 @@
             float widthsss=xx-(126*autoSizeScaleX);
             MyButton *img=[[MyButton alloc]init];
             img.tag=i+100;
+            [img addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             [views addSubview:img];
             img.sd_layout.leftSpaceToView(views, widthsss/2).topSpaceToView(views, 18*autoSizeScaleY).widthIs(126*autoSizeScaleX).heightIs(126*autoSizeScaleY);
             
@@ -72,6 +73,7 @@
             float widthsss=xx-(208*autoSizeScaleX);
             MyButton *img=[[MyButton alloc]init];
             img.tag=i+103;
+            [img addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             [views addSubview:img];
             img.sd_layout.leftSpaceToView(views, widthsss/2).topSpaceToView(views, 18*autoSizeScaleY).widthIs(208*autoSizeScaleX).heightIs(208*autoSizeScaleY);
             
@@ -118,7 +120,10 @@
     }
 
 }
+-(void)onButtonClick:(MyButton *)btn{
+    [_delegate ImageButton:btn.tag-100];
 
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

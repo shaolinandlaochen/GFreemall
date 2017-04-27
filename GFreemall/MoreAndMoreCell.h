@@ -12,8 +12,7 @@
 @protocol MoreAndMoreeDelegate <NSObject>
 
 @required//限定实现这个协议,就必须实现这个协议方法
-
--(void)LanguageSwitching;
+-(void)goodsDetail:(NSInteger)index;
 -(void)cellHeight:(float)height;
 @end
 

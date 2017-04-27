@@ -19,7 +19,7 @@
 #import "MyNewsViewController.h"
 #import "GFMViewController.h"
 #import "DataAccessPageRequest.h"
-@interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,HomeScrollViewDelegate,MoreAndMoreeDelegate>
+@interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,HomeScrollViewDelegate,MoreAndMoreeDelegate,ImageButtonDelegate>
 {
     UIButton *BarButton;//导航条按钮1
     UITableView *_tableView;
@@ -158,15 +158,21 @@ autoSize
         [cell.oneBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.twoBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [cell.threeBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.fourBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.fiveBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.sixBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.sevenBtn addTarget:self action:@selector(onSectionOneMyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
         return cell;
     }else if (indexPath.section==2){//推荐
         ImageCell *cell=[ImageCell new];
+        cell.delegate=self;
         cell.model=self.dataDic;
         return cell;
        
     }else if(indexPath.section==3){//热卖
         MoreAndMoreCell *cell=[MoreAndMoreCell new];
+        [cell.btn addTarget:self action:@selector(SellingAdvertisingSpace) forControlEvents:UIControlEventTouchUpInside];
         cell.delegatte=self;
         cell.model=self.dataDic;
         return cell;
@@ -225,25 +231,48 @@ autoSize
 }
 //点击右边导航条按钮执行该方法
 -(void)onBarButtonClick:(UIButton *)btn{
-//    MyNewsViewController *news=[[MyNewsViewController alloc]init];
-//    [self.navigationController pushViewController:news animated:YES];
-    GFMViewController *gfm=[[GFMViewController alloc]init];
-    UINavigationController *navGFM=[[UINavigationController alloc]initWithRootViewController:gfm];
-    [self presentViewController:navGFM animated:YES completion:^{
-        
-    }];
+    MyNewsViewController *news=[[MyNewsViewController alloc]init];
+    [self.navigationController pushViewController:news animated:YES];
+//    GFMViewController *gfm=[[GFMViewController alloc]init];
+//    UINavigationController *navGFM=[[UINavigationController alloc]initWithRootViewController:gfm];
+//    [self presentViewController:navGFM animated:YES completion:^{
+//        
+//    }];
 
 }
 //点击滚动视图执行该方法
 -(void)HomeScroll:(NSInteger)index{
+    HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
+    HomeAd1 *ad1=class.ads.ad1[index];
     GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+    goodsDetails.commodity_serial=[NSString stringWithFormat:@"%@",ad1.adsLinks];
     [self.navigationController pushViewController:goodsDetails animated:YES];
 }
-//点击第一区三个按钮执行该方法
+//点击第一区按钮执行该方法
 -(void)onSectionOneMyButtonClick:(MyButton *)btn{
-    SearchViewController *search=[[SearchViewController alloc]init];
-    search.where=@"商品";
-    [self.navigationController pushViewController:search animated:YES];
+    if (btn.tag==1) {//广告位
+        HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
+         HomeAd6 *ad6=class.ads.ad6;
+        GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+        goodsDetails.commodity_serial=[NSString stringWithFormat:@"%@",ad6.adsLinks];
+        [self.navigationController pushViewController:goodsDetails animated:YES];
+    }else{
+        //商位
+        HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
+        HomeNews *news=class.news[btn.tag-2];
+        GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+        goodsDetails.commodity_serial=[NSString stringWithFormat:@"%.0f",news.commoditySerial];
+        [self.navigationController pushViewController:goodsDetails animated:YES];
+    }
+
+}
+//点击热卖广告位
+-(void)SellingAdvertisingSpace{
+    HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
+    HomeAd7 *ad7=class.ads.ad7;
+    GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+    goodsDetails.commodity_serial=[NSString stringWithFormat:@"%@",ad7.adsLinks];
+    [self.navigationController pushViewController:goodsDetails animated:YES];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -253,12 +282,29 @@ autoSize
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+//缓存热卖cell高度
 -(void)cellHeight:(float)height{
     if (_cellHeight<height) {
         _cellHeight=height;
         FormToUpdate(3, _tableView)
     }
 
+}
+//点击人气推荐商品执行该方法
+-(void)ImageButton:(NSInteger)index{
+    HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
+    HomeRecommend *Recommend=class.recommend[index];
+    GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+    goodsDetails.commodity_serial=[NSString stringWithFormat:@"%.0f",Recommend.commoditySerial];
+    [self.navigationController pushViewController:goodsDetails animated:YES];
+}
+//点击热卖商品执行该方法
+-(void)goodsDetail:(NSInteger)index{
+    HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
+    HomeHot *hot=class.hot[index];
+    GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+    goodsDetails.commodity_serial=[NSString stringWithFormat:@"%.0f",hot.commoditySerial];
+    [self.navigationController pushViewController:goodsDetails animated:YES];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];

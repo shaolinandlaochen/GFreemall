@@ -37,7 +37,10 @@
     if (queryType!=nil) {
         [dicData setObject:queryType forKey:@"queryType"];
     }
-     [dicData setObject:serial forKey:@"serial"];
+    if (serial!=nil) {
+          [dicData setObject:serial forKey:@"serial"];
+    }
+   
     NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
     [RequestClass getUrl:@"querycomment" Dic:data block:^(NSDictionary *dic) {
         NSLog(@"获取商品评价列表----%@",dic);

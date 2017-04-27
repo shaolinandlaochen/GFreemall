@@ -32,6 +32,7 @@
             
             MyButton *img=[[MyButton alloc]init];
             img.tag=i+100;
+            [img addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             [self.contentView addSubview:img];
             img.sd_layout.leftSpaceToView(self.contentView, x*autoSizeScaleX).topSpaceToView(_btn, (y+18)*autoSizeScaleY).widthIs(250*autoSizeScaleX).heightIs(250*autoSizeScaleY);
             
@@ -62,7 +63,7 @@
     return self;
 }
 -(void)onButtonClick:(UIButton *)btn{
-
+    [_delegatte goodsDetail:btn.tag-100];
 }
 
 -(void)setModel:(NSDictionary *)model{
