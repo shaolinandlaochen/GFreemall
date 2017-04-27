@@ -167,26 +167,52 @@ autoSize
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==2&&indexPath.row==3) {
-        MyShippingAddress *Address=[[MyShippingAddress alloc]init];
-        [self.navigationController pushViewController:Address animated:YES];
+        if ([tokenString length]>0) {
+            MyShippingAddress *Address=[[MyShippingAddress alloc]init];
+            [self.navigationController pushViewController:Address animated:YES];
+        }else{
+            [FTIndicator showInfoWithMessage:@"请您先去登录"];
+        }
+
     }else if (indexPath.section==1){//消息
-        MyNewsViewController *myNews=[[MyNewsViewController alloc]init];
-        [self.navigationController pushViewController:myNews animated:YES];
+        if ([tokenString length]>0) {
+            MyNewsViewController *myNews=[[MyNewsViewController alloc]init];
+            [self.navigationController pushViewController:myNews animated:YES];
+        }else{
+            [FTIndicator showInfoWithMessage:@"请您先去登录"];
+        }
+
+  
     
     }else if (indexPath.section==2&&indexPath.row==2){//收藏
     
-        MyCollectionViewController *MyCollection=[[MyCollectionViewController alloc]init];
-        [self.navigationController pushViewController:MyCollection animated:YES];
+        if ([tokenString length]>0) {
+            MyCollectionViewController *MyCollection=[[MyCollectionViewController alloc]init];
+            [self.navigationController pushViewController:MyCollection animated:YES];
+        }else{
+            [FTIndicator showInfoWithMessage:@"请您先去登录"];
+        }
+
     }else if (indexPath.section==2&&indexPath.row==0){
-        MyBasicInformationViewController *MyBasicInformation=[[MyBasicInformationViewController alloc]init];
-        [self.navigationController pushViewController:MyBasicInformation animated:YES];
-    
+        //基本信息
+        if ([tokenString length]>0) {
+            MyBasicInformationViewController *MyBasicInformation=[[MyBasicInformationViewController alloc]init];
+            [self.navigationController pushViewController:MyBasicInformation animated:YES];
+        }else{
+            [FTIndicator showInfoWithMessage:@"请您先去登录"];
+        }
+       
     }else if (indexPath.section==3){
         SetUpViewController *SetUp=[[SetUpViewController alloc]init];;
         [self.navigationController pushViewController:SetUp animated:YES];
     }else if (indexPath.section==2&&indexPath.row==1){//钱包管理
-        OnlineWalletViewController *online=[[OnlineWalletViewController alloc]init];
-        [self.navigationController pushViewController:online animated:YES];
+        if ([tokenString length]>0) {
+            OnlineWalletViewController *online=[[OnlineWalletViewController alloc]init];
+            [self.navigationController pushViewController:online animated:YES];
+        }else{
+            [FTIndicator showInfoWithMessage:@"请您先去登录"];
+        }
+
     }
 }
 - (void)didReceiveMemoryWarning {
@@ -195,40 +221,54 @@ autoSize
 }
 //查看全部订单
 -(void)onOrderClick{
-    MyOrderViewController *order=[[MyOrderViewController alloc]init];
-    [self.navigationController pushViewController:order animated:YES];
+    if ([tokenString length]>0) {
+        MyOrderViewController *order=[[MyOrderViewController alloc]init];
+        [self.navigationController pushViewController:order animated:YES];
+    }else{
+        [FTIndicator showInfoWithMessage:@"请您先去登录"];
+    }
+
 }
 //代付款待收货待评价等等
 -(void)myOrderAll:(MyButton *)btn{
-    MyOrderViewController *order=[[MyOrderViewController alloc]init];
- 
-    switch (btn.tag) {
-        case 100:
-        {
-            
-            order.OrderType=@"nopay";
+    
+    
+    if ([tokenString length]>0) {
+        
+        MyOrderViewController *order=[[MyOrderViewController alloc]init];
+        
+        switch (btn.tag) {
+            case 100:
+            {
+                
+                order.OrderType=@"nopay";
+            }
+                break;
+            case 101:
+            {
+                order.OrderType=@"noreceiving";
+            }
+                break;
+            case 102:
+            {
+                order.OrderType=@"iscomment";
+            }
+                break;
+            case 103:
+            {
+                order.OrderType=@"iscomment";
+            }
+                break;
+                
+            default:
+                break;
         }
-            break;
-        case 101:
-        {
-           order.OrderType=@"noreceiving";
-        }
-            break;
-        case 102:
-        {
-            order.OrderType=@"iscomment";
-        }
-            break;
-        case 103:
-        {
-            order.OrderType=@"iscomment";
-        }
-            break;
-            
-        default:
-            break;
+        [self.navigationController pushViewController:order animated:YES];
+
+    }else{
+        [FTIndicator showInfoWithMessage:@"请您先去登录"];
     }
-       [self.navigationController pushViewController:order animated:YES];
+    
 }
 //点击头像
 -(void)onTheLoginClick{

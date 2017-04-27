@@ -12,6 +12,7 @@
 #import "PayThePasswordCell.h"
 #import "WalletBalanceTop_upCell.h"
 #import "RetrievePasswordCell.h"
+#import "PayRequest.h"
 @interface paymentInformationView ()<UITableViewDelegate,UITableViewDataSource,PayThePasswordDelegate>
 {
     UITableView *_tableView;
@@ -24,11 +25,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-self.pswString=@"";
+  
+    self.pswString=@"";
     [self caretView];
+    if ([self.were isEqualToString:@"爱积分支付"]) {
+        [self GFMMoney];
+    }
     // Do any additional setup after loading the view.
 }
 
+-(void)GFMMoney{
+[PayRequest PayMoneyLoveIntegralTransformation:self.orderNumber block:^(NSDictionary *dics) {
+    GFMSBaseClass *class=[[GFMSBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+    if ([class.code isEqualToString:@"29"]) {
+        self.money=[NSString stringWithFormat:@"%.2f",class.orderMap.gfmAmount];
+        [_tableView reloadData];
+    }else{
+        [FTIndicator showErrorWithMessage:class.msg];
+    }
+}];
+
+}
 -(void)caretView{
     autoSize
     

@@ -24,5 +24,6 @@
 @property(nonatomic,copy)NSString *money;
 @property(nonatomic,strong)NSDictionary *dataDic;
 @property(nonatomic,copy)NSString *pswString;
+@property(nonatomic,copy)NSString *orderNumber;
 
 @end

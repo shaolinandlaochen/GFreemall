@@ -13,4 +13,7 @@
 +(void)OnlineWalletPaymentthird_pwd:(NSString *)third_pwd block:(void(^)(NSDictionary *dics))block;
 //爱积分支付
 +(void)LovePointsToPaythird_pwd:(NSString *)third_pwd block:(void(^)(NSDictionary *dics))block;
+//爱积分支付钱币转换
++(void)PayMoneyLoveIntegralTransformation:(NSString *)serial block:(void(^)(NSDictionary *dics))block;
+
 @end

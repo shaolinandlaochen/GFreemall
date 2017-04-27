@@ -132,7 +132,13 @@
     paymentInformationView *pay=[[paymentInformationView alloc]init];
     pay.delegate=self;
     pay.were=str;
-    pay.money=self.money;
+    pay.orderNumber=self.orderNumber;
+    if ([str isEqualToString:@"在线钱包"]) {
+        pay.money=self.money;
+    }else{
+    pay.money=@"";
+    }
+    
     pay.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self presentViewController:pay animated:YES completion:^{
         pay.view.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:.5];

@@ -493,6 +493,8 @@
 		9D0047941EB198EB006AED06 /* HomeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0047871EB198EB006AED06 /* HomeNews.m */; };
 		9D0047951EB198EB006AED06 /* HomeRecommend.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0047891EB198EB006AED06 /* HomeRecommend.m */; };
 		9D0047981EB1D153006AED06 /* MessageNumberBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0047971EB1D153006AED06 /* MessageNumberBaseClass.m */; };
+		9D00479D1EB1E48A006AED06 /* GFMSBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D00479A1EB1E48A006AED06 /* GFMSBaseClass.m */; };
+		9D00479E1EB1E48A006AED06 /* GFMSOrderMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D00479C1EB1E48A006AED06 /* GFMSOrderMap.m */; };
 		9D170A221EA451B800A373DD /* CollectionBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A1D1EA451B800A373DD /* CollectionBaseClass.m */; };
 		9D170A231EA451B800A373DD /* CollectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A1F1EA451B800A373DD /* CollectionData.m */; };
 		9D170A241EA451B800A373DD /* CollectionResultList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D170A211EA451B800A373DD /* CollectionResultList.m */; };
@@ -1270,6 +1272,10 @@
 		9D0047891EB198EB006AED06 /* HomeRecommend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeRecommend.m; sourceTree = "<group>"; };
 		9D0047961EB1D153006AED06 /* MessageNumberBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageNumberBaseClass.h; sourceTree = "<group>"; };
 		9D0047971EB1D153006AED06 /* MessageNumberBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageNumberBaseClass.m; sourceTree = "<group>"; };
+		9D0047991EB1E48A006AED06 /* GFMSBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFMSBaseClass.h; sourceTree = "<group>"; };
+		9D00479A1EB1E48A006AED06 /* GFMSBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFMSBaseClass.m; sourceTree = "<group>"; };
+		9D00479B1EB1E48A006AED06 /* GFMSOrderMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFMSOrderMap.h; sourceTree = "<group>"; };
+		9D00479C1EB1E48A006AED06 /* GFMSOrderMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFMSOrderMap.m; sourceTree = "<group>"; };
 		9D170A1C1EA451B800A373DD /* CollectionBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionBaseClass.h; sourceTree = "<group>"; };
 		9D170A1D1EA451B800A373DD /* CollectionBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionBaseClass.m; sourceTree = "<group>"; };
 		9D170A1E1EA451B800A373DD /* CollectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionData.h; sourceTree = "<group>"; };
@@ -2669,6 +2675,10 @@
 			children = (
 				9D175A211EAA070300583DE6 /* PayRequest.h */,
 				9D175A221EAA070300583DE6 /* PayRequest.m */,
+				9D0047991EB1E48A006AED06 /* GFMSBaseClass.h */,
+				9D00479A1EB1E48A006AED06 /* GFMSBaseClass.m */,
+				9D00479B1EB1E48A006AED06 /* GFMSOrderMap.h */,
+				9D00479C1EB1E48A006AED06 /* GFMSOrderMap.m */,
 			);
 			name = "请求";
 			sourceTree = "<group>";
@@ -3571,6 +3581,7 @@
 				38032F471E90CD39005F4981 /* AttributeSkuCell.m in Sources */,
 				9D2937381EA075CD00A86E10 /* setUpRequest.m in Sources */,
 				38BD11031E8A46EF00028255 /* NULLCell.m in Sources */,
+				9D00479D1EB1E48A006AED06 /* GFMSBaseClass.m in Sources */,
 				383A43E21E9478CC002CBDA0 /* MyOrderViewController.m in Sources */,
 				9D175A141EA9C67200583DE6 /* GoodsDetailsBaseClass.m in Sources */,
 				9D4BCE221EA5EE0500ED3D3E /* ShoppingCarList.m in Sources */,
@@ -3762,6 +3773,7 @@
 				9D0047941EB198EB006AED06 /* HomeNews.m in Sources */,
 				38C1A9061E92390E00A26DCF /* GigAddressTableViewCell.m in Sources */,
 				38C1A8C61E92213A00A26DCF /* MyTextField.m in Sources */,
+				9D00479E1EB1E48A006AED06 /* GFMSOrderMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

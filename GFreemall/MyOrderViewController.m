@@ -229,7 +229,6 @@ autoSize
 }
 //点击取消订单或者去支付或者收货或者评价
 -(void)onOrderEventClick:(MyButton *)btn{
-    NSLog(@"/////////////////---------%ld",btn.section);
     
     
     OrderListBaseClass *class=[[OrderListBaseClass alloc]initWithDictionary:self.DataDic];
@@ -243,14 +242,20 @@ autoSize
                     BillingInfo *Billing=[[BillingInfo alloc]init];
                     if (list.orderPayment==0) {
                         Billing.were=@"在线钱包";
-                    }else if (list.orderPayment==1){
-                        
+                        Billing.orderNumber=[NSString stringWithFormat:@"%.0f",list.orderSerial];
+                        Billing.money=[NSString stringWithFormat:@"%.2f",list.orderAmount];
+                        [self.navigationController pushViewController:Billing animated:YES];
+
                     }else if (list.orderPayment==2){
                         Billing.were=@"爱积分支付";
+                        Billing.orderNumber=[NSString stringWithFormat:@"%.0f",list.orderSerial];
+                        Billing.money=[NSString stringWithFormat:@"%.2f",list.orderAmount];
+                        [self.navigationController pushViewController:Billing animated:YES];
+
+                    }else if (list.orderPayment==1){
+                        [FTIndicator showInfoWithMessage:@"暂不支持该支付方式"];
                     }
-                    Billing.orderNumber=[NSString stringWithFormat:@"%.0f",list.orderSerial];
-                    Billing.money=[NSString stringWithFormat:@"%.2f",list.orderAmount];
-                    [self.navigationController pushViewController:Billing animated:YES];
+                    
                 }else{
                     [FTIndicator showErrorWithMessage:class.msg];
                 }

@@ -39,4 +39,19 @@
         
     }];
 }
+//爱积分支付钱币转换
++(void)PayMoneyLoveIntegralTransformation:(NSString *)serial block:(void(^)(NSDictionary *dics))block{
+    NSMutableDictionary *dicData=[[NSMutableDictionary alloc]init];
+    if ([tokenString length]>0) {
+        [dicData setObject:tokenString forKey:@"token"];
+    }
+    [dicData setObject:serial forKey:@"serial"];
+    NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
+    [RequestClass getUrl:@"querypricebyserial" Dic:data block:^(NSDictionary *dic) {
+        NSLog(@"/爱积分支付钱币转换----%@",dic);
+        NSLog(@"get/爱积分支付钱币转换---msg==%@",[dic objectForKey:@"msg"]);
+        block(dic);
+        
+    }];
+}
 @end

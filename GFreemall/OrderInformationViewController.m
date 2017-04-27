@@ -182,16 +182,21 @@
     }else if (indexPath.section==3){//选择支付方式
         ClearingInformationDisplayCell *cell=[ClearingInformationDisplayCell new];
         cell.lines.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
-        if (indexPath.row==MethodOfPayment) {
-
-            cell.go.image=[UIImage imageNamed:@"icon_selected"];
-        }
+      
         
         if (indexPath.row==0) {
+            if (indexPath.row==MethodOfPayment) {
+                
+                cell.go.image=[UIImage imageNamed:@"icon_selected"];
+            }
             cell.name.text=@"在线钱包";
             cell.icon.image=[UIImage imageNamed:@"payment_wallet"];
            
         }else if (indexPath.row==1){
+            if (MethodOfPayment==2) {
+                
+                cell.go.image=[UIImage imageNamed:@"icon_selected"];
+            }
             cell.icon.image=[UIImage imageNamed:@"icon_gfm22"];
             cell.name.text=@"爱积分支付";
         }else if (indexPath.row==2){
@@ -219,7 +224,12 @@
             [self.navigationController pushViewController:commodity animated:YES];
         }
     }else if (indexPath.section==3){
-        MethodOfPayment=indexPath.row;
+        if (indexPath.row==0) {
+            MethodOfPayment=indexPath.row;
+        }else if(indexPath.row==1){
+            MethodOfPayment=2;
+        }
+        
         FormToUpdate(3, _tableView)
     }
     
@@ -264,9 +274,10 @@ autoSize
         if (MethodOfPayment==0) {
             Billing.were=@"在线钱包";
         }else if (MethodOfPayment==1){
-            Billing.were=@"爱积分支付";
-        }else if (MethodOfPayment==2){
             Billing.were=@"在线支付";
+        }else if (MethodOfPayment==2){
+            Billing.were=@"爱积分支付";
+            
         }
         if ([self.where isEqualToString:@"商品"]) {
             [SVProgressHUD showWithStatus:@"正在加载"];

@@ -269,14 +269,18 @@ autoSize
                     BillingInfo *Billing=[[BillingInfo alloc]init];
                     if (classData.map.orderPayment==0) {
                         Billing.were=@"在线钱包";
-                    }else if (classData.map.orderPayment==1){
-                        
+                        Billing.orderNumber=[NSString stringWithFormat:@"%.0f",classData.map.orderSerial];
+                        Billing.money=[NSString stringWithFormat:@"%.2f",classData.map.orderAmount];
+                        [self.navigationController pushViewController:Billing animated:YES];
                     }else if (classData.map.orderPayment==2){
                         Billing.were=@"爱积分支付";
+                        Billing.orderNumber=[NSString stringWithFormat:@"%.0f",classData.map.orderSerial];
+                        Billing.money=[NSString stringWithFormat:@"%.2f",classData.map.orderAmount];
+                        [self.navigationController pushViewController:Billing animated:YES];
+                    }else if (classData.map.orderPayment==1){
+                        [FTIndicator showInfoWithMessage:@"暂不支持该支付方式"];
                     }
-                    Billing.orderNumber=[NSString stringWithFormat:@"%.0f",classData.map.orderSerial];
-                    Billing.money=[NSString stringWithFormat:@"%.2f",classData.map.orderAmount];
-                    [self.navigationController pushViewController:Billing animated:YES];
+                   
                 }else{
                     [FTIndicator showErrorWithMessage:class.msg];
                 }

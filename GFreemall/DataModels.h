@@ -70,4 +70,6 @@
 #import "WalletDetailsPagingList.h"
 #import "MyInformationDataBaseClass.h"
 #import "MessageNumberBaseClass.h"
+#import "GFMSBaseClass.h"
+#import "GFMSOrderMap.h"
 
