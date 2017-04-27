@@ -16,4 +16,5 @@
 @property(nonatomic,strong)UILabel *number;
 @property(nonatomic,strong)MyButton *icon;
 @property(nonatomic,strong)ShoppingSettlementList *list;
+@property(nonatomic,strong)ShoppingSettlementBaseClass *model;
 @end

@@ -99,6 +99,9 @@
     
     
 }
+-(void)setModel:(ShoppingSettlementBaseClass *)model{
+_number.text=[NSString stringWithFormat:@"x%.0f",model.count];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
