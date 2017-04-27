@@ -291,49 +291,55 @@ autoSize
     if ([name.text length]<1||[pswd.text length]<1||[Phonenumber.text length]<1||[code.text length]<1||[InviteCode.text length]<1) {
         [FTIndicator showErrorWithMessage:@"信息填写不完整"];
     }else{
-    
-    }
-    
-    
-    NSString *string=[TheParentClass country:_CountriesArray[_ChooseTheCountr]];
-    [SVProgressHUD showWithStatus:@"正在加载"];
-    
-    [LoginRequuestClass Registeredbase_username:name.text password:pswd.text confirmPassword:pswd.text base_recommend:InviteCode.text phone:Phonenumber.text captcha:code.text country:string block:^(NSDictionary *dic) {
-        LoginBaseClass *class=[[LoginBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
-        if ([class.code isEqualToString:@"62"]) {
+        BOOL isName=[self validateUserName:name.text];
+        if (isName) {
             
-            [SVProgressHUD showWithStatus:@"正在登录"];
-            [LoginRequuestClass LoginUsername:name.text password:pswd.text block:^(NSDictionary *dic) {
-                LoginBaseClass *login=[[LoginBaseClass alloc]initWithDictionary:dic];
-                if ([login.code isEqualToString:@"1"]) {//登录成功
-                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                    [defaults setObject:login.token forKey:@"token"];
-                    //同步数据
-                    [defaults synchronize];
+            NSString *string=[TheParentClass country:_CountriesArray[_ChooseTheCountr]];
+            [SVProgressHUD showWithStatus:@"正在加载"];
+            
+            [LoginRequuestClass Registeredbase_username:name.text password:pswd.text confirmPassword:pswd.text base_recommend:InviteCode.text phone:Phonenumber.text captcha:code.text country:string block:^(NSDictionary *dic) {
+                LoginBaseClass *class=[[LoginBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
+                if ([class.code isEqualToString:@"62"]) {
                     
-                    //注册完成开始登录
-                    ReplaceAPhoneNumberViewController *ReplaceAPhoneNumber=[[ReplaceAPhoneNumberViewController alloc]init];
-                    ReplaceAPhoneNumber.were=@"交易密码设置";
-                    [self.navigationController pushViewController:ReplaceAPhoneNumber animated:YES];
+                    [SVProgressHUD showWithStatus:@"正在登录"];
+                    [LoginRequuestClass LoginUsername:name.text password:pswd.text block:^(NSDictionary *dic) {
+                        LoginBaseClass *login=[[LoginBaseClass alloc]initWithDictionary:dic];
+                        if ([login.code isEqualToString:@"1"]) {//登录成功
+                            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                            [defaults setObject:login.token forKey:@"token"];
+                            //同步数据
+                            [defaults synchronize];
+                            
+                            //注册完成开始登录
+                            ReplaceAPhoneNumberViewController *ReplaceAPhoneNumber=[[ReplaceAPhoneNumberViewController alloc]init];
+                            ReplaceAPhoneNumber.were=@"交易密码设置";
+                            [self.navigationController pushViewController:ReplaceAPhoneNumber animated:YES];
+                            
+                            
+                        }else{
+                            [TheParentClass YouNeedToLogIn:login.msg];
+                        }
+                        
+                        [SVProgressHUD dismiss];
+                        
+                        
+                    }];
                     
-                  
+                    
                 }else{
-                    [TheParentClass YouNeedToLogIn:login.msg];
+                    [FTIndicator showErrorWithMessage:class.msg];
                 }
                 
                 [SVProgressHUD dismiss];
-                
-                
             }];
-            
 
         }else{
-            [FTIndicator showErrorWithMessage:class.msg];
+            [FTIndicator showErrorWithMessage:@"用户名格式错误"];
         }
-        
-        [SVProgressHUD dismiss];
-    }];
-
+    
+    }
+    
+  
 
 }
 //选择国家编码
@@ -355,6 +361,14 @@ autoSize
     CHOOSE.sd_layout.widthIs(sizes.width);
     [CHOOSE setTitle:string forState:UIControlStateNormal];
 
+}
+//用户名
+- (BOOL) validateUserName:(NSString *)nameString
+{
+    NSString *userNameRegex = @"^[a-zA-Z]{1}[0-9a-zA-Z]{5,15}+$";
+    NSPredicate *userNamePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",userNameRegex];
+    BOOL B = [userNamePredicate evaluateWithObject:nameString];
+    return B;
 }
 /*
 #pragma mark - Navigation

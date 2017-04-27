@@ -400,7 +400,7 @@ autoSize
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+   
     [timer invalidate];
     timer = nil;
 }
@@ -424,7 +424,7 @@ autoSize
                     [defaults synchronize];
                     NSLog(@"token====%@",tokenString);
                     [self dismissViewControllerAnimated:YES completion:^{
-                        
+                         [[NSNotificationCenter defaultCenter] removeObserver:self];
                     }];
                     [FTIndicator showSuccessWithMessage:login.msg];
                 }else{
@@ -524,7 +524,7 @@ autoSize
 //资金密码设置完毕  要返回了
 -(void)MoneyPassword{
 [self dismissViewControllerAnimated:YES completion:^{
-    
+     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }];
 
 }
