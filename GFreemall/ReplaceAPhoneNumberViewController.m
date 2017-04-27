@@ -34,6 +34,7 @@
     NSInteger _ChooseTheCountr;
     NSString *_Psw;//交易密码设置
     NSString *_ToPsw;//交易密码设置
+    NSString *_email;//邮箱
     
     
 }
@@ -375,9 +376,31 @@ cancelClick
 //确定或者下一步
 -(void)onGoClick:(UIButton *)btn{
     
-    if ([self.were isEqualToString:@"邮箱绑定"]) {
-        MailNextViewController *mailNext=[[MailNextViewController alloc]init];
-        [self.navigationController pushViewController:mailNext animated:YES];
+    if ([self.were isEqualToString:@"邮箱绑定"]) {//
+        if ([_email length]<1) {
+            [FTIndicator showErrorWithMessage:@"请输入邮箱账号"];
+        }else{
+            BOOL isEmail=[self validateEmail:_email];
+            if (isEmail) {
+                [SVProgressHUD showWithStatus:@"正在加载"];
+                [TheBasicInformationRequest QueryWhetherEmailAlreadyExistsbase_email:_email block:^(NSDictionary *disa) {
+                    BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
+                    if ([class.code isEqualToString:@"69"]) {
+                        MailNextViewController *mailNext=[[MailNextViewController alloc]init];
+                        mailNext.email=_email;
+                        [self.navigationController pushViewController:mailNext animated:YES];
+                    }else{
+                        [FTIndicator showErrorWithMessage:class.msg];
+                    }
+                    
+                    [SVProgressHUD dismiss];
+                }];
+            }else{
+             [FTIndicator showErrorWithMessage:@"邮箱格式错误,请正确输入邮箱!"];
+            }
+            
+        }
+
     }else if ([self.were isEqualToString:@"忘记密码"]){
         if ([_phoneString length]<1||[_codeString length]<1) {
             [FTIndicator showErrorWithMessage:@"请完整填写信息"];
@@ -483,7 +506,7 @@ cancelClick
         
         
     }else if ([self.were isEqualToString:@"邮箱绑定"]){
-        
+        _email=TextField.text;
         
     }else if ([self.were isEqualToString:@"交易密码设置"]){
         
@@ -532,6 +555,14 @@ cancelClick
     _ChooseTheCountr=index;
     [_tableView reloadData];
     
+}
+//判定邮箱格式
+- (BOOL)validateEmail:(NSString *)name
+{
+    NSString *userNameRegex = @"^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*+$";
+    NSPredicate *userNamePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",userNameRegex];
+    BOOL B = [userNamePredicate evaluateWithObject:name];
+    return B;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

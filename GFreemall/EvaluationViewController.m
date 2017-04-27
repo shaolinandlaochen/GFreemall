@@ -41,6 +41,7 @@
         self.dataDic=[self deleteEmpty:dics];
         ProductEvaluationBaseClass *class=[[ProductEvaluationBaseClass alloc]initWithDictionary:self.dataDic];
         if ([class.code isEqualToString:@"6"]) {
+            _MyScreening.model=class;
              [_tableView reloadData];
         }else{
             [FTIndicator showErrorWithMessage:class.msg];

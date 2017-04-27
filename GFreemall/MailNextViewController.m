@@ -8,11 +8,16 @@
 
 #import "MailNextViewController.h"
 #import "BaseInputBoxCell.h"
-@interface MailNextViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "TheBasicInformationRequest.h"
+#import "MyBasicInformationViewController.h"
+@interface MailNextViewController ()<UITableViewDataSource,UITableViewDelegate,BaseInputBoxDelegate>
 
 {
     UITableView *_tableView;
     UIButton *_button;
+    NSInteger seconds;
+    NSTimer *timer;
+    NSString *_code;
 }
 
 @end
@@ -65,7 +70,7 @@ cancelClick
     UILabel *lbl=[[UILabel alloc]init];
     lbl.textColor=[TheParentClass colorWithHexString:@"#999999"];
     lbl.font=[UIFont systemFontOfSize:24*autoSizeScaleX];
-    lbl.text=@"请登录707144471@qq.com邮箱查收验证代码,进行验证";
+    lbl.text=[NSString stringWithFormat:@"请登录%@邮箱查收验证代码,进行验证",self.email];
     [view addSubview:lbl];
     lbl.sd_layout.leftSpaceToView(img, 0).rightSpaceToView(view, 0).topSpaceToView(view, 0).bottomSpaceToView(view, 0);
     
@@ -103,6 +108,8 @@ cancelClick
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BaseInputBoxCell *cell=[BaseInputBoxCell new];
+    self.delegate=cell;
+    cell.delegate=self;
     [cell.btn.layer setBorderColor:[UIColor clearColor].CGColor];
     cell.btn.indexPath=indexPath;
     cell.tf.indexPath=indexPath;
@@ -120,11 +127,64 @@ cancelClick
 }
 //点击获取验证码
 -(void)onButtonClick:(MyButton *)btnn{
-    
+    [TheBasicInformationRequest E_mailVerificationCodeSentbase_email:self.email block:^(NSDictionary *disa) {
+        BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
+        if ([class.code isEqualToString:@"68"]) {
+            seconds=[[NSString stringWithFormat:@"%@",[[self deleteEmpty:disa]objectForKey:@"time"]]integerValue];
+            //获取验证码成功
+            [timer invalidate];
+            timer = nil;
+            timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(action) userInfo:nil repeats:YES];
+        }
+        [FTIndicator showInfoWithMessage:class.msg];
+        [SVProgressHUD dismiss];
+    }];
 }
 //提交
 -(void)onGoClick:(UIButton *)btn{
+    
+    if ([_code length]>0) {
+        [TheBasicInformationRequest BindingEmail:self.email captcha:_code block:^(NSDictionary *disa) {
+             BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
+            if ([class.code isEqualToString:@"67"]) {
+                ReturnToSpecifyTheController(MyBasicInformationViewController)
+            }
+            [FTIndicator showSuccessWithMessage:class.msg];
+        }];
+    }else{
+        [FTIndicator showErrorWithMessage:@"请填写验证码"];
+    }
+    
 
+    
+
+}
+
+
+-(void)action{
+    
+    if (seconds>0) {
+        seconds-=1;
+        [_delegate MailNextViewButtonTitleString:[NSString stringWithFormat:@"%lds",seconds]];
+    }else{
+        [_delegate MailNextViewButtonTitleString:@"获取验证码"];
+        [timer invalidate];
+        timer = nil;
+    }
+    
+}
+-(void)dealloc{
+    [timer invalidate];
+    timer = nil;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [timer invalidate];
+    timer = nil;
+}
+//返回输入字符串
+-(void)ToObtainInputBox:(MyTextField *)TextField{
+    _code=TextField.text;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -260,6 +260,10 @@ autoSize
     }
 
 }
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_tableView.mj_header endRefreshing];
+}
 /*
 #pragma mark - Navigation
 

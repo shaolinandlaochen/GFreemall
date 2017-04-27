@@ -91,6 +91,7 @@ cancelClick
         }else if (indexPath.row==1){
             cell.name.text=Localized(@"账户手机");
             if (class.info.baseAuthPhone==1) {//已经绑定手机
+                cell.userInteractionEnabled = NO;
                  cell.string.text=[NSString stringWithFormat:@"%@%@",class.info.baseCountry,class.info.basePhone];
             }else if (class.info.baseAuthPhone==0){//暂未绑定
                  cell.string.text=@"未绑定";
@@ -98,12 +99,14 @@ cancelClick
             }
            
         }else if (indexPath.row==2){
+            cell.userInteractionEnabled = NO;
             cell.name.text=Localized(@"用户名");
             cell.string.text=class.info.baseUsername;
-            cell.imgName=@"icon_right";
+            //cell.imgName=@"icon_right";
         }else if (indexPath.row==3){
             cell.name.text=Localized(@"实名认证");
             if (class.info.baseAuthName==1) {
+                cell.userInteractionEnabled = NO;
                 cell.string.text=class.info.baseName;
             }else{
                 cell.string.text=@"未认证";
@@ -114,6 +117,7 @@ cancelClick
         }else if (indexPath.row==4){
             cell.name.text=Localized(@"账户邮箱");
             if (class.info.baseAuthEmail==1) {
+                cell.userInteractionEnabled = NO;
                 cell.string.text=class.info.baseEmail;
             }else{
                 cell.string.text=@"未设置";
@@ -139,14 +143,14 @@ cancelClick
         if (class.info.baseAuthName==1) {
         }else{
              ReplaceAPhoneNumber.were=@"实名认证";
-            [self.navigationController pushViewController:ReplaceAPhoneNumber animated:YES];
         }
         
       
     }else if (indexPath.row==4){
         ReplaceAPhoneNumber.were=@"邮箱绑定";
+       
     }
-  
+   [self.navigationController pushViewController:ReplaceAPhoneNumber animated:YES];
     
 }
 - (void)didReceiveMemoryWarning {

@@ -45,7 +45,7 @@
             }else{
                 number.textColor=[TheParentClass colorWithHexString:@"#292929"];
             }
-            number.text=@"999";
+           // number.text=@"999";
             number.textAlignment=NSTextAlignmentCenter;
             number.tag=i+10;
             [self addSubview:number];
@@ -88,5 +88,13 @@
     }
     [_delegate index:btn.index];
     
+}
+-(void)setModel:(ProductEvaluationBaseClass *)model{
+    ((UILabel *)[self viewWithTag:10]).text=[NSString stringWithFormat:@"%.0f",model.totalCount];
+    ((UILabel *)[self viewWithTag:11]).text=[NSString stringWithFormat:@"%.0f",model.goodCount];
+    ((UILabel *)[self viewWithTag:12]).text=[NSString stringWithFormat:@"%.0f",model.commonlyCount];
+    ((UILabel *)[self viewWithTag:13]).text=[NSString stringWithFormat:@"%.0f",model.badCount];
+
+
 }
 @end

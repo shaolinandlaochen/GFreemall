@@ -110,17 +110,17 @@ autoSize
         [view.ForTheGoods addTarget:self action:@selector(myOrderAll:) forControlEvents:UIControlEventTouchUpInside];
         [view.ToEvaluate addTarget:self action:@selector(myOrderAll:) forControlEvents:UIControlEventTouchUpInside];
         [view.HasBeenCompleted addTarget:self action:@selector(myOrderAll:) forControlEvents:UIControlEventTouchUpInside];
-        if (class.payment>0) {
+        if (class.payment>0) {//待付款
             view.redOne.text=[NSString stringWithFormat:@"%.0f",class.payment];
         }else{
             view.redOne.backgroundColor=[UIColor clearColor];
         }
-        if (class.send>0) {
+        if (class.send>0) {//待收货
             view.redTwo.text=[NSString stringWithFormat:@"%.0f",class.send];
         }else{
             view.redTwo.backgroundColor=[UIColor clearColor];
         }
-        if (class.comment>0) {
+        if (class.comment>0) {//待评价
             view.redThree.text=[NSString stringWithFormat:@"%.0f",class.comment];
         }else{
         view.redThree.backgroundColor=[UIColor clearColor];

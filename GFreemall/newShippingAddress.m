@@ -245,8 +245,11 @@
                 if ([class.code isEqualToString:@"53"]) {
                     [_delegate newShippingAddres];
                     [self.navigationController popViewControllerAnimated:YES];
-                }
+                    [FTIndicator showSuccessWithMessage:class.msg];
+                }else{
                 [FTIndicator showErrorWithMessage:class.msg];
+                }
+                
                 
             }];
         }else if([self.why isEqualToString:@"修改"]){
@@ -255,8 +258,11 @@
                 if ([class.code isEqualToString:@"54"]) {
                     [_delegate newShippingAddres];
                     [self.navigationController popViewControllerAnimated:YES];
-                }
+                    [FTIndicator showSuccessWithMessage:class.msg];
+                }else{
                 [FTIndicator showErrorWithMessage:class.msg];
+                }
+                
                 
             }];;
             

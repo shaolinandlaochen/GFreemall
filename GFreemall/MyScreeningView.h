@@ -12,4 +12,5 @@
 @end
 @interface MyScreeningView : UIView
 @property(nonatomic,assign)id delegate;
+@property(nonatomic,strong)ProductEvaluationBaseClass *model;
 @end

@@ -7,16 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "ReplaceAPhoneNumberViewController.h"
+#import "MailNextViewController.h"
 @protocol BaseInputBoxDelegate <NSObject>
 
 @required//限定实现这个协议,就必须实现这个协议方法
-//实名认证
+//返回输入字符串
 -(void)ToObtainInputBox:(MyTextField *)TextField;
 //
 
 @end
-@interface BaseInputBoxCell : UITableViewCell<UITextFieldDelegate,ReplaceAPhoneNumberDelegate>
+@interface BaseInputBoxCell : UITableViewCell<UITextFieldDelegate,ReplaceAPhoneNumberDelegate,MailNextViewDelegate>
 @property(nonatomic,assign)id delegate;
 @property(nonatomic,strong)MyTextField *tf;
 @property(nonatomic,strong)MyButton *btn;

@@ -89,4 +89,53 @@
     }];
 
 }
+//查询邮箱是否存在
++(void)QueryWhetherEmailAlreadyExistsbase_email:(NSString *)base_email block:(void(^)(NSDictionary *disa))block{
+    NSMutableDictionary *dicData=[[NSMutableDictionary alloc]init];
+    if ([tokenString length]>0) {
+        [dicData setObject:tokenString forKey:@"token"];
+    }
+    [dicData setObject:base_email forKey:@"base_email"];
+
+    NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
+    [RequestClass getUrl:@"emailisexsit" Dic:data block:^(NSDictionary *dic) {
+        NSLog(@"查询邮箱是否存在----%@",dic);
+        NSLog(@"get查询邮箱是否存在---msg==%@",[dic objectForKey:@"msg"]);
+        block(dic);
+        
+    }];
+}
+//发送邮箱验证码
++(void)E_mailVerificationCodeSentbase_email:(NSString *)base_email block:(void(^)(NSDictionary *disa))block{
+    NSMutableDictionary *dicData=[[NSMutableDictionary alloc]init];
+    if ([tokenString length]>0) {
+        [dicData setObject:tokenString forKey:@"token"];
+    }
+    [dicData setObject:base_email forKey:@"base_email"];
+    
+    NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
+    [RequestClass getUrl:@"sendemail" Dic:data block:^(NSDictionary *dic) {
+        NSLog(@"发送邮箱验证码----%@",dic);
+        NSLog(@"get发送邮箱验证码---msg==%@",[dic objectForKey:@"msg"]);
+        block(dic);
+        
+    }];
+}
+//绑定邮箱
++(void)BindingEmail:(NSString *)base_email captcha:(NSString *)captcha block:(void(^)(NSDictionary *disa))block{
+    NSMutableDictionary *dicData=[[NSMutableDictionary alloc]init];
+    if ([tokenString length]>0) {
+        [dicData setObject:tokenString forKey:@"token"];
+    }
+    [dicData setObject:base_email forKey:@"base_email"];
+    [dicData setObject:captcha forKey:@"captcha"];
+    
+    NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
+    [RequestClass getUrl:@"bindingemail" Dic:data block:^(NSDictionary *dic) {
+        NSLog(@"绑定邮箱----%@",dic);
+        NSLog(@"get绑定邮箱---msg==%@",[dic objectForKey:@"msg"]);
+        block(dic);
+        
+    }];
+}
 @end

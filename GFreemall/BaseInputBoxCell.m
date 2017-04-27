@@ -79,6 +79,9 @@ autoSize
      [_delegate ToObtainInputBox:TextField];
 
 }
+-(void)MailNextViewButtonTitleString:(NSString *)name{
+ [_btn setTitle:name forState:UIControlStateNormal];
+}
 -(void)ButtonTitleString:(NSString *)name{
     [_btn setTitle:name forState:UIControlStateNormal];
 
