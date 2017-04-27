@@ -110,9 +110,22 @@ autoSize
         [view.ForTheGoods addTarget:self action:@selector(myOrderAll:) forControlEvents:UIControlEventTouchUpInside];
         [view.ToEvaluate addTarget:self action:@selector(myOrderAll:) forControlEvents:UIControlEventTouchUpInside];
         [view.HasBeenCompleted addTarget:self action:@selector(myOrderAll:) forControlEvents:UIControlEventTouchUpInside];
-        view.redOne.text=[NSString stringWithFormat:@"%.0f",class.payment];
-        view.redTwo.text=[NSString stringWithFormat:@"%.0f",class.send];
-        view.redThree.text=[NSString stringWithFormat:@"%.0f",class.comment];
+        if (class.payment>0) {
+            view.redOne.text=[NSString stringWithFormat:@"%.0f",class.payment];
+        }else{
+            view.redOne.backgroundColor=[UIColor clearColor];
+        }
+        if (class.send>0) {
+            view.redTwo.text=[NSString stringWithFormat:@"%.0f",class.send];
+        }else{
+            view.redTwo.backgroundColor=[UIColor clearColor];
+        }
+        if (class.comment>0) {
+            view.redThree.text=[NSString stringWithFormat:@"%.0f",class.comment];
+        }else{
+        view.redThree.backgroundColor=[UIColor clearColor];
+        }
+        
         view.redFour.backgroundColor=[UIColor clearColor];
         
         return view;

@@ -241,8 +241,8 @@
 -(void)setModel:(NSDictionary *)model{
 autoSize
     HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:model];
-    HomeAd2 *ad2=class.ads.ad2;
-    [_oneBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",class.imgSrc,ad2.adsImages]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
+    HomeAd6 *ad6=class.ads.ad6;
+    [_oneBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",class.imgSrc,ad6.adsImages]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
     for (int i=0; i<class.news.count; i++) {
         HomeNews *news=class.news[i];
         if (i<6) {
