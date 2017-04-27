@@ -68,51 +68,33 @@
 -(void)setModel:(NSDictionary *)model{
     autoSize
     HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:model];
-    HomeAd4 *ad4=class.ads.ad4;
-    [_btn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",class.imgSrc,ad4.adsImages]] forState:UIControlStateNormal];
+    HomeAd7 *ad7=class.ads.ad7;
+    [_btn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",class.imgSrc,ad7.adsImages]] forState:UIControlStateNormal];
 
         for (int i=0; i<class.hot.count; i++) {
             HomeHot *hot=class.hot[i];
             [((MyButton *)[self.contentView viewWithTag:i+100]) sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,hot.commodityImagesPath,hot.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
             
             ((UILabel *)[self.contentView viewWithTag:i+200]).text=hot.commodityName;
-            NSLog(@"%@",hot.commodityName);
             ((UILabel *)[self.contentView viewWithTag:i+300]).text=[NSString stringWithFormat:@"%.2f",hot.commoditySellprice];
             
             
         }
+
     
-    if (class.hot.count<1) {
-        _line.sd_layout.leftSpaceToView(self.contentView, 0).topSpaceToView(_btn, 0).rightSpaceToView(self.contentView, 0).heightIs(0.1);
+    float hang=class.hot.count/3.0;
+    int count=[[NSString stringWithFormat:@"%.0f",hang]intValue];
+    float height;
+    if (count<hang) {
+        height=(379*count)+(379);
+    }else{
+        height=379*count;
         
-    }else if (class.hot.count>0&&class.hot.count<4){
-        NSLog(@"aaaaaa");
-        _line.sd_layout.topSpaceToView(_btn, 388*autoSizeScaleY);
-    }else if (class.hot.count>3&&class.hot.count<7){
-        NSLog(@"bbbbb");
-        _line.sd_layout.topSpaceToView(_btn, 776*autoSizeScaleY);
-    }else if (class.hot.count>6&&class.hot.count<10){
-        NSLog(@"ccccc");
-        _line.sd_layout.topSpaceToView(_btn, 1164*autoSizeScaleY);
-    }else if (class.hot.count>9&&class.hot.count<13){
-        NSLog(@"dddddd");
-        _line.sd_layout.topSpaceToView(_btn, 1552*autoSizeScaleY);
-    }else if (class.hot.count>12&&class.hot.count<16){
-        _line.sd_layout.topSpaceToView(_btn, 1940*autoSizeScaleY);
-    }else if (class.hot.count>15&&class.hot.count<19){
-        _line.sd_layout.topSpaceToView(_btn, 2328*autoSizeScaleY);
-    }else if (class.hot.count>18&&class.hot.count<22){
-        _line.sd_layout.topSpaceToView(_btn, 2716*autoSizeScaleY);
-    }else if (class.hot.count>21&&class.hot.count<25){
-        _line.sd_layout.topSpaceToView(_btn, 3104*autoSizeScaleY);
-    }else if (class.hot.count>24&&class.hot.count<28){
-        _line.sd_layout.topSpaceToView(_btn, 3492*autoSizeScaleY);
     }
     
-
- [self setupAutoHeightWithBottomView:_line bottomMargin:1200*autoSizeScaleY];
+   // NSLog(@"hot.count==%ld  hang==%f  count==%d  height==%f",class.hot.count,hang,count,height);
     
-   
+    [_delegatte cellHeight:(height+348)*autoSizeScaleY];
 
 
 }

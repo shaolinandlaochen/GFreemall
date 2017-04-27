@@ -1,7 +1,7 @@
 //
 //  HomeAd4.h
 //
-//  Created by   on 2017/4/17
+//  Created by   on 2017/4/27
 //  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,9 +11,9 @@
 
 @interface HomeAd4 : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, strong) NSString *adsLinks;
 @property (nonatomic, assign) double adsPosition;
 @property (nonatomic, strong) NSString *adsImages;
+@property (nonatomic, strong) NSString *adsLinks;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

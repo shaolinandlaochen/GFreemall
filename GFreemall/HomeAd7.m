@@ -1,25 +1,25 @@
 //
-//  HomeAd4.m
+//  HomeAd7.m
 //
 //  Created by   on 2017/4/27
 //  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
 //
 
-#import "HomeAd4.h"
+#import "HomeAd7.h"
 
 
-NSString *const kHomeAd4AdsPosition = @"ads_position";
-NSString *const kHomeAd4AdsImages = @"ads_images";
-NSString *const kHomeAd4AdsLinks = @"ads_links";
+NSString *const kHomeAd7AdsPosition = @"ads_position";
+NSString *const kHomeAd7AdsImages = @"ads_images";
+NSString *const kHomeAd7AdsLinks = @"ads_links";
 
 
-@interface HomeAd4 ()
+@interface HomeAd7 ()
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
-@implementation HomeAd4
+@implementation HomeAd7
 
 @synthesize adsPosition = _adsPosition;
 @synthesize adsImages = _adsImages;
@@ -36,9 +36,9 @@ NSString *const kHomeAd4AdsLinks = @"ads_links";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if (self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.adsPosition = [[self objectOrNilForKey:kHomeAd4AdsPosition fromDictionary:dict] doubleValue];
-            self.adsImages = [self objectOrNilForKey:kHomeAd4AdsImages fromDictionary:dict];
-            self.adsLinks = [self objectOrNilForKey:kHomeAd4AdsLinks fromDictionary:dict];
+            self.adsPosition = [[self objectOrNilForKey:kHomeAd7AdsPosition fromDictionary:dict] doubleValue];
+            self.adsImages = [self objectOrNilForKey:kHomeAd7AdsImages fromDictionary:dict];
+            self.adsLinks = [self objectOrNilForKey:kHomeAd7AdsLinks fromDictionary:dict];
 
     }
     
@@ -48,9 +48,9 @@ NSString *const kHomeAd4AdsLinks = @"ads_links";
 
 - (NSDictionary *)dictionaryRepresentation {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.adsPosition] forKey:kHomeAd4AdsPosition];
-    [mutableDict setValue:self.adsImages forKey:kHomeAd4AdsImages];
-    [mutableDict setValue:self.adsLinks forKey:kHomeAd4AdsLinks];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.adsPosition] forKey:kHomeAd7AdsPosition];
+    [mutableDict setValue:self.adsImages forKey:kHomeAd7AdsImages];
+    [mutableDict setValue:self.adsLinks forKey:kHomeAd7AdsLinks];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -71,22 +71,22 @@ NSString *const kHomeAd4AdsLinks = @"ads_links";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
 
-    self.adsPosition = [aDecoder decodeDoubleForKey:kHomeAd4AdsPosition];
-    self.adsImages = [aDecoder decodeObjectForKey:kHomeAd4AdsImages];
-    self.adsLinks = [aDecoder decodeObjectForKey:kHomeAd4AdsLinks];
+    self.adsPosition = [aDecoder decodeDoubleForKey:kHomeAd7AdsPosition];
+    self.adsImages = [aDecoder decodeObjectForKey:kHomeAd7AdsImages];
+    self.adsLinks = [aDecoder decodeObjectForKey:kHomeAd7AdsLinks];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeDouble:_adsPosition forKey:kHomeAd4AdsPosition];
-    [aCoder encodeObject:_adsImages forKey:kHomeAd4AdsImages];
-    [aCoder encodeObject:_adsLinks forKey:kHomeAd4AdsLinks];
+    [aCoder encodeDouble:_adsPosition forKey:kHomeAd7AdsPosition];
+    [aCoder encodeObject:_adsImages forKey:kHomeAd7AdsImages];
+    [aCoder encodeObject:_adsLinks forKey:kHomeAd7AdsLinks];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    HomeAd4 *copy = [[HomeAd4 alloc] init];
+    HomeAd7 *copy = [[HomeAd7 alloc] init];
     
     
     

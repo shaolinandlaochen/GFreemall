@@ -1,5 +1,5 @@
 //
-//  HomeAd3.h
+//  HomeAd6.h
 //
 //  Created by   on 2017/4/27
 //  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
@@ -9,7 +9,7 @@
 
 
 
-@interface HomeAd3 : NSObject <NSCoding, NSCopying>
+@interface HomeAd6 : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, assign) double adsPosition;
 @property (nonatomic, strong) NSString *adsImages;

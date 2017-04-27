@@ -19,11 +19,12 @@
 #import "MyNewsViewController.h"
 #import "GFMViewController.h"
 #import "DataAccessPageRequest.h"
-@interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,HomeScrollViewDelegate>
+@interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,HomeScrollViewDelegate,MoreAndMoreeDelegate>
 {
     UIButton *BarButton;//导航条按钮1
     UITableView *_tableView;
     UILabel * number;
+    float _cellHeight;
 }
 @end
 
@@ -32,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     autoSize
+
     [self SetTheNavigationBar];//设置导航条
     float htight=98*autoSizeScaleY;
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.frame.size.height-htight) style:UITableViewStylePlain];
@@ -47,7 +49,7 @@
 -(void)DataAccessPageRequestClick{
 [DataAccessPageRequest DataAccessPageRequestBlock:^(NSDictionary *dics) {
     self.dataDic=[self deleteEmpty:dics];
-    HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
+    //HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
     [_tableView reloadData];
     [_tableView.mj_header endRefreshing];
     [SVProgressHUD dismiss];
@@ -99,8 +101,7 @@ autoSize
         HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
         return [tableView cellHeightForIndexPath:indexPath model:class keyPath:@"model" cellClass:[ImageCell class] contentViewWidth:self.view.frame.size.width];
     }else if (indexPath.section==3){
-        HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
-        return [tableView cellHeightForIndexPath:indexPath model:class keyPath:@"model" cellClass:[MoreAndMoreCell class] contentViewWidth:self.view.frame.size.width];
+        return _cellHeight;
     }
     return 0;
 }
@@ -166,6 +167,7 @@ autoSize
        
     }else if(indexPath.section==3){//热卖
         MoreAndMoreCell *cell=[MoreAndMoreCell new];
+        cell.delegatte=self;
         cell.model=self.dataDic;
         return cell;
     }
@@ -251,7 +253,13 @@ autoSize
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)cellHeight:(float)height{
+    if (_cellHeight<height) {
+        _cellHeight=height;
+        FormToUpdate(3, _tableView)
+    }
 
+}
 /*
 #pragma mark - Navigation
 

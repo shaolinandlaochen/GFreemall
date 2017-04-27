@@ -9,16 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "HomePageViewsViewController.h"
 //开代理
-@protocol languageDelegate <NSObject>
+@protocol MoreAndMoreeDelegate <NSObject>
 
 @required//限定实现这个协议,就必须实现这个协议方法
 
 -(void)LanguageSwitching;
+-(void)cellHeight:(float)height;
 @end
 
 @interface MoreAndMoreCell : UITableViewCell
 @property(nonatomic,strong)MyButton *btn;
 @property(nonatomic,strong)NSDictionary *model;
 @property(nonatomic,strong)UIView *line;
+@property(nonatomic,assign)id delegatte;
 
 @end
