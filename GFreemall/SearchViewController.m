@@ -62,8 +62,12 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     MyView *view=[[MyView alloc]init];
     if ([searchField.text length]>0) {
-        NSString *string=[NSString stringWithFormat:@"为您找到'%@'商品",searchField.text];
-        view.lbl.text=string;
+        SearchBaseClass *class=[[SearchBaseClass alloc]initWithDictionary:self.dataDic];
+        if (class.pagingList.resultList.count>0) {
+            NSString *string=[NSString stringWithFormat:@"为您找到'%@'商品",searchField.text];
+            view.lbl.text=string;
+        }
+
     }
   
     return view;

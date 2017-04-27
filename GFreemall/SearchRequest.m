@@ -26,7 +26,7 @@
     }
     
     NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
-    [RequestClass getUrl:@"search" Dic:data block:^(NSDictionary *dic) {
+    [RequestClass getAddressUrl:@"search" Dic:data block:^(NSDictionary *dic) {
         NSLog(@"获取搜索数据----%@",dic);
         NSLog(@"get获取搜索数据---msg==%@",[dic objectForKey:@"msg"]);
         bolck(dic);

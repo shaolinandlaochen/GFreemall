@@ -12,6 +12,7 @@
 #import "paymentInformationView.h"
 #import "PayRequest.h"
 #import "ReplaceAPhoneNumberViewController.h"
+#import "MyOrderViewController.h"
 @interface BillingInfo ()<UITableViewDataSource,UITableViewDelegate,CancelTheViewDelegate>
 {
     UITableView *_tableView;
@@ -160,10 +161,24 @@
         [SVProgressHUD showWithStatus:@"正在支付"];
         [PayRequest OnlineWalletPaymentthird_pwd:pswString block:^(NSDictionary *dics) {
             NSDictionary *data=[self deleteEmpty:dics];
-            if (![[data objectForKey:@"msg"]isEqual:[NSNull null]]) {
-                NSString *msg=[NSString stringWithFormat:@"%@",[data objectForKey:@"msg"]];
-                [FTIndicator showSuccessWithMessage:msg];
+            if (![[data objectForKey:@"code"]isEqual:[NSNull null]]){
+                NSString *code=[NSString stringWithFormat:@"%@",[data objectForKey:@"code"]];
+                if (![[data objectForKey:@"msg"]isEqual:[NSNull null]]) {
+                    NSString *msg=[NSString stringWithFormat:@"%@",[data objectForKey:@"msg"]];
+                    if ([code isEqualToString:@"27"]) {
+                        [FTIndicator showSuccessWithMessage:msg];
+                        ReturnToSpecifyTheController(ShoppingCartViewController)
+                        ReturnToSpecifyTheController(GoodsDetailsViewController)
+                        ReturnToSpecifyTheController(MyOrderViewController)
+                    }else{
+                        [FTIndicator showErrorWithMessage:msg];
+                    }
+                    
+                }
+               
+            
             }
+          
             
             [SVProgressHUD dismiss];
         }];
@@ -171,10 +186,24 @@
         [SVProgressHUD showWithStatus:@"正在支付"];
         [PayRequest LovePointsToPaythird_pwd:pswString block:^(NSDictionary *dics) {
             NSDictionary *data=[self deleteEmpty:dics];
-            if (![[data objectForKey:@"msg"]isEqual:[NSNull null]]) {
-                NSString *msg=[NSString stringWithFormat:@"%@",[data objectForKey:@"msg"]];
-                [FTIndicator showSuccessWithMessage:msg];
+            if (![[data objectForKey:@"code"]isEqual:[NSNull null]]){
+                NSString *code=[NSString stringWithFormat:@"%@",[data objectForKey:@"code"]];
+                if (![[data objectForKey:@"msg"]isEqual:[NSNull null]]) {
+                    NSString *msg=[NSString stringWithFormat:@"%@",[data objectForKey:@"msg"]];
+                    if ([code isEqualToString:@"27"]) {
+                        [FTIndicator showSuccessWithMessage:msg];
+                        ReturnToSpecifyTheController(ShoppingCartViewController)
+                        ReturnToSpecifyTheController(GoodsDetailsViewController)
+                        ReturnToSpecifyTheController(MyOrderViewController)
+                    }else{
+                         [FTIndicator showErrorWithMessage:msg];
+                    }
+
+                }
+                
+               
             }
+          
             
             [SVProgressHUD dismiss];
         }];

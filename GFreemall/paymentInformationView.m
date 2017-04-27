@@ -197,6 +197,9 @@
     if ([self.pswString length]<1) {
         [FTIndicator showInfoWithMessage:@"请输入支付密码"];
     }else{
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
         [_delegate BeginToPayPsw:self.pswString];
     }
 
