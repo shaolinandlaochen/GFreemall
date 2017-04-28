@@ -280,6 +280,10 @@ autoSize
      self.navigationController.navigationBarHidden=YES;
     if ([tokenString length]>1) {
           [self PersonalInformation];//获取个人信息
+    }else{
+        NSDictionary *dic;
+        self.dataDic=[self deleteEmpty:dic];
+        [_tableView reloadData];
     }
   
 

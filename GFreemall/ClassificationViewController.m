@@ -293,6 +293,7 @@ autoSize
 //用户点击搜索栏执行该方法
 -(void)onSearchClick{
     SearchViewController *search=[[SearchViewController alloc]init];
+    search.where=@"搜索";
     [self.navigationController pushViewController:search animated:YES];
 
 }

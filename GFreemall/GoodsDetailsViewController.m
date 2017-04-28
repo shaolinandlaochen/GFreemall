@@ -310,33 +310,38 @@ cancelClick
 }
 //立即购买
 -(void)onBuyClick{
-    
-    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
-    if ([classs.checkRes isEqualToString:@"NO_ATTR"]) {//无属性
-        [SVProgressHUD showWithStatus:@"正在加载"];
-        [GoodsDetailsRequest BuyNowattr_input:@"" num:@"1" comm_serial:self.commodity_serial checkRes:classs.checkRes block:^(NSDictionary *dics) {
-            ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-            if ([class.code isEqualToString:@"23"]) {
-                OrderInformationViewController *order=[[OrderInformationViewController alloc]init];
-                order.dataDic=[self deleteEmpty:dics];
-                order.where=@"商品";
-                order.attribute=@"";
-                order.number=@"1";
-                order.checkRes=classs.checkRes;
-                order.comm_serial=self.commodity_serial;
-
-                [self.navigationController pushViewController:order animated:YES];
-                
-            }else{
-                [FTIndicator showErrorWithMessage:class.msg];
-            }
-            [SVProgressHUD dismiss];
-            
-        }];
+    if ([tokenString length]<1) {
+        [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
     }else{
-        [self BuildTheSkuSet];
-    }
+        GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+        if ([classs.checkRes isEqualToString:@"NO_ATTR"]) {//无属性
+            [SVProgressHUD showWithStatus:@"正在加载"];
+            [GoodsDetailsRequest BuyNowattr_input:@"" num:@"1" comm_serial:self.commodity_serial checkRes:classs.checkRes block:^(NSDictionary *dics) {
+                ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+                if ([class.code isEqualToString:@"23"]) {
+                    OrderInformationViewController *order=[[OrderInformationViewController alloc]init];
+                    order.dataDic=[self deleteEmpty:dics];
+                    order.where=@"商品";
+                    order.attribute=@"";
+                    order.number=@"1";
+                    order.checkRes=classs.checkRes;
+                    order.comm_serial=self.commodity_serial;
+                    
+                    [self.navigationController pushViewController:order animated:YES];
+                    
+                }else{
+                    [FTIndicator showErrorWithMessage:class.msg];
+                }
+                [SVProgressHUD dismiss];
+                
+            }];
+        }else{
+            [self BuildTheSkuSet];
+        }
 
+    }
+    
+   
 }
 //构建视图
 -(void)BuildView{
@@ -427,23 +432,28 @@ cancelClick
 }
 //收藏商品
 -(void)CollectionOfGoods:(MyButton *)BTN{
-    [SVProgressHUD showWithStatus:@"正在收藏"];
-[GoodsDetailsRequest CollectionOrCancelThisCollection:self.commodity_serial block:^(NSDictionary *dics) {
-    GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-    if ([class.code isEqualToString:@"9"]) {
-        goods.isCollect=YES;
-    }else if ([class.code isEqualToString:@"8"]){
-        goods.isCollect=NO;
-    
-    }
-    if ([class.code isEqualToString:@"9"]||[class.code isEqualToString:@"8"]) {
-            [FTIndicator showSuccessWithMessage:class.msg];
+    if ([tokenString length]<1) {
+        [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
     }else{
-        [FTIndicator showErrorWithMessage:class.msg];
+        [SVProgressHUD showWithStatus:@"正在收藏"];
+        [GoodsDetailsRequest CollectionOrCancelThisCollection:self.commodity_serial block:^(NSDictionary *dics) {
+            GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            if ([class.code isEqualToString:@"9"]) {
+                goods.isCollect=YES;
+            }else if ([class.code isEqualToString:@"8"]){
+                goods.isCollect=NO;
+                
+            }
+            if ([class.code isEqualToString:@"9"]||[class.code isEqualToString:@"8"]) {
+                [FTIndicator showSuccessWithMessage:class.msg];
+            }else{
+                [FTIndicator showErrorWithMessage:class.msg];
+            }
+            
+            [SVProgressHUD dismiss];
+        }];
     }
 
-    [SVProgressHUD dismiss];
-}];
 
 }
 //进入购物车
@@ -453,63 +463,77 @@ cancelClick
 }
 //加入购物车
 -(void)onAddShopingCharClick{
-    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
-    if ([classs.checkRes isEqualToString:@"NO_ATTR"]) {//无属性
-        [SVProgressHUD showWithStatus:@"正在加载"];
-        [GoodsDetailsRequest AddTToCartvalues:@"" serial:self.commodity_serial num:@"1" checkRes:@"NO_ATTR" block:^(NSDictionary *dics) {
-            GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-            [FTIndicator showSuccessWithMessage:class.msg];
-            [SVProgressHUD dismiss];
-            
-        }];
+    if ([tokenString length]<1) {
+         [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
     }else{
-        [self BuildTheSkuSet];
+        GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+        if ([classs.checkRes isEqualToString:@"NO_ATTR"]) {//无属性
+            [SVProgressHUD showWithStatus:@"正在加载"];
+            [GoodsDetailsRequest AddTToCartvalues:@"" serial:self.commodity_serial num:@"1" checkRes:@"NO_ATTR" block:^(NSDictionary *dics) {
+                GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+                [FTIndicator showSuccessWithMessage:class.msg];
+                [SVProgressHUD dismiss];
+                
+            }];
+        }else{
+            [self BuildTheSkuSet];
+        }
     }
+  
    
 
 }
 //立即购买(代理)
 -(void)BuyNowattr_input:(NSString *)attr_input message:(NSString *)Message number:(NSInteger)number{
-    [SVProgressHUD showWithStatus:@"正在加载"];
-      GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
-    [GoodsDetailsRequest BuyNowattr_input:[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input] num:[NSString stringWithFormat:@"%ld",number] comm_serial:self.commodity_serial checkRes:classs.checkRes block:^(NSDictionary *dics) {
-        ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-        if ([class.code isEqualToString:@"23"]) {
-            OrderInformationViewController *order=[[OrderInformationViewController alloc]init];
-            order.dataDic=[self deleteEmpty:dics];
-            order.where=@"商品";
-            order.attribute=[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input];
-            order.number=[NSString stringWithFormat:@"%ld",number];
-            order.checkRes=classs.checkRes;
-            order.comm_serial=self.commodity_serial;
-            [self.navigationController pushViewController:order animated:YES];
+    if ([tokenString length]<1) {
+        [SVProgressHUD showWithStatus:@"正在加载"];
+        GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+        [GoodsDetailsRequest BuyNowattr_input:[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input] num:[NSString stringWithFormat:@"%ld",number] comm_serial:self.commodity_serial checkRes:classs.checkRes block:^(NSDictionary *dics) {
+            ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            if ([class.code isEqualToString:@"23"]) {
+                OrderInformationViewController *order=[[OrderInformationViewController alloc]init];
+                order.dataDic=[self deleteEmpty:dics];
+                order.where=@"商品";
+                order.attribute=[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input];
+                order.number=[NSString stringWithFormat:@"%ld",number];
+                order.checkRes=classs.checkRes;
+                order.comm_serial=self.commodity_serial;
+                [self.navigationController pushViewController:order animated:YES];
+                
+            }else{
+                [FTIndicator showErrorWithMessage:class.msg];
+            }
+            [SVProgressHUD dismiss];
+            
+        }];
 
-        }else{
-            [FTIndicator showErrorWithMessage:class.msg];
-        }
-        [SVProgressHUD dismiss];
-        
-    }];
+    }else{
+     [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+    }
 }
 //加入购物车(代理)
 -(void)AddToCart:(NSString *)attr_input message:(NSString *)Message number:(NSInteger)number{
-    
-    self.SKUString=[NSString stringWithFormat:@"已选:%@",Message];
-    self.attr_input=attr_input;
-    [_tableView reloadData];
-    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
-       [SVProgressHUD showWithStatus:@"正在加载"];
-    [GoodsDetailsRequest AddTToCartvalues:[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input] serial:self.commodity_serial num:[NSString stringWithFormat:@"%ld",number] checkRes:classs.checkRes block:^(NSDictionary *dics) {
-        GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-        if ([class.code isEqualToString:@"12"]) {
-             [FTIndicator showSuccessWithMessage:class.msg];
-        }else{
-         [FTIndicator showErrorWithMessage:class.msg];
-        }
-       
-        [SVProgressHUD dismiss];
-        
-    }];
+    if ([tokenString length]<1) {
+        self.SKUString=[NSString stringWithFormat:@"已选:%@",Message];
+        self.attr_input=attr_input;
+        [_tableView reloadData];
+        GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+        [SVProgressHUD showWithStatus:@"正在加载"];
+        [GoodsDetailsRequest AddTToCartvalues:[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input] serial:self.commodity_serial num:[NSString stringWithFormat:@"%ld",number] checkRes:classs.checkRes block:^(NSDictionary *dics) {
+            GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            if ([class.code isEqualToString:@"12"]) {
+                [FTIndicator showSuccessWithMessage:class.msg];
+            }else{
+                [FTIndicator showErrorWithMessage:class.msg];
+            }
+            
+            [SVProgressHUD dismiss];
+            
+        }];
+
+    }else{
+        [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+    }
 }
 //子商品数据获取
 

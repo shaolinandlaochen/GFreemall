@@ -175,7 +175,7 @@
 -(void)setLevelNumber:(NSInteger)levelNumber{
 
     
-    NSLog(@"aaaaaaaaaaa");
+    NSLog(@"aaaaaaaaaaa___%ld",levelNumber);
     
     switch (levelNumber) {
         case 0://注册

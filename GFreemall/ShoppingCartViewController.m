@@ -42,7 +42,7 @@
     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
     _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(view, 0).topSpaceToView(self.view, navheight+rectStatus.size.height);
-    TheDrop_downRefresh(_tableView, @selector(ToGetAShoppingCartGoodsList))
+    //TheDrop_downRefresh(_tableView, @selector(ToGetAShoppingCartGoodsList))
     // Do any additional setup after loading the view.
 }
 -(void)ToGetAShoppingCartGoodsList{
@@ -50,10 +50,11 @@
     [ShoppingCarRequest ToGetAShoppingCartGoodsListBlock:^(NSDictionary *dics) {
         self.dataDic=[self deleteEmpty:dics];
         ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:self.dataDic];
-        [[self.view viewWithTag:1314521]removeFromSuperview];
-         [[self.view viewWithTag:1314520]removeFromSuperview];
+       
         if ([class.code isEqualToString:@"13"]) {
             if (class.list.count>0) {
+                [[self.view viewWithTag:1314521]removeFromSuperview];
+                [[self.view viewWithTag:1314520]removeFromSuperview];
                 for (int i=0; i<class.list.count; i++) {
                     ShoppingCarList *list=class.list[i];
                     [self.shoppingCarArray addObject:list];
@@ -395,6 +396,8 @@
     }
 }
 -(void)EmptyTheShoppingCart{
+    [[self.view viewWithTag:1314521]removeFromSuperview];
+    [[self.view viewWithTag:1314520]removeFromSuperview];
     autoSize
     UIImageView *img=[[UIImageView alloc]init];
     img.image=[UIImage imageNamed:@"pic_cart"];
@@ -418,6 +421,8 @@
 }
 //用户点击去逛逛
 -(void)onGoGoClik:(UIButton *)btn{
+    SearchViewController *search=[[SearchViewController alloc]init];
+    [self.navigationController pushViewController:search animated:YES];
 
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -429,6 +434,9 @@
         [self messageNumber];
     }else{
         [FTIndicator showErrorWithMessage:@"请您先去登录"];
+         [self EmptyTheShoppingCart];//购物车是空的
+        self.shoppingCarArray=[[NSMutableArray alloc]init];
+        [_tableView reloadData];
     }
   
 }

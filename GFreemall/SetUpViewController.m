@@ -135,6 +135,11 @@ cancelClick
 }
 //退出账号
 -(void)onGoClick{
+    [FTIndicator showSuccessWithMessage:@"退出登录成功"];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"" forKey:@"token"];
+    //同步数据
+    [defaults synchronize];
 
 }
 - (void)didReceiveMemoryWarning {
