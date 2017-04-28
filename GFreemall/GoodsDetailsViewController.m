@@ -175,8 +175,10 @@
     return 0;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-   
-    return 4;
+    if (self.dataDic!=nil) {
+        return 4;
+    }
+    return 0;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];

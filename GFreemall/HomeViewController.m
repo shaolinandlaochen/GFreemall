@@ -242,25 +242,35 @@ autoSize
 -(void)HomeScroll:(NSInteger)index{
     HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
     HomeAd1 *ad1=class.ads.ad1[index];
-    GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
-    goodsDetails.commodity_serial=[NSString stringWithFormat:@"%@",ad1.adsLinks];
-    [self.navigationController pushViewController:goodsDetails animated:YES];
+    if (![[NSString stringWithFormat:@"%@",ad1.adsLinks] isEqualToString:@""]) {
+        GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+        goodsDetails.commodity_serial=[NSString stringWithFormat:@"%@",ad1.adsLinks];
+        [self.navigationController pushViewController:goodsDetails animated:YES];
+    }
+
 }
 //点击第一区按钮执行该方法
 -(void)onSectionOneMyButtonClick:(MyButton *)btn{
     if (btn.tag==1) {//广告位
         HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
          HomeAd6 *ad6=class.ads.ad6;
-        GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
-        goodsDetails.commodity_serial=[NSString stringWithFormat:@"%@",ad6.adsLinks];
-        [self.navigationController pushViewController:goodsDetails animated:YES];
+        if ([[NSString stringWithFormat:@"%@",ad6.adsLinks]length]>0) {
+            GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+            goodsDetails.commodity_serial=[NSString stringWithFormat:@"%@",ad6.adsLinks];
+            [self.navigationController pushViewController:goodsDetails animated:YES];
+        }
+        
     }else{
         //商位
+        
         HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
         HomeNews *news=class.news[btn.tag-2];
-        GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
-        goodsDetails.commodity_serial=[NSString stringWithFormat:@"%.0f",news.commoditySerial];
-        [self.navigationController pushViewController:goodsDetails animated:YES];
+        if ([[NSString stringWithFormat:@"%.0f",news.commoditySerial]length]>0) {
+            GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+            goodsDetails.commodity_serial=[NSString stringWithFormat:@"%.0f",news.commoditySerial];
+            [self.navigationController pushViewController:goodsDetails animated:YES];
+        }
+        
     }
 
 }
@@ -268,9 +278,12 @@ autoSize
 -(void)SellingAdvertisingSpace{
     HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
     HomeAd7 *ad7=class.ads.ad7;
-    GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
-    goodsDetails.commodity_serial=[NSString stringWithFormat:@"%@",ad7.adsLinks];
-    [self.navigationController pushViewController:goodsDetails animated:YES];
+    if ([[NSString stringWithFormat:@"%@",ad7.adsLinks]length]>0) {
+        GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+        goodsDetails.commodity_serial=[NSString stringWithFormat:@"%@",ad7.adsLinks];
+        [self.navigationController pushViewController:goodsDetails animated:YES];
+    }
+
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -317,19 +330,27 @@ autoSize
 }
 //点击人气推荐商品执行该方法
 -(void)ImageButton:(NSInteger)index{
+   
     HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
     HomeRecommend *Recommend=class.recommend[index];
-    GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
-    goodsDetails.commodity_serial=[NSString stringWithFormat:@"%.0f",Recommend.commoditySerial];
-    [self.navigationController pushViewController:goodsDetails animated:YES];
+    if ([[NSString stringWithFormat:@"%.0f",Recommend.commoditySerial]length]>0) {
+        GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+        goodsDetails.commodity_serial=[NSString stringWithFormat:@"%.0f",Recommend.commoditySerial];
+        [self.navigationController pushViewController:goodsDetails animated:YES];
+    }
+   
 }
 //点击热卖商品执行该方法
 -(void)goodsDetail:(NSInteger)index{
+    
     HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
     HomeHot *hot=class.hot[index];
-    GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
-    goodsDetails.commodity_serial=[NSString stringWithFormat:@"%.0f",hot.commoditySerial];
-    [self.navigationController pushViewController:goodsDetails animated:YES];
+    if ([[NSString stringWithFormat:@"%.0f",hot.commoditySerial]length]>0) {
+        GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+        goodsDetails.commodity_serial=[NSString stringWithFormat:@"%.0f",hot.commoditySerial];
+        [self.navigationController pushViewController:goodsDetails animated:YES];
+    }
+
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
