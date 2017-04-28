@@ -67,6 +67,16 @@ autoSize
     [img addSubview:logoIcon];
     logoIcon.sd_layout.leftSpaceToView(img, 212*autoSizeScaleX).topSpaceToView(img, 166*autoSizeScaleY).widthIs(326*autoSizeScaleX).heightIs(153*autoSizeScaleY);
     
+    UIButton *cancelLogin=[UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelLogin setTitle:@"返回" forState:UIControlStateNormal];
+    [cancelLogin addTarget:self action:@selector(onReturnClick) forControlEvents:UIControlEventTouchUpInside];
+    [cancelLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    cancelLogin.titleLabel.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
+    [self.view addSubview:cancelLogin];
+    cancelLogin.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(self.view, 50*autoSizeScaleY).widthIs(100*autoSizeScaleX).heightIs(50*autoSizeScaleY);
+    
+    
+    
     _numberView=[[UIView  alloc]init];
     _numberView.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:_numberView];
@@ -582,6 +592,12 @@ autoSize
     [aler addAction:languageThree];
     //最后一步
     [self presentViewController:aler animated:YES completion:nil];
+}
+//取消登录  返回
+-(void)onReturnClick{
+[self dismissViewControllerAnimated:YES completion:^{
+    
+}];
 }
 /*
 #pragma mark - Navigation

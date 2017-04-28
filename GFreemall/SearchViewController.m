@@ -55,7 +55,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     autoSize
     if ([self.where isEqualToString:@"搜索"]) {
+        if ([searchField.text length]>0) {
         return 88*autoSizeScaleY;
+        }
     }
     return 0;
 }

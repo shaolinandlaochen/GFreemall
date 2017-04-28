@@ -27,6 +27,7 @@
         img.image=[UIImage imageNamed:@"bg"];
         [self addSubview:img];
         img.sd_layout.leftSpaceToView(self, 0).topSpaceToView(self, 0).rightSpaceToView(self, 0).heightIs(324*autoSizeScaleY);
+        
         //头像
         _iconBtn=[[MyButton alloc]init];
         _iconBtn.layer.cornerRadius = 65*autoSizeScaleY;

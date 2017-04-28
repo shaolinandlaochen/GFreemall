@@ -262,7 +262,7 @@ cancelClick
     UIView *view=[[UIView alloc]initWithFrame:frame(0, 0, 50, 80)];
     view.backgroundColor=[UIColor clearColor];
     UIButton *BarButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    [BarButton setBackgroundImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
+    //[BarButton setBackgroundImage:[UIImage imageNamed:@"icon_share"] forState:UIControlStateNormal];
     BarButton.frame=frame(0, 20, 50, 50);
     [BarButton addTarget:self action:@selector(onshareClick) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:BarButton];
