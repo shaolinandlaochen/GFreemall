@@ -66,7 +66,11 @@
     [self setupAutoHeightWithBottomView:_picrice bottomMargin:25*autoSizeScaleY];
 
 }
+-(void)setChildDic:(NSDictionary *)ChildDic{
+     ChildProductDetailsBaseClass *ChildClass=[[ChildProductDetailsBaseClass alloc]initWithDictionary:ChildDic];
+    _picrice.text=[NSString stringWithFormat:@"%.2f",ChildClass.map.commoditySellprice];
 
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

@@ -21,54 +21,58 @@
     if ([super initWithFrame:frame]) {
         self.backgroundColor=[UIColor whiteColor];
         autoSize
-        NSArray *nameArray=@[@"客服",@"收藏",@"购物车"];
-        NSArray *imgArray=@[@"icon_service",@"icon_collect1",@"icon_cart_gray"];
-        for (int i=0; i<3; i++) {
+        NSArray *nameArray=@[@"收藏",@"购物车"];
+        NSArray *imgArray=@[@"icon_collect1",@"icon_cart_gray"];
+        for (int i=0; i<2; i++) {
             UILabel *lbl=[[UILabel alloc]init];
             lbl.textColor=[TheParentClass colorWithHexString:@"#999999"];
             lbl.font=[UIFont systemFontOfSize:20*autoSizeScaleY];
             lbl.textAlignment=NSTextAlignmentCenter;
             lbl.text=Localized(nameArray[i]);
             [self addSubview:lbl];
-            CGSize size=[TheParentClass StringHeight:nameArray[i] Lblfont:20*autoSizeScaleY heightOfTheMinus:0];
-            lbl.sd_layout.leftSpaceToView(self, (i*104)*autoSizeScaleY).bottomSpaceToView(self, 10*autoSizeScaleY).widthIs(104*autoSizeScaleX).heightIs(size.height);
+            if (i==0) {
+                 lbl.sd_layout.leftSpaceToView(self, 0).bottomSpaceToView(self, 10*autoSizeScaleY).widthIs(151*autoSizeScaleX).heightIs(30*autoSizeScaleY);
+            }else{
+             lbl.sd_layout.leftSpaceToView(self, 151*autoSizeScaleX).bottomSpaceToView(self, 10*autoSizeScaleY).widthIs(151*autoSizeScaleX).heightIs(30*autoSizeScaleY);
+            }
             
             UIImageView *img=[[UIImageView alloc]init];
             img.tag=100+i;
             img.image=[UIImage imageNamed:imgArray[i]];
             [self addSubview:img];
-            float x=34+(36+68)*(i%3);
-            img.sd_layout.leftSpaceToView(self, x*autoSizeScaleX).topSpaceToView(self, 16*autoSizeScaleY).widthIs(36*autoSizeScaleX).heightIs(36*autoSizeScaleY);
-            
-            
-           
-            
-            
-            if (i>0) {
-                UILabel *lblLines=[[UILabel alloc]init];
-                lblLines.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
-                [self addSubview:lblLines];
-                if (i==1) {
-                    
-                    lblLines.sd_layout.leftSpaceToView(self, 104*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(0.5);
-                }else{
-                lblLines.sd_layout.leftSpaceToView(self, 208*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(0.5);
-                }
+            if (i==0) {
+                  img.sd_layout.leftSpaceToView(self, 57*autoSizeScaleX).topSpaceToView(self, 16*autoSizeScaleY).widthIs(36*autoSizeScaleX).heightIs(36*autoSizeScaleY);
+            }else{
+            img.sd_layout.leftSpaceToView(self, 208*autoSizeScaleX).topSpaceToView(self, 16*autoSizeScaleY).widthIs(36*autoSizeScaleX).heightIs(36*autoSizeScaleY);
             }
+          
+            
+            
             
         }
         //客服
         _CustomerService=[[MyButton alloc]init];
-        [self addSubview:_CustomerService];
-        _CustomerService.sd_layout.leftSpaceToView(self, 0).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(104*autoSizeScaleX);
+        //[self addSubview:_CustomerService];
+        //_CustomerService.sd_layout.leftSpaceToView(self, 0).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(104*autoSizeScaleX);
+        
+        UILabel *lblLines=[[UILabel alloc]init];
+        lblLines.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
+        [self addSubview:lblLines];
+        lblLines.sd_layout.leftSpaceToView(self, 151*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(0.5);
+        
+        
+        
+        
+        
+        
         //收藏
         _collection=[[MyButton alloc]init];
         [self addSubview:_collection];
-        _collection.sd_layout.leftSpaceToView(_CustomerService, 0).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(104*autoSizeScaleX);
+        _collection.sd_layout.leftSpaceToView(self, 0).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(151*autoSizeScaleX);
         //购物车
         _shoppingCar=[[MyButton alloc]init];
         [self addSubview:_shoppingCar];
-        _shoppingCar.sd_layout.leftSpaceToView(_collection, 0).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(104*autoSizeScaleX);
+        _shoppingCar.sd_layout.leftSpaceToView(_collection, 0).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(151*autoSizeScaleX);
         //加入购物车
         _addShoppingCar=[[MyButton alloc]init];
         _addShoppingCar.backgroundColor=[[UIColor blackColor]colorWithAlphaComponent:0.6];
@@ -95,7 +99,7 @@
 
 }
 -(void)setIsCollect:(BOOL)isCollect{
-    UIImageView *img=(UIImageView *)[self viewWithTag:101];
+    UIImageView *img=(UIImageView *)[self viewWithTag:100];
     if (isCollect) {
         img.image=[UIImage imageNamed:@"icon_collected"];
     }else{

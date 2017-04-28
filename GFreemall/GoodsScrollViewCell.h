@@ -22,4 +22,5 @@
 @property(nonatomic,strong)SDCycleScrollView* scroll;
 @property(nonatomic,strong)NSDictionary *dic;
 @property(nonatomic,strong)NSMutableArray *array;
+@property(nonatomic,strong)NSDictionary *ChildDic;
 @end

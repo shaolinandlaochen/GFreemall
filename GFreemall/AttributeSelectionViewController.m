@@ -9,6 +9,7 @@
 #import "AttributeSelectionViewController.h"
 #import "AttributeSkuCell.h"
 #import "SKUCollectionReusableView.h"
+#import "GoodsDetailsRequest.h"
 
 @interface AttributeSelectionViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
@@ -31,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-numberCount=1;
+    numberCount=1;
     [self BuildView];
     // Do any additional setup after loading the view.
 }
@@ -177,6 +178,7 @@ autoSize
     imgBtn.backgroundColor=[UIColor whiteColor];
     [imgBtn.layer setBorderColor:[UIColor whiteColor].CGColor];
     [imgBtn.layer setBorderWidth:1];
+    imgBtn.tag=753;
     [imgBtn.layer setMasksToBounds:YES];
     imgBtn.layer.cornerRadius = 6*autoSizeScaleX;
     imgBtn.layer.masksToBounds = 6*autoSizeScaleX;
@@ -189,6 +191,7 @@ autoSize
     goodsNmuber.text=[NSString stringWithFormat:@"商品编码:%.0f",classs.comm.commoditySerial];
     goodsNmuber.textColor=[TheParentClass colorWithHexString:@"#999999"];
     goodsNmuber.font=[UIFont systemFontOfSize:24*autoSizeScaleY];
+    goodsNmuber.tag=741;
     [_view addSubview:goodsNmuber];
     goodsNmuber.sd_layout.leftSpaceToView(imgBtn, 25*autoSizeScaleX).bottomSpaceToView(line, 30*autoSizeScaleY).rightSpaceToView(_view, 25*autoSizeScaleX).autoHeightRatio(0);
     
@@ -260,11 +263,7 @@ autoSize
         NSMutableArray *arrays=[[NSMutableArray alloc]init];
         for (int y=0; y<ListAttribute.eAttributeVal.count; y++) {
             NSMutableDictionary *dics=[[NSMutableDictionary alloc]init];
-            if (y==0) {
-                [dics setObject:@"yes" forKey:@"why"];
-            }else{
             [dics setObject:@"no" forKey:@"why"];
-            }
             [arrays addObject:dics];
         }
         [self.array addObject:arrays];
@@ -293,28 +292,73 @@ autoSize
 
 //点击立即购买执行该方法
 -(void)onBuyClick{
-
-    
-    [_deleghate BuyNowattr_input:[self ScreeningOfSkuValue] message:[self DisplayInformation] number:numberCount];
-    [self dismissViewControllerAnimated:YES completion:^{
+    if ([[self ScreeningOfSkuValue] length]<1) {
+        [FTIndicator showErrorWithMessage:@"请选择商品属性"];
+    }else{
+        int number=0;
+        if (self.ChildDic==nil) {
+            GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+            number=classs.comm.commodityReserves;
+        }else{
+            ChildProductDetailsBaseClass *class=[[ChildProductDetailsBaseClass alloc]initWithDictionary:self.ChildDic];
+            number=class.map.commodityReserves;
+        }
+        if (numberCount>number) {
+            [FTIndicator showInfoWithMessage:@"库存不足"];
+        }else{
+            [_deleghate BuyNowattr_input:[self ScreeningOfSkuValue] message:[self DisplayInformation] number:numberCount];
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+        }
+       
         
-    }];
+    }
+    
+
     
 }
 //加入购物车
 
 -(void)onShoppingCarClick{
-    [_deleghate AddToCart:[self ScreeningOfSkuValue] message:[self DisplayInformation] number:numberCount];
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    
+    if ([[self ScreeningOfSkuValue] length]<1) {
+        [FTIndicator showErrorWithMessage:@"请选择商品属性"];
+    }else{
+        int number=0;
+        if (self.ChildDic==nil) {
+            GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+            number=classs.comm.commodityReserves;
+        }else{
+            ChildProductDetailsBaseClass *class=[[ChildProductDetailsBaseClass alloc]initWithDictionary:self.ChildDic];
+            number=class.map.commodityReserves;
+        }
+        if (numberCount>number) {
+            [FTIndicator showInfoWithMessage:@"库存不足"];
+        }else{
+            [_deleghate AddToCart:[self ScreeningOfSkuValue] message:[self DisplayInformation] number:numberCount];
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+        }
+      
+    }
+ 
 
 }
 //加减数量
 -(void)onChangetheNumberClick:(MyButton *)btn{
-     GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    
+    int number=0;
+    if (self.ChildDic==nil) {
+        GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+        number=classs.comm.commodityReserves;
+    }else{
+        ChildProductDetailsBaseClass *class=[[ChildProductDetailsBaseClass alloc]initWithDictionary:self.ChildDic];
+        number=class.map.commodityReserves;
+    }
     if (btn.why) {//加
-        if (numberCount<classs.comm.commodityReserves) {
+        if (numberCount<number) {
             numberCount+=1;
         }else{
         [FTIndicator showInfoWithMessage:@"库存不足"];
@@ -322,7 +366,7 @@ autoSize
         
     }else{//减
         if (numberCount<2) {
-            [FTIndicator showInfoWithMessage:@"商品数量最少一个"];
+            [FTIndicator showInfoWithMessage:@"最少买一个"];
         }else{
             numberCount-=1;
         }
@@ -345,14 +389,14 @@ autoSize
         [arrays addObject:dicKey];
     }
     [self.array replaceObjectAtIndex:btn.indexPath.section withObject:arrays];
-    numberCount=1;
-    _number.text=[NSString stringWithFormat:@"%ld",numberCount];
     [_CollectionView reloadData];
+    [self CheckWhetherMeetTheFilterCondition];
 }
 //筛选sku值拼接
 -(NSString *)ScreeningOfSkuValue{
     GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
     NSString *skuStr=nil;
+    int x=0;
     for (int i=0; i<self.array.count; i++) {
         GoodsDetailsListAttribute *ListAttribute=classs.listAttribute[i];
         NSArray *arrays=self.array[i];
@@ -360,6 +404,7 @@ autoSize
             NSArray *contextArray=ListAttribute.eAttributeVal;
             NSDictionary *dics=arrays[y];
             if ([[dics objectForKey:@"why"]isEqualToString:@"yes"]) {//筛选找到用户选择的sku值
+                x+=1;
                 NSString *skuu=[NSString stringWithFormat:@"%@",contextArray[y]];
                 NSArray *fenGe=[skuu componentsSeparatedByString:@"_"];
                 if (fenGe.count>0) {
@@ -372,7 +417,10 @@ autoSize
             }
         }
     }
-    return skuStr;
+    if (x==self.array.count) {//表示所有sku值都选了
+        return skuStr;
+    }
+    return @"";
 
 
 }
@@ -403,6 +451,54 @@ autoSize
     
     
 }
+//检查是否满足筛选条件
+-(void)CheckWhetherMeetTheFilterCondition{
+    GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    NSString *skuStr=nil;
+    int x=0;
+    for (int i=0; i<self.array.count; i++) {
+        GoodsDetailsListAttribute *ListAttribute=classs.listAttribute[i];
+        NSArray *arrays=self.array[i];
+        for (int y=0; y<arrays.count; y++) {
+            NSArray *contextArray=ListAttribute.eAttributeVal;
+            NSDictionary *dics=arrays[y];
+            if ([[dics objectForKey:@"why"]isEqualToString:@"yes"]) {//筛选找到用户选择的sku值
+                x+=1;
+                NSString *skuu=[NSString stringWithFormat:@"%@",contextArray[y]];
+                NSArray *fenGe=[skuu componentsSeparatedByString:@"_"];
+                if (fenGe.count>0) {
+                    if (skuStr==nil) {
+                        skuStr=[NSString stringWithFormat:@"%@",fenGe[0]];
+                    }else{
+                        skuStr=[NSString stringWithFormat:@"%@-%@",skuStr,fenGe[0]];
+                    }
+                }
+            }
+        }
+    }
+    if (x==self.array.count) {//表示所有sku值都选了
+        [SVProgressHUD showWithStatus:@"正在加载"];
+        [self CommodityDataAcquisition:skuStr message:[self DisplayInformation]];
+    }
+
+}
+//获取子商品信息
+-(void)CommodityDataAcquisition:(NSString *)attr_input message:(NSString *)string{
+    [GoodsDetailsRequest DetailsForTheChildvalues:[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input] block:^(NSDictionary *dics) {
+        ChildProductDetailsBaseClass *class=[[ChildProductDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+        if ([class.code isEqualToString:@"28"]) {
+            GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+            self.ChildDic=[self deleteEmpty:dics];
+            ((UILabel *)[_view viewWithTag:741]).text=[NSString stringWithFormat:@"商品编码:%.0f",class.map.commoditySerial];
+             [((MyButton *)[_view viewWithTag:753]) sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",classs.imgSrc,classs.comm.commodityImagesPath,classs.comm.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
+            [_deleghate CommodityDataAcquisition:[self deleteEmpty:dics] message:string];
+        }else{
+            [FTIndicator showErrorWithMessage:class.msg];
+        }
+        [SVProgressHUD dismiss];
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -72,4 +72,7 @@
 #import "MessageNumberBaseClass.h"
 #import "GFMSBaseClass.h"
 #import "GFMSOrderMap.h"
+#import "ChildProductDetailsMap.h"
+#import "ChildProductDetailsBaseClass.h"
+
 

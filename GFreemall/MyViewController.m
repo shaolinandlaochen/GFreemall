@@ -278,7 +278,10 @@ autoSize
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:YES];
      self.navigationController.navigationBarHidden=YES;
-    [self PersonalInformation];//获取个人信息
+    if ([tokenString length]>1) {
+          [self PersonalInformation];//获取个人信息
+    }
+  
 
 }
 /*

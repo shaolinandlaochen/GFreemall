@@ -105,4 +105,20 @@
     }];
 
 }
+//获取子商品详情
++(void)DetailsForTheChildvalues:(NSString *)values block:(void(^)(NSDictionary *dics))block{
+    NSMutableDictionary *dicData=[[NSMutableDictionary alloc]init];
+    if ([tokenString length]>0) {
+        [dicData setObject:tokenString forKey:@"token"];
+    }
+    [dicData setObject:values forKey:@"values"];
+
+    NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
+    [RequestClass getUrl:@"querycommbyattr" Dic:data block:^(NSDictionary *dic) {
+        NSLog(@"/获取子商品详情---%@",dic);
+        NSLog(@"get/获取子商品详情---msg==%@",[dic objectForKey:@"msg"]);
+        block(dic);
+        
+    }];
+}
 @end

@@ -542,6 +542,8 @@
 		9D1AD9461EA8AB1B0034527B /* ShoppingSettlementList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1AD93E1EA8AB1B0034527B /* ShoppingSettlementList.m */; };
 		9D1AD9471EA8AB1B0034527B /* ShoppingSettlementListAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1AD9401EA8AB1B0034527B /* ShoppingSettlementListAddress.m */; };
 		9D1AD9481EA8AB1B0034527B /* ShoppingSettlementMapAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1AD9421EA8AB1B0034527B /* ShoppingSettlementMapAddress.m */; };
+		9D1B98C31EB3129400B0C2A9 /* ChildProductDetailsBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B98C01EB3129400B0C2A9 /* ChildProductDetailsBaseClass.m */; };
+		9D1B98C41EB3129400B0C2A9 /* ChildProductDetailsMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1B98C21EB3129400B0C2A9 /* ChildProductDetailsMap.m */; };
 		9D2937341EA067FE00A86E10 /* LoginRequuestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937331EA067FE00A86E10 /* LoginRequuestClass.m */; };
 		9D2937381EA075CD00A86E10 /* setUpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2937371EA075CD00A86E10 /* setUpRequest.m */; };
 		9D29373C1EA07BE400A86E10 /* fenlei_kk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2937391EA07BE400A86E10 /* fenlei_kk.png */; };
@@ -1355,6 +1357,10 @@
 		9D1AD9401EA8AB1B0034527B /* ShoppingSettlementListAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingSettlementListAddress.m; sourceTree = "<group>"; };
 		9D1AD9411EA8AB1B0034527B /* ShoppingSettlementMapAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingSettlementMapAddress.h; sourceTree = "<group>"; };
 		9D1AD9421EA8AB1B0034527B /* ShoppingSettlementMapAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingSettlementMapAddress.m; sourceTree = "<group>"; };
+		9D1B98BF1EB3129400B0C2A9 /* ChildProductDetailsBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildProductDetailsBaseClass.h; sourceTree = "<group>"; };
+		9D1B98C01EB3129400B0C2A9 /* ChildProductDetailsBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildProductDetailsBaseClass.m; sourceTree = "<group>"; };
+		9D1B98C11EB3129400B0C2A9 /* ChildProductDetailsMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildProductDetailsMap.h; sourceTree = "<group>"; };
+		9D1B98C21EB3129400B0C2A9 /* ChildProductDetailsMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildProductDetailsMap.m; sourceTree = "<group>"; };
 		9D2937321EA067FE00A86E10 /* LoginRequuestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequuestClass.h; sourceTree = "<group>"; };
 		9D2937331EA067FE00A86E10 /* LoginRequuestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequuestClass.m; sourceTree = "<group>"; };
 		9D2937361EA075CD00A86E10 /* setUpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setUpRequest.h; sourceTree = "<group>"; };
@@ -2649,6 +2655,10 @@
 				9D170A861EA5C11000A373DD /* ProductEvaluationListComment.m */,
 				9D170A871EA5C11000A373DD /* ProductEvaluationResultList.h */,
 				9D170A881EA5C11000A373DD /* ProductEvaluationResultList.m */,
+				9D1B98BF1EB3129400B0C2A9 /* ChildProductDetailsBaseClass.h */,
+				9D1B98C01EB3129400B0C2A9 /* ChildProductDetailsBaseClass.m */,
+				9D1B98C11EB3129400B0C2A9 /* ChildProductDetailsMap.h */,
+				9D1B98C21EB3129400B0C2A9 /* ChildProductDetailsMap.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -3615,6 +3625,7 @@
 				383A43E81E94811C002CBDA0 /* OrderNumberView.m in Sources */,
 				38536CC31E8F4C7F003E9015 /* UserCommentsCell.m in Sources */,
 				9D170A401EA48A4E00A373DD /* MessageResultList.m in Sources */,
+				9D1B98C41EB3129400B0C2A9 /* ChildProductDetailsMap.m in Sources */,
 				9D4BCE211EA5EE0500ED3D3E /* ShoppingCarComm.m in Sources */,
 				38EE5F431E97650100A7DE52 /* PasswordManagementSecurityVerification.m in Sources */,
 				9D175A1B1EA9F70100583DE6 /* SubmitOrderRequest.m in Sources */,
@@ -3708,6 +3719,7 @@
 				9D170A221EA451B800A373DD /* CollectionBaseClass.m in Sources */,
 				9DB2CB961E9E1C5A009DCE8F /* GFMConvertibleOutOfBalanceCell.m in Sources */,
 				382E02A61E95D1ED00DEF382 /* OrderAmountDetailCell.m in Sources */,
+				9D1B98C31EB3129400B0C2A9 /* ChildProductDetailsBaseClass.m in Sources */,
 				3818ADB61E8B5EDC00CA2FB6 /* ImageCell.m in Sources */,
 				9D170A301EA473CE00A373DD /* SearchBaseClass.m in Sources */,
 				9DFF88161EADCB00005E5E64 /* OrderDetailsRequest.m in Sources */,

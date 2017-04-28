@@ -13,4 +13,5 @@
 @property(nonatomic,strong)UILabel *string;
 @property(nonatomic,strong)UILabel *picrice;
 @property(nonatomic,strong)NSDictionary *model;
+@property(nonatomic,strong)NSDictionary *ChildDic;
 @end

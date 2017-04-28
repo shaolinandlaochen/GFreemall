@@ -49,4 +49,8 @@
     }
     _scroll.imageURLStringsGroup=_array;
 }
+-(void)setChildDic:(NSDictionary *)ChildDic{
+
+
+}
 @end

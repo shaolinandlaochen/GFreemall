@@ -186,18 +186,29 @@
                 GoodsScrollViewCell *cell=[GoodsScrollViewCell new];
                 cell.delegate=self;
                 cell.dic=self.dataDic;
+                if (self.ChildDic!=nil) {
+                    cell.ChildDic=self.ChildDic;
+                }
                 return cell;
             }else if (indexPath.row==1){
                 ProductDetailsDescriptionCell *cell=[ProductDetailsDescriptionCell new];
-                if (self.dataDic!=nil) {
-                    cell.model=self.dataDic;
+                cell.model=self.dataDic;
+                if (self.ChildDic!=nil) {
+                    cell.ChildDic=self.ChildDic;
                 }
+                
                 cell.userInteractionEnabled = NO;
                 return cell;
             }else if (indexPath.row==2){
                 CostCalculationCell *cell=[CostCalculationCell new];
-                cell.discount.text=[NSString stringWithFormat:@"%.2f",classs.comm.commodityDiscount];
-                cell.freight.text=[NSString stringWithFormat:@"%.2f",classs.comm.commodityFreight];
+                if (self.ChildDic!=nil) {
+                    ChildProductDetailsBaseClass *ChildClass=[[ChildProductDetailsBaseClass alloc]initWithDictionary:self.ChildDic];
+                    cell.discount.text=[NSString stringWithFormat:@"%.2f",ChildClass.map.commodityDiscount];//折扣
+                }else{
+                    cell.discount.text=[NSString stringWithFormat:@"%.2f",classs.comm.commodityDiscount];
+                  
+                }
+                cell.freight.text=[NSString stringWithFormat:@"%.2f",classs.comm.commodityFreight];//运费
                 cell.userInteractionEnabled = NO;
                 return cell;
             }
@@ -265,7 +276,6 @@ cancelClick
 }
 ///代理方法//用户点击详情评论或者商品执行该方法
 -(void)ProductScreening:(MyButton *)btn{
-    NSLog(@"我是代理===%ld",btn.tag);
     //点击方法滚动到指定位置
     _page=btn.tag-1;
     CGPoint position = CGPointMake(_page*self.view.frame.size.width, 0);
@@ -391,6 +401,7 @@ cancelClick
     AttributeSelectionViewController *vc=[[AttributeSelectionViewController alloc]init];
     vc.dataDic=self.dataDic;
     vc.deleghate=self;
+    vc.commodity_serial=self.commodity_serial;
     vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self presentViewController:vc animated:YES completion:^{
         vc.view.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:.5];
@@ -459,7 +470,6 @@ cancelClick
 }
 //立即购买(代理)
 -(void)BuyNowattr_input:(NSString *)attr_input message:(NSString *)Message number:(NSInteger)number{
-    NSLog(@"%@............%@",attr_input,Message);
     [SVProgressHUD showWithStatus:@"正在加载"];
       GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
     [GoodsDetailsRequest BuyNowattr_input:[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input] num:[NSString stringWithFormat:@"%ld",number] comm_serial:self.commodity_serial checkRes:classs.checkRes block:^(NSDictionary *dics) {
@@ -483,6 +493,7 @@ cancelClick
 }
 //加入购物车(代理)
 -(void)AddToCart:(NSString *)attr_input message:(NSString *)Message number:(NSInteger)number{
+    
     self.SKUString=[NSString stringWithFormat:@"已选:%@",Message];
     self.attr_input=attr_input;
     [_tableView reloadData];
@@ -490,12 +501,23 @@ cancelClick
        [SVProgressHUD showWithStatus:@"正在加载"];
     [GoodsDetailsRequest AddTToCartvalues:[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input] serial:self.commodity_serial num:[NSString stringWithFormat:@"%ld",number] checkRes:classs.checkRes block:^(NSDictionary *dics) {
         GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-        [FTIndicator showSuccessWithMessage:class.msg];
+        if ([class.code isEqualToString:@"12"]) {
+             [FTIndicator showSuccessWithMessage:class.msg];
+        }else{
+         [FTIndicator showErrorWithMessage:class.msg];
+        }
+       
         [SVProgressHUD dismiss];
         
     }];
 }
+//子商品数据获取
 
+-(void)CommodityDataAcquisition:(NSDictionary *)dataDic message:(NSString *)Message{
+    self.ChildDic=dataDic;
+    self.SKUString=[NSString stringWithFormat:@"已选:%@",Message];
+    [_tableView reloadData];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

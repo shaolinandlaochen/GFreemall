@@ -13,4 +13,5 @@
 @property(nonatomic,strong)NSDictionary *dataDic;
 @property(nonatomic,copy)NSString *SKUString;
 @property(nonatomic,copy)NSString *attr_input;
+@property(nonatomic,strong)NSDictionary *ChildDic;
 @end

@@ -424,8 +424,13 @@
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:YES];
     self.navigationController.navigationBarHidden=NO;
-    TheDrop_downRefresh(_tableView, @selector(ToGetAShoppingCartGoodsList))
-    [self messageNumber];
+    if ([tokenString length]>0) {
+        TheDrop_downRefresh(_tableView, @selector(ToGetAShoppingCartGoodsList))
+        [self messageNumber];
+    }else{
+        [FTIndicator showErrorWithMessage:@"请您先去登录"];
+    }
+  
 }
 -(void)messageNumber{
     autoSize
