@@ -68,7 +68,12 @@
     self.backgroundColor=[UIColor whiteColor];
     float a=model.totalCount-model.badCount;
     float b=a/model.totalCount;
-     _nameNumber.text=[NSString stringWithFormat:@"评论数:%.0f",model.totalCount];
+    if (model.totalCount>0) {
+       _nameNumber.text=[NSString stringWithFormat:@"评论数:%.0f",model.totalCount];
+    }else{
+    _nameNumber.text=[NSString stringWithFormat:@"评论数:0"];
+    }
+    
     CGSize size=[TheParentClass  StringHeight:_nameNumber.text Lblfont:26*autoSizeScaleY heightOfTheMinus:0];
     _nameNumber.sd_layout.widthIs(size.width);
     [_percentageNumber setTitle:[NSString stringWithFormat:@"%.0f%%",b] forState:UIControlStateNormal];
