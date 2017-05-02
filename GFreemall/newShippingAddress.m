@@ -175,10 +175,11 @@
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"provinces"];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"city"];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"area"];
-        NSString *paths = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-        NSLog(@"%@",paths);
-        NSString *path=[NSString stringWithFormat:@"%@/dizhi_quanqiu.txt",paths];
-        NSString* content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+        //NSString *paths = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+        //NSLog(@"%@",paths);
+        //NSString *path=[NSString stringWithFormat:@"%@/dizhi_quanqiu.txt",paths];
+         NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"dizhi_quanqiu" ofType:@"txt"];
+        NSString* content = [NSString stringWithContentsOfFile:resourcePath encoding:NSUTF8StringEncoding error:nil];
         NSDictionary *dic = [self dictionaryWithJsonString:content];
         AddressString *string=[AddressString CommodityClassificationModel:dic];
         ChooseShippingAddressOne *One=[[ChooseShippingAddressOne alloc]init];
@@ -205,11 +206,31 @@
 //选择地区完毕
 -(void)SelectAreaClick:(NSNotification *)not{
 
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"countries"]length]>0) {
+            self.address_country=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"countries"]];
+    }else{
+    self.address_country=@"";
+    }
 
-    self.address_country=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"countries"]];
-    self.address_province=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"provinces"]];
-    self.address_city=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"city"]];
-    self.address_area=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"area"]];
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"provinces"]length]>0) {
+         self.address_province=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"provinces"]];
+    }else{
+    self.address_province=@"";
+    }
+   
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"city"]length]>0) {
+       self.address_city=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"city"]];
+    }else{
+    self.address_city=@"";
+    }
+    
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"area"]length]>0) {
+        self.address_area=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"area"]];
+    }else{
+    self.address_area=@"";
+    }
+    
+    
     [_tableView reloadData];
     
 }
@@ -283,7 +304,6 @@
 }
 -(void)NewString:(NSString *)string indexPath:(NSIndexPath *)indexpath{
 
-    NSLog(@"ssssssss__%@",string);
     
     if (indexpath.row==0) {
         self.name=string;
