@@ -150,7 +150,11 @@
                 cell.defaultStr.backgroundColor=[UIColor redColor];
             }
             cell.strings=[NSString stringWithFormat:@"%@     %@",self.address_name,self.address_phone];
-            cell.context.text=[NSString stringWithFormat:@"%@%@%@%@",self.address_province,self.address_city,self.address_area,self.address_address];
+            NSString *addressCountry=self.address_country;
+            if ([self.address_country isEqualToString:@"China"]) {
+                addressCountry=@"中国";
+            }
+            cell.addressString=[NSString stringWithFormat:@"%@ %@ %@ %@ %@",addressCountry,self.address_province,self.address_city,self.address_area,self.address_address];
             
         }else{
             cell.strings=Localized(@"添加收货地址");

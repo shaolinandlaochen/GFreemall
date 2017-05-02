@@ -498,7 +498,7 @@ cancelClick
 }
 //立即购买(代理)
 -(void)BuyNowattr_input:(NSString *)attr_input message:(NSString *)Message number:(NSInteger)number{
-    if ([tokenString length]<1) {
+    if ([tokenString length]>0) {
         [SVProgressHUD showWithStatus:@"正在加载"];
         GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
         [GoodsDetailsRequest BuyNowattr_input:[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input] num:[NSString stringWithFormat:@"%ld",number] comm_serial:self.commodity_serial checkRes:classs.checkRes block:^(NSDictionary *dics) {
@@ -526,7 +526,7 @@ cancelClick
 }
 //加入购物车(代理)
 -(void)AddToCart:(NSString *)attr_input message:(NSString *)Message number:(NSInteger)number{
-    if ([tokenString length]<1) {
+    if ([tokenString length]>0) {
         self.SKUString=[NSString stringWithFormat:@"已选:%@",Message];
         self.attr_input=attr_input;
         [_tableView reloadData];

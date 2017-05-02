@@ -192,7 +192,7 @@
             if ([class.map.addressCountry isEqualToString:@"China"]) {
                 country=@"中国";
             }
-            cell.context.text=[NSString stringWithFormat:@"%@ %@ %@ %@ %@",country,class.map.addressProvince,class.map.addressCity,class.map.addressArea,class.map.addressAddress];
+            cell.addressString=[NSString stringWithFormat:@"%@ %@ %@ %@ %@",country,class.map.addressProvince,class.map.addressCity,class.map.addressArea,class.map.addressAddress];
             return cell;
             
         }else if (indexPath.section==2){

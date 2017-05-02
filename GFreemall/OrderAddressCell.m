@@ -38,10 +38,11 @@
         img.sd_layout.leftSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 80*autoSizeScaleY).widthIs(26*autoSizeScaleX).heightIs(32*autoSizeScaleY);
         
         _context=[[UILabel alloc]init];
+        _context.numberOfLines=2;
         _context.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _context.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         [self.contentView addSubview:_context];
-        _context.sd_layout.leftSpaceToView(img, 10*autoSizeScaleX).topEqualToView(img).rightSpaceToView(self.contentView, 25*autoSizeScaleX).heightIs(32*autoSizeScaleY);
+        _context.sd_layout.leftSpaceToView(img, 10*autoSizeScaleX).topEqualToView(img).rightSpaceToView(self.contentView, 25*autoSizeScaleX);
         
         _go=[[UIImageView alloc]init];
         [self.contentView addSubview:_go];
@@ -66,6 +67,10 @@
      _defaultStr.sd_layout.leftSpaceToView(_name, 44*autoSizeScaleX).topSpaceToView(self.contentView, 35*autoSizeScaleY).widthIs(76*autoSizeScaleX).heightIs(30*autoSizeScaleY);
 
 
+}
+-(void)setAddressString:(NSString *)addressString{
+    _context.text=addressString;
+    _context.sd_layout.autoHeightRatio(0);
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

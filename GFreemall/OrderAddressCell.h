@@ -16,4 +16,5 @@
 @property(nonatomic,strong)UIImageView *go;
 @property(nonatomic,strong)UIImageView *img_line;
 @property(nonatomic,copy)NSString *strings;
+@property(nonatomic,copy)NSString *addressString;
 @end
