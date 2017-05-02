@@ -83,7 +83,7 @@
     [datePicker addTarget:self action:@selector(onDatePickerClick:) forControlEvents:UIControlEventValueChanged];
     
     [_views addSubview:datePicker];
-    datePicker.sd_layout.leftSpaceToView(_views, 200*autoSizeScaleX).topSpaceToView(view, 0).bottomSpaceToView(_views, 100*autoSizeScaleY).widthIs(500*autoSizeScaleX);
+    datePicker.sd_layout.leftSpaceToView(_views, 200*autoSizeScaleX).topSpaceToView(view, 0).bottomSpaceToView(_views, 100*autoSizeScaleY).widthIs(520*autoSizeScaleX);
     
     
     UIView *bjView=[[UIView alloc]init];
