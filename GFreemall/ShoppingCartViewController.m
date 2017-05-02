@@ -125,7 +125,7 @@
     [cell.addBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
     cell.deleteBtn.indexPath=indexPath;
     [cell.deleteBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,comm.commodityImagesPath,comm.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
+    [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,comm.commodityImagesPath,comm.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"image_zhanweifu"]];
     cell.icon.indexPath=indexPath;
     [cell.icon addTarget:self action:@selector(onGoodDetaileClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.name.text=list.commodityName;

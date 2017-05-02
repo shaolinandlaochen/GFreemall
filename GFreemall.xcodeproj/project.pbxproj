@@ -583,6 +583,9 @@
 		9D6AA69D1EB83239006C494D /* image_zhanweifu.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6AA69A1EB83239006C494D /* image_zhanweifu.png */; };
 		9D6AA69E1EB83239006C494D /* image_zhanweifu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6AA69B1EB83239006C494D /* image_zhanweifu@2x.png */; };
 		9D6AA69F1EB83239006C494D /* image_zhanweifu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6AA69C1EB83239006C494D /* image_zhanweifu@3x.png */; };
+		9D6AA6A31EB83649006C494D /* image_zhanweifu_indexbanner.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6AA6A01EB83649006C494D /* image_zhanweifu_indexbanner.png */; };
+		9D6AA6A41EB83649006C494D /* image_zhanweifu_indexbanner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6AA6A11EB83649006C494D /* image_zhanweifu_indexbanner@2x.png */; };
+		9D6AA6A51EB83649006C494D /* image_zhanweifu_indexbanner@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6AA6A21EB83649006C494D /* image_zhanweifu_indexbanner@3x.png */; };
 		9D9454831EA5D8D900C6EF21 /* CALayer+Anim.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94547C1EA5D8D900C6EF21 /* CALayer+Anim.m */; };
 		9D9454841EA5D8D900C6EF21 /* CALayer+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94547E1EA5D8D900C6EF21 /* CALayer+Transition.m */; };
 		9D9454851EA5D8D900C6EF21 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9454801EA5D8D900C6EF21 /* PhotoView.m */; };
@@ -1427,6 +1430,9 @@
 		9D6AA69A1EB83239006C494D /* image_zhanweifu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_zhanweifu.png; path = "imgs/首页/image_zhanweifu.png"; sourceTree = "<group>"; };
 		9D6AA69B1EB83239006C494D /* image_zhanweifu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image_zhanweifu@2x.png"; path = "imgs/首页/image_zhanweifu@2x.png"; sourceTree = "<group>"; };
 		9D6AA69C1EB83239006C494D /* image_zhanweifu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image_zhanweifu@3x.png"; path = "imgs/首页/image_zhanweifu@3x.png"; sourceTree = "<group>"; };
+		9D6AA6A01EB83649006C494D /* image_zhanweifu_indexbanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_zhanweifu_indexbanner.png; path = "imgs/首页/image_zhanweifu_indexbanner.png"; sourceTree = "<group>"; };
+		9D6AA6A11EB83649006C494D /* image_zhanweifu_indexbanner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image_zhanweifu_indexbanner@2x.png"; path = "imgs/首页/image_zhanweifu_indexbanner@2x.png"; sourceTree = "<group>"; };
+		9D6AA6A21EB83649006C494D /* image_zhanweifu_indexbanner@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image_zhanweifu_indexbanner@3x.png"; path = "imgs/首页/image_zhanweifu_indexbanner@3x.png"; sourceTree = "<group>"; };
 		9D94547B1EA5D8D900C6EF21 /* CALayer+Anim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Anim.h"; sourceTree = "<group>"; };
 		9D94547C1EA5D8D900C6EF21 /* CALayer+Anim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Anim.m"; sourceTree = "<group>"; };
 		9D94547D1EA5D8D900C6EF21 /* CALayer+Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Transition.h"; sourceTree = "<group>"; };
@@ -2042,6 +2048,9 @@
 		38BD109F1E8A375300028255 /* 首页imgs */ = {
 			isa = PBXGroup;
 			children = (
+				9D6AA6A01EB83649006C494D /* image_zhanweifu_indexbanner.png */,
+				9D6AA6A11EB83649006C494D /* image_zhanweifu_indexbanner@2x.png */,
+				9D6AA6A21EB83649006C494D /* image_zhanweifu_indexbanner@3x.png */,
 				9D6AA69A1EB83239006C494D /* image_zhanweifu.png */,
 				9D6AA69B1EB83239006C494D /* image_zhanweifu@2x.png */,
 				9D6AA69C1EB83239006C494D /* image_zhanweifu@3x.png */,
@@ -3220,6 +3229,7 @@
 				38C1A8EC1E922A1D00A26DCF /* icon_edit.png in Resources */,
 				38C1A8F21E922A1D00A26DCF /* icon_jia.png in Resources */,
 				38DB9F051E9B70F900E4BECA /* bg_gzichan.png in Resources */,
+				9D6AA6A51EB83649006C494D /* image_zhanweifu_indexbanner@3x.png in Resources */,
 				38DB9F101E9B70F900E4BECA /* home1234@3x.png in Resources */,
 				3836553B1E8CE6670034C332 /* edict_jian_gray@3x.png in Resources */,
 				383654F71E8CA41F0034C332 /* icon_wallete@2x.png in Resources */,
@@ -3274,6 +3284,7 @@
 				9D1AD9341EA860360034527B /* shape_tuijian_right@3x.png in Resources */,
 				38DB9F2C1E9B70F900E4BECA /* logo_gzichan.png in Resources */,
 				383654F31E8CA41F0034C332 /* icon_setting.png in Resources */,
+				9D6AA6A41EB83649006C494D /* image_zhanweifu_indexbanner@2x.png in Resources */,
 				38BD10E11E8A377000028255 /* icon_home_s@2x.png in Resources */,
 				38DB9F341E9B70F900E4BECA /* pic_weikaitong@3x.png in Resources */,
 				383655791E8DEF370034C332 /* triangle_up_red-.png in Resources */,
@@ -3486,6 +3497,7 @@
 				382E03491E9662BC00DEF382 /* logo111@3x.png in Resources */,
 				38BD10DF1E8A377000028255 /* icon_gfm@3x.png in Resources */,
 				382E03471E9662BC00DEF382 /* logo111.png in Resources */,
+				9D6AA6A31EB83649006C494D /* image_zhanweifu_indexbanner.png in Resources */,
 				383654F61E8CA41F0034C332 /* icon_wallete.png in Resources */,
 				383654EC1E8CA41F0034C332 /* icon_mews@3x.png in Resources */,
 				383655C61E8E078A0034C332 /* icon_share.png in Resources */,

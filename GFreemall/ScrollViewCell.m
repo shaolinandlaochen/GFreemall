@@ -20,7 +20,7 @@
 
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         autoSize
-        scroll=[SDCycleScrollView cycleScrollViewWithFrame:frame(0, 0, 750, 234) delegate:self placeholderImage:[UIImage imageNamed:@""]];
+        scroll=[SDCycleScrollView cycleScrollViewWithFrame:frame(0, 0, 750, 234) delegate:self placeholderImage:[UIImage imageNamed:@"image_zhanweifu_indexbanner"]];
         scroll.autoScroll=YES;
         scroll.autoScrollTimeInterval =5;
         [self.contentView addSubview:scroll];

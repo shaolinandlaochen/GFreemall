@@ -111,7 +111,7 @@
     for (int i=0; i<class.recommend.count; i++) {
         if (i<5) {
             HomeRecommend *recommend=class.recommend[i];
-            [((MyButton *)[((UIView *)[self.contentView viewWithTag:i+1]) viewWithTag:i+100]) sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,recommend.commodityImagesPath,recommend.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
+            [((MyButton *)[((UIView *)[self.contentView viewWithTag:i+1]) viewWithTag:i+100]) sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,recommend.commodityImagesPath,recommend.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"image_zhanweifu"]];
             ((UILabel *)[((UIView *)[self.contentView viewWithTag:i+1]) viewWithTag:i+200]).text=recommend.commodityName;
             ((UILabel *)[((UIView *)[self.contentView viewWithTag:i+1]) viewWithTag:i+300]).text=[NSString stringWithFormat:@"¥%.2f",recommend.commoditySellprice];
             
