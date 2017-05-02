@@ -176,6 +176,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"city"];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"area"];
         NSString *paths = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+        NSLog(@"%@",paths);
         NSString *path=[NSString stringWithFormat:@"%@/dizhi_quanqiu.txt",paths];
         NSString* content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
         NSDictionary *dic = [self dictionaryWithJsonString:content];

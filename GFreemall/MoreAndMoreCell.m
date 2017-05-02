@@ -74,7 +74,7 @@
 
         for (int i=0; i<class.hot.count; i++) {
             HomeHot *hot=class.hot[i];
-            [((MyButton *)[self.contentView viewWithTag:i+100]) sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,hot.commodityImagesPath,hot.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"image_zhanweifu"]];
+            [((MyButton *)[self.contentView viewWithTag:i+100]) sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,hot.commodityImagesPath,hot.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"image_zhanweifu_indexbanner"]];
             
             ((UILabel *)[self.contentView viewWithTag:i+200]).text=hot.commodityName;
             ((UILabel *)[self.contentView viewWithTag:i+300]).text=[NSString stringWithFormat:@"%.2f",hot.commoditySellprice];

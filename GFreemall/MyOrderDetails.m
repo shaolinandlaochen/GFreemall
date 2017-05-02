@@ -188,7 +188,11 @@
             OrderAddressCell *cell=[OrderAddressCell new];
             cell.userInteractionEnabled=NO;
             cell.strings=[NSString stringWithFormat:@"%@    %@",class.map.addressName,class.map.addressPhone];
-            cell.context.text=class.map.addressAddress;
+            NSString *country=class.map.addressCountry;
+            if ([class.map.addressCountry isEqualToString:@"China"]) {
+                country=@"中国";
+            }
+            cell.context.text=[NSString stringWithFormat:@"%@ %@ %@ %@ %@",country,class.map.addressProvince,class.map.addressCity,class.map.addressArea,class.map.addressAddress];
             return cell;
             
         }else if (indexPath.section==2){
