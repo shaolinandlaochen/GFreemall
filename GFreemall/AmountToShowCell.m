@@ -35,6 +35,13 @@
         _picre.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).topSpaceToView(lbl, 28*autoSizeScaleY).heightIs(100*autoSizeScaleY);
         
         
+        UILabel *line=[[UILabel alloc]init];
+        line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
+        [self.contentView addSubview:line];
+        line.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).heightIs(0.6);
+
+        
+        
         
         
     }

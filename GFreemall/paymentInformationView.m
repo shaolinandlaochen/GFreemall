@@ -67,6 +67,7 @@
     _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.separatorColor=[UIColor clearColor];
     _tableView.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:_tableView];
     _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(_button, 20*autoSizeScaleY).topSpaceToView(self.view, 520*autoSizeScaleY);
