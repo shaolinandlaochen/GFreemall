@@ -35,7 +35,6 @@
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
     [self CreatView];
-    [self QequestData];
     // Do any additional setup after loading the view.
 }
 //加载数据
@@ -56,7 +55,12 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [SVProgressHUD dismiss];
+    TheDrop_downRefresh(_tableView, @selector(QequestData))
+  
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+      [SVProgressHUD dismiss];
 }
 -(void)CreatView{
 
@@ -68,7 +72,12 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     autoSize
-    return 238*autoSizeScaleY;
+    OrderDetailsBaseClass *classData=[[OrderDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+    OrderDetailsCommodity *commodity=classData.map.commodity[indexPath.row];
+    if (commodity.commodityIscomment==0) {
+        return 238*autoSizeScaleY;
+    }
+    return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     autoSize
@@ -109,12 +118,16 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
      OrderDetailsBaseClass *classData=[[OrderDetailsBaseClass alloc]initWithDictionary:self.dataDic];
     OrderDetailsCommodity *commodity=classData.map.commodity[indexPath.row];
-    StayEvaluationListCell *cell=[StayEvaluationListCell new];
-    [cell.img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",classData.imgSrc,commodity.commodityImagesPath,commodity.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
-    cell.title.text=commodity.commodityName;
-    [cell.btn setTitle:@"去评价" forState:UIControlStateNormal];
-    cell.btn.indexPath=indexPath;
-    [cell.btn addTarget:self action:@selector(onButtonCLIck:) forControlEvents:UIControlEventTouchUpInside];
+    if (commodity.commodityIscomment==0) {
+        StayEvaluationListCell *cell=[StayEvaluationListCell new];
+        [cell.img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",classData.imgSrc,commodity.commodityImagesPath,commodity.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
+        cell.title.text=commodity.commodityName;
+        [cell.btn setTitle:@"去评价" forState:UIControlStateNormal];
+        cell.btn.indexPath=indexPath;
+        [cell.btn addTarget:self action:@selector(onButtonCLIck:) forControlEvents:UIControlEventTouchUpInside];
+        return cell;
+    }
+    NULLCell *cell=[NULLCell new];
     return cell;
     
 }

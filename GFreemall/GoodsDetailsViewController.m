@@ -136,7 +136,14 @@
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section==2) {
+         GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
         AllEvaluationView *view=[[AllEvaluationView alloc]init];
+        if (class.totalCount>0) {
+             [view.button setTitle:[NSString stringWithFormat:@"全部评论%.0f",class.totalCount] forState:UIControlStateNormal];
+        }else{
+         [view.button setTitle:[NSString stringWithFormat:@"全部评论0"] forState:UIControlStateNormal];
+        }
+       
         [view.button addTarget:self action:@selector(onAllEvaluationClick) forControlEvents:UIControlEventTouchUpInside];
         return view;
     }
@@ -289,11 +296,15 @@ cancelClick
 }
 //好评度
 -(void)onRatingClick{
-
+    [self onAllEvaluationClick];
 }
 
 //全部评论
 -(void)onAllEvaluationClick{
+    _page=2;
+    optionsView.ScrollPage=_page;
+    CGPoint position = CGPointMake(_page*self.view.frame.size.width, 0);
+    [_scrollView setContentOffset:position animated:YES];
 
 }
 //构建立即购买按钮
