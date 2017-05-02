@@ -23,7 +23,8 @@
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:NO];
     self.navigationController.navigationBarHidden=NO;
-    TheDrop_downRefresh(_tableView, @selector(AccessToThMessageListClick))
+    
+    [self AccessToThMessageListClick];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,6 +37,7 @@
     [self CreatView];
     //构建没有消息视图
    // [self BuildNoMessageView];
+    TheDrop_downRefresh(_tableView, @selector(AccessToThMessageListClick))
     // Do any additional setup after loading the view.
 }
 -(void)AccessToThMessageListClick{

@@ -56,6 +56,9 @@
         Top_UpBaseClass *class=[[Top_UpBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
         if ([class.code isEqualToString:@"17"]) {
             self.dataDic=[self deleteEmpty:dic];
+            if (class.pagingList.resultList.count<1) {
+                 [FTIndicator showToastMessage:Localized(@"暂无记录")];
+            }
             [_tableView reloadData];
         }else{
             [FTIndicator showErrorWithMessage:class.msg];
@@ -64,6 +67,9 @@
         WalletDetailsBaseClass *class=[[WalletDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
         if ([class.code isEqualToString:@"17"]) {
             self.dataDic=[self deleteEmpty:dic];
+            if (class.pagingList.resultList.count<1) {
+                 [FTIndicator showToastMessage:Localized(@"暂无记录")];
+            }
             [_tableView reloadData];
         }else{
             [FTIndicator showErrorWithMessage:class.msg];

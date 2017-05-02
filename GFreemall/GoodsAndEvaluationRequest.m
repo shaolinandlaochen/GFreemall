@@ -22,7 +22,7 @@
     [dicData setObject:order_commodity_id forKey:@"order_commodity_id"];
     
     NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
-    [RequestClass getUrl:@"ordercomment" Dic:data block:^(NSDictionary *dic) {
+    [RequestClass getAddressUrl:@"ordercomment" Dic:data block:^(NSDictionary *dic) {
         NSLog(@"评价晒单----%@",dic);
         NSLog(@"get评价晒单---msg==%@",[dic objectForKey:@"msg"]);
         block(dic);

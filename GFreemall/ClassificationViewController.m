@@ -67,7 +67,6 @@
     _CollectionView.backgroundColor=[UIColor whiteColor];
     
     
-    [self ToGetTheData];//获取数据
     // Do any additional setup after loading the view.
 }
 -(void)viewWillDisappear:(BOOL)animated{

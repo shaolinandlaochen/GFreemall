@@ -87,7 +87,7 @@
     OrderListResultList *list=class.pagingList.resultList[section];
     OrderNumberView *view=[[OrderNumberView alloc]init];
     
-    view.strNumber.text=[NSString stringWithFormat:@"订单号:%.0f",list.categorySerial];
+    view.strNumber.text=[NSString stringWithFormat:@"订单号:%.0f",list.orderSerial];
     if (list.orderState==0) {//未付款
         view.state.text=@"待付款";
         view.state.textColor=[UIColor redColor];

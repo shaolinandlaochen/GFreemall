@@ -42,7 +42,7 @@
     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
     _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(view, 0).topSpaceToView(self.view, navheight+rectStatus.size.height);
-    //TheDrop_downRefresh(_tableView, @selector(ToGetAShoppingCartGoodsList))
+    TemporarilyNotRefresh(_tableView, @selector(ToGetAShoppingCartGoodsList))
     // Do any additional setup after loading the view.
 }
 -(void)ToGetAShoppingCartGoodsList{
@@ -231,7 +231,7 @@
 //点击加件数量
 -(void)ChangeTTheNumber:(MyButton *)btn{
 
-    [SVProgressHUD showWithStatus:@"正在加载"];
+   // [SVProgressHUD showWithStatus:@"正在加载"];
     [ShoppingCarRequest ModifyTheQuantity:1 isSeneld:btn.why idx:btn.indexPath.row array:self.shoppingCarArray Block:^(NSDictionary *dics) {
         ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
         if ([class.code isEqualToString:@"15"]) {//请求完成,在本地的也改变了
@@ -430,7 +430,7 @@
     [TheParentClass ButtonAtTheBottomOfThesize:YES];
     self.navigationController.navigationBarHidden=NO;
     if ([tokenString length]>0) {
-        TheDrop_downRefresh(_tableView, @selector(ToGetAShoppingCartGoodsList))
+        [self ToGetAShoppingCartGoodsList];
         [self messageNumber];
     }else{
         [FTIndicator showErrorWithMessage:@"请您先去登录"];
