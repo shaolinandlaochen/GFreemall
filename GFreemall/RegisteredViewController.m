@@ -75,6 +75,7 @@ autoSize
     pswd.layer.cornerRadius = 6*autoSizeScaleX;
     pswd.layer.masksToBounds = 6*autoSizeScaleX;
     pswd.delegate=self;
+    pswd.secureTextEntry=YES;
     pswd.placeholder=Localized(@"  请设置登录密码");
     pswd.textColor=[TheParentClass colorWithHexString:@"#242424"];
     pswd.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
