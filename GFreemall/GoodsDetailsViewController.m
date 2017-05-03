@@ -22,6 +22,7 @@
 #import "AttributeSelectionViewController.h"
 #import "OrderInformationViewController.h"
 #import "GoodsDetailsRequest.h"
+#import "DetailsOfTheShoppingCart.h"
 @interface GoodsDetailsViewController ()<ProductScreeningDelegate,UITableViewDelegate,UITableViewDataSource,GoodsScrollViewDelegate,HTMLContextDelegate,UIScrollViewDelegate,ShutDownDelegate>
 {
     MyoptionsView *optionsView;
@@ -471,7 +472,13 @@ cancelClick
 }
 //进入购物车
 -(void)IntoTheShoppingCart{
-   
+    if ([tokenString length]<1) {
+        [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+    }else{
+        DetailsOfTheShoppingCart *ShoppingCart=[[DetailsOfTheShoppingCart alloc]init];
+        [self.navigationController pushViewController:ShoppingCart animated:YES];
+    }
+
 
 }
 //加入购物车

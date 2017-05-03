@@ -587,6 +587,7 @@
 		9D6AA6A41EB83649006C494D /* image_zhanweifu_indexbanner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6AA6A11EB83649006C494D /* image_zhanweifu_indexbanner@2x.png */; };
 		9D6AA6A51EB83649006C494D /* image_zhanweifu_indexbanner@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6AA6A21EB83649006C494D /* image_zhanweifu_indexbanner@3x.png */; };
 		9D6AA6EA1EB856B5006C494D /* dizhi_quanqiu.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9D6AA6E91EB856B5006C494D /* dizhi_quanqiu.txt */; };
+		9D6AA6F01EB9B34B006C494D /* DetailsOfTheShoppingCart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6AA6EF1EB9B34B006C494D /* DetailsOfTheShoppingCart.m */; };
 		9D9454831EA5D8D900C6EF21 /* CALayer+Anim.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94547C1EA5D8D900C6EF21 /* CALayer+Anim.m */; };
 		9D9454841EA5D8D900C6EF21 /* CALayer+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94547E1EA5D8D900C6EF21 /* CALayer+Transition.m */; };
 		9D9454851EA5D8D900C6EF21 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9454801EA5D8D900C6EF21 /* PhotoView.m */; };
@@ -1435,6 +1436,8 @@
 		9D6AA6A11EB83649006C494D /* image_zhanweifu_indexbanner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image_zhanweifu_indexbanner@2x.png"; path = "imgs/首页/image_zhanweifu_indexbanner@2x.png"; sourceTree = "<group>"; };
 		9D6AA6A21EB83649006C494D /* image_zhanweifu_indexbanner@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image_zhanweifu_indexbanner@3x.png"; path = "imgs/首页/image_zhanweifu_indexbanner@3x.png"; sourceTree = "<group>"; };
 		9D6AA6E91EB856B5006C494D /* dizhi_quanqiu.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dizhi_quanqiu.txt; sourceTree = "<group>"; };
+		9D6AA6EE1EB9B34B006C494D /* DetailsOfTheShoppingCart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsOfTheShoppingCart.h; sourceTree = "<group>"; };
+		9D6AA6EF1EB9B34B006C494D /* DetailsOfTheShoppingCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsOfTheShoppingCart.m; sourceTree = "<group>"; };
 		9D94547B1EA5D8D900C6EF21 /* CALayer+Anim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Anim.h"; sourceTree = "<group>"; };
 		9D94547C1EA5D8D900C6EF21 /* CALayer+Anim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Anim.m"; sourceTree = "<group>"; };
 		9D94547D1EA5D8D900C6EF21 /* CALayer+Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Transition.h"; sourceTree = "<group>"; };
@@ -1965,6 +1968,8 @@
 				38032F461E90CD39005F4981 /* AttributeSkuCell.m */,
 				38032F481E90CD90005F4981 /* SKUCollectionReusableView.h */,
 				38032F491E90CD90005F4981 /* SKUCollectionReusableView.m */,
+				9D6AA6EE1EB9B34B006C494D /* DetailsOfTheShoppingCart.h */,
+				9D6AA6EF1EB9B34B006C494D /* DetailsOfTheShoppingCart.m */,
 				9D170A6D1EA4AF1F00A373DD /* model */,
 				9D170A6C1EA4AF1800A373DD /* 请求 */,
 			);
@@ -3618,6 +3623,7 @@
 				383A440A1E94E410002CBDA0 /* ClearingInformationDisplayCell.m in Sources */,
 				38032F471E90CD39005F4981 /* AttributeSkuCell.m in Sources */,
 				9D2937381EA075CD00A86E10 /* setUpRequest.m in Sources */,
+				9D6AA6F01EB9B34B006C494D /* DetailsOfTheShoppingCart.m in Sources */,
 				38BD11031E8A46EF00028255 /* NULLCell.m in Sources */,
 				9D00479D1EB1E48A006AED06 /* GFMSBaseClass.m in Sources */,
 				383A43E21E9478CC002CBDA0 /* MyOrderViewController.m in Sources */,
