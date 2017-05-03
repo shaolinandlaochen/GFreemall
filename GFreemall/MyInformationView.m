@@ -182,28 +182,28 @@
         {
             _level.backgroundColor=[TheParentClass colorWithHexString:@"fffbd4"];
             [_levelIcon setBackgroundImage:[UIImage imageNamed:@"member_register"] forState:UIControlStateNormal];
-            [_levelName setTitle:@"注册会员" forState:UIControlStateNormal];
+            [_levelName setTitle:Localized(@"注册会员") forState:UIControlStateNormal];
         }
             break;
         case 1://铜牌
         {
             _level.backgroundColor=[TheParentClass colorWithHexString:@"fffbd4"];
             [_levelIcon setBackgroundImage:[UIImage imageNamed:@"member_copper"] forState:UIControlStateNormal];
-            [_levelName setTitle:@"铜牌会员" forState:UIControlStateNormal];
+            [_levelName setTitle:Localized(@"铜牌会员") forState:UIControlStateNormal];
         }
             break;
         case 2://银牌
         {
             _level.backgroundColor=[TheParentClass colorWithHexString:@"fffbd4"];
             [_levelIcon setBackgroundImage:[UIImage imageNamed:@"member_silver"] forState:UIControlStateNormal];
-            [_levelName setTitle:@"银牌会员" forState:UIControlStateNormal];
+            [_levelName setTitle:Localized(@"银牌会员") forState:UIControlStateNormal];
         }
             break;
         case 3://金牌
         {
             _level.backgroundColor=[TheParentClass colorWithHexString:@"fffbd4"];
             [_levelIcon setBackgroundImage:[UIImage imageNamed:@"member_diamond"] forState:UIControlStateNormal];
-            [_levelName setTitle:@"黄金会员" forState:UIControlStateNormal];
+            [_levelName setTitle:Localized(@"黄金会员") forState:UIControlStateNormal];
             
         }
             break;
@@ -211,7 +211,7 @@
         {
             _level.backgroundColor=[TheParentClass colorWithHexString:@"fffbd4"];
             [_levelIcon setBackgroundImage:[UIImage imageNamed:@"member_diamond"] forState:UIControlStateNormal];
-            [_levelName setTitle:@"钻石会员" forState:UIControlStateNormal];
+            [_levelName setTitle:Localized(@"钻石会员") forState:UIControlStateNormal];
         }
             break;
             

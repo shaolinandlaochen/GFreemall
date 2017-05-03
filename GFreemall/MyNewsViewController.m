@@ -112,7 +112,7 @@ cancelClick
         cell.img.image=[UIImage imageNamed:@"icon_system"];
     }
     if (list.readState==0) {
-        cell.unreadStr=@"未读";
+        cell.unreadStr=Localized(@"未读");
     }
     
     cell.title.text=list.messageTitle;;

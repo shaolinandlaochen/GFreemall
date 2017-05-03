@@ -26,7 +26,7 @@
     _web.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:_web];
     _web.sd_layout.leftSpaceToView(self.view,0).topSpaceToView(self.view,2).rightSpaceToView(self.view,0).bottomSpaceToView(self.view, 0);
-    [SVProgressHUD showWithStatus:@"正在加载"];
+    [SVProgressHUD showWithStatus:Localized(@"loading")];
   
     // Do any additional setup after loading the view.
 }

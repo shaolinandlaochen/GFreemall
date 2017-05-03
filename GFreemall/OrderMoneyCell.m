@@ -39,10 +39,10 @@
             float y=30+(30+30)*(i/1);
             UILabel *lbl=[[UILabel alloc]init];
             if (i==0) {
-                lbl.text=@"商品金额";
+                lbl.text=Localized(@"商品金额");
                 
             }else{
-            lbl.text=@"运费";
+            lbl.text=Localized(@"运费");
             }
             lbl.textColor=[TheParentClass colorWithHexString:@"#000000"];
             lbl.font=[UIFont systemFontOfSize:30*autoSizeScaleY];

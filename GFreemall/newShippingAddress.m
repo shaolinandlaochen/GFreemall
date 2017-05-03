@@ -240,7 +240,7 @@
         
     
     if ([self.name length]<1||[self.phoneNumber length]<1||[self.addressString length]<1||[self.address_country length]<1||[self.address_province length]<1||[self.address_city length]<1||[self.address_area length]<1) {
-        [FTIndicator showErrorWithMessage:@"参数不全"];
+        [FTIndicator showErrorWithMessage:Localized(@"参数不全")];
     }else{
         
         

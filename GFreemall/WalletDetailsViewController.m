@@ -256,7 +256,7 @@ autoSize
     self.timeBegin=[NSString stringWithFormat:@"%@-01",time];
      self.timeEnd=[NSString stringWithFormat:@"%@-31",time];
     self.inStr=time;
-    [SVProgressHUD showWithStatus:@"正在加载"];
+    [SVProgressHUD showWithStatus:Localized(@"loading")];
     [self ToGetTheData];
     
 }
@@ -265,7 +265,7 @@ autoSize
 
     NSLog(@"tye--%@",time);
     self.type=time;
-    [SVProgressHUD showWithStatus:@"正在加载"];
+    [SVProgressHUD showWithStatus:Localized(@"loading")];
     [self ToGetTheData];
 
 }

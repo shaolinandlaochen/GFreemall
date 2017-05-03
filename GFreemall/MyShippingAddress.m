@@ -61,7 +61,7 @@
     addRess=[[MyButton alloc]init];
     addRess.backgroundColor=[UIColor blackColor];
     [addRess setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [addRess setTitle:@"+新建地址" forState:UIControlStateNormal];
+    [addRess setTitle:Localized(@"+新建地址") forState:UIControlStateNormal];
     //圆角
     addRess.layer.cornerRadius = 6*autoSizeScaleX;
     addRess.layer.masksToBounds = 6*autoSizeScaleX;
@@ -136,7 +136,7 @@
     UITableViewRowAction *rowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
       AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:self.dataDic];
     AddressList *list=class.list[indexPath.row];
-        [SVProgressHUD showWithStatus:@"正在删除"];
+        [SVProgressHUD showWithStatus:Localized(@"正在删除")];
         [ShippingAddressRequest delegateAddressString:list.listIdentifier block:^(NSDictionary *dics) {
             AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
             if ([class.code isEqualToString:@"55"]) {

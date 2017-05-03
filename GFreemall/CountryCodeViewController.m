@@ -61,7 +61,7 @@
     view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     UILabel *lbl=[[UILabel alloc]init];
     lbl.font=[UIFont systemFontOfSize:32*autoSizeScaleY];
-    lbl.text=@"请选择您的手机号码所属国家";
+    lbl.text=Localized(@"请选择您的手机号码所属国家");
     lbl.textColor=[TheParentClass colorWithHexString:@"#292929"];
     lbl.textAlignment=NSTextAlignmentCenter;
     [view addSubview:lbl];

@@ -304,7 +304,7 @@
 
 }
 -(void)GetTheRequestData:(NSString *)queryType priceType:(NSString *)priceType brandSerial:(NSString *)brandSerial categorySerial:(NSString *)categorySerial{
-    [SVProgressHUD showWithStatus:@"正在加载"];
+    [SVProgressHUD showWithStatus:Localized(@"loading")];
     [SearchRequest AccessToSearchData:searchField.text page:@"1" pageSize:@"999" queryType:queryType priceType:priceType brandSerial:brandSerial categorySerial:categorySerial bolck:^(NSDictionary *dic) {
         self.dataDic=[self deleteEmpty:dic];
         SearchBaseClass *class=[[SearchBaseClass alloc]initWithDictionary:self.dataDic];

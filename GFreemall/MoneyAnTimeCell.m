@@ -39,7 +39,6 @@
         _time.textColor=[TheParentClass colorWithHexString:@"#999999"];
         _time.font=[UIFont systemFontOfSize:24*autoSizeScaleY];
         _time.textAlignment=NSTextAlignmentRight;
-        _time.text=@"下单时间:2017-1-1 12:58:02";
         [self.contentView addSubview:_time];
         _time.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(_money, 14*autoSizeScaleY).widthIs(400).heightIs(30*autoSizeScaleY);
         

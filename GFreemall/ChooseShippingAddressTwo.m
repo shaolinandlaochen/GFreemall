@@ -25,7 +25,7 @@
     _tableView.dataSource=self;
     _tableView.delegate=self;
     [self.view addSubview:_tableView];
-    self.title=@"选择地址";
+    self.title=Localized(@"选择地址");
     // Do any additional setup after loading the view.
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

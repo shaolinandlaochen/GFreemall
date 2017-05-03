@@ -123,9 +123,9 @@ cancelClick
 -(void)onGoClick:(UIButton *)btn{
 
     if ([_Psw length]<1||[_ToPsw length]<1) {
-        [FTIndicator showErrorWithMessage:@"请完整填写密码"];
+        [FTIndicator showErrorWithMessage:Localized(@"请完整填写密码")];
     }else{
-        [SVProgressHUD showWithStatus:@"正在加载"];
+        [SVProgressHUD showWithStatus:Localized(@"loading")];
     [LoginRequuestClass ChangeThePassword:_Psw confirmPassword:_ToPsw phone:self.phone captcha:self.captcha country:self.country block:^(NSDictionary *dic) {
         LoginBaseClass *class=[[LoginBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
         if ([class.code isEqualToString:@""]) {

@@ -146,7 +146,7 @@
         cell.backgroundColor=[UIColor whiteColor];
         if ([self.address_name length]>0) {
             if (self.address_isdefault==1) {
-                cell.defaultStr.text=@"默认";
+                cell.defaultStr.text=Localized(@"默认");
                 cell.defaultStr.backgroundColor=[UIColor redColor];
             }
             cell.strings=[NSString stringWithFormat:@"%@     %@",self.address_name,self.address_phone];
@@ -193,7 +193,7 @@
                 
                 cell.go.image=[UIImage imageNamed:@"icon_selected"];
             }
-            cell.name.text=@"在线钱包";
+            cell.name.text=Localized(@"在线钱包");
             cell.icon.image=[UIImage imageNamed:@"payment_wallet"];
            
         }else if (indexPath.row==1){
@@ -202,10 +202,10 @@
                 cell.go.image=[UIImage imageNamed:@"icon_selected"];
             }
             cell.icon.image=[UIImage imageNamed:@"icon_gfm22"];
-            cell.name.text=@"爱积分支付";
+            cell.name.text=Localized(@"爱积分支付");
         }else if (indexPath.row==2){
             cell.icon.image=[UIImage imageNamed:@"payment_online"];
-            cell.name.text=@"在线支付";
+            cell.name.text=Localized(@"在线支付");
         }
         return cell;
     }
@@ -272,7 +272,7 @@ autoSize
 -(void)onSubmitOrdersClick{
     
     if (self.address_area==nil||self.address_city==nil||self.address_phone==nil||self.address_address==nil||self.address_country==nil) {
-        [FTIndicator showInfoWithMessage:@"请填写收货地址"];
+        [FTIndicator showInfoWithMessage:Localized(@"请填写收货地址")];
     }else{
         BillingInfo *Billing=[[BillingInfo alloc]init];
         if (MethodOfPayment==0) {
@@ -284,7 +284,7 @@ autoSize
             
         }
         if ([self.where isEqualToString:@"商品"]) {
-            [SVProgressHUD showWithStatus:@"正在加载"];
+            [SVProgressHUD showWithStatus:Localized(@"loading")];
             [SubmitOrderRequest GoodsSubmitOrderscountry:self.address_country province:self.address_province city:self.address_city area:self.address_area address:self.address_address phone:self.address_phone name:self.address_name num:self.number attribute:self.attribute pay_type:[NSString stringWithFormat:@"%ld",MethodOfPayment] zipcode:self.address_zipcode checkRes:self.checkRes comm_serial:self.comm_serial block:^(NSDictionary *dics) {
                 PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
                 if ([class.code isEqualToString:@"25"]) {
@@ -300,7 +300,7 @@ autoSize
                 
             }];
         }else if ([self.where isEqualToString:@"购物车"]){
-            [SVProgressHUD showWithStatus:@"正在加载"];
+            [SVProgressHUD showWithStatus:Localized(@"loading")];
             [SubmitOrderRequest SubmitOrdersAShoppingCart:self.address_country province:self.address_province city:self.address_city area:self.address_area address:self.address_address phone:self.address_phone name:self.address_name num:self.number attribute:self.attribute pay_type:[NSString stringWithFormat:@"%ld",MethodOfPayment] zipcode:self.address_zipcode commBox:self.IDS block:^(NSDictionary *dics) {
                 PayBaseClass *class=[[PayBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
                 if ([class.code isEqualToString:@"25"]) {

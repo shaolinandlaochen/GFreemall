@@ -158,7 +158,7 @@
 //开始支付
 -(void)BeginToPayPsw:(NSString *)pswString{
     if ([self.were isEqualToString:@"在线钱包"]) {
-        [SVProgressHUD showWithStatus:@"正在支付"];
+        [SVProgressHUD showWithStatus:Localized(@"正在支付")];
         [PayRequest OnlineWalletPaymentthird_pwd:pswString block:^(NSDictionary *dics) {
             NSDictionary *data=[self deleteEmpty:dics];
             if (![[data objectForKey:@"code"]isEqual:[NSNull null]]){
@@ -183,7 +183,7 @@
             [SVProgressHUD dismiss];
         }];
     }else if ([self.were isEqualToString:@"爱积分支付"]){
-        [SVProgressHUD showWithStatus:@"正在支付"];
+        [SVProgressHUD showWithStatus:Localized(@"正在支付")];
         [PayRequest LovePointsToPaythird_pwd:pswString block:^(NSDictionary *dics) {
             NSDictionary *data=[self deleteEmpty:dics];
             if (![[data objectForKey:@"code"]isEqual:[NSNull null]]){

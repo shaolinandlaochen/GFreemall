@@ -74,7 +74,7 @@
     [SVProgressHUD dismiss];
 }
 -(void)ToGetTheData{
-    [SVProgressHUD showWithStatus:Localized(@"正在加载")];
+    [SVProgressHUD showWithStatus:Localized(@"loading")];
     [ClassificationRequest ForCategoricalData:^(NSDictionary *dicData) {
         self.dataDics=[self deleteEmpty:dicData];
         ForCategoricalDataBaseClass *class=[[ForCategoricalDataBaseClass alloc]initWithDictionary:dicData];

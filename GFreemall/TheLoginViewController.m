@@ -68,7 +68,7 @@ autoSize
     logoIcon.sd_layout.leftSpaceToView(img, 212*autoSizeScaleX).topSpaceToView(img, 166*autoSizeScaleY).widthIs(326*autoSizeScaleX).heightIs(153*autoSizeScaleY);
     
     UIButton *cancelLogin=[UIButton buttonWithType:UIButtonTypeCustom];
-    [cancelLogin setTitle:@"返回" forState:UIControlStateNormal];
+    [cancelLogin setTitle:Localized(@"返回") forState:UIControlStateNormal];
     [cancelLogin addTarget:self action:@selector(onReturnClick) forControlEvents:UIControlEventTouchUpInside];
     [cancelLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     cancelLogin.titleLabel.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
@@ -380,7 +380,7 @@ autoSize
         }else if ([string isEqualToString:@"中国台湾"]){
             string=@"Taiwan";
         }
-        [SVProgressHUD showWithStatus:@"正在获取验证码"];
+        [SVProgressHUD showWithStatus:Localized(@"正在获取验证码")];
     [LoginRequuestClass LogInToGeVerificationCode:_MobilePhoneNumber.text country:string block:^(NSDictionary *dic) {
         BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
         if ([class.code isEqualToString:@"21"]) {
@@ -402,7 +402,7 @@ autoSize
         seconds-=1;
         [ofCode setTitle:[NSString stringWithFormat:@"%lds",seconds] forState:UIControlStateNormal];
     }else{
-        [ofCode setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [ofCode setTitle:Localized(@"获取验证码") forState:UIControlStateNormal];
         [timer invalidate];
         timer = nil;
     }
@@ -422,9 +422,9 @@ autoSize
 -(void)onTheLognClick{
     if (PswAndCode) {//账号密码登录
         if ([_phoneNumber.text length]<1||[_psw.text length]<1) {
-            [FTIndicator showErrorWithMessage:@"请正确输入手机号和密码"];
+            [FTIndicator showErrorWithMessage:Localized(@"请正确输入手机号和密码")];
         }else{
-            [SVProgressHUD showWithStatus:@"正在登录"];
+            [SVProgressHUD showWithStatus:Localized(@"正在登录")];
             [LoginRequuestClass LoginUsername:_phoneNumber.text password:_psw.text block:^(NSDictionary *dic) {
                 LoginBaseClass *login=[[LoginBaseClass alloc]initWithDictionary:dic];
                 if ([login.code isEqualToString:@"1"]) {//登录成功
@@ -450,7 +450,7 @@ autoSize
        
     }else{//手机验证码登录
         if ([_MobilePhoneNumber.text length]<1||[_code.text length]<1) {
-             [FTIndicator showErrorWithMessage:@"请输入手机号码和验证码"];
+             [FTIndicator showErrorWithMessage:Localized(@"请输入手机号码和验证码")];
         }else{
             NSString *string;
             string=_CountriesArray[_ChooseTheCountr];
@@ -463,7 +463,7 @@ autoSize
             }else if ([string isEqualToString:@"中国台湾"]){
                 string=@"Taiwan";
             }
-            [SVProgressHUD showWithStatus:@"正在登录"];
+            [SVProgressHUD showWithStatus:Localized(@"正在登录")];
         [LoginRequuestClass MobilePhoneLogin:_MobilePhoneNumber.text country:string validateCode:_code.text block:^(NSDictionary *dic) {
             LoginBaseClass *login=[[LoginBaseClass alloc]initWithDictionary:dic];
             if ([login.code isEqualToString:@"1"]) {//登录成功

@@ -38,7 +38,7 @@ autoSize
     UILabel *context=[[UILabel alloc]init];
     context.textColor=[TheParentClass colorWithHexString:@"#292929"];
     context.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
-    context.text=@"Icoinmall是一家全球性跨境消费交易平台，商品种类涵盖服装、配饰、数码电子产品、化妆品、户外体育用品、家居等多个领域，让消费者轻松体验一站式全球好货，实现消费全球化。\n\n Icoinmall秉承正品保证、税费透明、物超所值、支付方便的经营宗旨，为消费者提供良好的购物体验。icoinmall的商品供应商都经过icoinmall的严格的筛选机制，对所售商品的质量检验均以行业内检验的最高合格为准则，避免了消费者买到次品和赝品的风险，所售的品牌商品在全球范围内的实体店均享有售后服务保障权益。所有订单根据区域内物流情况进行物流筛选匹配后配送，以保证商品发货后以最高效的物流效率、最优质的服务将商品送达每一位Icoinmall会员身边。";
+    context.text=Localized(@"Icoinmall是一家全球性跨境消费交易平台，商品种类涵盖服装、配饰、数码电子产品、化妆品、户外体育用品、家居等多个领域，让消费者轻松体验一站式全球好货，实现消费全球化。\n\n Icoinmall秉承正品保证、税费透明、物超所值、支付方便的经营宗旨，为消费者提供良好的购物体验。icoinmall的商品供应商都经过icoinmall的严格的筛选机制，对所售商品的质量检验均以行业内检验的最高合格为准则，避免了消费者买到次品和赝品的风险，所售的品牌商品在全球范围内的实体店均享有售后服务保障权益。所有订单根据区域内物流情况进行物流筛选匹配后配送，以保证商品发货后以最高效的物流效率、最优质的服务将商品送达每一位Icoinmall会员身边。");
     [self.view addSubview:context];
     context.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).rightSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(img, 78*autoSizeScaleY).autoHeightRatio(0);
     

@@ -89,29 +89,29 @@
     
     view.strNumber.text=[NSString stringWithFormat:@"订单号:%.0f",list.orderSerial];
     if (list.orderState==0) {//未付款
-        view.state.text=@"待付款";
+        view.state.text=Localized(@"待付款");
         view.state.textColor=[UIColor redColor];
         
     }else if (list.orderState==1){//已付款未发货
-        view.state.text=@"待发货";
+        view.state.text=Localized(@"待发货");
         view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
     }else if (list.orderState==2){//已发货
-        view.state.text=@"发货中";
+        view.state.text=Localized(@"发货中");
         view.state.textColor=[TheParentClass colorWithHexString:@"#718247"];
     }else if (list.orderState==3){//已收货未评价
-        view.state.text=@"待评价";
+        view.state.text=Localized(@"待评价");
         view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
     }else if (list.orderState==4){//已收货已评价
-        view.state.text=@"已完成";
+        view.state.text=Localized(@"已完成");
         view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
     }else if (list.orderState==-1){//撤销
-        view.state.text=@"已完成";
+        view.state.text=Localized(@"已完成");
         view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
     }else if (list.orderState==-2){//平台撤销
-        view.state.text=@"已完成";
+        view.state.text=Localized(@"已完成");
         view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
     }else if (list.orderState==-3){//有退货
-        view.state.text=@"已完成";
+        view.state.text=Localized(@"已完成");
         view.state.textColor=[TheParentClass colorWithHexString:@"#e6671a"];
         
     }
@@ -224,7 +224,7 @@ autoSize
     }else if (idx==4){
         self.OrderType=@"iscomment";
     }
-    [SVProgressHUD showWithStatus:@"正在加载"];
+    [SVProgressHUD showWithStatus:Localized(@"loading")];
     [self RequestData];
 }
 //点击取消订单或者去支付或者收货或者评价
@@ -235,7 +235,7 @@ autoSize
     OrderListResultList *list=class.pagingList.resultList[btn.section];
     if (btn.tag==1) {//
         if (list.orderState==0) {//未付款
-            [SVProgressHUD showWithStatus:@"正在加载"];
+            [SVProgressHUD showWithStatus:Localized(@"loading")];
             [OrderDetailsRequest OrderPaymentToJump:[NSString stringWithFormat:@"%.0f",list.orderSerial] block:^(NSDictionary *dics) {
                 OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
                 if ([class.code isEqualToString:@"60"]) {
@@ -253,7 +253,7 @@ autoSize
                         [self.navigationController pushViewController:Billing animated:YES];
 
                     }else if (list.orderPayment==1){
-                        [FTIndicator showInfoWithMessage:@"暂不支持该支付方式"];
+                        [FTIndicator showInfoWithMessage:Localized(@"暂不支持该支付方式")];
                     }
                     
                 }else{
@@ -269,7 +269,7 @@ autoSize
         }else if (list.orderState==1){//已付款未发货
             
         }else if (list.orderState==2){//已发货
-            [SVProgressHUD showWithStatus:@"正在加载"];
+            [SVProgressHUD showWithStatus:Localized(@"loading")];
             [OrderDetailsRequest ConfirmTheGoods:[NSString stringWithFormat:@"%.0f",list.orderId] block:^(NSDictionary *dics) {
                 OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
                 if ([class.code isEqualToString:@"57"]) {//收货完毕去评价订单列表
@@ -304,11 +304,11 @@ autoSize
         
         
     }else if (btn.tag==2){//取订单
-        [SVProgressHUD showWithStatus:@"正在加载"];
+        [SVProgressHUD showWithStatus:Localized(@"loading")];
         [SubmitOrderRequest CancelTheOrderserial:[NSString stringWithFormat:@"%.0f",list.orderSerial] block:^(NSDictionary *dics) {
             OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
             if ([class.code isEqualToString:@"56"]) {
-                [SVProgressHUD showWithStatus:@"正在加载"];
+                [SVProgressHUD showWithStatus:Localized(@"loading")];
                 [self RequestData];
             }
             

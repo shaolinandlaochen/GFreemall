@@ -28,7 +28,7 @@
         _web.backgroundColor=[UIColor whiteColor];
         [self.contentView addSubview:_web];
         _web.sd_layout.leftSpaceToView(self.contentView,0).topSpaceToView(self.contentView,2).rightSpaceToView(self.contentView,0).heightIs(10);
-        [SVProgressHUD showWithStatus:@"正在加载"];
+        [SVProgressHUD showWithStatus:Localized(@"loading")];
         
         
     }

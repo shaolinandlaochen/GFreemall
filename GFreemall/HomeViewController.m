@@ -49,7 +49,7 @@
 }
 -(void)RequestFailed{//请求失败收到通知
     [_tableView.mj_header endRefreshing];
-    [FTIndicator showErrorWithMessage:@"请求失败"];
+    [FTIndicator showErrorWithMessage:Localized(@"请求失败")];
 }
 -(void)DataAccessPageRequestClick{
 [DataAccessPageRequest DataAccessPageRequestBlock:^(NSDictionary *dics) {
@@ -133,7 +133,7 @@ autoSize
          view.img2.image=[UIImage imageNamed:@"shape_tuijian_right"];
          view.imgviiew.image=[UIImage imageNamed:@"icon_tuijian99"];
         view.context.textColor=[TheParentClass colorWithHexString:@"#0fa4f3"];
-        view.string=@"人气推荐";
+        view.string=Localized(@"人气推荐");
         
         return view;
     }else if (section==3){
@@ -141,7 +141,7 @@ autoSize
         view.img2.image=[UIImage imageNamed:@"shape_hot_right"];
         view.imgviiew.image=[UIImage imageNamed:@"icon_hot"];
          view.context.textColor=[TheParentClass colorWithHexString:@"#de0024"];
-        view.string=@"HOT热卖";
+        view.string=Localized(@"HOT热卖");
         return view;
     }
     return nil;

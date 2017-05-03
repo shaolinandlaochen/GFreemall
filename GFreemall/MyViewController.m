@@ -171,7 +171,7 @@ autoSize
             MyShippingAddress *Address=[[MyShippingAddress alloc]init];
             [self.navigationController pushViewController:Address animated:YES];
         }else{
-            [FTIndicator showInfoWithMessage:@"请您先去登录"];
+            [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
         }
 
     }else if (indexPath.section==1){//消息
@@ -179,7 +179,7 @@ autoSize
             MyNewsViewController *myNews=[[MyNewsViewController alloc]init];
             [self.navigationController pushViewController:myNews animated:YES];
         }else{
-            [FTIndicator showInfoWithMessage:@"请您先去登录"];
+            [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
         }
 
   
@@ -190,7 +190,7 @@ autoSize
             MyCollectionViewController *MyCollection=[[MyCollectionViewController alloc]init];
             [self.navigationController pushViewController:MyCollection animated:YES];
         }else{
-            [FTIndicator showInfoWithMessage:@"请您先去登录"];
+            [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
         }
 
     }else if (indexPath.section==2&&indexPath.row==0){
@@ -199,7 +199,7 @@ autoSize
             MyBasicInformationViewController *MyBasicInformation=[[MyBasicInformationViewController alloc]init];
             [self.navigationController pushViewController:MyBasicInformation animated:YES];
         }else{
-            [FTIndicator showInfoWithMessage:@"请您先去登录"];
+            [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
         }
        
     }else if (indexPath.section==3){
@@ -210,7 +210,7 @@ autoSize
             OnlineWalletViewController *online=[[OnlineWalletViewController alloc]init];
             [self.navigationController pushViewController:online animated:YES];
         }else{
-            [FTIndicator showInfoWithMessage:@"请您先去登录"];
+            [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
         }
 
     }
@@ -225,7 +225,7 @@ autoSize
         MyOrderViewController *order=[[MyOrderViewController alloc]init];
         [self.navigationController pushViewController:order animated:YES];
     }else{
-        [FTIndicator showInfoWithMessage:@"请您先去登录"];
+        [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
     }
 
 }
@@ -266,7 +266,7 @@ autoSize
         [self.navigationController pushViewController:order animated:YES];
 
     }else{
-        [FTIndicator showInfoWithMessage:@"请您先去登录"];
+        [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
     }
     
 }

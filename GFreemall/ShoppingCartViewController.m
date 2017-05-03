@@ -286,7 +286,7 @@
         [editorBtn setTitle:Localized(@"编辑") forState:UIControlStateNormal];
         _isState=YES;
         [self ToGetAShoppingCartGoodsList];
-        [SVProgressHUD showWithStatus:@"正在加载"];
+        [SVProgressHUD showWithStatus:Localized(@"loading")];
     }
      view.state=_isState;
 }
@@ -331,9 +331,9 @@
         [ShoppingCarRequest StitchingId:self.shoppingCarArray Block:^(NSString *IDS) {
            
             if ([IDS length]<1) {
-                [FTIndicator showInfoWithMessage:@"选选择您要结算的商品"];
+                [FTIndicator showInfoWithMessage:Localized(@"选选择您要结算的商品")];
             }else{
-                [SVProgressHUD showWithStatus:@"正在加载"];
+                [SVProgressHUD showWithStatus:Localized(@"loading")];
             [ShoppingCarRequest TheShoppingCartAndSettlement:IDS Block:^(NSDictionary *dics) {
                 ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
                 if ([class.code  isEqualToString:@"24"]) {
@@ -359,9 +359,9 @@
         NSLog(@"删除");
         [ShoppingCarRequest DeleteShoppingCartOfGoods:self.shoppingCarArray block:^(NSString *IDString) {
             if ([IDString length]<1) {
-                [FTIndicator showInfoWithMessage:@"请选择要删除的商品"];
+                [FTIndicator showInfoWithMessage:Localized(@"请选择要删除的商品")];
             }else{
-                [SVProgressHUD showWithStatus:@"正在删除"];
+                [SVProgressHUD showWithStatus:Localized(@"正在删除")];
             [ShoppingCarRequest DeleteTheGoods:IDString Block:^(NSDictionary *dics) {
                 ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
                 if ([class.code isEqualToString:@"14"]) {//删除成功需要把本地的也删除了
@@ -433,7 +433,7 @@
         [self ToGetAShoppingCartGoodsList];
         [self messageNumber];
     }else{
-        [FTIndicator showErrorWithMessage:@"请您先去登录"];
+        [FTIndicator showErrorWithMessage:Localized(@"请您先去登录")];
          [self EmptyTheShoppingCart];//购物车是空的
         self.shoppingCarArray=[[NSMutableArray alloc]init];
         [_tableView reloadData];

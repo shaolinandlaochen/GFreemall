@@ -113,9 +113,9 @@ cancelClick
 //确定或者下一步
 -(void)onGoClick:(UIButton *)btn{
     if ([_psw length]<1||_psw==nil||[_Topsw length]<1||_Topsw==nil) {
-        [FTIndicator showErrorWithMessage:@"请填写完整信息"];
+        [FTIndicator showErrorWithMessage:Localized(@"请填写完整信息")];
     }else{
-        [SVProgressHUD showWithStatus:@"正在加载"];
+        [SVProgressHUD showWithStatus:Localized(@"loading")];
     [WalletRequestClass SetUpToPayThePassword:_psw validateCode:self.code block:^(NSDictionary *dic) {
         WalletBaseClass *class=[[WalletBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
         [FTIndicator showInfoWithMessage:class.msg];

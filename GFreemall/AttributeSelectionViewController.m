@@ -293,7 +293,7 @@ autoSize
 //点击立即购买执行该方法
 -(void)onBuyClick{
     if ([[self ScreeningOfSkuValue] length]<1) {
-        [FTIndicator showErrorWithMessage:@"请选择商品属性"];
+        [FTIndicator showErrorWithMessage:Localized(@"请选择商品属性")];
     }else{
         int number=0;
         if (self.ChildDic==nil) {
@@ -304,7 +304,7 @@ autoSize
             number=class.map.commodityReserves;
         }
         if (numberCount>number) {
-            [FTIndicator showInfoWithMessage:@"库存不足"];
+            [FTIndicator showInfoWithMessage:Localized(@"库存不足")];
         }else{
             [_deleghate BuyNowattr_input:[self ScreeningOfSkuValue] message:[self DisplayInformation] number:numberCount];
             [self dismissViewControllerAnimated:YES completion:^{
@@ -323,7 +323,7 @@ autoSize
 -(void)onShoppingCarClick{
     
     if ([[self ScreeningOfSkuValue] length]<1) {
-        [FTIndicator showErrorWithMessage:@"请选择商品属性"];
+        [FTIndicator showErrorWithMessage:Localized(@"请选择商品属性")];
     }else{
         int number=0;
         if (self.ChildDic==nil) {
@@ -334,7 +334,7 @@ autoSize
             number=class.map.commodityReserves;
         }
         if (numberCount>number) {
-            [FTIndicator showInfoWithMessage:@"库存不足"];
+            [FTIndicator showInfoWithMessage:Localized(@"库存不足")];
         }else{
             [_deleghate AddToCart:[self ScreeningOfSkuValue] message:[self DisplayInformation] number:numberCount];
             [self dismissViewControllerAnimated:YES completion:^{
@@ -361,12 +361,12 @@ autoSize
         if (numberCount<number) {
             numberCount+=1;
         }else{
-        [FTIndicator showInfoWithMessage:@"库存不足"];
+        [FTIndicator showInfoWithMessage:Localized(@"库存不足")];
         }
         
     }else{//减
         if (numberCount<2) {
-            [FTIndicator showInfoWithMessage:@"最少买一个"];
+            [FTIndicator showInfoWithMessage:Localized(@"最少买一个")];
         }else{
             numberCount-=1;
         }
@@ -477,7 +477,7 @@ autoSize
         }
     }
     if (x==self.array.count) {//表示所有sku值都选了
-        [SVProgressHUD showWithStatus:@"正在加载"];
+        [SVProgressHUD showWithStatus:Localized(@"loading")];
         [self CommodityDataAcquisition:skuStr message:[self DisplayInformation]];
     }
 

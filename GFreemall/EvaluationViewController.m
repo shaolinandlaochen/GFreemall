@@ -36,7 +36,7 @@
 }
 //获取评价列表
 -(void)GetAllTheEvaluation:(NSString *)queryType serial:(NSString *)serial{
-    [SVProgressHUD showWithStatus:@"正在加载"];
+    [SVProgressHUD showWithStatus:Localized(@"loading")];
     [GoodsDetailsRequest ToObtainAListEvaluationqueryType:queryType serial:serial block:^(NSDictionary *dics) {
         self.dataDic=[self deleteEmpty:dics];
         ProductEvaluationBaseClass *class=[[ProductEvaluationBaseClass alloc]initWithDictionary:self.dataDic];

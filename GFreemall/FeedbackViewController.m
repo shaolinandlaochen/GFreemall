@@ -38,7 +38,7 @@
     
     lbl=[[UILabel alloc]init];
     lbl.textColor=[TheParentClass colorWithHexString:@"#999999"];
-    lbl.text=@"请输入您的反馈内容...";
+    lbl.text=Localized(@"请输入您的反馈内容...");
     lbl.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
     lbl.frame=frame(25, 25, 700, 50);
     [_tf addSubview:lbl];
@@ -66,7 +66,7 @@
 
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView{
     if ([textView.text length]<1||[textView.text isEqualToString:@" "]) {
-        lbl.text=@"请输入您的反馈内容...";
+        lbl.text=Localized(@"请输入您的反馈内容...");
     }
     return YES;
 }

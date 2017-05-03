@@ -40,11 +40,11 @@
 }
 -(void)onrightItemButtonClick{
     if ([_tf.text length]<10) {
-        [FTIndicator showInfoWithMessage:@"至少十个字哦"];
+        [FTIndicator showInfoWithMessage:Localized(@"至少十个字哦")];
     }else if ([_tf.text length]>500){
-       [FTIndicator showInfoWithMessage:@"评论不得大于五百字哦"];
+       [FTIndicator showInfoWithMessage:Localized(@"评论不得大于五百字哦")];
     }else{
-        [SVProgressHUD showWithStatus:@"正在加载"];
+        [SVProgressHUD showWithStatus:Localized(@"loading")];
         [GoodsAndEvaluationRequest EvaluationOfBaskInSingle:self.order_serial comment_content:_tf.text comment_grade:xingxing commodity_serial:self.commodity_serial order_commodity_id:self.order_commodity_id block:^(NSDictionary *dics) {
             MessageBaseClass *class=[[MessageBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
             if ([class.code isEqualToString:@"61"]) {
@@ -96,7 +96,7 @@ cancelClick
     _message=[[UILabel alloc]init];
     _message.textColor=[TheParentClass colorWithHexString:@"#999999"];
     _message.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
-    _message.text=@"亲,写点评价吧,你的评价对其他买家有很大的帮助.";
+    _message.text=Localized(@"亲,写点评价吧,你的评价对其他买家有很大的帮助.");
     [self.view addSubview:_message];
     _message.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(_view, 25*autoSizeScaleY).rightSpaceToView(self.view, 25*autoSizeScaleX).heightIs(35*autoSizeScaleY);
     
@@ -114,7 +114,7 @@ cancelClick
 }
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView{
     if ([textView.text length]==0||textView.text==nil||[textView.text isEqualToString:@" "]) {
-        _message.text=@"亲,写点评价吧,你的评价对其他买家有很大的帮助.";
+        _message.text=Localized(@"亲,写点评价吧,你的评价对其他买家有很大的帮助.");
     }
     return YES;
 }

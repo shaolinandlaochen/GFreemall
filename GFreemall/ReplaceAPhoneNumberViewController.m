@@ -67,7 +67,7 @@
 }
 //获取手机号
 -(void)GetAPhoneNumber{
-    [SVProgressHUD showWithStatus:@"正在获取手机号码"];
+    [SVProgressHUD showWithStatus:Localized(@"正在获取手机号码")];
 [TheBasicInformationRequest GetAPhoneNumber:^(NSDictionary *disa) {
     NSDictionary *data=[self deleteEmpty:disa];
     if ([[NSString stringWithFormat:@"%@",[data objectForKey:@"code"]] isEqualToString:@"30"]) {
@@ -186,9 +186,9 @@ cancelClick
         if (indexPath.section==0) {
             if (indexPath.row==0) {
                 cell.tf.userInteractionEnabled = NO;
-                cell.tf.text=@"原手机号码:123456789";
+                cell.tf.text=Localized(@"原手机号码:123456789");
                 [cell.btn.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
-                [cell.btn setTitle:@"获取验证码" forState:UIControlStateNormal];
+                [cell.btn setTitle:Localized(@"获取验证码") forState:UIControlStateNormal];
                 [cell.btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
                 
             }else if (indexPath.row==1){
@@ -199,7 +199,7 @@ cancelClick
             if (indexPath.row==0) {
                  cell.tf.placeholder=Localized(@"请输入新手机号");
                 [cell.btn.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
-                [cell.btn setTitle:@"获取验证码" forState:UIControlStateNormal];
+                [cell.btn setTitle:Localized(@"获取验证码") forState:UIControlStateNormal];
                 [cell.btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
                 
             }else if (indexPath.row==1){
@@ -214,7 +214,7 @@ cancelClick
         if (indexPath.row==0) {
             cell.tf.placeholder=Localized(@"请输入手机号");
             [cell.btn.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
-            [cell.btn setTitle:@"获取验证码" forState:UIControlStateNormal];
+            [cell.btn setTitle:Localized(@"获取验证码") forState:UIControlStateNormal];
             [cell.btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             
         }else if (indexPath.row==1){
@@ -229,7 +229,7 @@ cancelClick
         if (indexPath.row==0) {
             cell.tf.text=@"账户:707144471@qq.com";
             [cell.btn.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
-            [cell.btn setTitle:@"获取验证码" forState:UIControlStateNormal];
+            [cell.btn setTitle:Localized(@"获取验证码") forState:UIControlStateNormal];
             [cell.btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             
         }else if (indexPath.row==1){
@@ -307,7 +307,7 @@ cancelClick
 //点击获取验证码
 -(void)onButtonClick:(MyButton *)btnn{
     if ([self.were isEqualToString:@"安全验证"]) {
-        [SVProgressHUD showWithStatus:@"正在加载"];
+        [SVProgressHUD showWithStatus:Localized(@"loading")];
         [TheBasicInformationRequest GetVerificationCodeblock:^(NSDictionary *disa) {
             BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
             if ([class.code isEqualToString:@"21"]) {
@@ -322,14 +322,14 @@ cancelClick
         }];
     }else if([self.were isEqualToString:@"忘记密码"]){
         if ([_phoneString length]<1) {
-            [FTIndicator showInfoWithMessage:@"请输入手机号码"];
+            [FTIndicator showInfoWithMessage:Localized(@"请输入手机号码")];
         }else{
             
             NSString *string;
             string=[TheParentClass country:_CountriesArray[_ChooseTheCountr]];
           
             
-            [SVProgressHUD showWithStatus:@"正在加载"];
+            [SVProgressHUD showWithStatus:Localized(@"loading")];
         [TheBasicInformationRequest LoginRegistrationVerificationCodecountry:string phone:_phoneString type:@"pwd" block:^(NSDictionary *disa) {
             BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
             if ([class.code isEqualToString:@"21"]) {
@@ -378,11 +378,11 @@ cancelClick
     
     if ([self.were isEqualToString:@"邮箱绑定"]) {//
         if ([_email length]<1) {
-            [FTIndicator showErrorWithMessage:@"请输入邮箱账号"];
+            [FTIndicator showErrorWithMessage:Localized(@"请输入邮箱账号")];
         }else{
             BOOL isEmail=[self validateEmail:_email];
             if (isEmail) {
-                [SVProgressHUD showWithStatus:@"正在加载"];
+                [SVProgressHUD showWithStatus:Localized(@"loading")];
                 [TheBasicInformationRequest QueryWhetherEmailAlreadyExistsbase_email:_email block:^(NSDictionary *disa) {
                     BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
                     if ([class.code isEqualToString:@"69"]) {
@@ -396,14 +396,14 @@ cancelClick
                     [SVProgressHUD dismiss];
                 }];
             }else{
-             [FTIndicator showErrorWithMessage:@"邮箱格式错误,请正确输入邮箱!"];
+             [FTIndicator showErrorWithMessage:Localized(@"邮箱格式错误,请正确输入邮箱!")];
             }
             
         }
 
     }else if ([self.were isEqualToString:@"忘记密码"]){
         if ([_phoneString length]<1||[_codeString length]<1) {
-            [FTIndicator showErrorWithMessage:@"请完整填写信息"];
+            [FTIndicator showErrorWithMessage:Localized(@"请完整填写信息")];
         }else{
             
             SetThPasswordAgainViewController *setTThePasWord=[[SetThPasswordAgainViewController alloc]init];
@@ -415,7 +415,7 @@ cancelClick
 
     }else if ([self.were isEqualToString:@"安全验证"]){
         if (_codeString==nil||[_codeString length]!=6) {
-             [FTIndicator showInfoWithMessage:@"请正确填写验证码"];
+             [FTIndicator showInfoWithMessage:Localized(@"请正确填写验证码")];
         }else{
             PasswordManagementSecurityVerification *PasswordManagement=[[PasswordManagementSecurityVerification alloc]init];
             PasswordManagement.code=_codeString;
@@ -426,9 +426,9 @@ cancelClick
     
     }else if ([self.were isEqualToString:@"实名认证"]){
         if ([_nameString length]<1||[_IdentityDocumentNumber length]<1) {
-            [FTIndicator showInfoWithMessage:@"请完整填写信息"];
+            [FTIndicator showInfoWithMessage:Localized(@"请完整填写信息")];
         }else{
-            [SVProgressHUD showWithStatus:@"正在加载"];
+            [SVProgressHUD showWithStatus:Localized(@"loading")];
         [TheBasicInformationRequest Real_NameAuthenticationName:_nameString idcard:_IdentityDocumentNumber block:^(NSDictionary *disa) {
             BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
             if ([class.code isEqualToString:@"11"]) {
@@ -441,11 +441,11 @@ cancelClick
     
     }else if ([self.were isEqualToString:@"修改支付密码"]){
         if ([_originalPayThePassword length]<1||[_newPassword length]<1||[_ToNewPassword length]<1) {
-            [FTIndicator showErrorWithMessage:@"信息填写不完整"];
+            [FTIndicator showErrorWithMessage:Localized(@"信息填写不完整")];
         }else if(_newPassword!=_ToNewPassword){
-            [FTIndicator showErrorWithMessage:@"新密码不一致"];
+            [FTIndicator showErrorWithMessage:Localized(@"新密码不一致")];
         }else{
-            [SVProgressHUD showWithStatus:@"正在加载"];
+            [SVProgressHUD showWithStatus:Localized(@"loading")];
         [TheBasicInformationRequest ModifyPaymentPassword:_originalPayThePassword third_newpwd:_newPassword block:^(NSDictionary *disa) {
             BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
             if ([class.code isEqualToString:@"18"]) {
@@ -458,11 +458,11 @@ cancelClick
     
     }else if ([self.were isEqualToString:@"交易密码设置"]){
         if ([_Psw length]<1||[_ToPsw length]<1) {
-            [FTIndicator showErrorWithMessage:@"请填写交易密码"];
+            [FTIndicator showErrorWithMessage:Localized(@"请填写交易密码")];
         }else if (![_Psw isEqualToString:_ToPsw]){
-         [FTIndicator showErrorWithMessage:@"交易密码不一致"];
+         [FTIndicator showErrorWithMessage:Localized(@"交易密码不一致")];
         }else{
-            [SVProgressHUD showWithStatus:@"正在加载"];
+            [SVProgressHUD showWithStatus:Localized(@"loading")];
             [LoginRequuestClass TradingPassword:_Psw confirmThird_pwd:_ToPsw block:^(NSDictionary *dic) {
                 LoginBaseClass *class=[[LoginBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
                 if ([class.code isEqualToString:@"63"]) {

@@ -53,7 +53,7 @@
     // Do any additional setup after loading the view.
 }
 -(void)ForProductInformationClick{//获取商品信息
-    [SVProgressHUD showWithStatus:@"正在加载"];
+    [SVProgressHUD showWithStatus:Localized(@"loading")];
 [GoodsDetailsRequest ForProductInformationc:self.commodity_serial block:^(NSDictionary *dics) {
     self.dataDic=[self deleteEmpty:dics];
     GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
@@ -328,7 +328,7 @@ cancelClick
     }else{
         GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
         if ([classs.checkRes isEqualToString:@"NO_ATTR"]) {//无属性
-            [SVProgressHUD showWithStatus:@"正在加载"];
+            [SVProgressHUD showWithStatus:Localized(@"loading")];
             [GoodsDetailsRequest BuyNowattr_input:@"" num:@"1" comm_serial:self.commodity_serial checkRes:classs.checkRes block:^(NSDictionary *dics) {
                 ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
                 if ([class.code isEqualToString:@"23"]) {
@@ -448,7 +448,7 @@ cancelClick
     if ([tokenString length]<1) {
         [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
     }else{
-        [SVProgressHUD showWithStatus:@"正在收藏"];
+        [SVProgressHUD showWithStatus:Localized(@"正在收藏")];
         [GoodsDetailsRequest CollectionOrCancelThisCollection:self.commodity_serial block:^(NSDictionary *dics) {
             GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
             if ([class.code isEqualToString:@"9"]) {
@@ -481,7 +481,7 @@ cancelClick
     }else{
         GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
         if ([classs.checkRes isEqualToString:@"NO_ATTR"]) {//无属性
-            [SVProgressHUD showWithStatus:@"正在加载"];
+            [SVProgressHUD showWithStatus:Localized(@"loading")];
             [GoodsDetailsRequest AddTToCartvalues:@"" serial:self.commodity_serial num:@"1" checkRes:@"NO_ATTR" block:^(NSDictionary *dics) {
                 GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
                 [FTIndicator showSuccessWithMessage:class.msg];
@@ -499,7 +499,7 @@ cancelClick
 //立即购买(代理)
 -(void)BuyNowattr_input:(NSString *)attr_input message:(NSString *)Message number:(NSInteger)number{
     if ([tokenString length]>0) {
-        [SVProgressHUD showWithStatus:@"正在加载"];
+        [SVProgressHUD showWithStatus:Localized(@"loading")];
         GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
         [GoodsDetailsRequest BuyNowattr_input:[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input] num:[NSString stringWithFormat:@"%ld",number] comm_serial:self.commodity_serial checkRes:classs.checkRes block:^(NSDictionary *dics) {
             ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
@@ -531,7 +531,7 @@ cancelClick
         self.attr_input=attr_input;
         [_tableView reloadData];
         GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
-        [SVProgressHUD showWithStatus:@"正在加载"];
+        [SVProgressHUD showWithStatus:Localized(@"loading")];
         [GoodsDetailsRequest AddTToCartvalues:[NSString stringWithFormat:@"%@_%@",self.commodity_serial,attr_input] serial:self.commodity_serial num:[NSString stringWithFormat:@"%ld",number] checkRes:classs.checkRes block:^(NSDictionary *dics) {
             GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
             if ([class.code isEqualToString:@"12"]) {

@@ -226,9 +226,9 @@ autoSize
 //获取验证码
 -(void)onCodeNumerClick{
     if ([Phonenumber.text length]<1) {
-        [FTIndicator showErrorWithMessage:@"请完整填写手机号"];
+        [FTIndicator showErrorWithMessage:Localized(@"请完整填写手机号")];
     }else{
-        [SVProgressHUD showWithStatus:@"正在加载"];
+        [SVProgressHUD showWithStatus:Localized(@"loading")];
         NSString *string;
         string=[TheParentClass country:_CountriesArray[_ChooseTheCountr]];
         [TheBasicInformationRequest LoginRegistrationVerificationCodecountry:string phone:Phonenumber.text type:@"reg"  block:^(NSDictionary *disa) {
@@ -254,7 +254,7 @@ autoSize
         seconds-=1;
         [codeNumber setTitle:[NSString stringWithFormat:@"%lds",seconds] forState:UIControlStateNormal];
     }else{
-        [codeNumber setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [codeNumber setTitle:Localized(@"获取验证码") forState:UIControlStateNormal];
         codeNumber.userInteractionEnabled=YES;
         [timer invalidate];
         timer = nil;
@@ -289,19 +289,19 @@ autoSize
 -(void)onNextStepButtonClick{
     //Registeredbase_username
     if ([name.text length]<1||[pswd.text length]<1||[Phonenumber.text length]<1||[code.text length]<1||[InviteCode.text length]<1) {
-        [FTIndicator showErrorWithMessage:@"信息填写不完整"];
+        [FTIndicator showErrorWithMessage:Localized(@"信息填写不完整")];
     }else{
         BOOL isName=[self validateUserName:name.text];
         if (isName) {
             
             NSString *string=[TheParentClass country:_CountriesArray[_ChooseTheCountr]];
-            [SVProgressHUD showWithStatus:@"正在加载"];
+            [SVProgressHUD showWithStatus:Localized(@"loading")];
             
             [LoginRequuestClass Registeredbase_username:name.text password:pswd.text confirmPassword:pswd.text base_recommend:InviteCode.text phone:Phonenumber.text captcha:code.text country:string block:^(NSDictionary *dic) {
                 LoginBaseClass *class=[[LoginBaseClass alloc]initWithDictionary:[self deleteEmpty:dic]];
                 if ([class.code isEqualToString:@"62"]) {
                     
-                    [SVProgressHUD showWithStatus:@"正在登录"];
+                    [SVProgressHUD showWithStatus:Localized(@"正在登录")];
                     [LoginRequuestClass LoginUsername:name.text password:pswd.text block:^(NSDictionary *dic) {
                         LoginBaseClass *login=[[LoginBaseClass alloc]initWithDictionary:dic];
                         if ([login.code isEqualToString:@"1"]) {//登录成功
@@ -334,7 +334,7 @@ autoSize
             }];
 
         }else{
-            [FTIndicator showErrorWithMessage:@"用户名格式错误"];
+            [FTIndicator showErrorWithMessage:Localized(@"用户名格式错误")];
         }
     
     }

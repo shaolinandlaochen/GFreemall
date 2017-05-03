@@ -39,7 +39,7 @@
 }
 //加载数据
 -(void)QequestData{
-    [SVProgressHUD showWithStatus:@"正在加载"];
+    [SVProgressHUD showWithStatus:Localized(@"loading")];
     [OrderDetailsRequest OrderDetails:self.serial block:^(NSDictionary *dics) {
         self.dataDic=[self deleteEmpty:dics];
         OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:self.dataDic];
@@ -95,7 +95,7 @@
         ReceivingASuccessfulShow *view=[[ReceivingASuccessfulShow alloc]init];
         view.backgroundColor=[UIColor whiteColor];
         view.img.image=[UIImage imageNamed:@"icon_success"];
-        view.name.text=@"确认收货成功";
+        view.name.text=Localized(@"确认收货成功");
         
         return view;
     }
@@ -122,7 +122,7 @@
         StayEvaluationListCell *cell=[StayEvaluationListCell new];
         [cell.img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",classData.imgSrc,commodity.commodityImagesPath,commodity.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
         cell.title.text=commodity.commodityName;
-        [cell.btn setTitle:@"去评价" forState:UIControlStateNormal];
+        [cell.btn setTitle:Localized(@"去评价") forState:UIControlStateNormal];
         cell.btn.indexPath=indexPath;
         [cell.btn addTarget:self action:@selector(onButtonCLIck:) forControlEvents:UIControlEventTouchUpInside];
         return cell;

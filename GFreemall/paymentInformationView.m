@@ -196,7 +196,7 @@
 //开始支付
 -(void)onButtonClick{
     if ([self.pswString length]<1) {
-        [FTIndicator showInfoWithMessage:@"请输入支付密码"];
+        [FTIndicator showInfoWithMessage:Localized(@"请输入支付密码")];
     }else{
         [self dismissViewControllerAnimated:YES completion:^{
             

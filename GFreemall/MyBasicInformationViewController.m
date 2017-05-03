@@ -94,7 +94,7 @@ cancelClick
                 cell.userInteractionEnabled = NO;
                  cell.string.text=[NSString stringWithFormat:@"%@%@",class.info.baseCountry,class.info.basePhone];
             }else if (class.info.baseAuthPhone==0){//暂未绑定
-                 cell.string.text=@"未绑定";
+                 cell.string.text=Localized(@"未绑定");
                  cell.imgName=@"icon_right";
             }
            
@@ -109,7 +109,7 @@ cancelClick
                 cell.userInteractionEnabled = NO;
                 cell.string.text=class.info.baseName;
             }else{
-                cell.string.text=@"未认证";
+                cell.string.text=Localized(@"未认证");
                 cell.imgName=@"icon_right";
             }
           
@@ -120,7 +120,7 @@ cancelClick
                 cell.userInteractionEnabled = NO;
                 cell.string.text=class.info.baseEmail;
             }else{
-                cell.string.text=@"未设置";
+                cell.string.text=Localized(@"未设置");
                 cell.imgName=@"icon_right";
             }
     
