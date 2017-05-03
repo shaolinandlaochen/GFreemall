@@ -3094,8 +3094,8 @@
 				TargetAttributes = {
 					38C9DC851E88BF5F00F231B0 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 95326Y76J2;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 57H4K7W67N;
+						ProvisioningStyle = Manual;
 					};
 					38C9DC9E1E88BF5F00F231B0 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -3914,7 +3914,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: shaolin han (6R6V3WVXQL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shaolin han (6R6V3WVXQL)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3962,7 +3963,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: shaolin han (6R6V3WVXQL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shaolin han (6R6V3WVXQL)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -3987,8 +3989,9 @@
 			baseConfigurationReference = 3CAC99031124F58E22E45701 /* Pods-GFreemall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 95326Y76J2;
+				CODE_SIGN_IDENTITY = "iPhone Developer: shaolin han (6R6V3WVXQL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shaolin han (6R6V3WVXQL)";
+				DEVELOPMENT_TEAM = 57H4K7W67N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GFreemall/图片浏览器",
@@ -3999,7 +4002,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ANewStartIsMrHan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "ef6e2f87-2c6e-4994-b3af-9271ae6cbe34";
+				PROVISIONING_PROFILE_SPECIFIER = "GFreemall-Development";
 			};
 			name = Debug;
 		};
@@ -4008,8 +4012,9 @@
 			baseConfigurationReference = 2975E64A1C59A326D2785033 /* Pods-GFreemall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 95326Y76J2;
+				CODE_SIGN_IDENTITY = "iPhone Developer: shaolin han (6R6V3WVXQL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shaolin han (6R6V3WVXQL)";
+				DEVELOPMENT_TEAM = 57H4K7W67N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GFreemall/图片浏览器",
@@ -4020,7 +4025,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ANewStartIsMrHan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "ef6e2f87-2c6e-4994-b3af-9271ae6cbe34";
+				PROVISIONING_PROFILE_SPECIFIER = "GFreemall-Development";
 			};
 			name = Release;
 		};

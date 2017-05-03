@@ -115,7 +115,7 @@ cancelClick
     cell.tf.indexPath=indexPath;
     cell.tf.placeholder=Localized(@"请输入邮箱验证码");
     [cell.btn.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
-    [cell.btn setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [cell.btn setTitle:Localized(@"获取验证码") forState:UIControlStateNormal];
     [cell.btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 
     return cell;
