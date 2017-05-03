@@ -50,7 +50,7 @@
         string.textAlignment=NSTextAlignmentRight;
         string.font=[UIFont systemFontOfSize:26*autoSizeScaleX];
         [self addSubview:string];
-        string.sd_layout.rightSpaceToView(_percentageNumber, 10*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(100*autoSizeScaleX);
+        string.sd_layout.rightSpaceToView(_percentageNumber, 0*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(100*autoSizeScaleX);
         
         
         UILabel *line=[[UILabel alloc]init];

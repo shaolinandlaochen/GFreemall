@@ -69,19 +69,19 @@
     NSString *levelStr;
     if (model.baseGrade==0) {
         levelStr=Localized(@"注册会员");
-        _icon.image=[UIImage imageNamed:@"icon_register1"];
+        _icon.image=[UIImage imageNamed:@"icon_register"];
     }else if (model.baseGrade==1){
         levelStr=Localized(@"铜牌会员");
-        _icon.image=[UIImage imageNamed:@"icon_copper1"];
+        _icon.image=[UIImage imageNamed:@"icon_copper"];
     }else if (model.baseGrade==2){
         levelStr=Localized(@"银牌会员");
-        _icon.image=[UIImage imageNamed:@"icon_silver1"];
+        _icon.image=[UIImage imageNamed:@"icon_silver"];
     }else if (model.baseGrade==3){
         levelStr=Localized(@"金牌会员");
-        _icon.image=[UIImage imageNamed:@"icon_gold1"];
+        _icon.image=[UIImage imageNamed:@"icon_gold"];
     }else if (model.baseGrade==4){
         levelStr=Localized(@"钻石会员");
-        _icon.image=[UIImage imageNamed:@"icon_diamond1"];
+        _icon.image=[UIImage imageNamed:@"icon_diamond"];
     }
     CGSize size=[TheParentClass StringHeight:levelStr Lblfont:20*autoSizeScaleY heightOfTheMinus:0];
     _level.sd_layout.heightIs(size.height).widthIs(size.width);

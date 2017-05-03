@@ -15,5 +15,7 @@
 @property(nonatomic,strong)MyButton *buy;
 @property(nonatomic,strong)MyButton *addShoppingCar;
 @property(nonatomic,assign)BOOL isCollect;
+@property(nonatomic,copy)NSString *numberString;
+@property(nonatomic,strong)UILabel *numLbl;
 
 @end

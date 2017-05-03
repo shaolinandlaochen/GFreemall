@@ -68,7 +68,15 @@
         [self addSubview:lblLines];
         lblLines.sd_layout.leftSpaceToView(self, 151*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(0.5);
         
-        
+        _numLbl=[[UILabel alloc]init];
+        _numLbl.font=[UIFont systemFontOfSize:20*autoSizeScaleY];
+        _numLbl.layer.cornerRadius = 13*autoSizeScaleX;
+        _numLbl.layer.masksToBounds = 13*autoSizeScaleX;
+        _numLbl.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
+        _numLbl.textColor=[UIColor whiteColor];
+        _numLbl.textAlignment=NSTextAlignmentCenter;
+        [self addSubview:_numLbl];
+        _numLbl.sd_layout.leftSpaceToView(self, 230*autoSizeScaleX).topSpaceToView(self, 10*autoSizeScaleY).heightIs(26*autoSizeScaleY).widthIs(26*autoSizeScaleX);
         
         
         
@@ -105,6 +113,11 @@
     }
     return self;
 
+}
+-(void)setNumberString:(NSString *)numberString{
+    if ([numberString isEqualToString:@"0"]) {
+        
+    }
 }
 -(void)setIsCollect:(BOOL)isCollect{
     UIImageView *img=(UIImageView *)[self viewWithTag:100];
