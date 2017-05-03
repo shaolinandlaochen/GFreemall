@@ -66,6 +66,7 @@
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _tableView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
     _tableView.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 100*autoSizeScaleY);
     [self creatsettlementvIEW];
@@ -88,6 +89,9 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     autoSize
+    if (section==3) {
+        return 0;
+    }
     return 20*autoSizeScaleY;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -113,7 +117,7 @@
         UILabel *line=[[UILabel alloc]init];
         line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
         [view addSubview:line];
-        line.sd_layout.leftSpaceToView(view, 0).rightSpaceToView(view, 0).bottomSpaceToView(view, 0).heightIs(1);
+        line.sd_layout.leftSpaceToView(view, 0).rightSpaceToView(view, 0).bottomSpaceToView(view, 0).heightIs(0.5);
         
         
         return view;
@@ -135,7 +139,18 @@
     }else if (section==2){
         return 1;
     }else if (section==3){
-        return 2;
+        if (self.dataDic!=nil) {
+            if (![[self.dataDic objectForKey:@"base_isshareholder"]isEqual:[NSNull null]]) {
+                NSString *base_isshareholder=[NSString stringWithFormat:@"%@",[self.dataDic objectForKey:@"base_isshareholder"]];
+                if ([base_isshareholder isEqualToString:@"0"]) {//不是股东
+                    return 1;
+                }else{//是股东
+                    return 2;
+                }
+            }
+        }
+        
+        return 0;
     }
     return 0;
 }
@@ -247,6 +262,7 @@ autoSize
     view.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:view];
     view.sd_layout.leftSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).heightIs(100*autoSizeScaleY);
+  
     
     _Button =[[MyButton alloc]init];
     [_Button setTitle:Localized(@"提交订单") forState:UIControlStateNormal];
@@ -266,6 +282,10 @@ autoSize
      ShoppingSettlementBaseClass *class=[[ShoppingSettlementBaseClass alloc]initWithDictionary:self.dataDic];
     _money.text=[NSString stringWithFormat:@"支付金额:¥%.2f",class.amountTotal];
     
+    UILabel *line=[[UILabel alloc]init];
+    line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
+    [self.view addSubview:line];
+    line.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 100*autoSizeScaleY).heightIs(0.5);
 
 }
 //提交订单

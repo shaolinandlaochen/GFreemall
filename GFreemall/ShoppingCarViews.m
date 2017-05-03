@@ -47,7 +47,7 @@
         
         _PaymentAndDeleteBtn=[[MyButton alloc]init];
         _PaymentAndDeleteBtn.why=YES;
-        _PaymentAndDeleteBtn.backgroundColor=[[UIColor blackColor]colorWithAlphaComponent:0.6];
+        _PaymentAndDeleteBtn.backgroundColor=[TheParentClass colorWithHexString:@"#292929"];
         [_PaymentAndDeleteBtn setTitle:Localized(@"去支付") forState:UIControlStateNormal];
         [_PaymentAndDeleteBtn setTitleColor:[TheParentClass colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
         _PaymentAndDeleteBtn.titleLabel.font=[UIFont systemFontOfSize:34*autoSizeScaleY];
@@ -64,7 +64,7 @@ autoSize
     NSLog(@"aaaaaaaaaa");
     _PaymentAndDeleteBtn.why=state;
     if (state) {
-        _PaymentAndDeleteBtn.backgroundColor=[[UIColor blackColor]colorWithAlphaComponent:0.6];
+        _PaymentAndDeleteBtn.backgroundColor=[TheParentClass colorWithHexString:@"#292929"];
         [_PaymentAndDeleteBtn setTitle:Localized(@"去支付") forState:UIControlStateNormal];
         [_PaymentAndDeleteBtn setTitleColor:[TheParentClass colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
         _PaymentAndDeleteBtn.titleLabel.font=[UIFont systemFontOfSize:34*autoSizeScaleY];

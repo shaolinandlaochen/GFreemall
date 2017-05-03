@@ -40,6 +40,13 @@
         [self.contentView addSubview:go];
         go.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 66*autoSizeScaleY).widthIs(44*autoSizeScaleX).heightIs(44*autoSizeScaleY);
         
+        
+        UILabel *linges=[[[UILabel alloc]init]init];
+        linges.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
+        [self.contentView addSubview:linges];
+        linges.sd_layout.leftSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).heightIs(0.5);
+        
+        
     }
     return self;
 

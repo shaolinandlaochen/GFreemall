@@ -42,7 +42,7 @@
         [_tf addTarget:self action:@selector(textChange:) forControlEvents:
          UIControlEventEditingChanged];
         [self.contentView addSubview:_tf];
-        _tf.sd_layout.leftSpaceToView(_imgTopBo, 10*autoSizeScaleY).bottomSpaceToView(self.contentView, 0).topSpaceToView(self.contentView, 0).widthIs(400*autoSizeScaleX);
+        _tf.sd_layout.leftSpaceToView(_imgTopBo, 10*autoSizeScaleY).bottomSpaceToView(self.contentView, 0).topSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0);
         
         _btn =[[MyButton alloc]init];
         [_btn.layer setBorderWidth:1];

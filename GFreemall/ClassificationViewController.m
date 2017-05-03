@@ -320,7 +320,7 @@ autoSize
                 }
                 
                 if ([number.text length]==1) {
-                    number.frame=frame(170, 10, 26, 26);
+                    number.frame=frame(180, 10, 26, 26);
                 }else if ([number.text length]>1){
                     number.frame=frame(170, 10, 36, 26);
                 }

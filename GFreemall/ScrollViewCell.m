@@ -40,8 +40,8 @@
     HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:Dic];
     
     for (int i=0; i<class.ads.ad1.count; i++) {
-        HomeAd1 *ad1=class.ads.ad1[i];
-        NSString *imgUrls=[NSString stringWithFormat:@"%@%@",class.imgSrc,ad1.adsImages];
+        HomeAd5 *ad5=class.ads.ad5[i];
+        NSString *imgUrls=[NSString stringWithFormat:@"%@%@",class.imgSrc,ad5.adsImages];
         [imgArray addObject:imgUrls];
         
     }

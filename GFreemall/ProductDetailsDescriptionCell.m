@@ -45,7 +45,7 @@
         
         lines=[[UIView alloc]init];
         [self.contentView addSubview:lines];
-        lines.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).heightIs(1);
+        lines.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).heightIs(0.5);
         
         //[self setupAutoHeightWithBottomView:_picrice bottomMargin:25*autoSizeScaleY];
     }

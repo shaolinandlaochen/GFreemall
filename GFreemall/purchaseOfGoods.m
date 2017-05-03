@@ -21,6 +21,14 @@
     if ([super initWithFrame:frame]) {
         self.backgroundColor=[UIColor whiteColor];
         autoSize
+        
+        UILabel *liness=[[UILabel alloc]init];
+        liness.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
+        [self addSubview:liness];
+        liness.sd_layout.leftSpaceToView(self, 0).topSpaceToView(self, 0).rightSpaceToView(self, 0).heightIs(0.5);
+        
+        
+        
         NSArray *nameArray=@[@"收藏",@"购物车"];
         NSArray *imgArray=@[@"icon_collect1",@"icon_cart_gray"];
         for (int i=0; i<2; i++) {
@@ -75,7 +83,7 @@
         _shoppingCar.sd_layout.leftSpaceToView(_collection, 0).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(151*autoSizeScaleX);
         //加入购物车
         _addShoppingCar=[[MyButton alloc]init];
-        _addShoppingCar.backgroundColor=[[UIColor blackColor]colorWithAlphaComponent:0.6];
+        _addShoppingCar.backgroundColor=[TheParentClass colorWithHexString:@"#292929"];
         [_addShoppingCar setTitleColor:[TheParentClass colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
         _addShoppingCar.titleLabel.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
         [_addShoppingCar setTitle:Localized(@"加入购物车") forState:UIControlStateNormal];
@@ -83,7 +91,7 @@
         _addShoppingCar.sd_layout.rightSpaceToView(self, 0).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(220*autoSizeScaleX);
         //立即购买
         _buy=[[MyButton alloc]init];
-        _buy.backgroundColor=[UIColor redColor];
+        _buy.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
         [_buy setTitleColor:[TheParentClass colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
         _buy.titleLabel.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
         [_buy setTitle:Localized(@"立即购买") forState:UIControlStateNormal];

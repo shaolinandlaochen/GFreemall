@@ -39,7 +39,7 @@
             UILabel *name=[[UILabel alloc]init];
             name.tag=i+200;
             name.textColor=[TheParentClass colorWithHexString:@"#292929"];
-            name.font=[UIFont systemFontOfSize:20*autoSizeScaleY];
+            name.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
             name.textAlignment=NSTextAlignmentCenter;
             [self.contentView addSubview:name];
             name.sd_layout.leftEqualToView(img).rightEqualToView(img).topSpaceToView(img, 14*autoSizeScaleY).heightIs(30*autoSizeScaleY);
@@ -48,7 +48,7 @@
             UILabel *pirce=[[UILabel alloc]init];
             pirce.tag=i+300;
             pirce.textColor=[TheParentClass colorWithHexString:@"#de0024"];
-            pirce.font=[UIFont systemFontOfSize:20*autoSizeScaleY];
+            pirce.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
             pirce.textAlignment=NSTextAlignmentCenter;
             [self.contentView addSubview:pirce];
             pirce.sd_layout.leftEqualToView(img).rightEqualToView(img).topSpaceToView(name, 24*autoSizeScaleY).heightIs(30*autoSizeScaleY);

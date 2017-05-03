@@ -36,7 +36,7 @@
         //商品名称
         _name=[[UILabel  alloc]init];
         _name.textColor=[TheParentClass colorWithHexString:@"#292929"];
-        _name.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
+        _name.font=[UIFont systemFontOfSize:34*autoSizeScaleY];
         _name.numberOfLines=2;
         [self.contentView addSubview:_name];
         _name.sd_layout.leftSpaceToView(_icon, 25*autoSizeScaleX).topEqualToView(_icon).rightSpaceToView(self.contentView, 86*autoSizeScaleX).autoHeightRatio(0);
@@ -80,7 +80,7 @@
         UIView *line=[[UIView alloc]init];
         line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
         [self.contentView addSubview:line];
-        line.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).heightIs(1);
+        line.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).heightIs(0.5);
         
         
         

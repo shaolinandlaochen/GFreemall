@@ -25,7 +25,7 @@
         //商品名称
         _title=[[UILabel alloc]init];
         _title.textColor=[TheParentClass colorWithHexString:@"#292929"];
-        _title.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
+        _title.font=[UIFont systemFontOfSize:34*autoSizeScaleY];
         _title.numberOfLines=2;
         [self.contentView addSubview:_title];
         _title.sd_layout.leftSpaceToView(_img, 20*autoSizeScaleX).topSpaceToView(self.contentView, 20*autoSizeScaleY).rightSpaceToView(self.contentView, 40*autoSizeScaleX).autoHeightRatio(0);
@@ -38,7 +38,7 @@
         _picre.sd_layout.leftSpaceToView(_img, 20*autoSizeScaleX).rightSpaceToView(self.contentView, 40*autoSizeScaleX).bottomSpaceToView(self.contentView, 32*autoSizeScaleY).autoHeightRatio(0);
         
         UILabel *line=[[UILabel alloc]init];
-        line.backgroundColor=[TheParentClass colorWithHexString:@"#b2b2b2"];
+        line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
         [self.contentView addSubview:line];
         line.sd_layout.leftSpaceToView(_img, 20*autoSizeScaleX).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).heightIs(0.5);
         

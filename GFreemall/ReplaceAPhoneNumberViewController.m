@@ -253,6 +253,7 @@ cancelClick
     }else if ([self.were isEqualToString:@"邮箱绑定"]){
         cell.tf.placeholder=Localized(@"请输入邮箱账号");
     }else if ([self.were isEqualToString:@"交易密码设置"]){
+        cell.tf.secureTextEntry=YES;
         if (indexPath.row==0) {
             cell.tf.placeholder=Localized(@"请输入您的账户交易密码");
         }else if (indexPath.row==1){

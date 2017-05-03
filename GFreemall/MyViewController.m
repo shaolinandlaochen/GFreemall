@@ -100,8 +100,12 @@ autoSize
         
         MyInformationDataBaseClass *class=[[MyInformationDataBaseClass alloc]initWithDictionary:self.dataDic];
         
+        if ([class.username length]>0) {
+            view.name.text=class.username;
+        }else{
+            view.name.text=Localized(@"登录/注册");
+        }
         
-        view.name.text=class.username;
         view.levelNumber=class.baseGrade;
         [view.iconBtn addTarget:self action:@selector(onTheLoginClick) forControlEvents:UIControlEventTouchUpInside];
         [view.orderName addTarget:self action:@selector(onOrderClick) forControlEvents:UIControlEventTouchUpInside];

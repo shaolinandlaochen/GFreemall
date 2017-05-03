@@ -26,7 +26,7 @@
         _img.sd_layout.leftSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 27*autoSizeScaleY).bottomSpaceToView(self, 27*autoSizeScaleY).widthIs(34*autoSizeScaleX);
         _lbl=[[UILabel alloc]init];
         _lbl.textColor=[TheParentClass colorWithHexString:@"#ff6500"];
-        _lbl.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
+        _lbl.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
         [self addSubview:_lbl];
         _lbl.sd_layout.leftSpaceToView(_img, 2).topEqualToView(_img).bottomEqualToView(_img).widthIs(200);
         

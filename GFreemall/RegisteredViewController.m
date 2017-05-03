@@ -204,7 +204,7 @@ autoSize
     
     UIButton *nextStepBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     [nextStepBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    nextStepBtn.backgroundColor=[UIColor blackColor];
+    nextStepBtn.backgroundColor=[TheParentClass colorWithHexString:@"#292929"];
     nextStepBtn.layer.cornerRadius = 6*autoSizeScaleX;
     nextStepBtn.layer.masksToBounds = 6*autoSizeScaleX;
     nextStepBtn.titleLabel.font=[UIFont systemFontOfSize:34*autoSizeScaleY];

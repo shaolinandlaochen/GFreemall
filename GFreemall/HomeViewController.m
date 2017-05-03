@@ -241,10 +241,10 @@ autoSize
 //点击滚动视图执行该方法
 -(void)HomeScroll:(NSInteger)index{
     HomeBaseClass *class=[[HomeBaseClass alloc]initWithDictionary:self.dataDic];
-    HomeAd1 *ad1=class.ads.ad1[index];
-    if (![[NSString stringWithFormat:@"%@",ad1.adsLinks] isEqualToString:@""]) {
+    HomeAd5 *ad5=class.ads.ad5[index];
+    if (![[NSString stringWithFormat:@"%@",ad5.adsLinks] isEqualToString:@""]) {
         GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
-        goodsDetails.commodity_serial=[NSString stringWithFormat:@"%@",ad1.adsLinks];
+        goodsDetails.commodity_serial=[NSString stringWithFormat:@"%@",ad5.adsLinks];
         [self.navigationController pushViewController:goodsDetails animated:YES];
     }
 
@@ -307,7 +307,7 @@ autoSize
                 }
                 
                 if ([number.text length]==1) {
-                    number.frame=frame(170, 10, 26, 26);
+                    number.frame=frame(180, 10, 26, 26);
                 }else if ([number.text length]>1){
                     number.frame=frame(170, 10, 36, 26);
                 }

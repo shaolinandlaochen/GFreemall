@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     autoSize
-    self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    self.view.backgroundColor=[UIColor whiteColor];
     [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
     leftCancel
     [self SetTheNavigationBar];
@@ -68,6 +68,7 @@
         if (class.pagingList.resultList.count>0) {
             NSString *string=[NSString stringWithFormat:@"为您找到'%@'商品",searchField.text];
             view.lbl.text=string;
+            view.lbl.textColor=[TheParentClass colorWithHexString:@"#292929"];
         }
 
     }
@@ -104,12 +105,15 @@
 
 //没有搜索到商品
 -(void)EmptyTheShoppingCart{
+
     autoSize
     UIImageView *img=[[UIImageView alloc]init];
-    img.image=[UIImage imageNamed:@"pic_cart"];
+    img.tag=951486;
+    img.image=[UIImage imageNamed:@"pic_search"];
     [self.view addSubview:img];
     img.sd_layout.leftSpaceToView(self.view, 196*autoSizeScaleX).topSpaceToView(self.view, 597*autoSizeScaleY).widthIs(358*autoSizeScaleX).heightIs(139*autoSizeScaleY);
     UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
+    btn.tag=951487;
     [btn setTitle:Localized(@"没有搜索到相关商品") forState:UIControlStateNormal];
     [btn setTitleColor:[TheParentClass colorWithHexString:@"#999999"] forState:UIControlStateNormal];
     btn.titleLabel.font=[UIFont systemFontOfSize:28*autoSizeScaleX];
@@ -215,14 +219,14 @@
 -(void)ThUserNavigationBar{
     autoSize
     UILabel *lineOne=[[UILabel alloc]init];//搜索狂下面第一条线
-    lineOne.backgroundColor=[TheParentClass colorWithHexString:@"#b2b2b2"];
+    lineOne.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
     [self.view addSubview:lineOne];
-    lineOne.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(imgbg, 12*autoSizeScaleY).rightSpaceToView(self.view, 0).heightIs(0.7);
+    lineOne.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(imgbg, 12*autoSizeScaleY).rightSpaceToView(self.view, 0).heightIs(0.5);
     
     lineTwo=[[UILabel alloc]init];//搜索狂下面第一条线
-    lineTwo.backgroundColor=[TheParentClass colorWithHexString:@"#b2b2b2"];
+    lineTwo.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
     [self.view addSubview:lineTwo];
-    lineTwo.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(lineOne, 90*autoSizeScaleY).rightSpaceToView(self.view, 0).heightIs(0.7);
+    lineTwo.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(lineOne, 90*autoSizeScaleY).rightSpaceToView(self.view, 0).heightIs(0.5);
     
     
     
@@ -309,6 +313,14 @@
         self.dataDic=[self deleteEmpty:dic];
         SearchBaseClass *class=[[SearchBaseClass alloc]initWithDictionary:self.dataDic];
         if ([class.code isEqualToString:@"5"]) {
+            [[self.view viewWithTag:951486]removeFromSuperview];
+            [[self.view viewWithTag:951487]removeFromSuperview];
+            NSLog(@"sjdgdsfifgdsifgsdfsdkfsdgfjsdfjsddfdfdfdfdfdffffdffd9f7d*f8df9d7fd");
+            
+            if (class.pagingList.resultList.count<1) {
+                [self EmptyTheShoppingCart];///没有搜索到商品
+            }
+           
             [_tableView reloadData];
         }else{
             [FTIndicator showInfoWithMessage:class.msg];

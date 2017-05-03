@@ -19,20 +19,19 @@
 */
 -(instancetype)initWithFrame:(CGRect)frame{
     if ([super initWithFrame:frame]) {
-        
+        self.backgroundColor=[UIColor whiteColor];
         autoSize
         UILabel *line=[[UILabel alloc]init];
         line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
         [self addSubview:line];
-        line.sd_layout.leftSpaceToView(self, 0).topSpaceToView(self, 0).rightSpaceToView(self, 0).heightIs(0.6);
+        //line.sd_layout.leftSpaceToView(self, 0).topSpaceToView(self, 0).rightSpaceToView(self, 0).heightIs(0.5);
         
         
         _button=[[MyButton alloc]init];
         _button.titleLabel.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
         [_button setTitleColor:[TheParentClass colorWithHexString:@"#999999"] forState:UIControlStateNormal];
-        [_button setTitle:Localized(@"全部评论139") forState:UIControlStateNormal];
         _button.backgroundColor=[UIColor whiteColor];
-        [_button.layer setBorderColor:[TheParentClass colorWithHexString:@"#999999"].CGColor];
+        [_button.layer setBorderColor:[TheParentClass colorWithHexString:@"#b2b2b2"].CGColor];
         [_button.layer setBorderWidth:0.6];
         [_button.layer setMasksToBounds:YES];
         _button.layer.cornerRadius = 6*autoSizeScaleX;
