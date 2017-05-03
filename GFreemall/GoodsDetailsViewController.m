@@ -23,6 +23,7 @@
 #import "OrderInformationViewController.h"
 #import "GoodsDetailsRequest.h"
 #import "DetailsOfTheShoppingCart.h"
+#import "ShoppingCarRequest.h"
 @interface GoodsDetailsViewController ()<ProductScreeningDelegate,UITableViewDelegate,UITableViewDataSource,GoodsScrollViewDelegate,HTMLContextDelegate,UIScrollViewDelegate,ShutDownDelegate>
 {
     MyoptionsView *optionsView;
@@ -68,6 +69,26 @@
     [SVProgressHUD dismiss];
 }];
 
+    
+   
+    
+}
+//获取购物车数量
+-(void)ToGetAShoppingCartGoodsList{
+    
+    [ShoppingCarRequest ToGetAShoppingCartGoodsListBlock:^(NSDictionary *dics) {
+        ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+        if ([class.code isEqualToString:@"13"]) {
+            int x=0;
+            for (int i=0; i<class.list.count; i++) {
+                ShoppingCarList *list=class.list[i];
+                x+=list.count;
+            }
+            goods.numberString=[NSString stringWithFormat:@"%d",x];
+        }
+
+    }];
+    
 }
 
 -(void)htmlHeight:(float)height{
@@ -439,6 +460,9 @@ cancelClick
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:NO];
+    //获取购物车数量
+    
+    [self ToGetAShoppingCartGoodsList];
 }
 //客服
 -(void)CallCustomerService{
@@ -493,6 +517,8 @@ cancelClick
                 GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
                 [FTIndicator showSuccessWithMessage:class.msg];
                 [SVProgressHUD dismiss];
+                //获取购物车数量
+                [self ToGetAShoppingCartGoodsList];
                 
             }];
         }else{
@@ -546,7 +572,8 @@ cancelClick
             }else{
                 [FTIndicator showErrorWithMessage:class.msg];
             }
-            
+            //获取购物车数量
+            [self ToGetAShoppingCartGoodsList];
             [SVProgressHUD dismiss];
             
         }];

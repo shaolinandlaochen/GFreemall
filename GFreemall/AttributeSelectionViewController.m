@@ -116,7 +116,7 @@ autoSize
          [cell.string.layer setBorderColor:[TheParentClass colorWithHexString:@"#de0024"].CGColor];
     }else{
      [cell.string setTitleColor:[TheParentClass colorWithHexString:@"#292929"] forState:UIControlStateNormal];
-         [cell.string.layer setBorderColor:[TheParentClass colorWithHexString:@"#f3f5f7"].CGColor];
+         [cell.string.layer setBorderColor:[TheParentClass colorWithHexString:@"#d7d7d7"].CGColor];
     }
     
     
@@ -176,8 +176,8 @@ autoSize
     [imgBtn addTarget:self action:@selector(onImageBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [imgBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",classs.imgSrc,classs.comm.commodityImagesPath,classs.comm.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
     imgBtn.backgroundColor=[UIColor whiteColor];
-    [imgBtn.layer setBorderColor:[UIColor whiteColor].CGColor];
-    [imgBtn.layer setBorderWidth:1];
+    [imgBtn.layer setBorderColor:[TheParentClass colorWithHexString:@"#d7d7d7"].CGColor];
+    [imgBtn.layer setBorderWidth:0.5];
     imgBtn.tag=753;
     [imgBtn.layer setMasksToBounds:YES];
     imgBtn.layer.cornerRadius = 6*autoSizeScaleX;

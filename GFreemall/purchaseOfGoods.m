@@ -72,7 +72,6 @@
         _numLbl.font=[UIFont systemFontOfSize:20*autoSizeScaleY];
         _numLbl.layer.cornerRadius = 13*autoSizeScaleX;
         _numLbl.layer.masksToBounds = 13*autoSizeScaleX;
-        _numLbl.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
         _numLbl.textColor=[UIColor whiteColor];
         _numLbl.textAlignment=NSTextAlignmentCenter;
         [self addSubview:_numLbl];
@@ -116,7 +115,11 @@
 }
 -(void)setNumberString:(NSString *)numberString{
     if ([numberString isEqualToString:@"0"]) {
-        
+        _numLbl.backgroundColor=[UIColor clearColor];
+        _numLbl.text=@"";
+    }else{
+        _numLbl.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
+        _numLbl.text=numberString;
     }
 }
 -(void)setIsCollect:(BOOL)isCollect{

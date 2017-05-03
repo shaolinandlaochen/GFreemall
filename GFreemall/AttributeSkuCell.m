@@ -13,7 +13,7 @@
     if ([super initWithFrame:frame]) {
         autoSize
         _string=[[MyButton alloc]init];
-        [_string.layer setBorderColor:[TheParentClass colorWithHexString:@"#b2b2b2"].CGColor];
+        [_string.layer setBorderColor:[TheParentClass colorWithHexString:@"#d7d7d7"].CGColor];
         [_string.layer setBorderWidth:1];
         [_string.layer setMasksToBounds:YES];
         _string.layer.cornerRadius = 6*autoSizeScaleX;
