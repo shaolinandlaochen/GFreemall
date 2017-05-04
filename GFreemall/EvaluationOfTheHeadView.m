@@ -73,10 +73,16 @@
     }else{
     _nameNumber.text=[NSString stringWithFormat:@"评论数:0"];
     }
-    
+   // NSLog(@"好评度:====%f   a=%f",b,a);
     CGSize size=[TheParentClass  StringHeight:_nameNumber.text Lblfont:26*autoSizeScaleY heightOfTheMinus:0];
     _nameNumber.sd_layout.widthIs(size.width);
-    [_percentageNumber setTitle:[NSString stringWithFormat:@"%.0f%%",b] forState:UIControlStateNormal];
+    if (b>0) {
+         [_percentageNumber setTitle:[NSString stringWithFormat:@"%.0f%%",b*100] forState:UIControlStateNormal];
+    }else{
+        
+     [_percentageNumber setTitle:[NSString stringWithFormat:@"0%%"] forState:UIControlStateNormal];
+    }
+   
 
 }
 @end

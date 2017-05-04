@@ -77,7 +77,7 @@
             [((MyButton *)[self.contentView viewWithTag:i+100]) sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,hot.commodityImagesPath,hot.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
             
             ((UILabel *)[self.contentView viewWithTag:i+200]).text=hot.commodityName;
-            ((UILabel *)[self.contentView viewWithTag:i+300]).text=[NSString stringWithFormat:@"%.2f",hot.commoditySellprice];
+            ((UILabel *)[self.contentView viewWithTag:i+300]).text=[NSString stringWithFormat:@"¥%.2f",hot.commoditySellprice];
             
             
         }
