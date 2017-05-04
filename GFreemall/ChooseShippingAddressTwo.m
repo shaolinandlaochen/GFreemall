@@ -21,12 +21,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    autoSize
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
+    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    leftCancel
     _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.dataSource=self;
     _tableView.delegate=self;
     [self.view addSubview:_tableView];
     self.title=Localized(@"选择地址");
     // Do any additional setup after loading the view.
+}
+-(void)onCanceClick{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -73,23 +81,23 @@
     NSDictionary *dic=self.array[indexPath.row];
     AddressString *string=[AddressString CommodityClassificationModel:dic];
     
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"countries"]==nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:string.name forKey:@"countries"];
-    }else if ([[NSUserDefaults standardUserDefaults] valueForKey:@"provinces"]==nil){
-        [[NSUserDefaults standardUserDefaults] setObject:string.name forKey:@"provinces"];
-    }else if ([[NSUserDefaults standardUserDefaults] valueForKey:@"city"]==nil){
-        [[NSUserDefaults standardUserDefaults] setObject:string.name forKey:@"city"];
-    }else if ([[NSUserDefaults standardUserDefaults] valueForKey:@"area"]==nil){
-        [[NSUserDefaults standardUserDefaults] setObject:string.name forKey:@"area"];
+    
+    self.addressArray=[[NSMutableArray alloc]init];
+    for (int i=0; i<self.addressStringArray.count; i++) {
+        [self.addressArray addObject:self.addressStringArray[i]];
     }
     
+    [self.addressArray addObject:[NSString stringWithFormat:@"%@",string.name]];
     if (string.list.count>0) {
         ChooseShippingAddressOne *one=[[ChooseShippingAddressOne alloc]init];
         one.array=string.list;
+        one.why=@"选择地址";
+         NSLog(@"%@",self.addressArray);
+        one.addressStringArray=self.addressArray;
         [self.navigationController pushViewController:one animated:YES];
         
     }else{
-        [_delegate ChooseShippingAddressTwoSelecAreaIs];
+        [_delegate ChooseShippingAddressTwoSelecAreaIs:self.addressArray];
     }
     
 }

@@ -15,5 +15,8 @@
 @end
 @interface ChooseShippingAddressOne : UIViewController
 @property(nonatomic,strong)NSArray *array;
+@property(nonatomic,strong)NSMutableArray *addressArray;
+@property(nonatomic,strong)NSArray *addressStringArray;
 @property(nonatomic,assign)id delegate;
+@property(nonatomic,copy)NSString *why;
 @end

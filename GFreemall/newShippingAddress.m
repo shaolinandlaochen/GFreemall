@@ -205,27 +205,27 @@
 }
 //选择地区完毕
 -(void)SelectAreaClick:(NSNotification *)not{
-
-    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"countries"]length]>0) {
-            self.address_country=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"countries"]];
+    NSArray *array=(NSArray *)not.object;
+    if (array.count>0) {
+            self.address_country=[NSString stringWithFormat:@"%@",array[0]];
     }else{
     self.address_country=@"";
     }
 
-    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"provinces"]length]>0) {
-         self.address_province=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"provinces"]];
+    if (array.count>1) {
+         self.address_province=[NSString stringWithFormat:@"%@",array[1]];
     }else{
     self.address_province=@"";
     }
    
-    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"city"]length]>0) {
-       self.address_city=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"city"]];
+    if (array.count>2) {
+       self.address_city=[NSString stringWithFormat:@"%@",array[2]];
     }else{
     self.address_city=@"";
     }
     
-    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"area"]length]>0) {
-        self.address_area=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"area"]];
+    if (array.count>3) {
+        self.address_area=[NSString stringWithFormat:@"%@",array[3]];
     }else{
     self.address_area=@"";
     }
