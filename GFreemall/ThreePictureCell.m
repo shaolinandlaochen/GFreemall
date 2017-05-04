@@ -233,6 +233,12 @@
         
         
         
+        
+        UIView *linesss=[[UIView alloc]init];
+        linesss.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+        [self.contentView addSubview:linesss];
+        linesss.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, -0.5).heightIs(0.5);
+        
           [self setupAutoHeightWithBottomView:_sevenBtn bottomMargin:12*autoSizeScaleY];
         
     }
