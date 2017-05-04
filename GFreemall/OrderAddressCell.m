@@ -42,7 +42,7 @@
         _context.textColor=[TheParentClass colorWithHexString:@"#292929"];
         _context.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         [self.contentView addSubview:_context];
-        _context.sd_layout.leftSpaceToView(img, 10*autoSizeScaleX).topEqualToView(img).rightSpaceToView(self.contentView, 25*autoSizeScaleX);
+        _context.sd_layout.leftSpaceToView(img, 10*autoSizeScaleX).topEqualToView(img).rightSpaceToView(self.contentView, 65*autoSizeScaleX);
         
         _go=[[UIImageView alloc]init];
         [self.contentView addSubview:_go];

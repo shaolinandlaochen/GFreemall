@@ -117,7 +117,6 @@ cancelClick
         }else if (indexPath.row==4){
             cell.name.text=Localized(@"账户邮箱");
             if (class.info.baseAuthEmail==1) {
-                cell.userInteractionEnabled = NO;
                 cell.string.text=class.info.baseEmail;
             }else{
                 cell.string.text=Localized(@"未设置");
