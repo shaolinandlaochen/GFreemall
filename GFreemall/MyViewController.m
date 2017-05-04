@@ -17,9 +17,11 @@
 #import "SetUpViewController.h"
 #import "OnlineWalletViewController.h"
 #import "MyRequest.h"
+#import "DataAccessPageRequest.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableView;
+    NSInteger number;
 }
 @end
 
@@ -153,6 +155,10 @@ autoSize
             cell.icon.image=[UIImage imageNamed:@"icon_mews"];
             cell.name.text=Localized(@"我的消息");
             cell.witht=WIDTH;
+            if (number>0) {
+                cell.numberString.text=[NSString stringWithFormat:@"%ld",number];
+                cell.numberString.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
+            }
         }else if (indexPath.section==2){
             if (indexPath.row==0) {
                 cell.witht=0;
@@ -293,12 +299,30 @@ autoSize
 -(void)onTheLoginClick{
     [TheParentClass theLogin];
 }
+-(void)messageNumber{
+    autoSize
+    
+    if ([tokenString length]>0) {
+        [DataAccessPageRequest GetNumbeOfUnreadMessagesBlock:^(NSDictionary *dics) {
+            MessageNumberBaseClass *class=[[MessageNumberBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+            if ([class.code isEqualToString:@"51"]) {
+                if (class.data>0) {
+                    number=class.data;
+                    FormToUpdate(1, _tableView)
+                }
+            }
+        }];
+    }
+    
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:YES];
      self.navigationController.navigationBarHidden=YES;
+    number=0;
     if ([tokenString length]>1) {
           [self PersonalInformation];//获取个人信息
+        [self messageNumber];//获取未读消息
     }else{
         NSDictionary *dic;
         self.dataDic=[self deleteEmpty:dic];

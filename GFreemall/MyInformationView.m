@@ -63,7 +63,7 @@
         UIView *view=[[UIView alloc]init];
         view.backgroundColor=[TheParentClass colorWithHexString:@"#b2b2b2"];
         [self addSubview:view];
-        view.sd_layout.leftSpaceToView(self, 0).topSpaceToView(img, 96*autoSizeScaleY).rightSpaceToView(self, 0).heightIs(0.6);
+        view.sd_layout.leftSpaceToView(self, 0).topSpaceToView(img, 96*autoSizeScaleY).rightSpaceToView(self, 0).heightIs(0.5);
         //我的订单
         _myOrder=[[UILabel alloc]init];
         _myOrder.textColor=[TheParentClass colorWithHexString:@"#292929"];

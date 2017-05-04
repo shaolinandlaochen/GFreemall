@@ -13,4 +13,5 @@
 @property(nonatomic,strong)UILabel *name;
 @property(nonatomic,strong)UIView *line;
 @property(nonatomic,assign)float witht;
+@property(nonatomic,strong)UILabel *numberString;
 @end

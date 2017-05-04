@@ -49,6 +49,7 @@
     [self.view addSubview:_tableView];
     _tableView.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(self.view, navheight+rectStatus.size.height+height).bottomSpaceToView(lines, 0).widthIs(187*autoSizeScaleX);
     
+    
     flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.itemSize = CGSizeMake(140*autoSizeScaleX, 198*autoSizeScaleY);
     flowLayout.minimumInteritemSpacing = 0;
@@ -63,7 +64,7 @@
     [_CollectionView registerClass:[SearchListingsCollectionViewCell class] forCellWithReuseIdentifier:@"123"];    [_CollectionView registerClass:[BrandCell class] forCellWithReuseIdentifier:@"321"];
     [_CollectionView registerClass:[SearchListingsView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"cellHeader"];
     [self.view addSubview:_CollectionView];
-    _CollectionView.sd_layout.leftSpaceToView(_tableView, 0).topEqualToView(_tableView).rightSpaceToView(self.view, 0).bottomEqualToView(_tableView);
+    _CollectionView.sd_layout.leftSpaceToView(_tableView, 1).topEqualToView(_tableView).rightSpaceToView(self.view, 0).bottomEqualToView(_tableView);
     _CollectionView.backgroundColor=[UIColor whiteColor];
     
     

@@ -30,6 +30,19 @@
         img.image=[UIImage imageNamed:@"icon_right"];
         [self.contentView addSubview:img];
         img.sd_layout.rightSpaceToView(self.contentView, 8*autoSizeScaleX).topSpaceToView(self.contentView, 23*autoSizeScaleY).widthIs(44*autoSizeScaleX).heightIs(44*autoSizeScaleY);
+        
+        //未读消息
+        _numberString=[[UILabel alloc]init];
+        _numberString.layer.cornerRadius = 18*autoSizeScaleX;
+        _numberString.layer.masksToBounds = 18*autoSizeScaleX;
+        _numberString.font=[UIFont systemFontOfSize:20*autoSizeScaleY];
+        _numberString.textAlignment=NSTextAlignmentCenter;
+        _numberString.textColor=[UIColor whiteColor];
+        [self.contentView addSubview:_numberString];
+        _numberString.sd_layout.rightSpaceToView(img, 10*autoSizeScaleX).topSpaceToView(self.contentView, 27*autoSizeScaleY).bottomSpaceToView(self.contentView, 27*autoSizeScaleY).widthIs(36*autoSizeScaleX);
+        
+        
+        
         //线
         _line=[[UIView alloc]init];
         _line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
