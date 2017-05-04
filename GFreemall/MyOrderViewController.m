@@ -59,7 +59,13 @@
         self.DataDic=[self deleteEmpty:dics];
         OrderListBaseClass *class=[[OrderListBaseClass alloc]initWithDictionary:self.DataDic];
         if ([class.code isEqualToString:@"51"]) {
+            [[self.view viewWithTag:963]removeFromSuperview];
+            [[self.view viewWithTag:564]removeFromSuperview];
+            if (class.pagingList.resultList.count<1) {
+                [self BuildNoOrderView];//没有订单
+            }
             [_tableView reloadData];
+
             
         }else{
             [FTIndicator showErrorWithMessage:class.msg];
@@ -195,16 +201,18 @@ autoSize
      _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
     _tableView.sd_layout.leftEqualToView(_OrderView).topSpaceToView(_OrderView, 0).rightEqualToView(_OrderView).bottomSpaceToView(self.view, 0);
-    //[self BuildNoOrderView];//没有订单
+  
 
 }
 -(void)BuildNoOrderView{
     autoSize
     UIImageView *img=[[UIImageView alloc]init];
     img.image=[UIImage imageNamed:@"无订单"];
+    img.tag=963;
     [self.view addSubview:img];
-    img.sd_layout.leftSpaceToView(self.view, 195*autoSizeScaleX).rightSpaceToView(self.view, 195*autoSizeScaleX).topSpaceToView(self.view, 300*autoSizeScaleY).heightIs(141*autoSizeScaleY);
+    img.sd_layout.leftSpaceToView(self.view, 195*autoSizeScaleX).rightSpaceToView(self.view, 195*autoSizeScaleX).topSpaceToView(self.view, 500*autoSizeScaleY).heightIs(141*autoSizeScaleY);
     UILabel *lbl=[[UILabel alloc]init];
+    lbl.tag=564;
     lbl.text=Localized(@"您还没有相关订单");
     lbl.textColor=[TheParentClass colorWithHexString:@"#999999"];
     lbl.font=[UIFont systemFontOfSize:28*autoSizeScaleY];

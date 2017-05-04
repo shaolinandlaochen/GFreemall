@@ -450,9 +450,12 @@ cancelClick
         [TheBasicInformationRequest ModifyPaymentPassword:_originalPayThePassword third_newpwd:_newPassword block:^(NSDictionary *disa) {
             BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:[self deleteEmpty:disa]];
             if ([class.code isEqualToString:@"18"]) {
+                    [FTIndicator showSuccessWithMessage:class.msg];
                 [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                [FTIndicator showErrorWithMessage:class.msg];
             }
-            [FTIndicator showErrorWithMessage:class.msg];
+        
             [SVProgressHUD dismiss];
         }];
         }

@@ -63,7 +63,7 @@
     [dicData setObject:validateCode forKey:@"validateCode"];
     
     NSDictionary *data=[TheParentClass ReceiveTheOriginalData:dicData];//去添加时间戳等数据然后返回签名后的数据
-    [RequestClass getUrl:@"querycremain" Dic:data block:^(NSDictionary *dic) {
+    [RequestClass getUrl:@"forgetthirdpwd" Dic:data block:^(NSDictionary *dic) {
         NSLog(@"/设置支付密码----%@",dic);
         NSLog(@"get/设置支付密码---msg==%@",[dic objectForKey:@"msg"]);
         block(dic);
