@@ -97,6 +97,11 @@ autoSize
     }
     return 0;
 }
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *view=[[UIView alloc]init];
+    view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    return view;
+}
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section==0) {
         MyInformationView *view=[[MyInformationView alloc]init];
@@ -149,24 +154,28 @@ autoSize
             cell.name.text=Localized(@"我的消息");
             cell.witht=WIDTH;
         }else if (indexPath.section==2){
-            cell.witht=0;
             if (indexPath.row==0) {
+                cell.witht=0;
             cell.icon.image=[UIImage imageNamed:@"icon_information"];
                 cell.name.text=Localized(@"基本信息");
             }else if (indexPath.row==1){
+                cell.witht=0;
             cell.icon.image=[UIImage imageNamed:@"icon_wallete"];
                 cell.name.text=Localized(@"钱包管理");
             }else if (indexPath.row==2){
+                cell.witht=0;
             cell.icon.image=[UIImage imageNamed:@"icon_collect"];
                 cell.name.text=Localized(@"我的收藏");
             }else if (indexPath.row==3){
+                cell.witht=0;
             cell.icon.image=[UIImage imageNamed:@"icon_address"];
                 cell.name.text=Localized(@"地址管理");
+                cell.witht=WIDTH;
             }
         }else if (indexPath.section==3){
-            cell.witht=0;
             cell.icon.image=[UIImage imageNamed:@"icon_setting"];
             cell.name.text=Localized(@"设置");
+            cell.witht=WIDTH;
         }
         return cell;
     }
