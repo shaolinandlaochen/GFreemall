@@ -85,7 +85,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     autoSize
     
-    return 106*autoSizeScaleY;
+    return 124*autoSizeScaleY;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     autoSize
@@ -97,7 +97,7 @@
     UIView *view=[[UIView alloc]init];
     view.backgroundColor=[UIColor whiteColor];
     UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-    btn.backgroundColor=[UIColor blackColor];
+    btn.backgroundColor=[TheParentClass colorWithHexString:@"#292929"];
     [btn addTarget:self action:@selector(onSaveAndUseClick) forControlEvents:UIControlEventTouchUpInside];
     btn.titleLabel.font=[UIFont systemFontOfSize:34*autoSizeScaleY];
     btn.layer.cornerRadius = 6*autoSizeScaleX;

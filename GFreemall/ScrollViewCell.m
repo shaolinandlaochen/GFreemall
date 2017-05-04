@@ -23,7 +23,12 @@
         scroll=[SDCycleScrollView cycleScrollViewWithFrame:frame(0, 0, 750, 234) delegate:self placeholderImage:[UIImage imageNamed:@""]];
         scroll.autoScroll=YES;
         scroll.autoScrollTimeInterval =5;
+        scroll.pageControlDotSize=CGSizeMake(16*autoSizeScaleY, 16*autoSizeScaleY);
+        scroll.currentPageDotColor=[TheParentClass colorWithHexString:@"#de0024"];
+        scroll.pageDotColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+        scroll.pageControlAliment=SDCycleScrollViewPageContolAlimentRight;
         [self.contentView addSubview:scroll];
+        
         scroll.sd_layout.leftSpaceToView(self.contentView, 0).topSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0);
 
     }
