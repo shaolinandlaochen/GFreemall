@@ -78,8 +78,10 @@
     _name.sd_layout.leftSpaceToView(_icon, 18*autoSizeScaleX).topEqualToView(_icon).rightSpaceToView(self.contentView, 70).heightIs(size.height);
     
    
+    if (list.attr.commodityAttributes!=nil&&[list.attr.commodityAttributes length]>0) {
+        _text.text=[NSString stringWithFormat:@"%@",list.attr.commodityAttributes];
+    }
     
-    _text.text=[NSString stringWithFormat:@"%@",list.attr.commodityAttributes];
      _text.sd_layout.leftEqualToView(_name).topSpaceToView(_name, 10*autoSizeScaleY).rightEqualToView(_name).heightIs(30*autoSizeScaleY);
     if (list.attr.commoditySerial==0) {
         _text.text=@"";

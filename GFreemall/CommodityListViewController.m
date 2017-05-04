@@ -72,6 +72,9 @@
     ShoppingSettlementList *list=class.list[indexPath.row];
     [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.attr.commodityImagesPath,list.attr.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
     cell.list=list;
+    if (class.list.count==1) {
+        cell.number.text=@"x1";
+    }
    // cell.model=class;
 
     
