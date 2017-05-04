@@ -4084,6 +4084,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GFreemall/PrefixHeader.pch";
 				INFOPLIST_FILE = GFreemall/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ANewStartIsMrHan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4108,6 +4109,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GFreemall/PrefixHeader.pch";
 				INFOPLIST_FILE = GFreemall/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ANewStartIsMrHan;
 				PRODUCT_NAME = "$(TARGET_NAME)";

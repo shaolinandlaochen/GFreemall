@@ -250,7 +250,7 @@ autoSize
                 case 0:
                 {
                     UIImageView *img=(UIImageView *)[_twoBtn viewWithTag:1];
-                    [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@"image_zhanweifu"]];
+                    [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
                     _nameOne.text=news.commodityName;
                     _picOne.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
                     
@@ -259,7 +259,7 @@ autoSize
                 case 1:
                 {
                     UIImageView *img=(UIImageView *)[_threeBtn viewWithTag:1];
-                    [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@"image_zhanweifu"]];
+                    [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
                     _nameTwo.text=news.commodityName;
                     _picTwo.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
                     
@@ -268,7 +268,7 @@ autoSize
                 case 2:
                 {
                     UIImageView *img=(UIImageView *)[_fourBtn viewWithTag:1];
-                    [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@"image_zhanweifu"]];
+                    [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
                     _nameFour.text=news.commodityName;
                     _picFour.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
                     
@@ -277,7 +277,7 @@ autoSize
                 case 3:
                 {
                     UIImageView *img=(UIImageView *)[_fiveBtn viewWithTag:1];
-                    [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@"image_zhanweifu"]];
+                    [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
                     _namefive.text=news.commodityName;
                     _picfive.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
                     
@@ -286,7 +286,7 @@ autoSize
                 case 4:
                 {
                     UIImageView *img=(UIImageView *)[_sixBtn viewWithTag:1];
-                    [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@"image_zhanweifu"]];
+                    [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
                     _nameSix.text=news.commodityName;
                     
                     _picSix.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
@@ -296,7 +296,7 @@ autoSize
                 case 5:
                 {
                     UIImageView *img=(UIImageView *)[_sevenBtn viewWithTag:1];
-                    [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@"image_zhanweifu"]];
+                    [img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,news.commodityImagesPath,news.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
                     _nameSeven.text=news.commodityName;
                     _picSeven.text=[NSString stringWithFormat:@"¥%.2f",news.commoditySellprice];
                     

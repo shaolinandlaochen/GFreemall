@@ -53,10 +53,7 @@
         _number.textAlignment=NSTextAlignmentRight;
         [self.contentView addSubview:_number];
         
-        UILabel *line=[[UILabel alloc]init];
-        line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
-        [self.contentView addSubview:line];
-        line.sd_layout.leftSpaceToView(self.contentView, 0).rightSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).heightIs(1);
+    
         
         
         

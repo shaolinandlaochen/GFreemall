@@ -34,6 +34,7 @@
     _tableView.dataSource=self;
     _tableView.delegate=self;
     _tableView.scrollEnabled=NO;
+    _tableView.separatorColor=[UIColor clearColor];
     _tableView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     [self.view addSubview:_tableView];
       // Do any additional setup after loading the view.
@@ -84,7 +85,9 @@ autoSize
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     autoSize
-
+    if (section==3) {
+        return 0;
+    }
     return 20*autoSizeScaleY;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -144,7 +147,9 @@ autoSize
         if (indexPath.section==1) {
             cell.icon.image=[UIImage imageNamed:@"icon_mews"];
             cell.name.text=Localized(@"我的消息");
+            cell.witht=WIDTH;
         }else if (indexPath.section==2){
+            cell.witht=0;
             if (indexPath.row==0) {
             cell.icon.image=[UIImage imageNamed:@"icon_information"];
                 cell.name.text=Localized(@"基本信息");
@@ -159,7 +164,8 @@ autoSize
                 cell.name.text=Localized(@"地址管理");
             }
         }else if (indexPath.section==3){
-        cell.icon.image=[UIImage imageNamed:@"icon_setting"];
+            cell.witht=0;
+            cell.icon.image=[UIImage imageNamed:@"icon_setting"];
             cell.name.text=Localized(@"设置");
         }
         return cell;

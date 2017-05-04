@@ -59,7 +59,7 @@
     
     
     addRess=[[MyButton alloc]init];
-    addRess.backgroundColor=[UIColor blackColor];
+    addRess.backgroundColor=[TheParentClass colorWithHexString:@"#292929"];
     [addRess setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [addRess setTitle:Localized(@"+新建地址") forState:UIControlStateNormal];
     //圆角

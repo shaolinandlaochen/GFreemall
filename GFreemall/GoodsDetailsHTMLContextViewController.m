@@ -133,26 +133,31 @@
 }
 
 -(void)setContext:(NSString *)context{
-    NSString *htmls = [NSString stringWithFormat:@"<html> \n"
-                       "<head> \n"
-                       "<style type=\"text/css\"> \n"
-                       "body {font-size:15px;}\n"
-                       "</style> \n"
-                       "</head> \n"
-                       "<body>"
-                       "<script type='text/javascript'>"
-                       "window.onload = function(){\n"
-                       "var $img = document.getElementsByTagName('img');\n"
-                       "for(var p in  $img){\n"
-                       " $img[p].style.width = '100%%';\n"
-                       "$img[p].style.height ='auto'\n"
-                       "}\n"
-                       "}"
-                       "</script>%@"
-                       "</body>"
-                       "</html>",context];
-    _web.userInteractionEnabled=NO;//禁止点击,禁止滑动,关闭所有交互
-    [_web loadHTMLString:htmls baseURL:nil];
+    if ([context length]>0) {
+        NSString *htmls = [NSString stringWithFormat:@"<html> \n"
+                           "<head> \n"
+                           "<style type=\"text/css\"> \n"
+                           "body {font-size:15px;}\n"
+                           "</style> \n"
+                           "</head> \n"
+                           "<body>"
+                           "<script type='text/javascript'>"
+                           "window.onload = function(){\n"
+                           "var $img = document.getElementsByTagName('img');\n"
+                           "for(var p in  $img){\n"
+                           " $img[p].style.width = '100%%';\n"
+                           "$img[p].style.height ='auto'\n"
+                           "}\n"
+                           "}"
+                           "</script>%@"
+                           "</body>"
+                           "</html>",context];
+        _web.userInteractionEnabled=NO;//禁止点击,禁止滑动,关闭所有交互
+        [_web loadHTMLString:htmls baseURL:nil];
+    }else{
+        [SVProgressHUD dismiss];
+    }
+ 
     
 }
 

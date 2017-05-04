@@ -47,6 +47,10 @@
         [self addSubview:_messageString];
         
 
+        UILabel *line=[[UILabel alloc]init];
+        line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
+        [self addSubview:line];
+        line.sd_layout.leftSpaceToView(self, 0).rightSpaceToView(self, 0).bottomSpaceToView(_line, 0).heightIs(0.5);
         
         
     }

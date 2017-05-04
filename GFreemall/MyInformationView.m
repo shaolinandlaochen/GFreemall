@@ -168,6 +168,12 @@
         _redFour.sd_layout.topEqualToView(_redOne).heightIs(26*autoSizeScaleY).widthIs(26*autoSizeScaleX).leftSpaceToView(self, 665*autoSizeScaleX);
         
   
+        UIView *lines=[[UIView alloc]init];
+        lines.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
+        [self addSubview:lines];
+        lines.sd_layout.leftSpaceToView(self, 0).rightSpaceToView(self, 0).bottomSpaceToView(self, 0).heightIs(0.5);
+        
+        
         
     }
     return self;

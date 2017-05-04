@@ -30,9 +30,22 @@
         img.image=[UIImage imageNamed:@"icon_right"];
         [self.contentView addSubview:img];
         img.sd_layout.rightSpaceToView(self.contentView, 8*autoSizeScaleX).topSpaceToView(self.contentView, 23*autoSizeScaleY).widthIs(44*autoSizeScaleX).heightIs(44*autoSizeScaleY);
+        //线
+        _line=[[UIView alloc]init];
+        _line.backgroundColor=[TheParentClass colorWithHexString:@"#d7d7d7"];
+        [self.contentView addSubview:_line];
+        _line.sd_layout.bottomSpaceToView(self.contentView, -0.5).rightSpaceToView(self.contentView, 0).heightIs(0.5);
+        
         
     }
     return self;
+}
+-(void)setWitht:(float)witht{
+    if (witht==WIDTH) {
+        _line.sd_layout.rightSpaceToView(self.contentView, 0);
+    }else{
+        _line.sd_layout.leftEqualToView(_name);
+    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

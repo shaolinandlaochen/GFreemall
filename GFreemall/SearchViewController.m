@@ -86,7 +86,7 @@
    SearchBaseClass *class=[[SearchBaseClass alloc]initWithDictionary:self.dataDic];
     SearchForGoodsCell *cell=[SearchForGoodsCell new];
     SearchResultList *list=class.pagingList.resultList[indexPath.row];
-    [cell.img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.commodityImagesPath,list.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@"image_zhanweifu"]];
+    [cell.img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,list.commodityImagesPath,list.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
     cell.title.text=list.commodityName;
     cell.picre.text=[NSString stringWithFormat:@"¥%.2f",list.commoditySellprice];
     return cell;

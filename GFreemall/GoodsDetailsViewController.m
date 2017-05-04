@@ -464,6 +464,10 @@ cancelClick
     
     [self ToGetAShoppingCartGoodsList];
 }
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
 //客服
 -(void)CallCustomerService{
 

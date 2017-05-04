@@ -16,7 +16,7 @@
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.contentView.backgroundColor=[UIColor blackColor];
+        self.contentView.backgroundColor=[TheParentClass colorWithHexString:@"#292929"];
         autoSize
         UILabel *title=[[UILabel alloc]init];
         title.textColor=[TheParentClass colorWithHexString:@"#ffffff"];

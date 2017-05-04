@@ -64,7 +64,7 @@
         autoSize
         _unread.text=unreadStr;
         CGSize size=[TheParentClass StringHeight:unreadStr Lblfont:20*autoSizeScaleX heightOfTheMinus:0];
-        _unread.sd_layout.widthIs(size.width).heightIs(size.height);
+        _unread.sd_layout.widthIs(size.width+5).heightIs(size.height);
         _unread.backgroundColor=[UIColor redColor];
     }
 }
