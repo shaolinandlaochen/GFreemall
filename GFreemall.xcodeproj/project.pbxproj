@@ -601,6 +601,7 @@
 		9D6AA70B1EB9D51F006C494D /* icon_register.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6AA7081EB9D51F006C494D /* icon_register.png */; };
 		9D6AA70C1EB9D51F006C494D /* icon_register@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6AA7091EB9D51F006C494D /* icon_register@2x.png */; };
 		9D6AA70D1EB9D51F006C494D /* icon_register@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D6AA70A1EB9D51F006C494D /* icon_register@3x.png */; };
+		9D6AA7111EBAAD6B006C494D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D6AA7101EBAAD6B006C494D /* Images.xcassets */; };
 		9D9454831EA5D8D900C6EF21 /* CALayer+Anim.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94547C1EA5D8D900C6EF21 /* CALayer+Anim.m */; };
 		9D9454841EA5D8D900C6EF21 /* CALayer+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94547E1EA5D8D900C6EF21 /* CALayer+Transition.m */; };
 		9D9454851EA5D8D900C6EF21 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9454801EA5D8D900C6EF21 /* PhotoView.m */; };
@@ -1464,6 +1465,7 @@
 		9D6AA7081EB9D51F006C494D /* icon_register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_register.png; path = "imgs/商品详情切图/icon_register.png"; sourceTree = "<group>"; };
 		9D6AA7091EB9D51F006C494D /* icon_register@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_register@2x.png"; path = "imgs/商品详情切图/icon_register@2x.png"; sourceTree = "<group>"; };
 		9D6AA70A1EB9D51F006C494D /* icon_register@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_register@3x.png"; path = "imgs/商品详情切图/icon_register@3x.png"; sourceTree = "<group>"; };
+		9D6AA7101EBAAD6B006C494D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D94547B1EA5D8D900C6EF21 /* CALayer+Anim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Anim.h"; sourceTree = "<group>"; };
 		9D94547C1EA5D8D900C6EF21 /* CALayer+Anim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Anim.m"; sourceTree = "<group>"; };
 		9D94547D1EA5D8D900C6EF21 /* CALayer+Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Transition.h"; sourceTree = "<group>"; };
@@ -2296,6 +2298,7 @@
 				38C9DC951E88BF5F00F231B0 /* Assets.xcassets */,
 				38C9DC971E88BF5F00F231B0 /* LaunchScreen.storyboard */,
 				38C9DC9A1E88BF5F00F231B0 /* Info.plist */,
+				9D6AA7101EBAAD6B006C494D /* Images.xcassets */,
 				38C9DC891E88BF5F00F231B0 /* Supporting Files */,
 			);
 			path = GFreemall;
@@ -3425,6 +3428,7 @@
 				38DB9E6C1E9B194300E4BECA /* 无消息@2x.png in Resources */,
 				38BD10D21E8A377000028255 /* icon_cart@2x.png in Resources */,
 				9D1AD92C1EA860360034527B /* shape_hot_right.png in Resources */,
+				9D6AA7111EBAAD6B006C494D /* Images.xcassets in Resources */,
 				383654FB1E8CA41F0034C332 /* member_copper@3x.png in Resources */,
 				38BD10F51E8A377000028255 /* lunbo_red.png in Resources */,
 				38BD123A1E8A6F4300028255 /* Localizable.strings in Resources */,
@@ -4073,6 +4077,7 @@
 			baseConfigurationReference = 3CAC99031124F58E22E45701 /* Pods-GFreemall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer: shaolin han (6R6V3WVXQL)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shaolin han (6R6V3WVXQL)";
 				DEVELOPMENT_TEAM = 57H4K7W67N;
@@ -4096,6 +4101,7 @@
 			baseConfigurationReference = 2975E64A1C59A326D2785033 /* Pods-GFreemall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer: shaolin han (6R6V3WVXQL)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shaolin han (6R6V3WVXQL)";
 				DEVELOPMENT_TEAM = 57H4K7W67N;
