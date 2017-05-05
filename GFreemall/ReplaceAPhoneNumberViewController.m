@@ -292,6 +292,7 @@ cancelClick
             if (_phoneString!=nil) {
                 cell.tf.text=_phoneString;
             }
+            cell.tf.userInteractionEnabled = NO;
             [cell.btn.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
             [cell.btn setTitle:_codeTitle forState:UIControlStateNormal];
             [cell.btn addTarget:self action:@selector(onButtonClick:) forControlEvents:UIControlEventTouchUpInside];
