@@ -29,11 +29,13 @@
         [defaults setObject:@"" forKey:@"token"];
         //同步数据
         [defaults synchronize];
+        [self ForTheFirstTime];
+    }else{
+     [self dataCrollers];//已经不是第一次进来了
     }
     
     
-    
-    [self dataCrollers];
+   
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TheLanguageWwitchBox) name:@"TheLanguageWwitchBox" object:nil];//切换语言
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(big) name:@"big" object:nil];
@@ -48,7 +50,34 @@
    
     // Do any additional setup after loading the view, typically from a nib.
 }
+//首次进入
+-(void)ForTheFirstTime{
+    autoSize
+    UIImageView *img=[[UIImageView alloc]init];
+    img.image=[UIImage imageNamed:@"initial_page"];
+    img.frame=self.view.frame;
+    img.tag=7625;
+    img.userInteractionEnabled = YES;
+    [self.view addSubview:img];
+    
+    UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
+    [btn addTarget:self action:@selector(DeleteCreateViews) forControlEvents:UIControlEventTouchUpInside];
+    [img addSubview:btn];
+    btn.sd_layout.bottomSpaceToView(img, 200*autoSizeScaleY).rightSpaceToView(img, 100*autoSizeScaleX).leftSpaceToView(img, 100*autoSizeScaleX).heightIs(100*autoSizeScaleY);
+   
+}
+-(void)DeleteCreateViews{
+    [UIView animateWithDuration:0.3 animations:^{
+        ((UIImageView *)[self.view viewWithTag:7625]).alpha=0;
+    }];
+    [self performSelector:@selector(delayMethodClick) withObject:nil/*可传任意类型参数*/ afterDelay:0.3];
 
+}
+-(void)delayMethodClick{
+    [[self.view viewWithTag:7625]removeFromSuperview];
+    [self dataCrollers];
+    
+}
 -(void)dataCrollers{
 
     self.ParentClass=[[TheParentClass alloc]init];

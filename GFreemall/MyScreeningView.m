@@ -19,6 +19,7 @@
 */
 -(instancetype)initWithFrame:(CGRect)frame{
     if ([super initWithFrame:frame]) {
+        self.backgroundColor=[UIColor whiteColor];
         autoSize
         float width=750/4;
         NSArray *nameArray=@[@"全部评价",@"好评",@"中评",@"差评"];

@@ -439,7 +439,6 @@
         [self ToGetAShoppingCartGoodsList];
         [self messageNumber];
     }else{
-        [TheParentClass theLogin];
          [self EmptyTheShoppingCart];//购物车是空的
         self.shoppingCarArray=[[NSMutableArray alloc]init];
         [_tableView reloadData];

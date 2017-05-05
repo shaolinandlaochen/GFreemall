@@ -74,8 +74,9 @@
     return 98*autoSizeScaleY;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
- 
-    return nil;
+    UIView *view=[[UIView alloc]init];
+    view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    return view;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
   ProductEvaluationBaseClass *class=[[ProductEvaluationBaseClass alloc]initWithDictionary:self.dataDic];

@@ -301,8 +301,8 @@ autoSize
             [btn setTitle:Localized(@"忘记密码?") forState:UIControlStateNormal];
             btn.sd_layout.leftEqualToView(_TheLoginButton).topSpaceToView(_TheLoginButton, 40*autoSizeScaleY).heightIs(50*autoSizeScaleY).widthIs(150*autoSizeScaleX);
         }else{
-            [btn setTitle:Localized(@"语言切换") forState:UIControlStateNormal];
-            btn.sd_layout.rightEqualToView(_TheLoginButton).topSpaceToView(_TheLoginButton, 40*autoSizeScaleY).heightIs(50*autoSizeScaleY).widthIs(150*autoSizeScaleX);
+//            [btn setTitle:Localized(@"语言切换") forState:UIControlStateNormal];
+//            btn.sd_layout.rightEqualToView(_TheLoginButton).topSpaceToView(_TheLoginButton, 40*autoSizeScaleY).heightIs(50*autoSizeScaleY).widthIs(150*autoSizeScaleX);
         }
     }
     
