@@ -23,7 +23,7 @@
     autoSize
     self.title=Localized(@"意见反馈");
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
     
@@ -34,18 +34,22 @@
     _tf.textColor=[TheParentClass colorWithHexString:@"#292929"];
     _tf.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
     [self.view addSubview:_tf];
-    _tf.frame=frame(0, 0, 750, 300);
+    CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
+    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
+    _tf.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).topSpaceToView(self.view, navheight+rectStatus.size.height).heightIs(300*autoSizeScaleY);
     
     lbl=[[UILabel alloc]init];
     lbl.textColor=[TheParentClass colorWithHexString:@"#999999"];
     lbl.text=Localized(@"请输入您的反馈内容...");
     lbl.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
-    lbl.frame=frame(25, 25, 700, 50);
-    [_tf addSubview:lbl];
+    [self.view addSubview:lbl];
+    lbl.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(self.view, navheight+rectStatus.size.height+(25*autoSizeScaleY)).widthIs(600*autoSizeScaleX).heightIs(40*autoSizeScaleY);
     
     
     UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:Localized(@"提交") forState:UIControlStateNormal];
+    btn.layer.cornerRadius = 6*autoSizeScaleX;
+    btn.layer.masksToBounds = 6*autoSizeScaleX;
     btn.titleLabel.font=[UIFont systemFontOfSize:36*autoSizeScaleY];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     btn.backgroundColor=[UIColor blackColor];
@@ -73,7 +77,7 @@
 //提交
 -(void)onButtonClick{
     if ([tokenString length]<1) {
-         [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+         [TheParentClass theLogin];
     }else{
         NSLog(@"意见反馈开始发起请求");
         

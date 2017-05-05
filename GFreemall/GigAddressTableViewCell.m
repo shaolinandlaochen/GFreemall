@@ -18,12 +18,19 @@
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         autoSize
 
+    
         
         UIImageView *iocn=[[UIImageView alloc]init];
         iocn.image=[UIImage imageNamed:@"icon_right"];
         [self.contentView addSubview:iocn];
         iocn.sd_layout.rightSpaceToView(self.contentView, 25*autoSizeScaleX).topSpaceToView(self.contentView, 31*autoSizeScaleY).widthIs(44*autoSizeScaleX).heightIs(44*autoSizeScaleY);
         
+        _address=[[UILabel alloc]init];
+        _address.textColor=[TheParentClass colorWithHexString:@"#292929"];
+        _address.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
+        _address.textAlignment=NSTextAlignmentRight;
+        [self.contentView addSubview:_address];
+        _address.sd_layout.rightSpaceToView(iocn, 15*autoSizeScaleX).topSpaceToView(self.contentView, 0).bottomSpaceToView(self.contentView, 0).leftSpaceToView(self.contentView, 100*autoSizeScaleX);
         
         UILabel *lines=[[UILabel alloc]init];
         lines.backgroundColor=[TheParentClass colorWithHexString:@"d7d7d7"];

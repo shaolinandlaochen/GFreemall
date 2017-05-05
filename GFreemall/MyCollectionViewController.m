@@ -30,7 +30,7 @@
     autoSize
     self.title=Localized(@"收藏");
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
     [self CreatView];
@@ -111,7 +111,7 @@ cancelClick
         CollectionResultList *ResultList=data.resultList[indexPath.row];
         [cell.img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,ResultList.commodityImagesPath,ResultList.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
         cell.title.text=ResultList.commodityName;
-        cell.picre.text=[NSString stringWithFormat:@"%f",ResultList.commoditySellprice];
+        cell.picre.text=[NSString stringWithFormat:@"%.2f",ResultList.commoditySellprice];
         
         return cell;
 

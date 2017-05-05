@@ -26,8 +26,8 @@
     xingxing=5;
     self.title=Localized(@"评价晒单");
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
-    self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
+    self.view.backgroundColor=[UIColor whiteColor];
     leftCancel
     [self CreatView];
     

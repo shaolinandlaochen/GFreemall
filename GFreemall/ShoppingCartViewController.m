@@ -28,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     _isState=YES;//表示默认是非编辑状态
     [self rightBaBarbtn];
@@ -59,7 +59,7 @@
                     ShoppingCarList *list=class.list[i];
                     [self.shoppingCarArray addObject:list];
                 }
-                view.picle.text=@"合计:¥:0.00";
+                view.picle.text=@"合计:¥0.00";
                 view.selectedBtn.selected=NO;
                
             }else{
@@ -110,31 +110,37 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:self.dataDic];
-    ShoppingCarList *list=self.shoppingCarArray[indexPath.row];
-    ShoppingCarComm *comm=list.comm;
-    ShoppingCartProductsCell *cell=[ShoppingCartProductsCell new];
-    cell.selectedBtn.indexPath=indexPath;
-    if (_isState) {
-         cell.selectedBtn.selected=list.selected;
-    }else{
-        cell.selectedBtn.selected=list.EditorSelected;
-    }
-   
-    [cell.selectedBtn addTarget:self action:@selector(TheSelectedClick:) forControlEvents:UIControlEventTouchUpInside];
-    cell.addBtn.indexPath=indexPath;
-    [cell.addBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
-    cell.deleteBtn.indexPath=indexPath;
-    [cell.deleteBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,comm.commodityImagesPath,comm.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
-    cell.icon.indexPath=indexPath;
-    [cell.icon addTarget:self action:@selector(onGoodDetaileClick:) forControlEvents:UIControlEventTouchUpInside];
-    cell.name.text=list.commodityName;
-    cell.describe.text=comm.commodityAttributes;
-    cell.price.text=[NSString stringWithFormat:@"%.2f",comm.commoditySellprice];
-    cell.bjImage.image=[UIImage imageNamed:@"edict"];
-    cell.number.text=[NSString stringWithFormat:@"%.0f",list.count];
-    
+    if (self.shoppingCarArray.count>indexPath.row) {
+        ShoppingCarList *list=self.shoppingCarArray[indexPath.row];
+        ShoppingCarComm *comm=list.comm;
+        ShoppingCartProductsCell *cell=[ShoppingCartProductsCell new];
+        cell.selectedBtn.indexPath=indexPath;
+        if (_isState) {
+            cell.selectedBtn.selected=list.selected;
+        }else{
+            cell.selectedBtn.selected=list.EditorSelected;
+        }
+        
+        [cell.selectedBtn addTarget:self action:@selector(TheSelectedClick:) forControlEvents:UIControlEventTouchUpInside];
+        cell.addBtn.indexPath=indexPath;
+        [cell.addBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
+        cell.deleteBtn.indexPath=indexPath;
+        [cell.deleteBtn addTarget:self action:@selector(ChangeTTheNumber:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.icon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,comm.commodityImagesPath,comm.commodityCoverImage]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""]];
+        cell.icon.indexPath=indexPath;
+        [cell.icon addTarget:self action:@selector(onGoodDetaileClick:) forControlEvents:UIControlEventTouchUpInside];
+        cell.name.text=list.commodityName;
+        cell.describe.text=comm.commodityAttributes;
+        cell.price.text=[NSString stringWithFormat:@"%.2f",comm.commoditySellprice];
+        cell.bjImage.image=[UIImage imageNamed:@"edict"];
+        cell.number.text=[NSString stringWithFormat:@"%.0f",list.count];
+        
         return cell;
+    }else{
+        NULLCell *cell=[NULLCell new];
+        return cell;
+    }
+  
 
 }
 //点击图片查看详情
@@ -433,7 +439,7 @@
         [self ToGetAShoppingCartGoodsList];
         [self messageNumber];
     }else{
-        [FTIndicator showErrorWithMessage:Localized(@"请您先去登录")];
+        [TheParentClass theLogin];
          [self EmptyTheShoppingCart];//购物车是空的
         self.shoppingCarArray=[[NSMutableArray alloc]init];
         [_tableView reloadData];

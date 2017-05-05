@@ -33,7 +33,7 @@
     autoSize
     self.title=Localized(@"新建收货地址");
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
     _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
@@ -145,11 +145,16 @@
         GigAddressTableViewCell *cell=[GigAddressTableViewCell new];
         cell.textLabel.textColor=[TheParentClass colorWithHexString:@"#292929"];
         cell.textLabel.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
-        if ([self.address_country length]>0) {
-            cell.textLabel.text=[NSString stringWithFormat:@"%@%@%@%@",self.address_country,self.address_province,self.address_city,self.address_area];
-        }else{
-        cell.textLabel.text=Localized(@"地区");
+        NSString *address_country=[NSString stringWithFormat:@"%@",self.address_country];
+        if ([address_country isEqualToString:@"China"]) {
+            address_country=@"中国";
         }
+        if ([self.address_country length]>0) {
+            cell.address.text=[NSString stringWithFormat:@"%@%@%@%@",address_country,self.address_province,self.address_city,self.address_area];
+        }else{
+        cell.address.text=Localized(@"");
+        }
+         cell.textLabel.text=Localized(@"地区");
         
         return  cell;
     

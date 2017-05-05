@@ -21,11 +21,10 @@
     [super viewDidLoad];
     autoSize
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
-    if (self.why!=nil&&[self.why isEqualToString:@"选择地址"]) {
-        leftCancel
-    }
+   
+     leftCancel
     _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.dataSource=self;
     _tableView.delegate=self;
@@ -34,7 +33,14 @@
     // Do any additional setup after loading the view.
 }
 -(void)onCanceClick{
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.why!=nil&&[self.why isEqualToString:@"选择地址"]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    }
+    
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;

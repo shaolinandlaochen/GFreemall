@@ -36,7 +36,7 @@
     autoSize
     self.title=Localized(@"订单信息");
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
     [self CreatView];
@@ -245,6 +245,14 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section==0) {
+        OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:self.DataDic];
+        OrderDetailsCommodity *Commodity=class.map.commodity[indexPath.row];
+        GoodsDetailsViewController *goodsDetails=[[GoodsDetailsViewController alloc]init];
+        goodsDetails.commodity_serial=[NSString stringWithFormat:@"%.0f",Commodity.commoditySerial];
+        [self.navigationController pushViewController:goodsDetails animated:YES];
+    }
+
     
 }
 

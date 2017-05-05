@@ -30,7 +30,7 @@
     autoSize
     self.title=Localized(@"基本信息");
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
     [self CreatView];
@@ -76,7 +76,7 @@ cancelClick
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (self.dataDic!=nil) {
-        return 5;
+        return 4;
     }
     return 0;
 }
@@ -84,11 +84,7 @@ cancelClick
     BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:self.dataDic];
     if (indexPath.section==0) {
         basicInformationCell *cell=[basicInformationCell new];
-        if (indexPath.row==0) {
-            cell.name.text=Localized(@"账户ID");
-            cell.userInteractionEnabled = NO;
-            cell.string.text=[NSString stringWithFormat:@"%.0f",class.info.infoIdentifier];
-        }else if (indexPath.row==1){
+        if (indexPath.row==0){
             cell.name.text=Localized(@"账户手机");
             if (class.info.baseAuthPhone==1) {//已经绑定手机
                 cell.userInteractionEnabled = NO;
@@ -98,12 +94,12 @@ cancelClick
                  cell.imgName=@"icon_right";
             }
            
-        }else if (indexPath.row==2){
+        }else if (indexPath.row==1){
             cell.userInteractionEnabled = NO;
             cell.name.text=Localized(@"用户名");
             cell.string.text=class.info.baseUsername;
             //cell.imgName=@"icon_right";
-        }else if (indexPath.row==3){
+        }else if (indexPath.row==2){
             cell.name.text=Localized(@"实名认证");
             if (class.info.baseAuthName==1) {
                 cell.userInteractionEnabled = NO;
@@ -114,7 +110,7 @@ cancelClick
             }
           
             
-        }else if (indexPath.row==4){
+        }else if (indexPath.row==3){
             cell.name.text=Localized(@"账户邮箱");
             if (class.info.baseAuthEmail==1) {
                 cell.string.text=class.info.baseEmail;
@@ -134,18 +130,17 @@ cancelClick
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ReplaceAPhoneNumberViewController *ReplaceAPhoneNumber=[[ReplaceAPhoneNumberViewController alloc]init];
      BasicInformationBaseClass *class=[[BasicInformationBaseClass alloc]initWithDictionary:self.dataDic];
-    if (indexPath.row==1) {//更换手机号
+    if (indexPath.row==0) {//更换手机号
      ReplaceAPhoneNumber.were=@"更换手机号";
-    }else if (indexPath.row==2){
+    }else if (indexPath.row==1){
      ReplaceAPhoneNumber.were=@"用户名设置";
-    }else if (indexPath.row==3){
+    }else if (indexPath.row==2){
         if (class.info.baseAuthName==1) {
         }else{
              ReplaceAPhoneNumber.were=@"实名认证";
         }
-        
       
-    }else if (indexPath.row==4){
+    }else if (indexPath.row==3){
         ReplaceAPhoneNumber.were=@"邮箱绑定";
        
     }

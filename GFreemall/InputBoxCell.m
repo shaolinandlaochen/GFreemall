@@ -76,7 +76,16 @@
     autoSize
     _name.text=model.addressName;
     _number.text=model.addressPhone;
-    _context.text=model.addressAddress;
+    
+    
+    
+    NSString *address_country=[NSString stringWithFormat:@"%@",model.addressCountry];
+    if ([address_country isEqualToString:@"China"]) {
+        address_country=@"中国";
+    }
+    _context.text=[NSString stringWithFormat:@"%@%@%@%@%@",address_country,model.addressProvince,model.addressCity,model.addressArea,model.addressAddress];
+ 
+
     if (model.addressIsdefault==1) {
         _icon.text=Localized(@"默认");
         _icon.backgroundColor=[UIColor redColor];

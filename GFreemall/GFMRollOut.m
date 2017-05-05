@@ -26,7 +26,7 @@
     autoSize
     self.title=Localized(@"转出");
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     leftCancel
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:Localized(@"转出记录") style:UIBarButtonItemStylePlain target:self action:@selector(onrightItemButtonClick)];

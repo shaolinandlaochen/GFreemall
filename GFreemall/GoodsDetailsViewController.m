@@ -64,6 +64,7 @@
         goods.isCollect=class.isCollect;
         [_tableView reloadData];
     }else{
+        [self.navigationController popViewControllerAnimated:YES];
         [FTIndicator showErrorWithMessage:class.msg];
     }
     [SVProgressHUD dismiss];
@@ -302,7 +303,7 @@ cancelClick
     UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:view];
     self.navigationItem.rightBarButtonItem=item;
     
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
     
 }
 ///代理方法//用户点击详情评论或者商品执行该方法
@@ -346,7 +347,7 @@ cancelClick
 //立即购买
 -(void)onBuyClick{
     if ([tokenString length]<1) {
-        [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+        [TheParentClass theLogin];
     }else{
         GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
         if ([classs.checkRes isEqualToString:@"NO_ATTR"]) {//无属性
@@ -475,7 +476,7 @@ cancelClick
 //收藏商品
 -(void)CollectionOfGoods:(MyButton *)BTN{
     if ([tokenString length]<1) {
-        [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+        [TheParentClass theLogin];
     }else{
         [SVProgressHUD showWithStatus:Localized(@"正在收藏")];
         [GoodsDetailsRequest CollectionOrCancelThisCollection:self.commodity_serial block:^(NSDictionary *dics) {
@@ -501,7 +502,7 @@ cancelClick
 //进入购物车
 -(void)IntoTheShoppingCart{
     if ([tokenString length]<1) {
-        [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+        [TheParentClass theLogin];
     }else{
         DetailsOfTheShoppingCart *ShoppingCart=[[DetailsOfTheShoppingCart alloc]init];
         [self.navigationController pushViewController:ShoppingCart animated:YES];
@@ -512,7 +513,7 @@ cancelClick
 //加入购物车
 -(void)onAddShopingCharClick{
     if ([tokenString length]<1) {
-         [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+         [TheParentClass theLogin];
     }else{
         GoodsDetailsBaseClass *classs=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
         if ([classs.checkRes isEqualToString:@"NO_ATTR"]) {//无属性
@@ -558,7 +559,7 @@ cancelClick
         }];
 
     }else{
-     [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+     [TheParentClass theLogin];
     }
 }
 //加入购物车(代理)
@@ -583,7 +584,7 @@ cancelClick
         }];
 
     }else{
-        [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+        [TheParentClass theLogin];
     }
 }
 //子商品数据获取

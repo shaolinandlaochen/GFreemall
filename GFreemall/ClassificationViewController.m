@@ -248,8 +248,7 @@ autoSize
     //右按钮
     UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:view];
     self.navigationItem.rightBarButtonItem=item;
-    
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
     
     lines=[[UIView alloc]init];
     [self.view addSubview:lines];

@@ -26,7 +26,7 @@
     [super viewDidLoad];
     autoSize
     self.view.backgroundColor=[UIColor whiteColor];
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
     leftCancel
     [self SetTheNavigationBar];
     [self AddTheSearch];//添加搜索框
@@ -41,6 +41,8 @@
     _tableView.sd_layout.leftSpaceToView(self.view, 0).topSpaceToView(lineTwo, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 0);
     if (![self.where isEqualToString:@"搜索"]) {
         [self GetTheRequestData:@"" priceType:@"" brandSerial:@"" categorySerial:self.categorySerial];
+    }else{
+    [self GetTheRequestData:@"" priceType:@"" brandSerial:@"" categorySerial:@""];
     }
     // Do any additional setup after loading the view.
 }
@@ -189,10 +191,10 @@
     [view addSubview:BarButton];
     
     //右按钮
- //   UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:view];
-   // self.navigationItem.rightBarButtonItem=item;
+//    UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:view];
+//    self.navigationItem.rightBarButtonItem=item;
     
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
 
 }
 //进入购物车

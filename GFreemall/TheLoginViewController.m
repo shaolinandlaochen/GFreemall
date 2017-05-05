@@ -145,7 +145,7 @@ autoSize
     _phoneNumber=[[UITextField alloc]init];
     _phoneNumber.delegate=self;
     _phoneNumber.keyboardType=UIKeyboardTypeNamePhonePad;
-    _phoneNumber.placeholder=Localized(@"请输入手机号");
+    _phoneNumber.placeholder=Localized(@"请输入用户名");
     _phoneNumber.textColor=[TheParentClass colorWithHexString:@"#292929"];
     _phoneNumber.font=[UIFont systemFontOfSize:28*autoSizeScaleY];
     [phoneNumberView addSubview:_phoneNumber];

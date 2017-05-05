@@ -219,7 +219,7 @@ autoSize
     UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:view];
     self.navigationItem.rightBarButtonItem=item;
     
-    [self.navigationController.navigationBar setBarTintColor:[TheParentClass colorWithHexString:@"#292929"]];
+    [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
 
 }
 //点击导航条左按钮执行该方法(选择语言)

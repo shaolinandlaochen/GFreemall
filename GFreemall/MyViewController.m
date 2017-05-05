@@ -173,10 +173,10 @@ autoSize
             cell.icon.image=[UIImage imageNamed:@"icon_collect"];
                 cell.name.text=Localized(@"我的收藏");
             }else if (indexPath.row==3){
-                cell.witht=0;
+                cell.witht=WIDTH;
             cell.icon.image=[UIImage imageNamed:@"icon_address"];
                 cell.name.text=Localized(@"地址管理");
-                cell.witht=WIDTH;
+                
             }
         }else if (indexPath.section==3){
             cell.icon.image=[UIImage imageNamed:@"icon_setting"];
@@ -196,7 +196,7 @@ autoSize
             MyShippingAddress *Address=[[MyShippingAddress alloc]init];
             [self.navigationController pushViewController:Address animated:YES];
         }else{
-            [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+            [TheParentClass theLogin];
         }
 
     }else if (indexPath.section==1){//消息
@@ -204,7 +204,7 @@ autoSize
             MyNewsViewController *myNews=[[MyNewsViewController alloc]init];
             [self.navigationController pushViewController:myNews animated:YES];
         }else{
-            [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+            [TheParentClass theLogin];
         }
 
   
@@ -215,7 +215,7 @@ autoSize
             MyCollectionViewController *MyCollection=[[MyCollectionViewController alloc]init];
             [self.navigationController pushViewController:MyCollection animated:YES];
         }else{
-            [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+            [TheParentClass theLogin];
         }
 
     }else if (indexPath.section==2&&indexPath.row==0){
@@ -224,7 +224,7 @@ autoSize
             MyBasicInformationViewController *MyBasicInformation=[[MyBasicInformationViewController alloc]init];
             [self.navigationController pushViewController:MyBasicInformation animated:YES];
         }else{
-            [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+            [TheParentClass theLogin];
         }
        
     }else if (indexPath.section==3){
@@ -235,7 +235,7 @@ autoSize
             OnlineWalletViewController *online=[[OnlineWalletViewController alloc]init];
             [self.navigationController pushViewController:online animated:YES];
         }else{
-            [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+            [TheParentClass theLogin];
         }
 
     }
@@ -250,7 +250,7 @@ autoSize
         MyOrderViewController *order=[[MyOrderViewController alloc]init];
         [self.navigationController pushViewController:order animated:YES];
     }else{
-        [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+        [TheParentClass theLogin];
     }
 
 }
@@ -291,7 +291,7 @@ autoSize
         [self.navigationController pushViewController:order animated:YES];
 
     }else{
-        [FTIndicator showInfoWithMessage:Localized(@"请您先去登录")];
+        [TheParentClass theLogin];
     }
     
 }

@@ -79,7 +79,7 @@
 
     }else if (list.orderState==1){//已付款未发货
         _messageString.text=@"请等待...";
-        _messageString.sd_layout.rightSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(200);
+        _messageString.sd_layout.rightSpaceToView(self, 25*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 20*autoSizeScaleY).widthIs(200);
         
     }else if (list.orderState==2){//已发货
         
