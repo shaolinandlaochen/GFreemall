@@ -66,7 +66,7 @@
         _icon.image=[UIImage imageNamed:@"icon_diamond1"];
     }
     _name.text=levelStr;
-    _time.text=model.commentReplyTime;
+    _time.text=model.commentTime;
 
 
 

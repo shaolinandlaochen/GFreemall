@@ -67,6 +67,7 @@
    
 }
 -(void)DeleteCreateViews{
+    [SVProgressHUD showWithStatus:Localized(@"loading")];
     [UIView animateWithDuration:0.3 animations:^{
         ((UIImageView *)[self.view viewWithTag:7625]).alpha=0;
     }];
@@ -74,6 +75,7 @@
 
 }
 -(void)delayMethodClick{
+    [SVProgressHUD dismiss];
     [[self.view viewWithTag:7625]removeFromSuperview];
     [self dataCrollers];
     

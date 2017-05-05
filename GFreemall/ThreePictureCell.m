@@ -20,6 +20,7 @@
         self.contentView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
         _oneBtn=[[MyButton alloc]init];
         _oneBtn.tag=1;
+        _oneBtn.backgroundColor=[UIColor whiteColor];
         [self.contentView addSubview:_oneBtn];
         _oneBtn.sd_layout.leftSpaceToView(self.contentView, 0).topSpaceToView(self.contentView, 0).widthIs(431*autoSizeScaleX).heightIs(555*autoSizeScaleY);
         
