@@ -167,9 +167,10 @@
                     NSString *msg=[NSString stringWithFormat:@"%@",[data objectForKey:@"msg"]];
                     if ([code isEqualToString:@"27"]) {
                         [FTIndicator showSuccessWithMessage:msg];
-                        ReturnToSpecifyTheController(ShoppingCartViewController)
-                        ReturnToSpecifyTheController(GoodsDetailsViewController)
-                        ReturnToSpecifyTheController(MyOrderViewController)
+//                        ReturnToSpecifyTheController(ShoppingCartViewController)
+//                        ReturnToSpecifyTheController(GoodsDetailsViewController)
+//                        ReturnToSpecifyTheController(MyOrderViewController)
+                        [self CreatOrderView];//去订单列表
                     }else{
                         [FTIndicator showErrorWithMessage:msg];
                     }
@@ -192,9 +193,10 @@
                     NSString *msg=[NSString stringWithFormat:@"%@",[data objectForKey:@"msg"]];
                     if ([code isEqualToString:@"27"]) {
                         [FTIndicator showSuccessWithMessage:msg];
-                        ReturnToSpecifyTheController(ShoppingCartViewController)
-                        ReturnToSpecifyTheController(GoodsDetailsViewController)
-                        ReturnToSpecifyTheController(MyOrderViewController)
+//                        ReturnToSpecifyTheController(ShoppingCartViewController)
+//                        ReturnToSpecifyTheController(GoodsDetailsViewController)
+//                        ReturnToSpecifyTheController(MyOrderViewController)
+                        [self CreatOrderView];//去订单列表
                     }else{
                          [FTIndicator showErrorWithMessage:msg];
                     }
@@ -221,6 +223,11 @@
 //去支付
 -(void)onGoClick{
 [self PopUpThePaymentInformation:self.were];
+}
+//去订单列表
+-(void)CreatOrderView{
+    MyOrderViewController *order=[[MyOrderViewController alloc]init];
+    [self.navigationController pushViewController:order animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

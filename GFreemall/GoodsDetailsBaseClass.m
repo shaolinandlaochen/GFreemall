@@ -1,7 +1,7 @@
 //
 //  GoodsDetailsBaseClass.m
 //
-//  Created by   on 2017/4/21
+//  Created by   on 2017/5/5
 //  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
 //
 
@@ -25,6 +25,7 @@ NSString *const kGoodsDetailsBaseClassCheckRes = @"checkRes";
 NSString *const kGoodsDetailsBaseClassSize = @"size";
 NSString *const kGoodsDetailsBaseClassIsCollect = @"isCollect";
 NSString *const kGoodsDetailsBaseClassBadCount = @"badCount";
+NSString *const kGoodsDetailsBaseClassPraise = @"praise";
 NSString *const kGoodsDetailsBaseClassGoodCount = @"goodCount";
 NSString *const kGoodsDetailsBaseClassMsg = @"msg";
 NSString *const kGoodsDetailsBaseClassListComment = @"listComment";
@@ -51,6 +52,7 @@ NSString *const kGoodsDetailsBaseClassListComment = @"listComment";
 @synthesize size = _size;
 @synthesize isCollect = _isCollect;
 @synthesize badCount = _badCount;
+@synthesize praise = _praise;
 @synthesize goodCount = _goodCount;
 @synthesize msg = _msg;
 @synthesize listComment = _listComment;
@@ -92,6 +94,7 @@ NSString *const kGoodsDetailsBaseClassListComment = @"listComment";
             self.size = [[self objectOrNilForKey:kGoodsDetailsBaseClassSize fromDictionary:dict] doubleValue];
             self.isCollect = [[self objectOrNilForKey:kGoodsDetailsBaseClassIsCollect fromDictionary:dict] boolValue];
             self.badCount = [[self objectOrNilForKey:kGoodsDetailsBaseClassBadCount fromDictionary:dict] doubleValue];
+            self.praise = [self objectOrNilForKey:kGoodsDetailsBaseClassPraise fromDictionary:dict];
             self.goodCount = [[self objectOrNilForKey:kGoodsDetailsBaseClassGoodCount fromDictionary:dict] doubleValue];
             self.msg = [self objectOrNilForKey:kGoodsDetailsBaseClassMsg fromDictionary:dict];
     NSObject *receivedGoodsDetailsListComment = [dict objectForKey:kGoodsDetailsBaseClassListComment];
@@ -152,6 +155,7 @@ NSString *const kGoodsDetailsBaseClassListComment = @"listComment";
     [mutableDict setValue:[NSNumber numberWithDouble:self.size] forKey:kGoodsDetailsBaseClassSize];
     [mutableDict setValue:[NSNumber numberWithBool:self.isCollect] forKey:kGoodsDetailsBaseClassIsCollect];
     [mutableDict setValue:[NSNumber numberWithDouble:self.badCount] forKey:kGoodsDetailsBaseClassBadCount];
+    [mutableDict setValue:self.praise forKey:kGoodsDetailsBaseClassPraise];
     [mutableDict setValue:[NSNumber numberWithDouble:self.goodCount] forKey:kGoodsDetailsBaseClassGoodCount];
     [mutableDict setValue:self.msg forKey:kGoodsDetailsBaseClassMsg];
     NSMutableArray *tempArrayForListComment = [NSMutableArray array];
@@ -199,6 +203,7 @@ NSString *const kGoodsDetailsBaseClassListComment = @"listComment";
     self.size = [aDecoder decodeDoubleForKey:kGoodsDetailsBaseClassSize];
     self.isCollect = [aDecoder decodeBoolForKey:kGoodsDetailsBaseClassIsCollect];
     self.badCount = [aDecoder decodeDoubleForKey:kGoodsDetailsBaseClassBadCount];
+    self.praise = [aDecoder decodeObjectForKey:kGoodsDetailsBaseClassPraise];
     self.goodCount = [aDecoder decodeDoubleForKey:kGoodsDetailsBaseClassGoodCount];
     self.msg = [aDecoder decodeObjectForKey:kGoodsDetailsBaseClassMsg];
     self.listComment = [aDecoder decodeObjectForKey:kGoodsDetailsBaseClassListComment];
@@ -221,6 +226,7 @@ NSString *const kGoodsDetailsBaseClassListComment = @"listComment";
     [aCoder encodeDouble:_size forKey:kGoodsDetailsBaseClassSize];
     [aCoder encodeBool:_isCollect forKey:kGoodsDetailsBaseClassIsCollect];
     [aCoder encodeDouble:_badCount forKey:kGoodsDetailsBaseClassBadCount];
+    [aCoder encodeObject:_praise forKey:kGoodsDetailsBaseClassPraise];
     [aCoder encodeDouble:_goodCount forKey:kGoodsDetailsBaseClassGoodCount];
     [aCoder encodeObject:_msg forKey:kGoodsDetailsBaseClassMsg];
     [aCoder encodeObject:_listComment forKey:kGoodsDetailsBaseClassListComment];
@@ -246,6 +252,7 @@ NSString *const kGoodsDetailsBaseClassListComment = @"listComment";
         copy.size = self.size;
         copy.isCollect = self.isCollect;
         copy.badCount = self.badCount;
+        copy.praise = [self.praise copyWithZone:zone];
         copy.goodCount = self.goodCount;
         copy.msg = [self.msg copyWithZone:zone];
         copy.listComment = [self.listComment copyWithZone:zone];

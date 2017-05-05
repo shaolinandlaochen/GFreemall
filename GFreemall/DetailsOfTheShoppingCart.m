@@ -64,7 +64,7 @@
                     ShoppingCarList *list=class.list[i];
                     [self.shoppingCarArray addObject:list];
                 }
-                view.picle.text=@"合计:¥:0.00";
+                view.picle.text=@"合计:¥0.00";
                 view.selectedBtn.selected=NO;
                 
             }else{

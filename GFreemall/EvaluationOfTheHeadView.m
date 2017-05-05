@@ -41,7 +41,7 @@
         [_percentageNumber setTitleColor:[TheParentClass colorWithHexString:@"#de0024"] forState:UIControlStateNormal];
         _percentageNumber.titleLabel.font=[UIFont systemFontOfSize:26*autoSizeScaleY];
         [self addSubview:_percentageNumber];
-        _percentageNumber.sd_layout.rightSpaceToView(self, 60*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(40);
+        _percentageNumber.sd_layout.rightSpaceToView(self, 60*autoSizeScaleX).topSpaceToView(self, 0).bottomSpaceToView(self, 0).widthIs(55);
         
         
         UILabel *string=[[UILabel alloc]init];
@@ -77,11 +77,12 @@
     CGSize size=[TheParentClass  StringHeight:_nameNumber.text Lblfont:26*autoSizeScaleY heightOfTheMinus:0];
     _nameNumber.sd_layout.widthIs(size.width);
     if (b>0) {
-         [_percentageNumber setTitle:[NSString stringWithFormat:@"%.0f%%",b*100] forState:UIControlStateNormal];
+           [_percentageNumber setTitle:model.praise forState:UIControlStateNormal];
     }else{
         
-     [_percentageNumber setTitle:[NSString stringWithFormat:@"0%%"] forState:UIControlStateNormal];
+     //[_percentageNumber setTitle:[NSString stringWithFormat:@"0%%"] forState:UIControlStateNormal];
     }
+  
    
 
 }

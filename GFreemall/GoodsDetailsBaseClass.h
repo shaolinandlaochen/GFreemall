@@ -1,7 +1,7 @@
 //
 //  GoodsDetailsBaseClass.h
 //
-//  Created by   on 2017/4/21
+//  Created by   on 2017/5/5
 //  Copyright (c) 2017 __MyCompanyName__. All rights reserved.
 //
 
@@ -24,6 +24,7 @@
 @property (nonatomic, assign) double size;
 @property (nonatomic, assign) BOOL isCollect;
 @property (nonatomic, assign) double badCount;
+@property (nonatomic, strong) NSString *praise;
 @property (nonatomic, assign) double goodCount;
 @property (nonatomic, strong) NSString *msg;
 @property (nonatomic, strong) NSArray *listComment;

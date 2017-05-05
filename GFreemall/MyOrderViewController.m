@@ -17,6 +17,7 @@
 #import "OrderDetailsRequest.h"
 #import "BillingInfo.h"
 #import "ConfirmTheGoodsViewController.h"
+#import "MyViewController.h"
 @interface MyOrderViewController ()<UITableViewDelegate,UITableViewDataSource,OrderViewSDelegate>
 {
     UITableView *_tableView;
@@ -174,7 +175,19 @@
 
 }
 -(void)onCanceClick{
-    [self.navigationController popViewControllerAnimated:YES];
+    NSMutableArray *navigationarray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+    [navigationarray removeAllObjects];
+    MyViewController *my=[[MyViewController alloc]init];
+    [self.navigationController pushViewController:my animated:YES];
+
+//    [UIView  beginAnimations:nil context:NULL];
+//    [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+//    [UIView setAnimationDuration:0.2];
+//    [self.navigationController pushViewController:my animated:YES];
+//    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.navigationController.view cache:NO];
+//    [UIView commitAnimations];
+    
+  
 }
 -(void)cartOrderView{
 autoSize

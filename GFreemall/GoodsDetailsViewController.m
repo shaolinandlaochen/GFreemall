@@ -135,12 +135,18 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     autoSize
+     GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
     if (section==2) {
+        if (class.totalCount>0) {
         return 110*autoSizeScaleY;
+        }else{
+            return 0;
+        }
+        
     }else if (section==3){
         return 0;
     }else if (section==1){
-          GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
+        
         if ([class.checkRes isEqualToString:@"NO_ATTR"]) {
            
             return 0;
@@ -150,8 +156,14 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     autoSize
+     GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
     if (section==2){
-        return 80*autoSizeScaleY;
+        if (class.totalCount>0) {
+            return 110*autoSizeScaleY;
+        }else{
+            return 0;
+        }
+        
     }else if (section==3){
         return 10;
     }
@@ -160,26 +172,31 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section==2) {
          GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
-        AllEvaluationView *view=[[AllEvaluationView alloc]init];
         if (class.totalCount>0) {
-             [view.button setTitle:[NSString stringWithFormat:@"全部评论%.0f",class.totalCount] forState:UIControlStateNormal];
-        }else{
-         [view.button setTitle:[NSString stringWithFormat:@"全部评论0"] forState:UIControlStateNormal];
+            AllEvaluationView *view=[[AllEvaluationView alloc]init];
+            if (class.totalCount>0) {
+                [view.button setTitle:[NSString stringWithFormat:@"全部评论%.0f",class.totalCount] forState:UIControlStateNormal];
+            }else{
+                [view.button setTitle:[NSString stringWithFormat:@"全部评论0"] forState:UIControlStateNormal];
+            }
+            [view.button addTarget:self action:@selector(onAllEvaluationClick) forControlEvents:UIControlEventTouchUpInside];
+            return view;
         }
-       
-        [view.button addTarget:self action:@selector(onAllEvaluationClick) forControlEvents:UIControlEventTouchUpInside];
-        return view;
+      
     }
     return nil;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section==2) {
         GoodsDetailsBaseClass *class=[[GoodsDetailsBaseClass alloc]initWithDictionary:self.dataDic];
-        EvaluationOfTheHeadView *view=[[EvaluationOfTheHeadView alloc]init];
-        view.model=class;
-        [view.icon addTarget:self action:@selector(onRatingClick) forControlEvents:UIControlEventTouchUpInside];
-        [view.percentageNumber addTarget:self action:@selector(onRatingClick) forControlEvents:UIControlEventTouchUpInside];
-        return view;
+        if (class.totalCount>0) {
+            EvaluationOfTheHeadView *view=[[EvaluationOfTheHeadView alloc]init];
+            view.model=class;
+            [view.icon addTarget:self action:@selector(onRatingClick) forControlEvents:UIControlEventTouchUpInside];
+            [view.percentageNumber addTarget:self action:@selector(onRatingClick) forControlEvents:UIControlEventTouchUpInside];
+            return view;
+        }
+       
     }
     return nil;
 }
