@@ -37,11 +37,11 @@ cancelClick
     CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
     CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
     UILabel *title=[[UILabel alloc]init];
-    title.textAlignment=NSTextAlignmentCenter;
+   // title.textAlignment=NSTextAlignmentCenter;
     title.textColor=[TheParentClass colorWithHexString:@"#292929"];
     title.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
     title.numberOfLines=0;
-    title.text=self.titleStr;
+    title.text=Localized(@"亲爱的会员");
     [self.view addSubview:title];
     title.sd_layout.leftSpaceToView(self.view, 25*autoSizeScaleX).topSpaceToView(self.view, navheight+rectStatus.size.height+(80*autoSizeScaleY)).rightSpaceToView(self.view, 25*autoSizeScaleX).autoHeightRatio(0);
     

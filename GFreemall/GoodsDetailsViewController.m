@@ -436,19 +436,26 @@ cancelClick
 //结束滚动时执行该方法
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
 
-    optionsView.ScrollPage=_page;
+    if (scrollView==_scrollView) {
+         optionsView.ScrollPage=_page;
+    }
+    
+   
 }
 
 
 - (void) scrollViewDidScroll:(UIScrollView *)sender {
-    // 得到每页宽度
-    CGFloat pageWidth = sender.frame.size.width;
-    // 根据当前的x坐标和页宽度计算出当前页数
-    int currentPage = floor((sender.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    if (currentPage!=_page) {//然后再改变上面按钮的大小以及红条的坐标
-        _page=currentPage;
-        
+    if (sender==_scrollView) {
+        // 得到每页宽度
+        CGFloat pageWidth = sender.frame.size.width;
+        // 根据当前的x坐标和页宽度计算出当前页数
+        int currentPage = floor((sender.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+        if (currentPage!=_page) {//然后再改变上面按钮的大小以及红条的坐标
+            _page=currentPage;
+            
+        }
     }
+ 
   
 }
 

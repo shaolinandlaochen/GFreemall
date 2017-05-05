@@ -199,6 +199,13 @@ autoSizeScaleY = SCREENHEIGHT/1334;\
  [array removeObjectsInArray:(NSArray *)] :删除一个数组的元素。
  
  
+ NSString*string =@"123456789";
+ string = [string substringToIndex:7];//截取掉下标7之后的字符串
+ NSLog(@"截取的值为：%@",string);
+ [string substringFromIndex:2];//截取掉下标2之前的字符串
+ NSLog(@"截取的值为：%@",string);
+ 
+ 
  */
 
 

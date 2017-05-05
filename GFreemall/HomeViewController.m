@@ -32,6 +32,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
+    
     autoSize
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(RequestFailed) name:@"TheRequestFailed" object:nil];

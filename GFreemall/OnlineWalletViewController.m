@@ -104,7 +104,10 @@ cancelClick
        WalletBaseClass *class=[[WalletBaseClass alloc]initWithDictionary:self.dataDic];
     if (indexPath.row==0) {
         WalletBalanceDisplayCell *cell=[WalletBalanceDisplayCell new];
-        cell.pirce.text=[NSString stringWithFormat:@"¥%.2f",class.cremain];
+        if (self.dataDic!=nil) {
+            cell.pirce.text=[NSString stringWithFormat:@"¥%.2f",class.cremain];
+        }
+        
         [cell.button addTarget:self action:@selector(onMoneyClick) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }else{
