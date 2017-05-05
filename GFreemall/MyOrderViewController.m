@@ -277,20 +277,40 @@ autoSize
         }else if (list.orderState==1){//已付款未发货
             
         }else if (list.orderState==2){//已发货
-            [SVProgressHUD showWithStatus:Localized(@"loading")];
-            [OrderDetailsRequest ConfirmTheGoods:[NSString stringWithFormat:@"%.0f",list.orderId] block:^(NSDictionary *dics) {
-                OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-                if ([class.code isEqualToString:@"57"]) {//收货完毕去评价订单列表
-                    ConfirmTheGoodsViewController *confirm=[[ConfirmTheGoodsViewController alloc]init];
-                    confirm.serial=[NSString stringWithFormat:@"%.0f",list.orderSerial];
-                    confirm.ASuccess=@"成功";
-                    [self.navigationController pushViewController:confirm animated:YES];
-                }
-                [FTIndicator showInfoWithMessage:class.msg];
+            
+            
+            UIAlertController  * alertController = [UIAlertController alertControllerWithTitle:Localized(@"温馨提示") message:Localized(@"请确认已经收到货物") preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction * sureAction = [UIAlertAction actionWithTitle:Localized(@"已收到") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
-                [SVProgressHUD dismiss];
+                
+                [SVProgressHUD showWithStatus:Localized(@"loading")];
+                [OrderDetailsRequest ConfirmTheGoods:[NSString stringWithFormat:@"%.0f",list.orderSerial] block:^(NSDictionary *dics) {
+                    OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+                    if ([class.code isEqualToString:@"57"]) {//收货完毕去评价订单列表
+                        ConfirmTheGoodsViewController *confirm=[[ConfirmTheGoodsViewController alloc]init];
+                        confirm.serial=[NSString stringWithFormat:@"%.0f",list.orderSerial];
+                        confirm.ASuccess=@"成功";
+                        [self.navigationController pushViewController:confirm animated:YES];
+                    }
+                    [FTIndicator showInfoWithMessage:class.msg];
+                    
+                    [SVProgressHUD dismiss];
+                    
+                }];
+          
                 
             }];
+            
+            UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:Localized(@"取消") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            
+            [alertController addAction:cancelAction];
+            [alertController addAction:sureAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+            
+         
             
         }else if (list.orderState==3){//已收货未评价
             
@@ -312,17 +332,33 @@ autoSize
         
         
     }else if (btn.tag==2){//取订单
-        [SVProgressHUD showWithStatus:Localized(@"loading")];
-        [SubmitOrderRequest CancelTheOrderserial:[NSString stringWithFormat:@"%.0f",list.orderSerial] block:^(NSDictionary *dics) {
-            OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-            if ([class.code isEqualToString:@"56"]) {
-                [SVProgressHUD showWithStatus:Localized(@"loading")];
-                [self RequestData];
-            }
+        
+        UIAlertController  * alertController = [UIAlertController alertControllerWithTitle:Localized(@"温馨提示") message:Localized(@"是否取消订单") preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * sureAction = [UIAlertAction actionWithTitle:Localized(@"确定取消") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
-            [FTIndicator showInfoWithMessage:class.msg];
-            [SVProgressHUD dismiss];
+            [SVProgressHUD showWithStatus:Localized(@"loading")];
+            [SubmitOrderRequest CancelTheOrderserial:[NSString stringWithFormat:@"%.0f",list.orderSerial] block:^(NSDictionary *dics) {
+                OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+                if ([class.code isEqualToString:@"56"]) {
+                    [SVProgressHUD showWithStatus:Localized(@"loading")];
+                    [self RequestData];
+                }
+                
+                [FTIndicator showInfoWithMessage:class.msg];
+                [SVProgressHUD dismiss];
+            }];
+            
         }];
+        
+        UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:Localized(@"返回") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alertController addAction:cancelAction];
+        [alertController addAction:sureAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+
+        
     }
     
     

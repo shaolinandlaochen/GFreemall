@@ -233,14 +233,30 @@
                 return cell;
             }else if (indexPath.row==2){
                 CostCalculationCell *cell=[CostCalculationCell new];
-                if (self.ChildDic!=nil) {
+                float discount=0;
+                if (self.ChildDic!=nil) {//是否已经选择sku
                     ChildProductDetailsBaseClass *ChildClass=[[ChildProductDetailsBaseClass alloc]initWithDictionary:self.ChildDic];
-                    cell.discount.text=[NSString stringWithFormat:@"%.2f",ChildClass.map.commodityDiscount];//折扣
+                    discount=ChildClass.map.commodityDiscount;
                 }else{
-                    cell.discount.text=[NSString stringWithFormat:@"%.2f",classs.comm.commodityDiscount];
+                    discount=classs.comm.commodityDiscount;
+                   
                   
                 }
-                cell.freight.text=[NSString stringWithFormat:@"%.2f",classs.comm.commodityFreight];//运费
+                if (discount==1) {
+                    cell.discount.text=Localized(@"无折扣");
+                }else if(discount<1){
+                    NSString *conutryString=[NSString stringWithFormat:@"%.1f",discount*10];
+                    NSArray *discountArray=[conutryString componentsSeparatedByString:@"."];
+                    if (discountArray.count>1) {
+                        if ([[NSString stringWithFormat:@"%@",discountArray[1]] isEqualToString:@"0"]) {
+                            cell.discount.text=[NSString stringWithFormat:@"%.0f折",classs.comm.commodityDiscount*10];
+                        }else{
+                            cell.discount.text=[NSString stringWithFormat:@"%.1f折",classs.comm.commodityDiscount*10];
+                        }
+                    }
+                
+                }
+                cell.freight.text=[NSString stringWithFormat:@"¥%.2f",classs.comm.commodityFreight];//运费
                 cell.userInteractionEnabled = NO;
                 return cell;
             }

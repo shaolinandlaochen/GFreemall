@@ -69,9 +69,9 @@
     float a=model.totalCount-model.badCount;
     float b=a/model.totalCount;
     if (model.totalCount>0) {
-       _nameNumber.text=[NSString stringWithFormat:@"评论数:%.0f",model.totalCount];
+       _nameNumber.text=[NSString stringWithFormat:@"评论数(%.0f)",model.totalCount];
     }else{
-    _nameNumber.text=[NSString stringWithFormat:@"评论数:0"];
+    _nameNumber.text=[NSString stringWithFormat:@"评论数(0)"];
     }
    // NSLog(@"好评度:====%f   a=%f",b,a);
     CGSize size=[TheParentClass  StringHeight:_nameNumber.text Lblfont:26*autoSizeScaleY heightOfTheMinus:0];

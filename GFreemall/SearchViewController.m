@@ -9,12 +9,16 @@
 #import "SearchViewController.h"
 #import "SearchForGoodsCell.h"
 #import "SearchRequest.h"
+#import "DataAccessPageRequest.h"
+#import "ShoppingCarRequest.h"
+#import "DetailsOfTheShoppingCart.h"
 @interface SearchViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     UIImageView *imgbg;//搜索框背景
     UITextField *searchField;//搜索框
     UILabel *lineTwo;//搜索框下面第二条线
     UITableView *_tableView;//商品列表
+    UILabel * number;
     
     
 }
@@ -190,15 +194,29 @@
     [BarButton addTarget:self action:@selector(onshoppingCraClick) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:BarButton];
     
+    number=[[UILabel alloc]init];
+    number.layer.cornerRadius = 13*autoSizeScaleX;
+    number.layer.masksToBounds = 13*autoSizeScaleX;
+    number.textColor=[UIColor whiteColor];
+    number.textAlignment=NSTextAlignmentCenter;
+    number.font=[UIFont systemFontOfSize:20*autoSizeScaleY];
+    [view addSubview:number];
+    
     //右按钮
-//    UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:view];
-//    self.navigationItem.rightBarButtonItem=item;
+    UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:view];
+    self.navigationItem.rightBarButtonItem=item;
     
     [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
 
 }
 //进入购物车
 -(void)onshoppingCraClick{
+    if ([tokenString length]<1) {
+        [TheParentClass theLogin];
+    }else{
+        DetailsOfTheShoppingCart *ShoppingCart=[[DetailsOfTheShoppingCart alloc]init];
+        [self.navigationController pushViewController:ShoppingCart animated:YES];
+    }
 
 }
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
@@ -334,6 +352,37 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [TheParentClass ButtonAtTheBottomOfThesize:NO];
+    [self ToGetAShoppingCartGoodsList];
+}
+//获取购物车数量
+-(void)ToGetAShoppingCartGoodsList{
+    autoSize
+    [ShoppingCarRequest ToGetAShoppingCartGoodsListBlock:^(NSDictionary *dics) {
+        ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+        if ([class.code isEqualToString:@"13"]) {
+            int x=0;
+            for (int i=0; i<class.list.count; i++) {
+                ShoppingCarList *list=class.list[i];
+                x+=list.count;
+            }
+            if (x>0) {
+                number.text=[NSString stringWithFormat:@"%d",x];
+                number.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
+                
+            }else{
+                number.backgroundColor=[UIColor clearColor];
+                number.text=@"";
+            }
+            
+            if (x<100) {
+                number.frame=frame(180, 10, 26, 26);
+            }else if ([number.text length]>1){
+                number.frame=frame(170, 10, 36, 26);
+            }
+        }
+        
+    }];
+    
 }
 /*
 #pragma mark - Navigation
