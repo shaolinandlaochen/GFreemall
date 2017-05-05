@@ -403,7 +403,7 @@
     img.image=[UIImage imageNamed:@"pic_cart"];
     img.tag=1314521;
     [self.view addSubview:img];
-    img.sd_layout.leftSpaceToView(self.view, 196*autoSizeScaleX).topSpaceToView(self.view, 597*autoSizeScaleY).widthIs(358*autoSizeScaleX).heightIs(139*autoSizeScaleY);
+    img.sd_layout.leftSpaceToView(self.view, 205*autoSizeScaleX).topSpaceToView(self.view, 500*autoSizeScaleY).widthIs(358*autoSizeScaleX).heightIs(139*autoSizeScaleY);
     UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
     btn.tag=1314520;
     [btn setTitle:Localized(@"去逛逛") forState:UIControlStateNormal];
