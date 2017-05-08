@@ -126,16 +126,25 @@ autoSize
         [view.HasBeenCompleted addTarget:self action:@selector(myOrderAll:) forControlEvents:UIControlEventTouchUpInside];
         if (class.payment>0) {//待付款
             view.redOne.text=[NSString stringWithFormat:@"%.0f",class.payment];
+            if (class.payment>99) {
+                view.redOne.text=@"99";
+            }
         }else{
             view.redOne.backgroundColor=[UIColor clearColor];
         }
         if (class.send>0) {//待收货
             view.redTwo.text=[NSString stringWithFormat:@"%.0f",class.send];
+            if (class.send>99) {
+                view.redTwo.text=@"99";
+            }
         }else{
             view.redTwo.backgroundColor=[UIColor clearColor];
         }
         if (class.comment>0) {//待评价
             view.redThree.text=[NSString stringWithFormat:@"%.0f",class.comment];
+            if (class.comment>99) {
+                view.redThree.text=@"99";
+            }
         }else{
         view.redThree.backgroundColor=[UIColor clearColor];
         }
@@ -156,7 +165,11 @@ autoSize
             cell.name.text=Localized(@"我的消息");
             cell.witht=WIDTH;
             if (number>0) {
+               
                 cell.numberString.text=[NSString stringWithFormat:@"%ld",number];
+                if (number>99) {
+                    cell.numberString.text=@"99";
+                }
                 cell.numberString.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
             }
         }else if (indexPath.section==2){

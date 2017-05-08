@@ -368,6 +368,9 @@
             if (x>0) {
                 number.text=[NSString stringWithFormat:@"%d",x];
                 number.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
+                if (x>99) {
+                    number.text=@"99";
+                }
                 
             }else{
                 number.backgroundColor=[UIColor clearColor];

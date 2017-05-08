@@ -313,6 +313,9 @@ autoSize
                 if (class.data>0) {
                     number.text=[NSString stringWithFormat:@"%.0f",class.data];
                     number.backgroundColor=[TheParentClass colorWithHexString:@"#de0024"];
+                    if (class.data>99) {
+                        number.text=@"99";
+                    }
                     
                 }else{
                     number.backgroundColor=[UIColor clearColor];

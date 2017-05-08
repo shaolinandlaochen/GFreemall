@@ -85,7 +85,11 @@
                 ShoppingCarList *list=class.list[i];
                 x+=list.count;
             }
+            
             goods.numberString=[NSString stringWithFormat:@"%d",x];
+            if (x>99) {
+                goods.numberString=@"99";
+            }
         }
 
     }];
