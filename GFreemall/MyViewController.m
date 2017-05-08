@@ -328,7 +328,7 @@ autoSize
         self.dataDic=[self deleteEmpty:dic];
         [_tableView reloadData];
     }
-  
+
 
 }
 /*

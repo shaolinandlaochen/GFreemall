@@ -279,6 +279,7 @@ autoSize
                 OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
                 if ([class.code isEqualToString:@"60"]) {
                     BillingInfo *Billing=[[BillingInfo alloc]init];
+                    Billing.why=@"订单详情";
                     if (classData.map.orderPayment==0) {
                         Billing.were=@"在线钱包";
                         Billing.orderNumber=[NSString stringWithFormat:@"%.0f",classData.map.orderSerial];

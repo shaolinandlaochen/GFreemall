@@ -175,17 +175,15 @@
 
 }
 -(void)onCanceClick{
-    NSMutableArray *navigationarray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-    [navigationarray removeAllObjects];
-    MyViewController *my=[[MyViewController alloc]init];
-    [self.navigationController pushViewController:my animated:YES];
 
-//    [UIView  beginAnimations:nil context:NULL];
-//    [UIView setAnimationCurve:UIViewAnimationCurveLinear];
-//    [UIView setAnimationDuration:0.2];
-//    [self.navigationController pushViewController:my animated:YES];
-//    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.navigationController.view cache:NO];
-//    [UIView commitAnimations];
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFromTop; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+    //transition.subtype = kCATransitionFromTop; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:NO];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"MyViewsMessage" object:nil];
     
   
 }
@@ -261,6 +259,7 @@ autoSize
                 OrderDetailsBaseClass *class=[[OrderDetailsBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
                 if ([class.code isEqualToString:@"60"]) {
                     BillingInfo *Billing=[[BillingInfo alloc]init];
+                    Billing.why=@"订单列表";
                     if (list.orderPayment==0) {
                         Billing.were=@"在线钱包";
                         Billing.orderNumber=[NSString stringWithFormat:@"%.0f",list.orderSerial];

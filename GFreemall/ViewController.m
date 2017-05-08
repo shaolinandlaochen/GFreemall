@@ -44,7 +44,8 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TheLongin) name:@"MonitorTheLoginNotifications" object:nil];
     //在登录界面点击切换语言需求
      [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ToWwitchBetweenLanguagesClick) name:@"InTheLoginScreenClickSwitchLanguageNeeds" object:nil];
-    
+    //用户支付完毕回到个人
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(MyViewsMessage) name:@"MyViewsMessage" object:nil];
   
     
    
@@ -159,6 +160,25 @@ colorWithStr
             }
         }
       
+    }
+}
+//用户回到个人界面把底部的Tabbea也换过去
+-(void)MyViewsMessage{
+    if (_index==3) {
+        return;
+    }else{
+
+        NSMutableArray *navigationarray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+        if (navigationarray.count>1) {
+            for (int i=0; i<navigationarray.count; i++) {
+                if (i>0) {
+                    [navigationarray removeObjectAtIndex:i];
+                }
+            }
+        }
+        self.index=3;
+        [[self.view viewWithTag:1994]removeFromSuperview];
+        [self createButton];
     }
 }
 //set方法

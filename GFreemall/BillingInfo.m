@@ -13,6 +13,7 @@
 #import "PayRequest.h"
 #import "ReplaceAPhoneNumberViewController.h"
 #import "MyOrderViewController.h"
+#import "MyOrderDetails.h"
 @interface BillingInfo ()<UITableViewDataSource,UITableViewDelegate,CancelTheViewDelegate>
 {
     UITableView *_tableView;
@@ -167,9 +168,7 @@
                     NSString *msg=[NSString stringWithFormat:@"%@",[data objectForKey:@"msg"]];
                     if ([code isEqualToString:@"27"]) {
                         [FTIndicator showSuccessWithMessage:msg];
-//                        ReturnToSpecifyTheController(ShoppingCartViewController)
-//                        ReturnToSpecifyTheController(GoodsDetailsViewController)
-//                        ReturnToSpecifyTheController(MyOrderViewController)
+
                         [self CreatOrderView];//去订单列表
                     }else{
                         [FTIndicator showErrorWithMessage:msg];
@@ -193,9 +192,7 @@
                     NSString *msg=[NSString stringWithFormat:@"%@",[data objectForKey:@"msg"]];
                     if ([code isEqualToString:@"27"]) {
                         [FTIndicator showSuccessWithMessage:msg];
-//                        ReturnToSpecifyTheController(ShoppingCartViewController)
-//                        ReturnToSpecifyTheController(GoodsDetailsViewController)
-//                        ReturnToSpecifyTheController(MyOrderViewController)
+
                         [self CreatOrderView];//去订单列表
                     }else{
                          [FTIndicator showErrorWithMessage:msg];
@@ -226,8 +223,15 @@
 }
 //去订单列表
 -(void)CreatOrderView{
-    MyOrderViewController *order=[[MyOrderViewController alloc]init];
-    [self.navigationController pushViewController:order animated:YES];
+    if ([self.why isEqualToString:@"订单列表"]) {
+         ReturnToSpecifyTheController(MyOrderViewController)
+    }else if ([self.why isEqualToString:@"订单详情"]){
+         ReturnToSpecifyTheController(MyOrderDetails)
+    }else{
+        MyOrderViewController *order=[[MyOrderViewController alloc]init];
+        [self.navigationController pushViewController:order animated:YES];
+    }
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
