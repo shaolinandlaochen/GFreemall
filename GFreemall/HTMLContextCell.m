@@ -88,10 +88,10 @@
     
     
     CGSize fittingSize = [webView sizeThatFits:CGSizeZero];
-    //NSLog(@"网页高度------:%f",fittingSize.height);
+    NSLog(@"网页高度------:%f",fittingSize.height);
     
     CGFloat height = [[_web stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"]floatValue];
-    //NSLog(@"网页高度---111111111111111111111---:%f",height);
+    NSLog(@"网页高度---111111111111111111111---:%f",height);
     _web.sd_layout.heightIs(fittingSize.height);
     
     

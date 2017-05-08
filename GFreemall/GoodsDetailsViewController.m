@@ -97,7 +97,7 @@
 }
 
 -(void)htmlHeight:(float)height{
-    if (height>_htmlHeight) {
+    if (height!=_htmlHeight) {
         _htmlHeight=height;
     
         [_tableView reloadData];
