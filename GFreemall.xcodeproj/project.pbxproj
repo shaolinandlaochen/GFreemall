@@ -609,6 +609,14 @@
 		9D9454851EA5D8D900C6EF21 /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9454801EA5D8D900C6EF21 /* PhotoView.m */; };
 		9D9454861EA5D8D900C6EF21 /* WyzAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9454821EA5D8D900C6EF21 /* WyzAlbumViewController.m */; };
 		9D94548B1EA5E89A00C6EF21 /* ShippingAddressRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D94548A1EA5E89A00C6EF21 /* ShippingAddressRequest.m */; };
+		9D997CEB1EC0214D008EF7EA /* libTalkingData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D997CE91EC0214D008EF7EA /* libTalkingData.a */; };
+		9D997CED1EC02167008EF7EA /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D997CEC1EC02167008EF7EA /* AdSupport.framework */; };
+		9D997CEF1EC02171008EF7EA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D997CEE1EC02171008EF7EA /* CoreTelephony.framework */; };
+		9D997CF11EC02179008EF7EA /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D997CF01EC02179008EF7EA /* CoreMotion.framework */; };
+		9D997CF31EC02183008EF7EA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D997CF21EC02183008EF7EA /* Security.framework */; };
+		9D997CF51EC0218C008EF7EA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D997CF41EC0218C008EF7EA /* SystemConfiguration.framework */; };
+		9D997CF71EC02198008EF7EA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D997CF61EC02198008EF7EA /* libz.tbd */; };
+		9D997CF91EC021A2008EF7EA /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D997CF81EC021A2008EF7EA /* libc++.tbd */; };
 		9DB2CB871E9CD13A009DCE8F /* GFMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB861E9CD13A009DCE8F /* GFMCell.m */; };
 		9DB2CB8A1E9DC073009DCE8F /* RecommendedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB891E9DC073009DCE8F /* RecommendedCell.m */; };
 		9DB2CB8D1E9DCE1E009DCE8F /* GFMRollOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2CB8C1E9DCE1E009DCE8F /* GFMRollOut.m */; };
@@ -1480,6 +1488,15 @@
 		9D9454821EA5D8D900C6EF21 /* WyzAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WyzAlbumViewController.m; sourceTree = "<group>"; };
 		9D9454891EA5E89A00C6EF21 /* ShippingAddressRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShippingAddressRequest.h; sourceTree = "<group>"; };
 		9D94548A1EA5E89A00C6EF21 /* ShippingAddressRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShippingAddressRequest.m; sourceTree = "<group>"; };
+		9D997CE91EC0214D008EF7EA /* libTalkingData.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTalkingData.a; sourceTree = "<group>"; };
+		9D997CEA1EC0214D008EF7EA /* TalkingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkingData.h; sourceTree = "<group>"; };
+		9D997CEC1EC02167008EF7EA /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		9D997CEE1EC02171008EF7EA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		9D997CF01EC02179008EF7EA /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		9D997CF21EC02183008EF7EA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9D997CF41EC0218C008EF7EA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9D997CF61EC02198008EF7EA /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		9D997CF81EC021A2008EF7EA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		9DB2CB851E9CD13A009DCE8F /* GFMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFMCell.h; sourceTree = "<group>"; };
 		9DB2CB861E9CD13A009DCE8F /* GFMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFMCell.m; sourceTree = "<group>"; };
 		9DB2CB881E9DC073009DCE8F /* RecommendedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendedCell.h; sourceTree = "<group>"; };
@@ -1535,6 +1552,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D997CF91EC021A2008EF7EA /* libc++.tbd in Frameworks */,
+				9D997CF71EC02198008EF7EA /* libz.tbd in Frameworks */,
+				9D997CF51EC0218C008EF7EA /* SystemConfiguration.framework in Frameworks */,
+				9D997CF31EC02183008EF7EA /* Security.framework in Frameworks */,
+				9D997CF11EC02179008EF7EA /* CoreMotion.framework in Frameworks */,
+				9D997CEF1EC02171008EF7EA /* CoreTelephony.framework in Frameworks */,
+				9D997CED1EC02167008EF7EA /* AdSupport.framework in Frameworks */,
+				9D997CEB1EC0214D008EF7EA /* libTalkingData.a in Frameworks */,
 				01E7FF9319AECBA3198CF8D6 /* libPods-GFreemall.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2276,6 +2301,8 @@
 				38C9DCC11E89009F00F231B0 /* TheParentClass.m */,
 				9D29373F1EA09B5700A86E10 /* DataModels.h */,
 				9D6AA6E91EB856B5006C494D /* dizhi_quanqiu.txt */,
+				9D997CE91EC0214D008EF7EA /* libTalkingData.a */,
+				9D997CEA1EC0214D008EF7EA /* TalkingData.h */,
 				9D170A8C1EA5D71400A373DD /* 图片浏览器 */,
 				9D2937651EA0CDD400A86E10 /* 空数据过滤 */,
 				9D2937441EA09F2600A86E10 /* 提示框 */,
@@ -3098,6 +3125,13 @@
 		D62E94C45652529740C71570 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9D997CF81EC021A2008EF7EA /* libc++.tbd */,
+				9D997CF61EC02198008EF7EA /* libz.tbd */,
+				9D997CF41EC0218C008EF7EA /* SystemConfiguration.framework */,
+				9D997CF21EC02183008EF7EA /* Security.framework */,
+				9D997CF01EC02179008EF7EA /* CoreMotion.framework */,
+				9D997CEE1EC02171008EF7EA /* CoreTelephony.framework */,
+				9D997CEC1EC02167008EF7EA /* AdSupport.framework */,
 				0C3C8AC7E101E843F9AACA7E /* libPods-GFreemall.a */,
 			);
 			name = Frameworks;
@@ -4098,6 +4132,10 @@
 				INFOPLIST_FILE = GFreemall/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GFreemall",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ANewStartIsMrHan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ef6e2f87-2c6e-4994-b3af-9271ae6cbe34";
@@ -4123,6 +4161,10 @@
 				INFOPLIST_FILE = GFreemall/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GFreemall",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ANewStartIsMrHan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ef6e2f87-2c6e-4994-b3af-9271ae6cbe34";

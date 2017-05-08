@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "TalkingData.h"
 @interface AppDelegate ()
 
 @end
@@ -18,6 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window.backgroundColor=[TheParentClass colorWithHexString:@"#f2f3f7"];
 
+    [TalkingData sessionStarted:@"4A9C0349407C4998A7A2A20761EF808D" withChannelId:@"IsMrHan"];
     if (![[NSUserDefaults standardUserDefaults]objectForKey:@"appLanguage"]) {
         
         NSArray *languages = [NSLocale preferredLanguages];
