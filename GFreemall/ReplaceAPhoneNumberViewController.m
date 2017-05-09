@@ -290,7 +290,17 @@ cancelClick
         if (indexPath.row==0) {
               self.delegate=cell;
             if (_phoneString!=nil) {
-                cell.tf.text=_phoneString;
+              
+                if ([_phoneString length]>10) {
+                    NSString *stringOne = [_phoneString substringToIndex:5];//截取掉下标7之后的字符串
+                    // NSLog(@"截取的值为：%@",string);
+                    NSString *stringtwo=[_phoneString substringFromIndex:9];//截取掉下标2之前的字符串
+                    //NSLog(@"截取的值为：%@",string);
+                    cell.tf.text=[NSString stringWithFormat:@"%@****%@",stringOne,stringtwo];
+                }else{
+                      cell.tf.text=_phoneString;
+                }
+                
             }
             cell.tf.userInteractionEnabled = NO;
             [cell.btn.layer setBorderColor:[TheParentClass colorWithHexString:@"#292929"].CGColor];
