@@ -28,8 +28,10 @@
     leftCancel
     
     
+    
     _tf=[[UITextView alloc]init];
     _tf.delegate=self;
+    _tf.backgroundColor=[UIColor yellowColor];
     _tf.keyboardType=UIKeyboardTypeDefault;
     _tf.textColor=[TheParentClass colorWithHexString:@"#292929"];
     _tf.font=[UIFont systemFontOfSize:30*autoSizeScaleY];

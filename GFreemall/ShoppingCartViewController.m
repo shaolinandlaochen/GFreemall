@@ -48,15 +48,19 @@
     // Do any additional setup after loading the view.
 }
 -(void)ToGetAShoppingCartGoodsList{
-    self.shoppingCarArray=[[NSMutableArray alloc]init];
+
+   request=NO;//开始请求设置为NO
     [ShoppingCarRequest ToGetAShoppingCartGoodsListBlock:^(NSDictionary *dics) {
+        self.shoppingCarArray=[[NSMutableArray alloc]init];
         self.dataDic=[self deleteEmpty:dics];
         ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:self.dataDic];
        
         if ([class.code isEqualToString:@"13"]) {
+           
             if (class.list.count>0) {
                 [[self.view viewWithTag:1314521]removeFromSuperview];
                 [[self.view viewWithTag:1314520]removeFromSuperview];
+                
                 for (int i=0; i<class.list.count; i++) {
                     ShoppingCarList *list=class.list[i];
                     [self.shoppingCarArray addObject:list];
@@ -78,6 +82,7 @@
         }
          [_tableView.mj_header endRefreshing];
         [SVProgressHUD dismiss];
+        request=YES;
     }];
 
 }
@@ -288,53 +293,59 @@
 //编辑
 -(void)onEditorBBtnClick:(MyButton *)btn{
    
-    if (_isState) {
-        [editorBtn setTitle:Localized(@"完成") forState:UIControlStateNormal];
-        _isState=NO;
-        [_tableView reloadData];
-        view.selectedBtn.selected=NO;
-        view.picle.text=@"";
-        
-    }else{
-        [editorBtn setTitle:Localized(@"编辑") forState:UIControlStateNormal];
-        _isState=YES;
-        [self ToGetAShoppingCartGoodsList];
-        [SVProgressHUD showWithStatus:Localized(@"loading")];
+    if (request) {//不在获取数据的状态中
+        if (_isState) {
+            [editorBtn setTitle:Localized(@"完成") forState:UIControlStateNormal];
+            _isState=NO;
+            [_tableView reloadData];
+            view.selectedBtn.selected=NO;
+            view.picle.text=@"";
+            
+        }else{
+            [editorBtn setTitle:Localized(@"编辑") forState:UIControlStateNormal];
+            _isState=YES;
+            [self ToGetAShoppingCartGoodsList];
+            [SVProgressHUD showWithStatus:Localized(@"loading")];
+        }
+        view.state=_isState;
     }
-     view.state=_isState;
+    
+
 }
 //全选
 -(void)FutureGenerations:(MyButton *)btn{
-    btn.selected=!btn.selected;
-    if (_isState) {//非编辑状态
-        for (int i=0; i<self.shoppingCarArray.count; i++) {
-            ShoppingCarList *list=self.shoppingCarArray[i];
-            list.selected=btn.selected;
-            [self.shoppingCarArray replaceObjectAtIndex:i withObject:list];
+   
+    if (request) {//此时不在请求状态
+        btn.selected=!btn.selected;
+        if (_isState) {//非编辑状态
+            for (int i=0; i<self.shoppingCarArray.count; i++) {
+                ShoppingCarList *list=self.shoppingCarArray[i];
+                list.selected=btn.selected;
+                [self.shoppingCarArray replaceObjectAtIndex:i withObject:list];
+                
+            }
+            [ShoppingCarRequest AUserClicksOnFutureGenerations:btn.selected Array:self.shoppingCarArray block:^(NSString *priceString) {
+                view.picle.text=[NSString stringWithFormat:@"合计:¥%@",priceString];
+                
+            }];
+        }else{//编辑状态
+            for (int i=0; i<self.shoppingCarArray.count; i++) {
+                ShoppingCarList *list=self.shoppingCarArray[i];
+                list.EditorSelected=btn.selected;
+                [self.shoppingCarArray replaceObjectAtIndex:i withObject:list];
+                
+            }
             
-        }
-        [ShoppingCarRequest AUserClicksOnFutureGenerations:btn.selected Array:self.shoppingCarArray block:^(NSString *priceString) {
-            view.picle.text=[NSString stringWithFormat:@"合计:¥%@",priceString];
-            
-        }];
-    }else{//编辑状态
-        for (int i=0; i<self.shoppingCarArray.count; i++) {
-            ShoppingCarList *list=self.shoppingCarArray[i];
-            list.EditorSelected=btn.selected;
-            [self.shoppingCarArray replaceObjectAtIndex:i withObject:list];
+            [ShoppingCarRequest EditStateSelection:self.shoppingCarArray Block:^(BOOL isSend) {
+                view.selectedBtn.selected=isSend;
+            }];
             
         }
         
-        [ShoppingCarRequest EditStateSelection:self.shoppingCarArray Block:^(BOOL isSend) {
-            view.selectedBtn.selected=isSend;
-        }];
         
+        [_tableView reloadData];
     }
-    
-    
- 
-    
-     [_tableView reloadData];
+
 
 }
 //点击支付或者删除
