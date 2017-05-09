@@ -31,8 +31,9 @@
     
     _tf=[[UITextView alloc]init];
     _tf.delegate=self;
-    _tf.backgroundColor=[UIColor yellowColor];
-    _tf.keyboardType=UIKeyboardTypeDefault;
+    //_tf.contentInset = UIEdgeInsetsMake(24, 6, 0, 0);
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    //_tf.keyboardType=UIKeyboardTypeDefault;
     _tf.textColor=[TheParentClass colorWithHexString:@"#292929"];
     _tf.font=[UIFont systemFontOfSize:30*autoSizeScaleY];
     [self.view addSubview:_tf];

@@ -36,7 +36,7 @@
     [self AddTheSearch];//添加搜索框
     [self ThUserNavigationBar];//添加筛选条件
     _tableView=[[UITableView alloc]init];
-    _tableView.backgroundColor=[UIColor whiteColor];
+    _tableView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _tableView.separatorColor=[UIColor clearColor];

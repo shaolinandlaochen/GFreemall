@@ -44,6 +44,7 @@
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, navheight+rectStatus.size.height+height, 187*autoSizeScaleX, self.view.frame.size.height-(340*autoSizeScaleY)) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     _tableView.showsVerticalScrollIndicator = NO;//去掉右侧滚动条
     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];

@@ -128,11 +128,12 @@ cancelClick
             
         }else if (indexPath.row==3){
             cell.name.text=Localized(@"账户邮箱");
+             cell.imgName=@"icon_right";
             if (class.info.baseAuthEmail==1) {
                 cell.string.text=class.info.baseEmail;
+               
             }else{
                 cell.string.text=Localized(@"未设置");
-                cell.imgName=@"icon_right";
             }
     
             
