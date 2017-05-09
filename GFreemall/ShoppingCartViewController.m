@@ -170,7 +170,7 @@
         [cell.icon addTarget:self action:@selector(onGoodDetaileClick:) forControlEvents:UIControlEventTouchUpInside];
         cell.name.text=list.commodityName;
         cell.describe.text=comm.commodityAttributes;
-        cell.price.text=[NSString stringWithFormat:@"%.2f",comm.commoditySellprice];
+        cell.price.text=[NSString stringWithFormat:@"¥%.2f",comm.commoditySellprice];
         cell.bjImage.image=[UIImage imageNamed:@"edict"];
         cell.number.text=[NSString stringWithFormat:@"%.0f",list.count];
         

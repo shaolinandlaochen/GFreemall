@@ -58,7 +58,7 @@
     GoodsDetailsComm *comm=class.comm;
     _title.text=[NSString stringWithFormat:@"%@",comm.commodityName];
     _string.text=[NSString stringWithFormat:@"%@",comm.commodityDigest];
-    _picrice.text=[NSString stringWithFormat:@"%.2f",comm.commoditySellprice];
+    _picrice.text=[NSString stringWithFormat:@"¥%.2f",comm.commoditySellprice];
     _title.sd_layout.autoHeightRatio(0);
     _string.sd_layout.autoHeightRatio(0).topSpaceToView(_title, 16*autoSizeScaleY);
     _picrice.sd_layout.autoHeightRatio(0).topSpaceToView(_string, 30*autoSizeScaleY);
@@ -68,7 +68,7 @@
 }
 -(void)setChildDic:(NSDictionary *)ChildDic{
      ChildProductDetailsBaseClass *ChildClass=[[ChildProductDetailsBaseClass alloc]initWithDictionary:ChildDic];
-    _picrice.text=[NSString stringWithFormat:@"%.2f",ChildClass.map.commoditySellprice];
+    _picrice.text=[NSString stringWithFormat:@"¥%.2f",ChildClass.map.commoditySellprice];
 
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

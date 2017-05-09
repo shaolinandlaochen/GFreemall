@@ -126,19 +126,17 @@
             if (self.name!=nil) {
                 cell.context.text=self.name;
             }
-           cell.placeholder=Localized(@"请在此处填写收货人");
         }else if (indexPath.row==1){
             cell.string=Localized(@"联系方式:");
             if (self.phoneNumber!=nil) {
                 cell.context.text=self.phoneNumber;
             }
-            cell.placeholder=Localized(@"请在此处填写收货人手机号码");
         }else if (indexPath.row==3){
             cell.string=Localized(@"详细地址:");
             if (self.addressString!=nil) {
                 cell.context.text=self.addressString;
             }
-            cell.placeholder=Localized(@"请在此处填写详细地址");
+            cell.placeholder=Localized(@"街道、门牌号等");
         }
           return cell;
     }else if (indexPath.row==2){

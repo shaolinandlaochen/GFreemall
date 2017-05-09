@@ -111,7 +111,7 @@ cancelClick
         CollectionResultList *ResultList=data.resultList[indexPath.row];
         [cell.img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",class.imgSrc,ResultList.commodityImagesPath,ResultList.commodityCoverImage]] placeholderImage:[UIImage imageNamed:@""]];
         cell.title.text=ResultList.commodityName;
-        cell.picre.text=[NSString stringWithFormat:@"%.2f",ResultList.commoditySellprice];
+        cell.picre.text=[NSString stringWithFormat:@"¥%.2f",ResultList.commoditySellprice];
         
         return cell;
 
