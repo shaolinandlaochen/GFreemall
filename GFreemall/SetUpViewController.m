@@ -113,7 +113,12 @@ cancelClick
     }else if (indexPath.section==0&&indexPath.row==1){
         cell.userInteractionEnabled = NO;
         cell.name.text=Localized(@"当前版本号");
-        cell.context.text=@"1.0";
+        
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        CFShow((__bridge CFTypeRef)(infoDictionary));
+        // app版本
+        NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+        cell.context.text=app_Version;
     }else if (indexPath.section==1&&indexPath.row==0){
         cell.name.text=Localized(@"意见反馈");
         cell.img.image=[UIImage imageNamed:@"icon_right"];
