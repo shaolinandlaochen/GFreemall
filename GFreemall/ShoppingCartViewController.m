@@ -34,57 +34,84 @@
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     _isState=YES;//表示默认是非编辑状态
     [self rightBaBarbtn];
-    [self CreatePaymentButton];//创建支付按钮
+
     autoSize
-    CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
-    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
+    //CGFloat navheight = self.navigationController.navigationBar.frame.size.height;//导航栏目高度
+    //CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];//状态栏高度
     _tableView=[[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.dataSource=self;
     _tableView.delegate=self;
     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
-    _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(view, 0).topSpaceToView(self.view, navheight+rectStatus.size.height);
+    _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 99*autoSizeScaleY).topSpaceToView(self.view, 0);
     TemporarilyNotRefresh(_tableView, @selector(ToGetAShoppingCartGoodsList))
     // Do any additional setup after loading the view.
 }
 -(void)ToGetAShoppingCartGoodsList{
-
-   request=NO;//开始请求设置为NO
-    [ShoppingCarRequest ToGetAShoppingCartGoodsListBlock:^(NSDictionary *dics) {
-        self.shoppingCarArray=[[NSMutableArray alloc]init];
-        self.dataDic=[self deleteEmpty:dics];
-        ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:self.dataDic];
-       
-        if ([class.code isEqualToString:@"13"]) {
-           
-            if (class.list.count>0) {
-                [[self.view viewWithTag:1314521]removeFromSuperview];
-                [[self.view viewWithTag:1314520]removeFromSuperview];
-                
-                for (int i=0; i<class.list.count; i++) {
-                    ShoppingCarList *list=class.list[i];
-                    [self.shoppingCarArray addObject:list];
-                }
-                 if (_isState) {//非编辑状态
-                 view.picle.text=@"合计:¥0.00";
-                 
-                 }else{
-                 view.picle.text=@"";
-                 }
-                view.selectedBtn.selected=NO;
-               
-            }else{
-            [self EmptyTheShoppingCart];//购物车是空的
-            }
-             [_tableView reloadData];
-        }else{
-            [FTIndicator showErrorWithMessage:class.msg];
-        }
-         [_tableView.mj_header endRefreshing];
+    
+    if ([tokenString length]<1) {
+        [_tableView.mj_header endRefreshing];
         [SVProgressHUD dismiss];
-        request=YES;
-    }];
+        UIAlertController  * alertController = [UIAlertController alertControllerWithTitle:Localized(@"温馨提示") message:Localized(@"请您先去登录") preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * sureAction = [UIAlertAction actionWithTitle:Localized(@"去登录") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+             [TheParentClass theLogin];
+            
+        }];
+        
+        UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:Localized(@"取消") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alertController addAction:cancelAction];
+        [alertController addAction:sureAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+        
 
+    }else{
+        
+        request=NO;
+        [ShoppingCarRequest ToGetAShoppingCartGoodsListBlock:^(NSDictionary *dics) {
+            self.shoppingCarArray=[[NSMutableArray alloc]init];
+            self.dataDic=[self deleteEmpty:dics];
+            ShoppingCarBaseClass *class=[[ShoppingCarBaseClass alloc]initWithDictionary:self.dataDic];
+            
+            if ([class.code isEqualToString:@"13"]) {
+                if (class.list.count>0) {
+                    [[self.view viewWithTag:1314521]removeFromSuperview];
+                    [[self.view viewWithTag:1314520]removeFromSuperview];
+                    
+                    [self CreatePaymentButton];//创建支付按钮
+                    for (int i=0; i<class.list.count; i++) {
+                        ShoppingCarList *list=class.list[i];
+                        [self.shoppingCarArray addObject:list];
+                    }
+                    if (_isState) {//非编辑状态
+                        view.picle.text=@"合计:¥0.00";
+                        
+                    }else{
+                        view.picle.text=@"";
+                    }
+                    view.selectedBtn.selected=NO;
+                    
+                }else{
+                    [[self.view viewWithTag:15738803030]removeFromSuperview];
+                    [self EmptyTheShoppingCart];//购物车是空的
+                }
+                [_tableView reloadData];
+            }else{
+                [FTIndicator showErrorWithMessage:class.msg];
+            }
+            [_tableView.mj_header endRefreshing];
+            [SVProgressHUD dismiss];
+            request=YES;
+        }];
+
+    }
+    
+    
+    
+  
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -292,30 +319,30 @@
 }
 //编辑
 -(void)onEditorBBtnClick:(MyButton *)btn{
-   
-    if (request) {//不在获取数据的状态中
-        if (_isState) {
-            [editorBtn setTitle:Localized(@"完成") forState:UIControlStateNormal];
-            _isState=NO;
-            [_tableView reloadData];
-            view.selectedBtn.selected=NO;
-            view.picle.text=@"";
-            
-        }else{
-            [editorBtn setTitle:Localized(@"编辑") forState:UIControlStateNormal];
-            _isState=YES;
-            [self ToGetAShoppingCartGoodsList];
-            [SVProgressHUD showWithStatus:Localized(@"loading")];
+    if (self.shoppingCarArray.count>0) {
+        if (request) {
+            if (_isState) {
+                [editorBtn setTitle:Localized(@"完成") forState:UIControlStateNormal];
+                _isState=NO;
+                [_tableView reloadData];
+                view.selectedBtn.selected=NO;
+                view.picle.text=@"";
+                
+            }else{
+                [editorBtn setTitle:Localized(@"编辑") forState:UIControlStateNormal];
+                _isState=YES;
+                [self ToGetAShoppingCartGoodsList];
+                [SVProgressHUD showWithStatus:Localized(@"loading")];
+            }
+            view.state=_isState;
         }
-        view.state=_isState;
     }
-    
+
 
 }
 //全选
 -(void)FutureGenerations:(MyButton *)btn{
-   
-    if (request) {//此时不在请求状态
+    if (request) {
         btn.selected=!btn.selected;
         if (_isState) {//非编辑状态
             for (int i=0; i<self.shoppingCarArray.count; i++) {
@@ -343,10 +370,12 @@
         }
         
         
+        
+        
         [_tableView reloadData];
+ 
     }
-
-
+   
 }
 //点击支付或者删除
 -(void)PaymentAndDeleteClick:(MyButton *)btn{
@@ -406,6 +435,16 @@
                         }
                     }
                     [_tableView reloadData];
+                    if (self.shoppingCarArray.count<1) {
+                        [[self.view viewWithTag:15738803030]removeFromSuperview];
+                        [self EmptyTheShoppingCart];//购物车是空的
+                        [editorBtn setTitle:Localized(@"编辑") forState:UIControlStateNormal];
+                        _isState=YES;
+                        view.state=_isState;
+                        
+                        
+                        
+                    }
                     
                 }else{//删除失败
                  [FTIndicator showErrorWithMessage:class.msg];
@@ -498,7 +537,7 @@
 -(void)CreatePaymentButton{
     autoSize
     view=[[ShoppingCarViews alloc]init];
-    view.picle.text=@"合计:¥0.00";
+    view.tag=15738803030;
     view.state=_isState;
     [view.PaymentAndDeleteBtn addTarget:self action:@selector(PaymentAndDeleteClick:) forControlEvents:UIControlEventTouchUpInside];
     [view.selectedBtn addTarget:self action:@selector(FutureGenerations:) forControlEvents:UIControlEventTouchUpInside];

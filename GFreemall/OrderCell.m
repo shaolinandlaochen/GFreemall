@@ -82,6 +82,9 @@ autoSize
     if (Commodity.commodityFreight>0) {
         _freight.text=[NSString stringWithFormat:@"(含运费:%.2f元)",Commodity.commodityFreight];
         _freight.sd_layout.leftSpaceToView(_picre, 0).topEqualToView(_picre).rightSpaceToView(self.contentView, 70*autoSizeScaleX).heightIs(35*autoSizeScaleY);
+    }else{
+        _freight.text=@"(免邮费)";
+        _freight.sd_layout.leftSpaceToView(_picre, 0).topEqualToView(_picre).rightSpaceToView(self.contentView, 70*autoSizeScaleX).heightIs(35*autoSizeScaleY);
     }
 
     

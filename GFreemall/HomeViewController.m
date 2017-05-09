@@ -233,8 +233,13 @@ autoSize
 }
 //点击右边导航条按钮执行该方法
 -(void)onBarButtonClick:(UIButton *)btn{
-    MyNewsViewController *news=[[MyNewsViewController alloc]init];
-    [self.navigationController pushViewController:news animated:YES];
+    if ([tokenString length]<1) {
+        [TheParentClass theLogin];
+    }else{
+        MyNewsViewController *news=[[MyNewsViewController alloc]init];
+        [self.navigationController pushViewController:news animated:YES];
+    }
+
 //    GFMViewController *gfm=[[GFMViewController alloc]init];
 //    UINavigationController *navGFM=[[UINavigationController alloc]initWithRootViewController:gfm];
 //    [self presentViewController:navGFM animated:YES completion:^{
