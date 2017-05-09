@@ -24,6 +24,8 @@
         
         _context=[[MyTextField alloc]init];
         _context.delegate=self;
+        [_context addTarget:self action:@selector(textChange:) forControlEvents:
+         UIControlEventEditingChanged];
         _context.keyboardType=UIKeyboardTypeDefault;
         _context.borderStyle = UIKeyboardTypeDefault;
         _context.returnKeyType=UIReturnKeyDone;
@@ -54,7 +56,9 @@
 -(void)setPlaceholder:(NSString *)placeholder{
     _context.placeholder=placeholder;
 }
-
+-(void)textChange:(MyTextField *)tf{
+ [_delegate NewString:tf.text indexPath:tf.indexPath];
+}
 - (void)textFieldDidEndEditing:(MyTextField *)textField{
     [_delegate NewString:textField.text indexPath:textField.indexPath];
     

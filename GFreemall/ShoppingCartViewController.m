@@ -20,6 +20,7 @@
     MyButton *editorBtn;
     ShoppingCarViews *view;//合计等等
     BOOL _isState;
+    BOOL request;
 }
 
 @end
@@ -28,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    request=YES;
     [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
     _isState=YES;//表示默认是非编辑状态
@@ -59,7 +61,12 @@
                     ShoppingCarList *list=class.list[i];
                     [self.shoppingCarArray addObject:list];
                 }
-                view.picle.text=@"合计:¥0.00";
+                 if (_isState) {//非编辑状态
+                 view.picle.text=@"合计:¥0.00";
+                 
+                 }else{
+                 view.picle.text=@"";
+                 }
                 view.selectedBtn.selected=NO;
                
             }else{

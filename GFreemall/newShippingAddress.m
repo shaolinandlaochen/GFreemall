@@ -18,7 +18,7 @@
     MyButton *addRess;
     
 
-    
+    BOOL request;
     
     
     
@@ -32,6 +32,7 @@
     [super viewDidLoad];
     autoSize
     self.title=Localized(@"新建收货地址");
+    request=YES;//默认可以请求
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:34*autoSizeScaleY],NSForegroundColorAttributeName:[TheParentClass colorWithHexString:@"#eeeeee"]}];
     [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
     self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
@@ -242,67 +243,65 @@
 //保存
 -(void)onSaveAndUseClick{
     
-        
-    
-    if ([self.name length]<1||[self.phoneNumber length]<1||[self.addressString length]<1||[self.address_country length]<1||[self.address_province length]<1||[self.address_city length]<1||[self.address_area length]<1) {
-        [FTIndicator showErrorWithMessage:Localized(@"参数不全")];
-    }else{
-        
-        
-        
-        NSString *ii;
-        if (self.isDefail) {
-            ii=@"1";
+    if (request) {
+        if ([self.name length]<1||[self.phoneNumber length]<1||[self.addressString length]<1||[self.address_country length]<1||[self.address_province length]<1||[self.address_city length]<1||[self.address_area length]<1) {
+            [FTIndicator showErrorWithMessage:Localized(@"参数不全")];
         }else{
-            ii=@"0";
-        }
-        
-        
-        NSString *nameStr;
-        if ([self.address_country isEqualToString:@"中国"]) {
-            nameStr=@"China";
-        }else{
-            nameStr=self.address_country;
-        }
-        
-        
-        if ([self.why isEqualToString:@"新增"]) {
-            [ShippingAddressRequest AddAShippingAddressaddress_name:self.name address_phone:self.phoneNumber address_country:nameStr address_province:self.address_province address_city:self.address_city address_area:self.address_area address_address:self.addressString address_isdefault:ii block:^(NSDictionary *dics) {
-                AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-                if ([class.code isEqualToString:@"53"]) {
-                    [_delegate newShippingAddres];
-                    [self.navigationController popViewControllerAnimated:YES];
-                    [FTIndicator showSuccessWithMessage:class.msg];
-                }else{
-                [FTIndicator showErrorWithMessage:class.msg];
-                }
-                
-                
-            }];
-        }else if([self.why isEqualToString:@"修改"]){
-            [ShippingAddressRequest ModifyTheShippingAddressID:self.ID address_name:self.name address_phone:self.phoneNumber address_country:self.address_country address_province:self.address_province address_city:self.address_city address_area:self.address_area address_address:self.addressString address_isdefault:ii block:^(NSDictionary *dics) {
-                AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
-                if ([class.code isEqualToString:@"54"]) {
-                    [_delegate newShippingAddres];
-                    [self.navigationController popViewControllerAnimated:YES];
-                    [FTIndicator showSuccessWithMessage:class.msg];
-                }else{
-                [FTIndicator showErrorWithMessage:class.msg];
-                }
-                
-                
-            }];;
             
-        
+            request=NO;
+            
+            NSString *ii;
+            if (self.isDefail) {
+                ii=@"1";
+            }else{
+                ii=@"0";
+            }
+            
+            
+            NSString *nameStr;
+            if ([self.address_country isEqualToString:@"中国"]) {
+                nameStr=@"China";
+            }else{
+                nameStr=self.address_country;
+            }
+            
+            
+            if ([self.why isEqualToString:@"新增"]) {
+                [ShippingAddressRequest AddAShippingAddressaddress_name:self.name address_phone:self.phoneNumber address_country:nameStr address_province:self.address_province address_city:self.address_city address_area:self.address_area address_address:self.addressString address_isdefault:ii block:^(NSDictionary *dics) {
+                    AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+                    if ([class.code isEqualToString:@"53"]) {
+                        [_delegate newShippingAddres];
+                        [self.navigationController popViewControllerAnimated:YES];
+                        [FTIndicator showSuccessWithMessage:class.msg];
+                    }else{
+                        [FTIndicator showErrorWithMessage:class.msg];
+                    }
+                    
+                    request=YES;
+                }];
+            }else if([self.why isEqualToString:@"修改"]){
+                [ShippingAddressRequest ModifyTheShippingAddressID:self.ID address_name:self.name address_phone:self.phoneNumber address_country:self.address_country address_province:self.address_province address_city:self.address_city address_area:self.address_area address_address:self.addressString address_isdefault:ii block:^(NSDictionary *dics) {
+                    AddressBaseClass *class=[[AddressBaseClass alloc]initWithDictionary:[self deleteEmpty:dics]];
+                    if ([class.code isEqualToString:@"54"]) {
+                        [_delegate newShippingAddres];
+                        [self.navigationController popViewControllerAnimated:YES];
+                        [FTIndicator showSuccessWithMessage:class.msg];
+                    }else{
+                        [FTIndicator showErrorWithMessage:class.msg];
+                    }
+                    request=YES;
+                    
+                }];;
+                
+                
+            }
+                        
+            
         }
-        
-        
-        
-        
-        
-    
-    
+
     }
+        
+    
     
     
 

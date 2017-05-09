@@ -173,7 +173,7 @@
             
         }else{
             cell.strings=Localized(@"添加收货地址");
-            cell.context.text=Localized(@"请添加收货地址以确保商品送达");
+            cell.addressString=Localized(@"请添加收货地址以确保商品送达");
         
         }
        

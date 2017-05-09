@@ -53,7 +53,8 @@
 //入口(请求端口号)
 
 //#define RequestUrl @"http://192.168.88.108:8080/shop_app/"
-#define RequestUrl @"http://app.gfreemall.com/"
+//#define RequestUrl @"http://app.gfreemall.com/"
+#define RequestUrl @"http://47.89.180.83:8080/shop_app/"
 
 
 

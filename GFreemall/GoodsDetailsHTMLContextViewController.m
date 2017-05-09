@@ -128,7 +128,7 @@
 
 
 -(void)tapGesture:(NSString *)imgUrl{
-    [TheParentClass SeeAPicture:imgUrl Controller:self];
+   // [TheParentClass SeeAPicture:imgUrl Controller:self];
     
 }
 

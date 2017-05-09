@@ -140,7 +140,7 @@
 
 
 -(void)tapGesture:(NSString *)imgUrl{
-    [_delegate ReviewImagesUrl:imgUrl];
+    //[_delegate ReviewImagesUrl:imgUrl];
 }
 
 -(void)setContext:(NSString *)context{
