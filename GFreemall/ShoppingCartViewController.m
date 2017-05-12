@@ -31,7 +31,7 @@
     [super viewDidLoad];
     request=YES;
     [self.navigationController.navigationBar setBarTintColor:[[UIColor blackColor]colorWithAlphaComponent:0.9]];
-    self.view.backgroundColor=[TheParentClass colorWithHexString:@"#f3f5f7"];
+    self.view.backgroundColor=[UIColor whiteColor];
     _isState=YES;//表示默认是非编辑状态
     [self rightBaBarbtn];
 
@@ -43,7 +43,7 @@
     _tableView.delegate=self;
     _tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:_tableView];
-    _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 99*autoSizeScaleY).topSpaceToView(self.view, 0);
+    _tableView.sd_layout.leftSpaceToView(self.view, 0).rightSpaceToView(self.view, 0).bottomSpaceToView(self.view, 197*autoSizeScaleY).topSpaceToView(self.view, 0);
     TemporarilyNotRefresh(_tableView, @selector(ToGetAShoppingCartGoodsList))
     // Do any additional setup after loading the view.
 }
